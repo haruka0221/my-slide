@@ -15,21 +15,31 @@
   :root{ --r-main-font-size: 28px; }
 }
 
+/* 背景を少し暗くするレイヤーがある場合はここに */
+
 .title{
-  font-weight:900;
+  position:absolute;
+  top:20vh;                      /* ← 上から 20% に固定 */
+  left:50%; transform:translateX(-50%);
+
+  max-width:90vw;
   text-align:center;
-  margin-top:18vh;
-  line-height:1.2;
+  font-weight:900;
+  line-height:1.15;
   color:#fff;
-  text-shadow:0 5px 12px rgba(0,0,0,.8);
+  text-shadow:0 6px 14px rgba(0,0,0,.9);
 }
+
 .subtitle{
   position:absolute;
+  bottom:10vh;                   /* ← 下から 10% に固定 */
   left:50%; transform:translateX(-50%);
-  bottom:7%;
+
+  max-width:80vw;
   font-size:1.1rem;
   line-height:1.45;
   text-align:center;
   color:#fff;
-  text-shadow:0 2px 8px rgba(0,0,0,.7);
+  text-shadow:0 3px 8px rgba(0,0,0,.8);
 }
+
