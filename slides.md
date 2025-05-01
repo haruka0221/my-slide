@@ -1,13 +1,17 @@
 <!-- =======================  Slide 1  ======================= -->
 <!-- .slide: data-background-image="images/bridge.jpg" data-background-size="cover" -->
 
-# <span class="r-fit-text">英文学 × デジタル人文学で架け橋を</span>
+<h1 class="title">
+  <span class="r-fit-text">英文学 × デジタル人文学で</span><br>
+  <span class="r-fit-text">架け橋を</span>
+</h1>
 
-<div style="position:absolute; right:3%; bottom:6%; font-size:0.8em; line-height:1.4; text-align:right;">
-人間文化研究機構&nbsp;DH促進事業  
-データ連携コーディネーター応募プレゼンテーション  
-<strong>筒井&nbsp;遥</strong>（東京大学・博士後期課程）
-</div>
+<p class="subtitle">
+  人間文化研究機構&nbsp;DH促進事業<br>
+  データ連携コーディネーター応募プレゼンテーション<br>
+  <strong>筒井&nbsp;遥</strong>（東京大学・博士後期課程）
+</p>
+
 
 ---
 
