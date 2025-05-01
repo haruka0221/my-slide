@@ -2,7 +2,7 @@
 <!-- .slide: data-background-image="images/bridge.jpg" data-background-size="cover" -->
 
 <h1 class="title r-fit-text">
-  英文学 × デジタル人文学で<br>架け橋を
+  英文学 × デジタル人文学で架け橋を
 </h1>
 
 <p class="subtitle">
