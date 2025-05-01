@@ -1,7 +1,7 @@
 <!-- =======================  Slide 1  ======================= -->
 <!-- .slide: data-background-image="images/bridge.jpg" data-background-size="cover" -->
 
-# <span style="font-size:1em;">英文学 × デジタル人文学で架け橋を</span>
+# <span class="r-fit-text">英文学 × デジタル人文学で架け橋を</span>
 
 <div style="position:absolute; right:3%; bottom:6%; font-size:0.8em; line-height:1.4; text-align:right;">
 人間文化研究機構&nbsp;DH促進事業  
