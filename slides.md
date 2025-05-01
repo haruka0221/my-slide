@@ -1,7 +1,8 @@
 <!-- =======================  Slide 1  ======================= -->
 <!-- .slide: data-background-image="images/bridge.jpg" data-background-size="cover" -->
 
-<h1 class="title r-fit-text">
+
+<h1 class="title">
   英文学 × デジタル人文学で<br>架け橋を
 </h1>
 
