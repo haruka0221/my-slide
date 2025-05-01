@@ -17,26 +17,27 @@
 
 /* 背景を少し暗くするレイヤーがある場合はここに */
 
+/* タイトル：画面中央やや上、サイズは画面幅の 5vw を基準に 48〜96px に制限 */
 .title{
   position:absolute;
-  top:20vh;                      /* ← 上から 20% に固定 */
+  top:24vh;                      /* 画面上から 24% */
   left:50%; transform:translateX(-50%);
-
-  max-width:90vw;
   text-align:center;
+  font-size:clamp(48px,5vw,96px);
   font-weight:900;
   line-height:1.15;
   color:#fff;
   text-shadow:0 6px 14px rgba(0,0,0,.9);
+  max-width:90vw;
 }
 
+/* サブタイトル：画面下から 8%、横中央 */
 .subtitle{
   position:absolute;
-  bottom:10vh;                   /* ← 下から 10% に固定 */
+  bottom:8vh;
   left:50%; transform:translateX(-50%);
-
   max-width:80vw;
-  font-size:1.1rem;
+  font-size:clamp(18px,1.2vw,26px);
   line-height:1.45;
   text-align:center;
   color:#fff;
