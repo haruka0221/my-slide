@@ -1,4 +1,16 @@
+/* 1) 局所縮小用クラス */
 .smaller{
-  font-size:0.7em;   /* 0.7〜0.85 辺りで調整 */
+  font-size:0.75em;     /* 70〜85 % で好みに調整 */
   line-height:1.35;
+}
+
+/* 2) 端末幅ごとの全体フォント微調整 */
+:root{                   /* PC (幅 ≥ 901px) */
+  --r-main-font-size: 36px;
+}
+@media(max-width:900px){ /* タブレット */
+  :root{ --r-main-font-size: 32px; }
+}
+@media(max-width:600px){ /* スマホ */
+  :root{ --r-main-font-size: 28px; }
 }
