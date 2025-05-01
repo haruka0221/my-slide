@@ -14,3 +14,22 @@
 @media(max-width:600px){ /* スマホ */
   :root{ --r-main-font-size: 28px; }
 }
+
+.title{
+  font-weight:900;
+  text-align:center;
+  margin-top:18vh;
+  line-height:1.2;
+  color:#fff;
+  text-shadow:0 5px 12px rgba(0,0,0,.8);
+}
+.subtitle{
+  position:absolute;
+  left:50%; transform:translateX(-50%);
+  bottom:7%;
+  font-size:1.1rem;
+  line-height:1.45;
+  text-align:center;
+  color:#fff;
+  text-shadow:0 2px 8px rgba(0,0,0,.7);
+}
