@@ -77,6 +77,37 @@
 
 ---
 
+---
+
+<!-- =================== スライド 2 : デモ動画 ① =================== -->
+<!-- .slide: class="media" -->
+
+### Transkribus UI 概要デモ  <span style="font-size:0.7em;">(00:22)</span>
+
+<video
+  src="media/slide.mp4"      <!-- ★ ファイル名に合わせて変更 -->
+  playsinline controls preload="metadata"
+  style="max-width:80vw; max-height:80vh; border:2px solid #ddd;">
+</video>
+
+※ クリックで再生／停止できます。<br>
+キーボード → **→** で次へ。
+
+---
+
+<!-- =================== スライド 3 : デモ動画 ② =================== -->
+<!-- .slide: class="media" -->
+
+### 自動レイアウト / テキスト抽出ワークフロー <span style="font-size:0.7em;">(00:18)</span>
+
+<video
+  src="media/slide2.mp4"     <!-- ★ こちらも実際のファイル名 -->
+  playsinline controls preload="metadata" loop muted
+  style="max-width:80vw; max-height:80vh; border:2px solid #ddd;">
+</video>
+
+---
+
 <!-- =======================  Slide 6  ======================= -->
 <!-- .slide: class="smaller" -->
 ## 研究事例 ② 文学影響関係プラットフォーム
