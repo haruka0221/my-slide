@@ -77,23 +77,20 @@
 
 ---
 
-<!-- ここから HTML スライド -->
 <section data-markdown="false" data-state="media">
+  <h2>TRANSKRIBUS UI 概要デモ <span style="font-size:0.6em;">(00:22)</span></h2>
 
-  <h2>Transkribus UI 概要デモ <span style="font-size:0.6em;">(00:22)</span></h2>
+  <video
+    src="media/slide.mp4"
+    playsinline controls preload="metadata"
+    data-prevent-swipe
+    style="max-width:80vw; max-height:80vh; border:2px solid #ddd; border-radius:8px;">
+  </video>
 
-<video
-  src="media/slide.mp4"
-  playsinline controls preload="metadata"
-  data-prevent-swipe        <!-- ← 追加 -->
-  style="max-width:80vw; max-height:80vh; border:2px solid #ddd;">
-</video>
-
-  <p style="margin-top:1rem;">
+  <p style="margin-top:1.2rem;">
     ※ クリックで再生／停止できます。<br>
     キーボード <kbd>&rarr;</kbd> で次へ。
   </p>
-
 </section>
 
 
