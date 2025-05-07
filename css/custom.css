@@ -73,3 +73,20 @@ section[data-state="media"] video{
   position:relative;
   z-index:5;
 }
+
+
+/* A. メディア用セクション全体をクリック可にする */
+.reveal .slides section[data-state="media"] {
+  pointer-events: auto !important;   /* ← 最優先で上書き */
+}
+
+/* B. その子要素すべて（video, button など）も可にする */
+.reveal .slides section[data-state="media"] * {
+  pointer-events: auto !important;
+}
+
+/* C. video 自体は前面へ */
+.reveal .slides section[data-state="media"] video{
+  position: relative;
+  z-index: 9 !important;
+}
