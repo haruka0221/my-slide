@@ -77,37 +77,40 @@
 
 ---
 
-<section data-markdown="false" data-state="media">
-  <h2>TRANSKRIBUS UI 概要デモ <span style="font-size:0.6em;">(00:22)</span></h2>
-
-  <video
-    src="media/slide.mp4"
-    playsinline controls preload="metadata"
-    data-prevent-swipe
-    style="max-width:80vw; max-height:80vh; border:2px solid #ddd; border-radius:8px;">
-  </video>
-
-  <p style="margin-top:1.2rem;">
-    ※ クリックで再生／停止できます。<br>
-    キーボード <kbd>&rarr;</kbd> で次へ。
-  </p>
-</section>
-
-
----
-
-<!-- =================== スライド 3 : デモ動画 ② =================== -->
+<!-- ================================== 1本目 ================================== -->
 <!-- .slide: class="media" -->
 
-### 自動レイアウト / テキスト抽出ワークフロー <span style="font-size:0.7em;">(00:18)</span>
+### Transkribus UI 概要デモ <span style="font-size:0.65em;">(00:22)</span>
 
-<video
-  src="media/slide2.mp4"     <!-- ★ こちらも実際のファイル名 -->
-  playsinline controls preload="metadata" loop muted
-  style="max-width:80vw; max-height:80vh; border:2px solid #ddd;">
-</video>
+<iframe
+  src="https://www.youtube-nocookie.com/embed/Kwv5mCXhan4?rel=0&modestbranding=1"
+  title="Transkribus UI Demo"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+  style="width:80vw; height:45vw; max-height:80vh; border:none; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,.4);">
+</iframe>
+
+※ クリックで再生／停止できます。  
+キーボード <kbd>→</kbd> で次へ。
 
 ---
+
+<!-- ================================== 2本目 ================================== -->
+<!-- .slide: class="media" -->
+
+### 自動レイアウト &amp; 抽出フロー <span style="font-size:0.65em;">(00:30)</span>
+
+<iframe
+  src="https://www.youtube-nocookie.com/embed/ZUQby4bBknk?rel=0&modestbranding=1"
+  title="Workflow Demo"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+  style="width:80vw; height:45vw; max-height:80vh; border:none; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,.4);">
+</iframe>
+
+---
+
+
 
 <!-- =======================  Slide 6  ======================= -->
 <!-- .slide: class="smaller" -->
