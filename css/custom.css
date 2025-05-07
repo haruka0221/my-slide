@@ -44,12 +44,15 @@
   text-shadow:0 3px 8px rgba(0,0,0,.8);
 }
 
+/* すでに入れてあるもの ------------------------------------ */
 .media video{
-  pointer-events:auto;     /* ← これを追加 */
   max-width:80vw;
   max-height:80vh;
   border:2px solid #ddd;
   border-radius:8px;
   box-shadow:0 4px 12px rgba(0,0,0,.4);
+  pointer-events:auto !important;   /* ← 追加① */
+  position:relative;                /* ← 追加② */
+  z-index:5 !important;             /* ← 追加③ */
 }
 
