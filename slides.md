@@ -61,6 +61,7 @@
 - **主題／語彙／構文** の観点からジャンル横断的な特徴の可視化と位置づけを行う
 
 ---
+<!-- .slide: class="smaller shrink" -->
 
 ## 研究ビジョン：モダニズム文学の特徴を可視化する
 
@@ -75,7 +76,8 @@
 
 ---
 
-<!-- .slide: class="smaller" -->
+<!-- .slide: class="smaller shrink" -->
+
 
 ## 研究業績と博士論文との接続
 
@@ -87,7 +89,8 @@
 
 ---
 
-<!-- .slide: class="smaller" -->
+<!-- .slide: class="smaller shrink" -->
+
 
 ## 業務実績① ｜ 英文学 LLMに活用する語彙データセット作成の自動化・高精度化
 <br><br>
@@ -134,7 +137,7 @@
 
 ---
 
-<!-- .slide: class="smaller" -->
+<!-- .slide: class="smaller shrink" -->
 
 ## 業務実績② ｜ クラウドソーシング型注釈プラットフォームの設計・開発（NII RDCと連携）
 <br><br>
@@ -187,8 +190,8 @@
 
 ---
 
+<!-- .slide: class="smaller shrink" -->
 
-<!-- .slide: class="smaller" -->
 
 ## NIHUで実現したいこと <span style="font-size:0.8em;"> </span>
 
