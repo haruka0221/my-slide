@@ -1,7 +1,7 @@
 /* 1) 局所縮小用クラス */
 .smaller{
-  font-size:0.75em;     /* 70〜85 % で好みに調整 */
-  line-height:1.35;
+  font-size:0.65em;     /* 70〜85 % で好みに調整 */
+  line-height:1.3;
 }
 
 /* 2) 端末幅ごとの全体フォント微調整 */
@@ -93,6 +93,6 @@ section[data-state="media"] video{
 
 /* 長文スライドをまとめて縮小したい時 */
 .shrink{
-  font-size: 0.85em;      /* ← 必要に応じて 0.8 〜 0.9 */
+  font-size: 0.6em;      /* ← 必要に応じて 0.8 〜 0.9 */
   line-height: 1.4;
 }
