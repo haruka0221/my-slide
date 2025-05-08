@@ -90,3 +90,9 @@ section[data-state="media"] video{
   position: relative;
   z-index: 9 !important;
 }
+
+/* 長文スライドをまとめて縮小したい時 */
+.shrink{
+  font-size: 0.85em;      /* ← 必要に応じて 0.8 〜 0.9 */
+  line-height: 1.4;
+}
