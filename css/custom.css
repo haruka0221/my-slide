@@ -115,7 +115,7 @@ section[data-state="media"] video{
   line-height: 1.2;
   font-weight: 700;
   /* 24px〜128px の間で自動調整  */
-  font-size: clamp(2.4rem, 6vw + 1rem, 8rem);
+  font-size: clamp(2.4rem, 6vw + 1rem, 6.9rem);
 }
 
 /* ── 3) サブタイトル ─────────────────────────── */
