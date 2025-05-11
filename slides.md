@@ -32,7 +32,7 @@
 <!-- .slide: class="smaller" -->
 ## 研究テーマとこれまでの取り組み
 
-- **専門領域:** 19–20 世紀イギリス・モダニズム文学
+- **専門領域:** 19–20 世紀イギリス・モダニズム文学（Joseph ConradからKazuo Ishiguroまで）
   - 語りのスタイル分析とジャンル横断性の研究
 - **技術スキル:** 構文解析、トピックモデリング、ネットワーク分析、OCR処理、クラウド注釈UI設計
 - **開発経験:**  
@@ -83,9 +83,9 @@
 
 | 業績タイトル | 主題（研究の焦点） | 博論との接続（貢献・位置づけ） |
 |:--|:--|:--|
-| **① "Homeless Writers: Conrad, Ishiguro, and their Failed Dialogue"<br><span style="font-size:0.8em;">in *Conrad and World Literature*</span>** | 物語論的アプローチによる **「対話の不成立」** 分析<br>（伝統的ナラティブ批評） | 物語内の語り手関係・対話構造に注目し、構造的な **“ジャンルの逸脱”** の兆候を把握する定性的基盤を構築 |
-| **② 『相続者たち』の著者推定 ― 単語隣接ネットワークによる定量分析と文学批評の融合** | 文体的特徴の定量抽出と著者スタイルの可視化<br>（word adjacency network） | 文体のネットワーク構造を **定量的に記述** する手法を導入し、ジャンル横断比較の **技術的・理論的足場** を提供 |
-| **③ "A Literary Interpretation of a Computational Model"<br><span style="font-size:0.8em;">in *Essence & Critique*</span>** | 機械学習モデルに基づく語りの変化と主題の **「ずれ」** の解釈<br>（macro‑micro 分析） | トピック遷移や構文変化を用いた語り構造の検出法を提示し、ジャンルと言語の連関を可視化する **分析モデルの応用実践** を報告 |
+| **① "Homeless Writers: Conrad, Ishiguro, and their Failed Dialogue"<br><span style="font-size:0.8em;">in *Conrad and World Literature*</span>** (2024)| 物語論的アプローチによる **「対話の不成立」** 分析<br>（伝統的ナラティブ批評） | 物語内の語り手関係・対話構造に注目し、構造的な **“ジャンルの逸脱”** の兆候を把握する定性的基盤を構築 |
+| **② 『相続者たち』の著者推定 ― 単語隣接ネットワークによる定量分析と文学批評の融合** >in *『コンラッド研究』*</span>第15号 (2024)| 文体的特徴の定量抽出と著者スタイルの可視化<br>（word adjacency network） | 文体のネットワーク構造を **定量的に記述** する手法を導入し、ジャンル横断比較の **技術的・理論的足場** を提供 |
+| **③ "A Literary Interpretation of a Computational Model"<br><span style="font-size:0.8em;">in *Essence & Critique*</span>** Volume 3, Issue 1 (2024)| 機械学習モデルに基づく語りの変化と主題の **「ずれ」** の解釈<br>（macro‑micro 分析） | トピック遷移や構文変化を用いた語り構造の検出法を提示し、ジャンルと言語の連関を可視化する **分析モデルの応用実践** を報告 |
 
 ---
 
