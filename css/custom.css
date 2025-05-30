@@ -6,7 +6,7 @@
 
 /* 2) 端末幅ごとの全体フォント微調整 */
 :root{                   /* PC (幅 ≥ 901px) */
-  --r-main-font-size: 30px;
+  --r-main-font-size: 32px;
 }
 @media(max-width:900px){ /* タブレット */
   :root{ --r-main-font-size: 30px; }
