@@ -6,13 +6,13 @@
 
 /* 2) 端末幅ごとの全体フォント微調整 */
 :root{                   /* PC (幅 ≥ 901px) */
-  --r-main-font-size: 36px;
+  --r-main-font-size: 30px;
 }
 @media(max-width:900px){ /* タブレット */
-  :root{ --r-main-font-size: 32px; }
+  :root{ --r-main-font-size: 30px; }
 }
 @media(max-width:600px){ /* スマホ */
-  :root{ --r-main-font-size: 28px; }
+  :root{ --r-main-font-size: 26px; }
 }
 
 /* ── old hero layout ───────────────────────── */
