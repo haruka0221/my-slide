@@ -4,15 +4,26 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+		<script>
+		window.MathJax = {
+			tex: {
+				inlineMath: [['$', '$'], ['\\(', '\\)']], // $...$ と \(...\) をインライン数式として認識
+				displayMath: [['$$', '$$'], ['\\[', '\\]']] // $$...$$ と \[...\] をディスプレイ数式として認識
+			},
+			svg: {
+			fontCache: 'global'
+			}
+			};
+		</script>
+		<script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+		
 		<title>reveal.js</title>
-
-		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/white.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
 		<link rel="stylesheet" href="css/custom.css">
-
-		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+
 	</head>
 	<body>
 		<div class="reveal">
@@ -27,7 +38,7 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
-		<script src="plugin/math/math.js"></script> 
+		<!--<script src="plugin/math/math.js"></script> -->
 		<script>
 			Reveal.initialize({
 				hash: true,
@@ -41,12 +52,12 @@
 				markdown: {
 					html: true         
 				},
-				math: {
+			/*	math: {
 					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js', // Recommended MathJax v3
 					config: 'TeX-AMS_HTML-full', // MathJax configuration
-				},
+				},*/
 
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes/*, RevealMath*/ ]
 			});
 		</script>
 	</body>
