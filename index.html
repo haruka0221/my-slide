@@ -1,56 +1,22 @@
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="dist/reveal.css" />
+  <link rel="stylesheet" href="dist/theme/black.css" />
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!-- ここは空で OK。JS で動的に section を挿入 -->
+    </div>
+  </div>
 
-		<title>reveal.js</title>
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="https://unpkg.com/revealjs-plugin-fit-text@1/dist/fit-text.js"></script>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
-		<link rel="stylesheet" href="css/custom.css">
-		
-
-
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				
-				<section data-markdown="w4seminar.md" data-separator="^---$"></section>
-
-			</div>
-		</div>
-
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script src="https://unpkg.com/revealjs-plugin-fit-text@1/dist/fit-text.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
-
-				width: 1280,
-				height: 720,
-				margin: 0.04,
-
-				minScale: 0.15,
-				maxscale: 1.0,
-				markdown: {
-					html: true          // ← これで <video> など生 HTML を通す
-				},
-
-				
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, FitText ]
-			});
-		</script>
-	</body>
+  <script src="deck.js"></script>    <!-- 👈 共通初期化 JS -->
+</body>
 </html>
