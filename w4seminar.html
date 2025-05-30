@@ -59,6 +59,26 @@
 
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes/*, RevealMath*/ ]
 			});
+			function doMathJaxTypeset() {
+				if (typeof MathJax !== 'undefined') {
+					console.log('Attempting to typeset with MathJax...');
+					MathJax.startup.promise.then(() => {
+						MathJax.typesetPromise();
+						console.log('MathJax typesetPromise called.');
+					}).catch(err => console.error('MathJax typesetPromise error:', err));
+				} else {
+					console.error('MathJax not available when attempting to typeset.');
+				}
+			}
+			Reveal.on('ready', function(event) {
+				console.log('Reveal is ready, initial typeset.');
+				doMathJaxTypeset();
+			});
+			
+			Reveal.on('slidechanged', function(event) {
+				console.log('Slide changed, re-typesetting.');
+				doMathJaxTypeset();
+			});
 		</script>
 	</body>
 </html>
