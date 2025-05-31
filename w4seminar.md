@@ -242,6 +242,12 @@
 * **目標:** この検証により、データ駆動的に形成された各クラスターが、情報ダイナミクスの観点からどのような特徴を持つグループなのかを客観的に記述する。
 
 ---
+
+<p style="text-align: center;">
+  <iframe src="images.html" style="width: 80%; height: 450px; border: 1px solid #ccc;"></iframe>
+</p>
+
+---
 <!-- .slide: class="smaller" -->
 
 ## 結果: K=7 でのクラスタリング
