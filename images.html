@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image List</title>
+<meta charset="UTF-8">
+<style>
+  body {
+    margin: 0; /* iframe内で余白をなくすため */
+    padding: 15px; /* iframeの内側に少し余白を設ける */
+    text-align: center; /* 画像を中央寄せにする */
+    overflow-y: auto; /* 画像が縦にはみ出た場合にスクロールバーを表示 */
+  }
+  img {
+    display: block; /* 画像ごとに改行されるようにする */
+    max-width: 95%; /* iframeの幅に対して少し余裕を持たせる */
+    height: auto; /* 高さは自動調整 */
+    margin: 0 auto 15px auto; /* 上下マージンと左右中央寄せ */
+    border: 1px solid #ddd; /* 画像の周りに薄い枠線 (任意) */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* 軽い影 (任意) */
+  }
+</style>
+</head>
+<body>
+  <img src="media/k7_0output.png" alt="KLD Time Series Samples for Cluster 0">
+  <img src="media/k7_1output.png" alt="KLD Time Series Samples for Cluster 1">
+  </body>
+</html>
