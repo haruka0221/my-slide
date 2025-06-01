@@ -150,15 +150,15 @@
 
 * 各ウィンドウの単語確率分布を用いて、以下の3つの情報理論的指標を計算し、各作品ごとに時系列データを生成。
 
-    1.  **Kullback-Leibler Divergence (KLD $D_{KL}(P_t || P_{t-1})$ ):** 
+    1.  **KLD(Kullback-Leibler Divergence); $D_{KL}(P_t || P_{t-1})$ :** 
         * 隣接ウィンドウ間 ($P_{t-1}$ → $P_t$ ) の非対称な情報利得を測定。
         * $P_{t-1}$ を基準とした $P_t$ の「新規性」や「驚き」の度合いを定量化。
 
-    2.  **Jensen-Shannon Divergence (JSD $JSD(P_t || P_{t-1})$ ):**
+    2.  **JSD(Jensen-Shannon Divergence); $JSD(P_t || P_{t-1})$ :**
         * 隣接ウィンドウ間の対称的な分布的相違度 (変化の強度) を測定。
         *KLDの派生指標であり、2つの確率分布 $P_t$ と $P_{t-1}$ 間の「距離」をより安定的に測定。
 
-    3.  **Shannon Entropy (Complexity; $H(P_t)$ ):**
+    3.  **Shannon Entropy; Complexity; $H(P_t)$ :**
         * 各ウィンドウ $P_t$ 内部の語彙の「多様性」あるいは情報の予測不可能性（混合度）を測定。
         * 高エントロピー: 多様な単語が比較的均等に使用。
         * 低エントロピー: 少数の単語が支配的に使用。
