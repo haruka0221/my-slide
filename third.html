@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>英文学批評における引用慣行の実証的研究</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reset.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/theme/white.css" id="theme" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/monokai.css" id="highlight-theme" />
+  <style>
+    .reveal section { font-size: 28px; }
+    .reveal h1 { font-size: 64px; }
+    .reveal h2 { font-size: 44px; }
+    .reveal h3 { font-size: 34px; }
+    .reveal ul, .reveal ol { margin-left: 0; }
+    table { font-size: 22px; }
+    blockquote { font-style: normal; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section>
+        <h1>英文学批評における引用慣行の実証的研究</h1>
+        <h2>デジタル・ヒューマニティーズによるミクロ・マクロ分析の架橋</h2>
+        <hr />
+      </section>
+
+      <section>
+        <h2>研究概要：問題意識</h2>
+        <h3>英文学批評の二つの顔</h3>
+        <p><strong>規範的要請</strong></p>
+        <ul>
+          <li>「世界文学」の視座（Moretti, 2000）</li>
+          <li>モダニズム研究の拡張論（Mao &amp; Walkowitz, 2008）</li>
+          <li>フェミニスト批評・ポストコロニアル批評の多様性要求</li>
+        </ul>
+        <p><strong>実際の現状</strong></p>
+        <ul>
+          <li>カノン的作品への引用集中（Wellmon &amp; Piper, 2017）</li>
+          <li>権威ある出版社・上位誌への偏重</li>
+          <li>一般化表現の多用による差異の捨象（Piper, 2020）</li>
+        </ul>
+        <p>→ <strong>なぜこの乖離が生じ、維持されるのか？</strong></p>
+      </section>
+
+      <section>
+        <section>
+          <h2>1. これまでの研究：基盤構築</h2>
+          <h3>1-1. 博士課程での取り組み（2021-2024）</h3>
+          <p><strong>横断的散文研究</strong></p>
+          <ul>
+            <li>モダニズム小説・批評・科学論文の比較分析</li>
+            <li>フィクション/ノンフィクションの境界線の探究</li>
+          </ul>
+          <p><strong>計量的手法の確立</strong></p>
+          <ul>
+            <li>語彙ネットワーク分析による言説スタイル可視化</li>
+            <li>トピックモデリングによる主題構造の抽出</li>
+            <li>二重アノテーションによる判定者間一致率検証</li>
+          </ul>
+          <p><strong>具体的成果</strong></p>
+          <ul>
+            <li>The Conradian 49(2) 掲載論文（2024.11）</li>
+            <li>コンラッド研究15号 著者推定研究（2024.3）</li>
+          </ul>
+        </section>
+        <section>
+          <h3>1-2. 研究基盤整備・共同開発（影響関係プラットフォーム）</h3>
+          <ul>
+            <li><strong>ねらい</strong>：作品間の「影響」を、多層の言語情報と参照関係から総合的にとらえる<strong>研究インフラ</strong>を設計。</li>
+            <li><strong>役割</strong>：比較・可視化・評価をつなぐ<strong>要素技術の統合</strong>と、使いやすさを重視した<strong>研究者向けUIの設計指針</strong>を策定。</li>
+            <li><strong>特色</strong>：テキストのスケール（個別作品〜大型コーパス）をなめらかに横断し、仮説生成から検証までを<strong>一気通貫</strong>で支える枠組みを提示。</li>
+            <li><strong>成果の意義</strong>：後続のHTRC分析や箇所参照抽出の<strong>基盤技術</strong>として機能し、LOD/IIIF連携を視野に入れた<strong>再利用性の高い仕様</strong>を整備。</li>
+          </ul>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>2. 現在の取り組み：HTRC活用による大規模分析</h2>
+          <h3>2-1. HathiTrust Research Center（HTRC）データの活用</h3>
+          <p><strong>データ選別・抽出プロセス</strong></p>
+<pre><code>HTRC Extracted Features Dataset
+↓
+主要学術誌の特定（PMLA, ELH, Modernism/modernity等）
+↓
+1940年代以降の論文を時代・分野別に層化サンプリング
+↓
+メタデータ付与（発表年、著者、一次資料情報）
+</code></pre>
+          <p><strong>具体的分析手法</strong></p>
+          <ul>
+            <li>自然言語処理（NLP）+ 人手アノテーション併用</li>
+            <li>引用箇所（passage-level）の自動抽出</li>
+            <li>直接引用・間接参照・要約の分類パターン化</li>
+          </ul>
+        </section>
+        <section>
+          <h3>2-2. 雑誌・時代・ジャンル別特徴抽出</h3>
+          <p><strong>比較分析の枠組み</strong></p>
+          <table>
+            <thead>
+              <tr>
+                <th>次元</th>
+                <th>分析項目</th>
+                <th>手法</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>時代別</strong></td>
+                <td>1940s→2020s の引用パターン変遷</td>
+                <td>時系列分析</td>
+              </tr>
+              <tr>
+                <td><strong>雑誌別</strong></td>
+                <td>PMLA vs 専門誌の引用傾向差</td>
+                <td>カイ二乗検定</td>
+              </tr>
+              <tr>
+                <td><strong>ジャンル別</strong></td>
+                <td>理論批評 vs 作家論の参照スタイル</td>
+                <td>クラスター分析</td>
+              </tr>
+            </tbody>
+          </table>
+          <p><strong>抽出される特徴量</strong></p>
+          <ul>
+            <li>一次/二次文献比率</li>
+            <li>地理的・時代的偏重度</li>
+            <li>直引用/要約引用の分布</li>
+            <li>locator（章・頁・行）明示率</li>
+          </ul>
+        </section>
+        <section>
+          <h3>2-3. NIHUでの展開：技術講習会の検討</h3>
+          <p><strong>HTRC技術講習会の企画</strong></p>
+          <ul>
+            <li>人文学研究者向けHTRC活用ワークショップ</li>
+            <li>nihuBridge連携によるデータ共有環境整備</li>
+            <li>LOD（Linked Open Data）を用いた横断的分析基盤構築</li>
+          </ul>
+          <p><strong>機構内ネットワークの活用</strong></p>
+          <ul>
+            <li>各機関の専門知識統合（国文研・歴博・民博等）</li>
+            <li>多言語・多文化比較研究への発展可能性</li>
+          </ul>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>3. これからやりたいこと：国文学批評との比較検証</h2>
+          <h3>3-1. 研究の動機：モレッティの「波の効果」検証</h3>
+          <p><strong>Franco Morettiの仮説</strong></p>
+          <blockquote>
+            <p>19・20世紀以降、西欧的な語彙・スタイルが波のように世界に波及</p>
+          </blockquote>
+          <p><strong>検証すべき問い</strong></p>
+          <ul>
+            <li>日本の国文学批評は英文学的な引用慣行を取り入れたか？</li>
+            <li>その波及過程に時期的・地域的パターンはあるか？</li>
+            <li>「影響」と「独自性」のバランスはどう変化したか？</li>
+          </ul>
+        </section>
+        <section>
+          <h3>3-2. 具体的な比較分析計画</h3>
+          <p><strong>データソース</strong></p>
+<pre><code>国文研「国文学論文目録データベース」
+（大正元年以降の論文目録データベース）
+↓
+NDLデジタルライブラリーからフルテキスト取得
+↓
+HTRCと同様の引用抽出・分析パイプライン適用
+</code></pre>
+          <p><strong>比較軸の設定</strong></p>
+          <ol>
+            <li><strong>引用形式の西欧化度</strong>：直接引用vs間接言及の比率変化</li>
+            <li><strong>参照対象の国際化度</strong>：国内文献vs海外文献の比重推移</li>
+            <li><strong>論証スタイルの収斂性</strong>：英文学的「明晰性」の採用度合い</li>
+          </ol>
+        </section>
+        <section>
+          <h3>3-3. 期待される発見</h3>
+          <p><strong>仮説1：段階的西欧化</strong></p>
+          <ul>
+            <li>明治後期→大正→昭和初期の段階的変化</li>
+            <li>戦後復興期における再加速</li>
+          </ul>
+          <p><strong>仮説2：選択的受容</strong></p>
+          <ul>
+            <li>形式的引用慣行の採用</li>
+            <li>内容的独自性の維持</li>
+          </ul>
+          <p><strong>仮説3：逆流現象</strong></p>
+          <ul>
+            <li>1980年代以降の「日本的」価値観再評価</li>
+            <li>グローバル化への反作用としての特殊化</li>
+          </ul>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>4. 分析手法の詳細と期待される発見</h2>
+          <h3>4-1. 三段階分析アプローチの精緻化</h3>
+          <p><strong>段階1：コーパス構築の技術的詳細</strong></p>
+<pre><code>HTRC Extracted Features Dataset
+↓ 層化サンプリング（時代×分野の2次元）
+主要学術誌論文 約10,000本の抽出
+↓ メタデータ標準化（Dublin Core準拠）
+発表年・著者・掲載誌・研究領域のタグ付与
+↓ 権利処理・品質管理
+OCR精度検証・欠損データ補完
+</code></pre>
+          <p><strong>段階2：引用抽出の技術革新</strong></p>
+          <ul>
+            <li>正規表現 + 機械学習ハイブリッド手法</li>
+            <li>引用マーカー（"", pp., cf.等）の自動認識</li>
+            <li>False Positive削減のための人手検証フロー</li>
+            <li>引用文脈（supportive/critical/neutral）の分類</li>
+          </ul>
+          <p><strong>段階3：統計解析による構造発見</strong></p>
+          <ul>
+            <li>時系列分析：変化点検出アルゴリズム適用</li>
+            <li>ネットワーク分析：引用関係の可視化</li>
+            <li>機械学習：引用パターンの自動クラスタリング</li>
+          </ul>
+        </section>
+        <section>
+          <h3>4-2. 国文学比較分析の方法論的革新</h3>
+          <p><strong>データ統合の技術的チャレンジ</strong></p>
+<pre><code>国文研「国文学論文目録データベース」
+（大正元年～現在、約50万件の書誌情報）
+↓ 
+NDLデジタルライブラリー自動検索
+↓
+フルテキスト取得・前処理パイプライン
+↓
+多言語対応形態素解析（MeCab + 古典語対応）
+↓
+英文学データとの統合分析
+</code></pre>
+          <p><strong>比較分析の多層的設計</strong></p>
+          <ol>
+            <li><strong>語彙レベル</strong>：外来語・翻訳語の時系列変化</li>
+            <li><strong>文体レベル</strong>：文長・修辞技法の収斂/分化パターン</li>
+            <li><strong>引用レベル</strong>：典拠明示度・参照範囲の国際化度</li>
+            <li><strong>論証レベル</strong>：演繹/帰納的推論の比重変化</li>
+          </ol>
+        </section>
+        <section>
+          <h3>4-3. モレッティ仮説の実証的検証枠組み</h3>
+          <p><strong>「波の効果」の検証方針</strong></p>
+          <ul>
+            <li>西欧的語彙・概念の導入パターンを量的に追跡</li>
+            <li>特定用語の初出年・普及速度・定着度の測定</li>
+            <li>地域間・機関間での受容時差の観察</li>
+          </ul>
+          <p><strong>検証すべき仮説</strong></p>
+          <ol>
+            <li><strong>語彙レベル</strong>：批評専門用語の借用・翻訳・内在化過程</li>
+            <li><strong>文体レベル</strong>：論証構造・修辞技法の変化パターン</li>
+            <li><strong>引用レベル</strong>：典拠の多様化・国際化の進展度合い</li>
+            <li><strong>制度レベル</strong>：学術誌・大学における評価基準の変容</li>
+          </ol>
+          <p><strong>分析における留意点</strong></p>
+          <ul>
+            <li>一方向的影響関係の想定を避け、相互的交流を考慮</li>
+            <li>時代区分は統計的変化点に基づく客観的設定</li>
+            <li>「影響」と「独自発展」の区別における慎重な判定</li>
+          </ul>
+        </section>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/notes/notes.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      transition: 'none',
+      plugins: [ RevealHighlight, RevealNotes ]
+    });
+  </script>
+</body>
+</html>
