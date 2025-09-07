@@ -1,23 +1,35 @@
 <!doctype html>
 <html lang="ja">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>英文学批評における引用慣行の実証的研究</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reset.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/theme/white.css" id="theme" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/theme/simple.css" id="theme" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/monokai.css" id="highlight-theme" />
   <style>
     .reveal section { font-size: 28px; }
-    .reveal h1 { font-size: 64px; }
-    .reveal h2 { font-size: 44px; }
-    .reveal h3 { font-size: 34px; }
-    .reveal ul, .reveal ol { margin-left: 0; }
+    .reveal h1 { font-size: 50px; }
+    .reveal h2 { font-size: 33px; }
+    .reveal h3 { font-size: 28px; }
+    .reveal ul, .reveal ol { margin-left: 0.3; }
     table { font-size: 22px; }
     blockquote { font-style: normal; }
+    /* スライド本文を左揃えにする */
+    .reveal .slides section {
+    text-align: left;
+    }
+    /* タイトルだけ中央に残したい場合 */
+    .reveal .slides section h1{
+     text-align: center;
+    }
+
   </style>
 </head>
+
+
 <body>
   <div class="reveal">
     <div class="slides">
@@ -25,12 +37,85 @@
       <section>
         <h1>英文学批評における引用慣行の実証的研究</h1>
         <h2>デジタル・ヒューマニティーズによるミクロ・マクロ分析の架橋</h2>
-        <hr />
+        <hr /><br></br>
+        <h2>筒井遥<br />本部人間文化研究創発センター（特任助教）</h2>
+        <h2>2025年9月18日(木)<br />コアメンバー会議</h2>
       </section>
 
+      <section style="font-size: 0.65em;">
+      <h2>前提：英文学 × DH の現在</h2>
+      <h3><strong>資源整備の進展（インフラ）</strong></h3>
+      <ul>
+      <li>重要作家・主要コーパスの大規模デジタル化と構造化（版・注・写本の統合）</li>
+      <li>検索・可視化・注釈・比較の高度化（テキスト間リンク、引用追跡、時系列・ネットワーク表示）</li>
+      </ul><br></br>
+
+      <h3><strong>方法論の転換（読みのスケール）</strong></h3>
+      <ul>
+         <li>「the great unread」への接近――個別精読を支える遠読（Moretti 以降）</li>
+         <li>可視化と統計により“見えていなかった分布・偏り”を仮説化→精読で検証</li>
+        </ul><br></br>
+
+      <h3><strong>研究意義と公共性（立場を越えて）</strong></h3>
+      <ul>
+        <li>カノン保全／多様化推進という立場差を前提化しつつ、エビデンスで対話可能にする</li>
+        <li>なぜ英語圏文学を研究するのか――教育・翻訳・文化政策・知の継承への波及効果で応答</li>
+      </ul>
+
+      <p><strong>Takeaway：</strong>DHは「読む対象の可視化と拡張」を通じて、規範と実態のギャップを測定し、議論の共通基盤をつくる。</p>
+      </section>
+
+
+
+      <section data-background-color="#fff">
+  <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:start">
+    <!-- 左：First Folio の“わかる”大画像 -->
+    <figure style="margin:0">
+      <!-- 好きな高精細画像URLに差し替え（例：FolgerのFirst Folio） -->
+      <img src="https://iiif.folger.edu/iiif/2/FT_DD_000001.001/full/!600,600/0/default.jpg" alt="First Folio" style="width:100%;height:auto;border:1px solid #ccc;box-shadow:2px 2px 6px rgba(0,0,0,0.1)" />
+      <figcaption style="font-size:14px;color:#666;margin-top:6px">
+        First Folio (1623), Folger Shakespeare Library（出所: Folger Digital Collections）
+      </figcaption>
+    </figure>
+
+    <!-- 右：構造化（TEI）＋ ツール化（3語だけ） -->
+    <div>
+      <h3 style="margin:0 0 8px">要点</h3>
+      <div style="font-size:18px;margin-bottom:12px;color:#333">
+        Digitize → <strong>Structure</strong> → Analyze
+      </div>
+
+      <!-- TEI断片（短く） -->
+      <pre style="font-size:14px;line-height:1.3;overflow:auto;border:1px solid #eee;padding:10px;background:#fafafa">
+&lt;div type="play" xml:id="ham"&gt;
+  &lt;sp who="#HAMLET"&gt;
+    &lt;speaker&gt;Ham.&lt;/speaker&gt;
+    &lt;p&gt;To be, or not to be...&lt;/p&gt;
+  &lt;/sp&gt;
+  &lt;stage&gt;Enter Ophelia&lt;/stage&gt;
+&lt;/div&gt;
+      </pre>
+
+      <!-- ツール化の3語（アイコン代わりの文字） -->
+      <div style="display:flex;gap:12px;margin-top:8px;font-size:14px;color:#444">
+        <span>Search</span><span>•</span><span>Visualize</span><span>•</span><span>Compare</span>
+      </div>
+
+      <!-- 一言で位置づけ -->
+      <p style="margin-top:14px;color:#333">
+        重要作家の高精細デジタル化（Folio/Quarto）を<strong>TEIで構造化</strong>し、検索・可視化・比較の基盤に。
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
       <section>
-        <h2>研究概要：問題意識</h2>
-        <h3>英文学批評の二つの顔</h3>
+        <h3>研究概要：問題意識</h3>
+       
         <p><strong>規範的要請</strong></p>
         <ul>
           <li>「世界文学」の視座（Moretti, 2000）</li>
@@ -283,11 +368,16 @@ NDLデジタルライブラリー自動検索
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/notes/notes.min.js"></script>
   <script>
     Reveal.initialize({
-      hash: true,
-      slideNumber: true,
-      transition: 'none',
-      plugins: [ RevealHighlight, RevealNotes ]
-    });
+  hash: true,
+  slideNumber: true,
+  transition: 'none',
+  center: false,     // 中央寄せレイアウトをやめる（高さを稼ぐ）
+  margin: 0.02,      // スライドの外側余白を小さく
+  minScale: 0.05,    // ここを小さくすると “もっと” 縮小できる
+  maxScale: 1.00,
+  plugins: [ RevealHighlight, RevealNotes ]
+});
+
   </script>
 </body>
 </html>
