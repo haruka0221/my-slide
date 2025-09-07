@@ -35,6 +35,8 @@
     <div class="slides">
 
       <section>
+        <br></br>
+        <br></br>
         <h1>英文学批評における引用慣行の実証的研究</h1>
         <h2>デジタル・ヒューマニティーズによるミクロ・マクロ分析の架橋</h2>
         <hr /><br></br>
@@ -66,44 +68,125 @@
       </section>
 
 
-
       <section data-background-color="#fff">
-  <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:start">
-    <!-- 左：First Folio の“わかる”大画像 -->
-    <figure style="margin:0">
-      <!-- 好きな高精細画像URLに差し替え（例：FolgerのFirst Folio） -->
-      <img src="https://iiif.folger.edu/iiif/2/FT_DD_000001.001/full/!600,600/0/default.jpg" alt="First Folio" style="width:100%;height:auto;border:1px solid #ccc;box-shadow:2px 2px 6px rgba(0,0,0,0.1)" />
-      <figcaption style="font-size:14px;color:#666;margin-top:6px">
-        First Folio (1623), Folger Shakespeare Library（出所: Folger Digital Collections）
+        <h2 style="margin:0 0 10px">A. テキスト中心の基盤整備</h2>
+  <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start;max-width:1100px;margin:0 auto;">
+    <!-- 左：資料ビジュアル（IIIF） -->
+    <figure style="margin:0;background:#fff;border:1px solid #eee;border-radius:14px;padding:12px;box-shadow:0 6px 18px rgba(0,0,0,.06)">
+      <figcaption style="font-size:14px;color:#666;margin:0 0 8px">高精細ファクシミリ（例）</figcaption>
+      <img
+        src="https://digitalcollections.folger.edu/iiif/2/img51109/full/1200,/0/default.jpg"
+        alt="First Folio facsimile page"
+        style="width:100%;border-radius:10px;border:1px solid #eee"
+        referrerpolicy="no-referrer"
+        crossorigin="anonymous"
+        onerror="this.src='https://images.weserv.nl/?url=digitalcollections.folger.edu/iiif/2/img51109/full/1200,/0/default.jpg'">
+      <figcaption style="font-size:12px;color:#666;margin-top:6px">
+        例：Folger Shakespeare Library（IIIF）
       </figcaption>
     </figure>
 
-    <!-- 右：構造化（TEI）＋ ツール化（3語だけ） -->
-    <div>
-      <h3 style="margin:0 0 8px">要点</h3>
-      <div style="font-size:18px;margin-bottom:12px;color:#333">
-        Digitize → <strong>Structure</strong> → Analyze
-      </div>
-
-      <!-- TEI断片（短く） -->
-      <pre style="font-size:14px;line-height:1.3;overflow:auto;border:1px solid #eee;padding:10px;background:#fafafa">
+    <!-- 右：説明 -->
+    <div style="background:#fff;border:1px solid #eee;border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.06)">
+    
+      <ul style="margin:0 0 10px 1.1em">
+        <li><strong>デジタル化・保存・共有</strong>：IIIFで安定配信・相互運用。</li>
+        <li><strong>機械可読な構造化</strong>：TEI/XMLで場面・発話・注を明示。</li>
+        <li><strong>比較・可視化</strong>：版差・本文系譜・上演史などの再利用。</li>
+      </ul>
+      <pre style="font-size:12.5px;line-height:1.35;overflow:auto;border:1px solid #eee;padding:10px;background:#fafafa;margin:8px 0 0">
 &lt;div type="play" xml:id="ham"&gt;
-  &lt;sp who="#HAMLET"&gt;
-    &lt;speaker&gt;Ham.&lt;/speaker&gt;
+  &lt;sp who="#HAMLET"&gt;&lt;speaker&gt;Ham.&lt;/speaker&gt;
     &lt;p&gt;To be, or not to be...&lt;/p&gt;
   &lt;/sp&gt;
-  &lt;stage&gt;Enter Ophelia&lt;/stage&gt;
 &lt;/div&gt;
       </pre>
+      <p style="margin:10px 0 0"><strong>要点：</strong>Digitize → <strong>Structure</strong> → Analyze の基盤が、精読の解像度と再利用性を押し上げる。</p>
+    </div>
+  </div>
+</section>
 
-      <!-- ツール化の3語（アイコン代わりの文字） -->
-      <div style="display:flex;gap:12px;margin-top:8px;font-size:14px;color:#444">
-        <span>Search</span><span>•</span><span>Visualize</span><span>•</span><span>Compare</span>
-      </div>
 
-      <!-- 一言で位置づけ -->
-      <p style="margin-top:14px;color:#333">
-        重要作家の高精細デジタル化（Folio/Quarto）を<strong>TEIで構造化</strong>し、検索・可視化・比較の基盤に。
+      
+
+
+
+
+
+
+
+
+
+      <section data-background-color="#fff">
+        <h2 style="margin:0 0 10px">B. 遠読・計量（世界文学の枠）</h2>
+  <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start;max-width:1100px;margin:0 auto;">
+    <!-- 左：再作図（純SVG：外部画像不要） -->
+    <figure style="margin:0;background:#fff;border:1px solid #eee;border-radius:14px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,.06)">
+      <figcaption style="font-size:14px;color:#666;margin:0 0 8px">
+        Books & Articles per Year (1964–2003) — after Damrosch (2006), Fig. 3
+      </figcaption>
+      <svg viewBox="0 0 690 360" style="width:100%;height:auto" font-family="system-ui, sans-serif">
+        <!-- 軸 -->
+        <line x1="70" y1="300" x2="660" y2="300" stroke="#999"/>
+        <line x1="70" y1="60"  x2="70"  y2="300" stroke="#999"/>
+        <text x="30" y="180" transform="rotate(-90 30,180)" font-size="12" fill="#666">Annual average</text>
+        <!-- 目安線 -->
+        <g stroke="#ddd" opacity="0.8">
+          <line x1="70" y1="220" x2="660" y2="220"/>
+          <line x1="70" y1="140" x2="660" y2="140"/>
+          <line x1="70" y1="100" x2="660" y2="100"/>
+        </g>
+        <g font-size="11" fill="#666">
+          <text x="62" y="224" text-anchor="end">~80</text>
+          <text x="62" y="144" text-anchor="end">~160</text>
+          <text x="62" y="104" text-anchor="end">~200</text>
+        </g>
+        <!-- 棒（最大192を高さ220に正規化） -->
+        <!-- scale = 220/192 ≈ 1.1458 -->
+        <g fill="#4a6">
+          <!-- Joyce 192 -> 220 -->
+          <rect x="105" y="80"  width="70" height="220" rx="6"/>
+          <!-- Proust 77 -> 88.8 -->
+          <rect x="205" y="211.2" width="70" height="88.8" rx="6" fill="#6a7"/>
+          <!-- Lispector 9 -> 10.3 -->
+          <rect x="305" y="289.7" width="70" height="10.3" rx="6" fill="#8ab"/>
+          <!-- Tagore 7 -> 8.0 -->
+          <rect x="405" y="292.0" width="70" height="8.0" rx="6" fill="#8ab"/>
+          <!-- Premchand 0.5 -> 0.57 -->
+          <rect x="505" y="299.43" width="70" height="0.57" rx="3" fill="#8ab"/>
+          <!-- Ichiyo 0.4 -> 0.46 -->
+          <rect x="605" y="299.54" width="70" height="0.46" rx="3" fill="#8ab"/>
+        </g>
+        <!-- ラベル -->
+        <g font-size="12" fill="#333">
+          <text x="140" y="318" text-anchor="middle"><tspan>Joyce</tspan><tspan x="140" dy="14" fill="#666">192</tspan></text>
+          <text x="240" y="318" text-anchor="middle"><tspan>Proust</tspan><tspan x="240" dy="14" fill="#666">77</tspan></text>
+          <text x="340" y="318" text-anchor="middle"><tspan>Lispector</tspan><tspan x="340" dy="14" fill="#666">9</tspan></text>
+          <text x="440" y="318" text-anchor="middle"><tspan>Tagore</tspan><tspan x="440" dy="14" fill="#666">7</tspan></text>
+          <text x="540" y="318" text-anchor="middle"><tspan>Premchand</tspan><tspan x="540" dy="14" fill="#666">0.5</tspan></text>
+          <text x="640" y="318" text-anchor="middle"><tspan>Ichiyo</tspan><tspan x="640" dy="14" fill="#666">0.4</tspan></text>
+        </g>
+        <!-- 注 -->
+        <text x="360" y="50" text-anchor="middle" font-size="13" fill="#333">
+          Hypercanonical concentration vs. long-tail (1964–2003)
+        </text>
+      </svg>
+      <figcaption style="font-size:12px;color:#666;margin-top:6px">
+        Data: Damrosch’s table (Annual average). Redrawn for clarity (not a facsimile of the original figure).
+      </figcaption>
+    </figure>
+
+    <!-- 右：解説 -->
+    <div style="background:#fff;border:1px solid #eee;border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.06)">
+      
+      <ul style="margin:0 0 10px 1.1em">
+        <li><strong>ハイパー・カノン</strong>への極端な集中。</li>
+        <li><strong>Lispector/Tagore/Premchand/Ichiyo</strong>などの<strong>周縁的可視化</strong>は近年でも限定的。</li>
+        <li>この分布を出発点に、<strong>引用慣行の偏り</strong>と<strong>学知の流通構造</strong>を検証へ。</li>
+      </ul>
+      <p style="margin:8px 0 0"><strong>要点：</strong>“ポスト・カノニカル／ハイパー・カノニカル”状況を定量で示し、<strong>カノン相対化</strong>へ繋ぐ。</p>
+      <p style="margin:8px 0 0;color:#666;font-size:13px">
+        ＊棒は Damrosch の表（Annual average）に基づく再作図。元図の再掲ではありません。
       </p>
     </div>
   </div>
@@ -114,7 +197,7 @@
 
 
       <section>
-        <h3>研究概要：問題意識</h3>
+        <h2>研究概要：問題意識</h2>
        
         <p><strong>規範的要請</strong></p>
         <ul>
@@ -131,10 +214,11 @@
         <p>→ <strong>なぜこの乖離が生じ、維持されるのか？</strong></p>
       </section>
 
+
       <section>
         <section>
           <h2>1. これまでの研究：基盤構築</h2>
-          <h3>1-1. 博士課程での取り組み（2021-2024）</h3>
+          <h3>1-1. 博士課程での取り組み（2022-2025）</h3>
           <p><strong>横断的散文研究</strong></p>
           <ul>
             <li>モダニズム小説・批評・科学論文の比較分析</li>
@@ -162,6 +246,9 @@
           </ul>
         </section>
       </section>
+
+
+
 
       <section>
         <section>
@@ -289,7 +376,7 @@ HTRCと同様の引用抽出・分析パイプライン適用
       </section>
 
       <section>
-        <section>
+        <section style="font-size: 0.65em;">
           <h2>4. 分析手法の詳細と期待される発見</h2>
           <h3>4-1. 三段階分析アプローチの精緻化</h3>
           <p><strong>段階1：コーパス構築の技術的詳細</strong></p>
