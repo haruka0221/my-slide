@@ -56,7 +56,7 @@
       .card{position:relative;border-radius:16px;overflow:hidden}
       .chip{position:absolute;top:1px;left:10px;padding:4px 10px;border-radius:999px;font-size:12px}
       .cap{margin-top:8px;font-size:12px;color:#6b7280;text-align:center}
-      .frame{width:100%;height:500px;border:0;display:block}
+      .frame{width:100%;height:400px;border:0;display:block}
       .soft-edge{box-shadow:0 10px 28px rgba(15,23,42,.10)}
       /* 左：紙面＝明るい */
       .light{background:#fff;border:1px solid #e6e8eb}
@@ -69,7 +69,7 @@
     <!-- 左：精読（明るい／テキスト単位） -->
     <div>
       <h3 class="title" style="color:#0f172a">精読 / Close Reading</h3>
-      <p class="sub">単位：テキスト・版・場面・発話（ミクロ）</p>
+      <p class="sub">単位：テキスト・版・場面・発話・注（ミクロ）</p>
       <figure class="card light soft-edge">
         <span class="chip chip-light">text-level</span>
         <!-- ★ iframeのUIはそのまま。高さだけ親で固定 -->
@@ -83,7 +83,7 @@
     <!-- 右：遠読（暗い／コーパス単位） -->
     <div>
       <h3 class="title" style="color:#0f172a">遠読 / Distant Reading</h3>
-      <p class="sub">単位：コーパス・雑誌・版元・地域（マクロ）</p>
+      <p class="sub">単位：コーパス・雑誌・版元・地域・時代（マクロ）</p>
       <figure class="card dark soft-edge">
         <span class="chip chip-dark">corpus-level</span>
         <img class="frame" alt="Network visualization (CC-licensed)"
@@ -99,38 +99,15 @@
 
 
 
-      <section style="font-size: 0.65em;">
-      <h2>英文学 × DH の現在</h2>
-      <h3><strong>資源整備の進展（インフラ）</strong></h3>
-      <ul>
-      <li>重要作家・主要コーパスの大規模デジタル化と構造化（版・注・写本の統合）</li>
-      <li>検索・可視化・注釈・比較の高度化（テキスト間リンク、引用追跡、時系列・ネットワーク表示）</li>
-      </ul><br></br>
-
-      <h3><strong>方法論の転換（読みのスケール）</strong></h3>
-      <ul>
-         <li>「the great unread」への接近――個別精読を支える遠読（Moretti 以降）</li>
-         <li>可視化と統計により“見えていなかった分布・偏り”を仮説化→精読で検証</li>
-        </ul><br></br>
-
-      <h3><strong>研究意義と公共性（立場を越えて）</strong></h3>
-      <ul>
-        <li>カノン保全／多様化推進という立場差を前提化しつつ、エビデンスで対話可能にする</li>
-        <li>なぜ英語圏文学を研究するのか――教育・翻訳・文化政策・知の継承への波及効果で応答</li>
-      </ul>
-
-      <p><strong>Takeaway：</strong>DHは「読む対象の可視化と拡張」を通じて、規範と実態のギャップを測定し、議論の共通基盤をつくる。</p>
-      </section>
-
 
       <section data-background-color="#fff">
 
         
-        <h2 style="margin:0 0 10px">A. テキスト中心の基盤整備</h2>
+        <h2 style="margin:0 0 10px">A. 代表テキストの基盤整備</h2>
   <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start;max-width:1100px;margin:0 auto;">
     <!-- 左：資料ビジュアル（IIIF） -->
     <figure class="card light soft-edge">
-        <span class="chip chip-light">text-level</span>
+        
         <!-- ★ iframeのUIはそのまま。高さだけ親で固定 -->
         <iframe class="frame"
           src="https://gallica.bnf.fr/ark:/12148/btv1b6000495j/f31.item.zoom"
@@ -141,18 +118,13 @@
     <div style="background:#fff;border:1px solid #eee;border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.06)">
     
       <ul style="margin:0 0 10px 1.1em">
-        <li><strong>デジタル化・保存・共有</strong>：IIIFで安定配信・相互運用。</li>
-        <li><strong>機械可読な構造化</strong>：TEI/XMLで場面・発話・注を明示。</li>
-        <li><strong>比較・可視化</strong>：版差・本文系譜・上演史などの再利用。</li>
-      </ul>
-      <pre style="font-size:12.5px;line-height:1.35;overflow:auto;border:1px solid #eee;padding:10px;background:#fafafa;margin:8px 0 0">
-&lt;div type="play" xml:id="ham"&gt;
-  &lt;sp who="#HAMLET"&gt;&lt;speaker&gt;Ham.&lt;/speaker&gt;
-    &lt;p&gt;To be, or not to be...&lt;/p&gt;
-  &lt;/sp&gt;
-&lt;/div&gt;
-      </pre>
-      <p style="margin:10px 0 0"><strong>要点：</strong>Digitize → <strong>Structure</strong> → Analyze の基盤が、精読の解像度と再利用性を押し上げる。</p>
+  <li><strong>デジタル化・保存・共有</strong>（IIIF：安定配信・相互運用）</li>
+  <li><strong>機械可読な構造化</strong>（TEI/XML：場面・発話・注を明示）</li>
+  <li><strong>比較・可視化</strong>（
+    <a href="https://frankensteinvariorum.org/" target="_blank" rel="noopener">版差<span aria-hidden="true">↗</span></a>・本文系譜・上演史などの再利用）
+  </li>
+</ul>
+
     </div>
   </div>
 </section>
@@ -169,7 +141,7 @@
 
 
       <section data-background-color="#fff">
-        <h2 style="margin:0 0 10px">B. 遠読・計量（世界文学の枠）</h2>
+        <h2 style="margin:0 0 10px">B. 大規模コーパスの遠読・モデル化</h2>
   <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start;max-width:1100px;margin:0 auto;">
     <!-- 左：再作図（純SVG：外部画像不要） -->
     <figure style="margin:0;background:#fff;border:1px solid #eee;border-radius:14px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,.06)">
@@ -195,17 +167,17 @@
         <!-- 棒（最大192を高さ220に正規化） -->
         <!-- scale = 220/192 ≈ 1.1458 -->
         <g fill="#4a6">
-          <!-- Joyce 192 -> 220 -->
-          <rect x="105" y="80"  width="70" height="220" rx="6"/>
-          <!-- Proust 77 -> 88.8 -->
-          <rect x="205" y="211.2" width="70" height="88.8" rx="6" fill="#6a7"/>
-          <!-- Lispector 9 -> 10.3 -->
+          <!-- Joyce 192 -->
+          <rect x="105" y="110"  width="70" height="192" rx="6"/>
+          <!-- Proust 77 --->
+          <rect x="205" y="225" width="70" height="77" rx="6" fill="#6a7"/>
+          <!-- Lispector 9   -->
           <rect x="305" y="289.7" width="70" height="10.3" rx="6" fill="#8ab"/>
-          <!-- Tagore 7 -> 8.0 -->
+          <!-- Tagore 7 -->
           <rect x="405" y="292.0" width="70" height="8.0" rx="6" fill="#8ab"/>
-          <!-- Premchand 0.5 -> 0.57 -->
+          <!-- Premchand 0.5  -->
           <rect x="505" y="299.43" width="70" height="0.57" rx="3" fill="#8ab"/>
-          <!-- Ichiyo 0.4 -> 0.46 -->
+          <!-- Ichiyo 0.4 -->
           <rect x="605" y="299.54" width="70" height="0.46" rx="3" fill="#8ab"/>
         </g>
         <!-- ラベル -->
@@ -223,7 +195,7 @@
         </text>
       </svg>
       <figcaption style="font-size:12px;color:#666;margin-top:6px">
-        Data: Damrosch’s table (Annual average). Redrawn for clarity (not a facsimile of the original figure).
+        Data: Damrosch’s table (Annual average). Redrawn for clarity (not a facsimile of the original figure).<a href="https://www.academia.edu/figures/10927258/figure-3-books-and-articles-on-joyce-et-al" target="_blank" rel="noopener">↗</a>
       </figcaption>
     </figure>
 
@@ -231,14 +203,20 @@
     <div style="background:#fff;border:1px solid #eee;border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.06)">
       
       <ul style="margin:0 0 10px 1.1em">
-        <li><strong>ハイパー・カノン</strong>への極端な集中。</li>
-        <li><strong>Lispector/Tagore/Premchand/Ichiyo</strong>などの<strong>周縁的可視化</strong>は近年でも限定的。</li>
-        <li>この分布を出発点に、<strong>引用慣行の偏り</strong>と<strong>学知の流通構造</strong>を検証へ。</li>
-      </ul>
-      <p style="margin:8px 0 0"><strong>要点：</strong>“ポスト・カノニカル／ハイパー・カノニカル”状況を定量で示し、<strong>カノン相対化</strong>へ繋ぐ。</p>
-      <p style="margin:8px 0 0;color:#666;font-size:13px">
-        ＊棒は Damrosch の表（Annual average）に基づく再作図。元図の再掲ではありません。
-      </p>
+  
+  <li>現状：研究・教育資源が少数のカノンに過度集中</li>
+  <li>Moretti は“the great unread”という概念で、未読・未検証の膨大な領域を問題化</li>
+</ul>
+
+<div style="margin-top:6px;padding:10px 12px;background:#fafafa;border-left:4px solid #444;border-radius:10px">
+  → 特定のテキストへの集中度と分布を数値で示し、どこに偏りがあるかを明確化。
+</div>
+
+</ul>
+<p style="margin:8px 0 0;color:#666;font-size:13px">
+  ＊図は Damrosch の表（Annual average）に基づく再作図。
+</p>
+
     </div>
   </div>
 </section>
@@ -262,7 +240,7 @@
           <li>権威ある出版社・上位誌への偏重</li>
           <li>一般化表現の多用による差異の捨象（Piper, 2020）</li>
         </ul>
-        <p>→ <strong>なぜこの乖離が生じ、維持されるのか？</strong></p>
+        <p>→ <strong>要請から乖離している現状を整理・把握する必要</strong></p>
       </section>
 
 
