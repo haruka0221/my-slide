@@ -17,6 +17,7 @@
     .reveal ul, .reveal ol { margin-left: 0.3; }
     table { font-size: 22px; }
     blockquote { font-style: normal; }
+    .reveal-viewport { background: #F6F7F9; }
     /* スライド本文を左揃えにする */
     .reveal .slides section {
     text-align: left;
@@ -44,42 +45,62 @@
         <h2>2025年9月18日(木)<br />コアメンバー会議</h2>
       </section>
 
-      <section data-background-color="#fff">
-        <h2 style="margin:0 0 10px">英文学 × DH の現在</h2>
-  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
 
-  <figure style="position:relative;margin:0;background:#fff;border:1px solid #eee;border-radius:14px;padding:10px;box-shadow:0 6px 16px rgba(0,0,0,.06)">
-    <div style="position:absolute;top:8px;left:8px;font-size:12px;background:#111;color:#fff;padding:2px 8px;border-radius:999px;opacity:.9">1</div>
-    <iframe 
-      src="https://digital.bodleian.ox.ac.uk/embed/iframe/?url=https%3A%2F%2Fdigital.bodleian.ox.ac.uk%2Fobjects%2F390fd0e8-9eae-475d-9564-ed916ab9035c%2Fsurfaces%2Fb5a4a8fa-540d-47cc-9e49-1285adc6c980%2F"
-      title="Bodleian Library First Folio Title Page Embed Viewer"
-      style="width:100%; height:400px; border:0; border-radius:10px;"
-      allow="fullscreen" 
-      sandbox="allow-scripts allow-same-origin" 
-      loading="lazy">
-    </iframe>
-    <figcaption style="font-size:12px; color:#666; margin-top:6px;">
-  Bodleian Library, Arch. G c.7. Licensed under CC BY-NC 4.0.
-</figcaption>
-  </figure>
 
-  <figure style="position:relative;margin:0;background:#fff;border:1px solid #eee;border-radius:14px;padding:10px;box-shadow:0 6px 16px rgba(0,0,0,.06)">
-    <div style="position:absolute;top:8px;left:8px;font-size:12px;background:#111;color:#fff;padding:2px 8px;border-radius:999px;opacity:.9">2</div>
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/9/90/Kencf0618FacebookNetwork.jpg"
-      alt="Data visualization of Facebook relationships by the third-party app MyFnetwork."
-      style="width:100%; height:400px; display:block; border-radius:10px; border:1px solid #eee;">
-    <figcaption style="font-size:12px; color:#666; margin-top:6px;">
-  "Data visualization of Facebook relationships" by Kencf0618. Source: Wikimedia Commons. Licensed under CC BY-SA 3.0.
-</figcaption>
-  </figure>
+      <section data-background-color="#F6F7F9">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start">
 
-</div>
+    <style>
+      .title{margin:0 0 10px;font-weight:800;letter-spacing:.01em}
+      .sub{margin:0 0 14px;color:#6b7280;font-size:14px}
+      .card{position:relative;border-radius:16px;overflow:hidden}
+      .chip{position:absolute;top:1px;left:10px;padding:4px 10px;border-radius:999px;font-size:12px}
+      .cap{margin-top:8px;font-size:12px;color:#6b7280;text-align:center}
+      .frame{width:100%;height:500px;border:0;display:block}
+      .soft-edge{box-shadow:0 10px 28px rgba(15,23,42,.10)}
+      /* 左：紙面＝明るい */
+      .light{background:#fff;border:1px solid #e6e8eb}
+      .chip-light{background:#111827;color:#fff}
+      /* 右：ネットワーク＝暗い */
+      .dark{background:#0b0f14;border:1px solid #0f172a}
+      .chip-dark{background:#f59e0b;color:#111827}
+    </style>
+
+    <!-- 左：精読（明るい／テキスト単位） -->
+    <div>
+      <h3 class="title" style="color:#0f172a">精読 / Close Reading</h3>
+      <p class="sub">単位：テキスト・版・場面・発話（ミクロ）</p>
+      <figure class="card light soft-edge">
+        <span class="chip chip-light">text-level</span>
+        <!-- ★ iframeのUIはそのまま。高さだけ親で固定 -->
+        <iframe class="frame"
+          src="https://digital.bodleian.ox.ac.uk/embed/iframe/?url=https%3A%2F%2Fdigital.bodleian.ox.ac.uk%2Fobjects%2F390fd0e8-9eae-475d-9564-ed916ab9035c%2Fsurfaces%2Fb5a4a8fa-540d-47cc-9e49-1285adc6c980%2F"
+          title="Bodleian Library First Folio" allowfullscreen></iframe>
+      </figure>
+      <div class="cap">Bodleian Library, Arch. G c.7. Licensed under CC BY-NC 4.0.</div>
+    </div>
+
+    <!-- 右：遠読（暗い／コーパス単位） -->
+    <div>
+      <h3 class="title" style="color:#0f172a">遠読 / Distant Reading</h3>
+      <p class="sub">単位：コーパス・雑誌・版元・地域（マクロ）</p>
+      <figure class="card dark soft-edge">
+        <span class="chip chip-dark">corpus-level</span>
+        <img class="frame" alt="Network visualization (CC-licensed)"
+             src="https://upload.wikimedia.org/wikipedia/commons/9/90/Kencf0618FacebookNetwork.jpg"
+             style="object-fit:cover;filter:contrast(1.05) saturate(.9) brightness(.92)">
+      </figure>
+      <div class="cap" style="color:#94a3b8">"Data visualization of Facebook relationships" by Kencf0618. Source: Wikimedia Commons. Licensed under CC BY-SA 3.0.</div>
+    </div>
+
+  </div>
 </section>
 
 
+
+
       <section style="font-size: 0.65em;">
-      <h2>前提：英文学 × DH の現在</h2>
+      <h2>英文学 × DH の現在</h2>
       <h3><strong>資源整備の進展（インフラ）</strong></h3>
       <ul>
       <li>重要作家・主要コーパスの大規模デジタル化と構造化（版・注・写本の統合）</li>
@@ -103,22 +124,18 @@
 
 
       <section data-background-color="#fff">
+
+        
         <h2 style="margin:0 0 10px">A. テキスト中心の基盤整備</h2>
   <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start;max-width:1100px;margin:0 auto;">
     <!-- 左：資料ビジュアル（IIIF） -->
-    <figure style="margin:0;background:#fff;border:1px solid #eee;border-radius:14px;padding:12px;box-shadow:0 6px 18px rgba(0,0,0,.06)">
-      <figcaption style="font-size:14px;color:#666;margin:0 0 8px">First Folio facsimile</figcaption>
-      <img
-        src="https://digitalcollections.folger.edu/iiif/2/img51109/full/1200,/0/default.jpg"
-        alt="First Folio facsimile page"
-        style="width:100%;border-radius:10px;border:1px solid #eee"
-        referrerpolicy="no-referrer"
-        crossorigin="anonymous"
-        onerror="this.src='https://images.weserv.nl/?url=digitalcollections.folger.edu/iiif/2/img51109/full/1200,/0/default.jpg'">
-      <figcaption style="font-size:12px;color:#666;margin-top:6px">
-        例：Folger Shakespeare Library（IIIF）
-      </figcaption>
-    </figure>
+    <figure class="card light soft-edge">
+        <span class="chip chip-light">text-level</span>
+        <!-- ★ iframeのUIはそのまま。高さだけ親で固定 -->
+        <iframe class="frame"
+          src="https://gallica.bnf.fr/ark:/12148/btv1b6000495j/f31.item.zoom"
+          title="Bodleian Library First Folio" allowfullscreen></iframe>
+      </figure>
 
     <!-- 右：説明 -->
     <div style="background:#fff;border:1px solid #eee;border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.06)">
