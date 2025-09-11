@@ -345,146 +345,72 @@
 </section>
 
 
-
-<section>
-
-  <h3>2-2. HathiTrust Research Center（HTRC）データの活用</h3>
-
-  <!-- 方法論的課題-->
-  <div style="border:1px solid #eee;border-radius:14px;padding:12px;margin-bottom:10px">
-    <p style="margin:0 0 6px"><strong>方法論的課題</strong></p>
-    <p style="margin:0">
-      大規模コーパスを「何で束ねるか／どう比較するか」。HTRCの派生データ（Derived Datasets）と実行環境を使い分け、
-      再現可能な<strong>群（グループ）比較</strong>の設計をとる。
-    </p>
-  </div>
-
-  <div style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:16px;align-items:start">
-    <!-- ① 群をどう作るか -->
-    <div style="border:1px solid #eee;border-radius:14px;padding:12px">
-  <p style="margin:0 0 6px"><strong>① データセットを作る → 公開 → 群を作る</strong></p>
-
-  <p style="margin:0 0 6px">HTDL 全体 → 英文学<strong>批評</strong>論文コーパスの構築</p>
-  <pre style="margin:0 0 10px;font-size:12.5px;line-height:1.5;background:#fafafa;border:1px solid #eee;border-radius:10px;padding:10px;overflow:auto"><code>HathiTrust Digital Library（HTDL）
-↓  メタデータ条件で抽出（言語=EN／学術誌・批評／年代 等）
-↓  記事単位の切り出し（巻・号→記事）
-↓  コーパス化（書誌・発表年・誌名・版情報 付与）
-↓  公開（ワークセット／派生データとして共有）
-</code></pre>
-
-  <p style="margin:0 0 6px">公開コーパスの中で「群」を定義</p>
-  <ul style="margin:0 0 0 1.1em">
-    <li>時代群：1940s／1960s／…</li>
-    <li>雑誌・出版群：PMLA／ELH／Modernism/modernity／主要出版社</li>
-    <li>ジャンル群：理論批評／作家論 ほか</li>
-    <li>版・地域群：版の違い／地域（発行地・対象地域）</li>
+<!-- スライド1：現在の取り組み＝単著が主役 -->
+<section data-background-color="#fff">
+  <h2>2. 現在の取り組み：HTRCで単著（モノグラフ）を本格分析</h2>
+  <ul>
+    <li>対象：英文学研究の<strong>単著</strong>（研究書・章レベルを含む）</li>
+    <li>狙い：単著と雑誌批評を<strong>同じ比較軸</strong>で並列評価（参照の集中／分散）</li>
+    <li>HTRCの利点：<u>書籍コーパスの規模</u>＋<u>権利配慮の環境</u>（非消費的分析）で単著を扱える</li>
   </ul>
-</div>
-
-
-
-
-    <!-- ② 群どうしをどう比べるか -->
-    <div style="border:1px solid #eee;border-radius:14px;padding:12px">
-      <p style="margin:0 0 6px"><strong>② 群どうしをどう比較するか</strong></p>
-      <ul style="margin:0 0 8px 1.1em">
-        <li><b>参照分布</b>：群ごとに対象作品への参照を集計し、<b>集中／分散</b>を指標化
-          <span style="opacity:.85">（例：HHI・Gini・上位10%シェア）</span>。</li>
-        <li><b>傾向差の検定</b>：雑誌群A vs 専門誌群B などで、<b>カイ二乗</b>や<b>時系列比較</b>を適用。</li>
-        <li><b>可視化</b>：群別の分布曲線・ロングテール比・ヒートマップで差を直感化。</li>
-      </ul>
-      <p style="margin:6px 0 0;font-size:12.5px;opacity:.85">
-        非公開テキストを読む必要がある場合は<b>Data Capsule</b>上で非消費的分析を実行（出力のみ持ち出し可）。</p>
-    </div>
-  </div>
-
-  <!-- HTRCの選択肢（データ/環境）を一段で要約 -->
-  <div style="margin-top:10px;border:1px solid #eee;border-radius:14px;padding:10px">
-    <p style="margin:0 0 6px"><strong>HTRCで使えるもの（要約）</strong></p>
-    <ul style="margin:0 0 0 1.1em">
-      <li><b>Derived Datasets</b>：<u>Extracted Features（EF）</u>＝ページ／巻レベルの語数・品詞・行・ヘッダ情報等の統計（最新はv2系、数千万冊規模）。</li>
-      <li><b>Analytics/Worksets</b>：GUIやAPIで群を作る起点。</li>
-      <li><b>Data Capsules</b>：保護環境のVMで全文に対する非消費的テキスト解析を実行、審査後に結果のみ出力。</li>
-    </ul>
-  </div>
-</section>
 </section>
 
-
-
-<section>
-        <section>
-          <h2>2. 現在の取り組み：HTRC活用による大規模分析</h2>
-          <h3>2-1. HathiTrust Research Center（HTRC）データの活用</h3>
-          <p><strong>データ選別・抽出プロセス</strong></p>
-<pre><code>HTRC Extracted Features Dataset
-↓
-主要学術誌の特定（PMLA, ELH, Modernism/modernity等）
-↓
-1940年代以降の論文を時代・分野別に層化サンプリング
-↓
-メタデータ付与（発表年、著者、一次資料情報）
+<!-- スライド2：単著コーパスの作成フロー（HTDL→コーパス→公開） -->
+<section data-background-color="#fff">
+  <h2>2-1. 単著コーパス：HTDL → 抽出 → 成形 → 公開</h2>
+  <pre style="font-size:12.5px;line-height:1.5;background:#fafafa;border:1px solid #eee;border-radius:10px;padding:10px;overflow:auto"><code>HathiTrust Digital Library（HTDL）
+↓  条件抽出（言語=英語／資料種別=書籍／主題=英文学・文学批評／年代）
+↓  版のまとまりを統一（版・刷・電子版をワーク単位にまとめる）
+↓  章・節などの単位情報と書誌メタを付与（年／著者／出版社／シリーズ 等）
+↓  ワークセットとして公開（抽出条件・ID・件数・日付を明記）
 </code></pre>
-          <p><strong>具体的分析手法</strong></p>
-          <ul>
-            <li>自然言語処理（NLP）+ 人手アノテーション併用</li>
-            <li>引用箇所（passage-level）の自動抽出</li>
-            <li>直接引用・間接参照・要約の分類パターン化</li>
-          </ul>
-        </section>
-        <section>
-          <h3>2-2. 雑誌・時代・ジャンル別特徴抽出</h3>
-          <p><strong>比較分析の枠組み</strong></p>
-          <table>
-            <thead>
-              <tr>
-                <th>次元</th>
-                <th>分析項目</th>
-                <th>手法</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>時代別</strong></td>
-                <td>1940s→2020s の引用パターン変遷</td>
-                <td>時系列分析</td>
-              </tr>
-              <tr>
-                <td><strong>雑誌別</strong></td>
-                <td>PMLA vs 専門誌の引用傾向差</td>
-                <td>カイ二乗検定</td>
-              </tr>
-              <tr>
-                <td><strong>ジャンル別</strong></td>
-                <td>理論批評 vs 作家論の参照スタイル</td>
-                <td>クラスター分析</td>
-              </tr>
-            </tbody>
-          </table>
-          <p><strong>抽出される特徴量</strong></p>
-          <ul>
-            <li>一次/二次文献比率</li>
-            <li>地理的・時代的偏重度</li>
-            <li>直引用/要約引用の分布</li>
-            <li>locator（章・頁・行）明示率</li>
-          </ul>
-        </section>
-        <section>
-          <h3>2-3. NIHUでの展開：技術講習会の検討</h3>
-          <p><strong>HTRC技術講習会の企画</strong></p>
-          <ul>
-            <li>人文学研究者向けHTRC活用ワークショップ</li>
-            <li>nihuBridge連携によるデータ共有環境整備</li>
-            <li>LOD（Linked Open Data）を用いた横断的分析基盤構築</li>
-          </ul>
-          <p><strong>機構内ネットワークの活用</strong></p>
-          <ul>
-            <li>各機関の専門知識統合（国文研・歴博・民博等）</li>
-            <li>多言語・多文化比較研究への発展可能性</li>
-          </ul>
-        </section>
-      </section>
+  <p style="font-size:12.5px;opacity:.85;margin:6px 0 0">＊権利制約がある単著は Data Capsule 等の保護環境で非消費的に処理。</p>
+</section>
 
+<!-- スライド3：単著コーパスの中で「群」を定義（最小限の軸だけ） -->
+<section data-background-color="#fff">
+  <h2>2-2. 群（グループ）の定義：単著の中で束ねる</h2>
+  <ul>
+    <li>年代群：1940s／1960s／1980s／2000s…</li>
+    <li>出版社群：大学出版会／商業大手／シリーズ別</li>
+    <li>地域群：発行地・対象地域（UK／US／英連邦 等）</li>
+    <li>版・シリーズ：同一ワーク内の版差／シリーズ所属</li>
+  </ul>
+  <p style="font-size:12.5px;opacity:.85;margin:6px 0 0">＊群ごとのサンプル数は最小セルに合わせて調整。</p>
+</section>
+
+<!-- スライド4：群どうしの比較（参照分布の一軸） -->
+<section data-background-color="#fff">
+  <h2>2-3. 群の比較：参照分布（引用の集中／分散）</h2>
+  <p style="margin:0 0 6px"><strong>比較の軸</strong></p>
+  <ul>
+    <li>集中度（どれだけ少数に集まるか）</li>
+    <li>分布の不均衡さ（全体の偏りの大きさ）</li>
+    <li>上位シェア（上位10%が何％を占めるか）</li>
+  </ul>
+  <p style="margin:6px 0 6px"><strong>見せ方</strong></p>
+  <ul>
+    <li>分布曲線／ロングテール比／ヒートマップ（年代×出版社×地域で並置）</li>
+  </ul>
+</section>
+
+<!-- スライド5：位置づけ（雑誌批評との違いを一行で） -->
+<section data-background-color="#fff">
+  <h2>2-4. 位置づけ：雑誌批評との補完関係</h2>
+  <ul>
+    <li>単著（本）を本格的に扱えるのが HTRC 活用の最大の強み</li>
+    <li>雑誌批評の結果と<strong>同一の比較軸</strong>で照合し、全体像を提示</li>
+  </ul>
+</section>
+
+</section>
+
+
+
+
+
+
+      
       <section>
         <section>
           <h2>3. これからやりたいこと：国文学批評との比較検証</h2>
@@ -500,6 +426,10 @@
             <li>「影響」と「独自性」のバランスはどう変化したか？</li>
           </ul>
         </section>
+
+
+
+        
         <section>
           <h3>3-2. 具体的な比較分析計画</h3>
           <p><strong>データソース</strong></p>
