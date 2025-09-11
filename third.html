@@ -301,19 +301,7 @@
 </section>
 </section>
         
-        
-  <section>
-          <h3>1-3. 研究基盤整備（影響関係プラットフォーム）</h3>
-          <ul>
-            <li><strong>ねらい</strong>：作品間の「影響」を、多層の言語情報と参照関係から総合的にとらえる<strong>研究インフラ</strong>を設計。</li>
-            <li><strong>役割</strong>：比較・可視化・評価をつなぐ<strong>要素技術の統合</strong>と、使いやすさを重視した<strong>研究者向けUIの設計指針</strong>を策定。</li>
-            <li><strong>特色</strong>：テキストのスケール（個別作品〜大型コーパス）をなめらかに横断し、仮説生成から検証までを<strong>一気通貫</strong>で支える枠組みを提示。</li>
-            <li><strong>成果の意義</strong>：後続のHTRC分析や箇所参照抽出の<strong>基盤技術</strong>として機能し、LOD/IIIF連携を視野に入れた<strong>再利用性の高い仕様</strong>を整備。</li>
-          </ul>
-        
-      
-  </section>
-</section>
+
 
 <section>
 <section>
@@ -412,133 +400,120 @@
 
       
       <section>
-        <section>
-          <h2>3. これからやりたいこと：国文学批評との比較検証</h2>
-          <h3>3-1. 研究の動機：モレッティの「波の効果」検証</h3>
-          <p><strong>Franco Morettiの仮説</strong></p>
-          <blockquote>
-            <p>19・20世紀以降、西欧的な語彙・スタイルが波のように世界に波及</p>
-          </blockquote>
-          <p><strong>検証すべき問い</strong></p>
-          <ul>
-            <li>日本の国文学批評は英文学的な引用慣行を取り入れたか？</li>
-            <li>その波及過程に時期的・地域的パターンはあるか？</li>
-            <li>「影響」と「独自性」のバランスはどう変化したか？</li>
-          </ul>
-        </section>
+       
+<section>
+  <h2>3. これからやりたいこと：国文学批評との比較検証</h2>
+
+  <div style="border:1px solid #eee;border-radius:14px;padding:14px">
+    <p style="margin:0 0 6px"><strong>参照枠（Franco Moretti）</strong></p>
+    <ul style="margin:0 0 6px 1.1em">
+      <li>樹（tree）＝分化：<em>“the passage from unity to diversity”</em>（統一→多様化）。</li>
+      <li>波（wave）＝収斂：<em>“uniformity engulfing an initial diversity”</em>（多様→均質化）。</li>
+    </ul>
+
+    <p style="margin:8px 0 0">
+      → 冒頭の問い「均一か／多様か」を、英文学批評（英語）と国文学批評（日本語）の
+      <u>参照と実践</u>で定量的に検証する。
+    </p>
+
+    <p style="margin:8px 0 0;font-size:12.5px;opacity:.85">
+      出典：Franco Moretti, “Conjectures on World Literature,” <em>New Left Review</em> 1 (2000). 
+    </p>
+  </div>
+</section>
+
+
+        <!-- S2: データの射程（英＝HTRCの批評、日＝国文研+NDL） -->
+<section data-background-color="#fff">
+  <h2>3-1. データとスコープ</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div style="border:1px solid #eee;border-radius:14px;padding:12px">
+      <p style="margin:0 0 6px"><strong>英語側（批評）</strong></p>
+      <ul style="margin:0 0 0 1.1em">
+        <li>出所：HTDL/HTRC（批評を含む学術誌の論文）</li>
+        <li>期間：1940s–2020s</li>
+        <li>単位：記事（巻・号 → 記事）＋ 書誌メタ（誌名・年・著者 等）</li>
+      </ul>
+    </div>
+    <div style="border:1px solid #eee;border-radius:14px;padding:12px">
+      <p style="margin:0 0 6px"><strong>日本語側（批評）</strong></p>
+      <ul style="margin:0 0 0 1.1em">
+        <li>出所：国文学論文目録DB → NDLデジタルで本文取得</li>
+        <li>期間：大正–令和（英側と重なる範囲で揃える）</li>
+        <li>単位：記事（雑誌・紀要等）＋ 書誌メタ（誌名・年・著者 等）</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin:10px 0 0;opacity:.85;font-size:12.5px">※ 本章は「批評テキスト」に限定（HTRC活用）。一次作品や単著の網羅は別章で扱う。</p>
+</section>
 
 
 
+        <!-- S3: 群の定義（英／日で左右対称に揃える） -->
+<section data-background-color="#fff">
+  <h2>3-2. 群（グループ）の設計</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div style="border:1px solid #eee;border-radius:14px;padding:12px">
+      <p style="margin:0 0 6px"><strong>共通の層別</strong></p>
+      <ul style="margin:0 0 6px 1.1em">
+        <li>時代：1940s／60s／80s／2000s…</li>
+        <li>媒体：総合誌（例：PMLA 相当）／専門誌</li>
+        <li>領域：理論批評／作家論／方法論 など</li>
+      </ul>
+      <p style="margin:0;opacity:.85;font-size:12.5px">※ 群サイズは最小セルに合わせて調整。</p>
+    </div>
+    <div style="border:1px solid #eee;border-radius:14px;padding:12px">
+      <p style="margin:0 0 6px"><strong>群の例</strong></p>
+      <ul style="margin:0 0 0 1.1em">
+        <li>英：PMLA/ELH/Modernism/modernity × 時代</li>
+        <li>日：主要国文学誌／大学紀要 × 時代</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+        <!-- S4: 波（収斂）を測る指標セット -->
+<section data-background-color="#fff">
+  <h2>3-3. 「波」＝収斂の指標（英↔日で並列に算出）</h2>
+  <ul>
+    <li>引用スタイルの収斂：直接引用比率・locator明示率（章/頁/行）の上昇</li>
+    <li>参照の国際化：海外文献シェア、英語一次・二次の割合</li>
+    <li>論証の形式化：注・参考文献の整形式率、フォーマット規格の採用</li>
+    <li>分布の集中：上位典拠への集中度（上位10%シェア／HHI）</li>
+  </ul>
+</section>
+
+
+        <!-- S5: 樹（分化）を測る指標セット -->
+<section data-background-color="#fff">
+  <h2>3-4. 「樹」＝分化の指標（多様化の可視化）</h2>
+  <ul>
+    <li>参照先の多様度：典拠エントロピー／ユニーク典拠数の時系列</li>
+    <li>媒体の多様度：誌・出版社バラエティ指数（Herfindahl の逆数等）</li>
+    <li>地域・対象の広がり：国内外／地域別の参照カバレッジ</li>
+    <li>分岐の検出：変化点（収斂→分化／分化→再収斂）の年代特定</li>
+  </ul>
+</section>
+
+
+
+<!-- S6: 解析フロー（英/日に同一手順を適用） -->
+<section data-background-color="#fff">
+  <h2>3-5. 解析フロー（左右対称・同一手順）</h2>
+  <pre style="font-size:12.5px;line-height:1.5;background:#fafafa;border:1px solid #eee;border-radius:10px;padding:10px;overflow:auto"><code>コーパス構築（英＝HTRC／日＝国文研→NDL）
+↓  参照抽出（引用・間接参照・要約）と正規化（典拠ID）
+↓  群の定義（時代×媒体×領域）：英／日で対称に
+↓  指標算出：「波」（収斂）／「樹」（分化）を別々に計測
+↓  可視化：分布曲線・上位シェア・多様度・変化点
+↓  読み：どこが均質化し、どこが多様化したかを地図化
+</code></pre>
+  <p style="margin:6px 0 0;opacity:.85;font-size:12.5px">※ 「波」と「樹」は独立指標として先に出し、相関は最後に確認。</p>
+</section>
         
-        <section>
-          <h3>3-2. 具体的な比較分析計画</h3>
-          <p><strong>データソース</strong></p>
-<pre><code>国文研「国文学論文目録データベース」
-（大正元年以降の論文目録データベース）
-↓
-NDLデジタルライブラリーからフルテキスト取得
-↓
-HTRCと同様の引用抽出・分析パイプライン適用
-</code></pre>
-          <p><strong>比較軸の設定</strong></p>
-          <ol>
-            <li><strong>引用形式の西欧化度</strong>：直接引用vs間接言及の比率変化</li>
-            <li><strong>参照対象の国際化度</strong>：国内文献vs海外文献の比重推移</li>
-            <li><strong>論証スタイルの収斂性</strong>：英文学的「明晰性」の採用度合い</li>
-          </ol>
-        </section>
-        <section>
-          <h3>3-3. 期待される発見</h3>
-          <p><strong>仮説1：段階的西欧化</strong></p>
-          <ul>
-            <li>明治後期→大正→昭和初期の段階的変化</li>
-            <li>戦後復興期における再加速</li>
-          </ul>
-          <p><strong>仮説2：選択的受容</strong></p>
-          <ul>
-            <li>形式的引用慣行の採用</li>
-            <li>内容的独自性の維持</li>
-          </ul>
-          <p><strong>仮説3：逆流現象</strong></p>
-          <ul>
-            <li>1980年代以降の「日本的」価値観再評価</li>
-            <li>グローバル化への反作用としての特殊化</li>
-          </ul>
-        </section>
-      </section>
+</section>
 
-      <section>
-        <section style="font-size: 0.65em;">
-          <h2>4. 分析手法の詳細と期待される発見</h2>
-          <h3>4-1. 三段階分析アプローチの精緻化</h3>
-          <p><strong>段階1：コーパス構築の技術的詳細</strong></p>
-<pre><code>HTRC Extracted Features Dataset
-↓ 層化サンプリング（時代×分野の2次元）
-主要学術誌論文 約10,000本の抽出
-↓ メタデータ標準化（Dublin Core準拠）
-発表年・著者・掲載誌・研究領域のタグ付与
-↓ 権利処理・品質管理
-OCR精度検証・欠損データ補完
-</code></pre>
-          <p><strong>段階2：引用抽出の技術革新</strong></p>
-          <ul>
-            <li>正規表現 + 機械学習ハイブリッド手法</li>
-            <li>引用マーカー（"", pp., cf.等）の自動認識</li>
-            <li>False Positive削減のための人手検証フロー</li>
-            <li>引用文脈（supportive/critical/neutral）の分類</li>
-          </ul>
-          <p><strong>段階3：統計解析による構造発見</strong></p>
-          <ul>
-            <li>時系列分析：変化点検出アルゴリズム適用</li>
-            <li>ネットワーク分析：引用関係の可視化</li>
-            <li>機械学習：引用パターンの自動クラスタリング</li>
-          </ul>
-        </section>
-        <section>
-          <h3>4-2. 国文学比較分析の方法論的革新</h3>
-          <p><strong>データ統合の技術的チャレンジ</strong></p>
-<pre><code>国文研「国文学論文目録データベース」
-（大正元年～現在、約50万件の書誌情報）
-↓ 
-NDLデジタルライブラリー自動検索
-↓
-フルテキスト取得・前処理パイプライン
-↓
-多言語対応形態素解析（MeCab + 古典語対応）
-↓
-英文学データとの統合分析
-</code></pre>
-          <p><strong>比較分析の多層的設計</strong></p>
-          <ol>
-            <li><strong>語彙レベル</strong>：外来語・翻訳語の時系列変化</li>
-            <li><strong>文体レベル</strong>：文長・修辞技法の収斂/分化パターン</li>
-            <li><strong>引用レベル</strong>：典拠明示度・参照範囲の国際化度</li>
-            <li><strong>論証レベル</strong>：演繹/帰納的推論の比重変化</li>
-          </ol>
-        </section>
-        <section>
-          <h3>4-3. モレッティ仮説の実証的検証枠組み</h3>
-          <p><strong>「波の効果」の検証方針</strong></p>
-          <ul>
-            <li>西欧的語彙・概念の導入パターンを量的に追跡</li>
-            <li>特定用語の初出年・普及速度・定着度の測定</li>
-            <li>地域間・機関間での受容時差の観察</li>
-          </ul>
-          <p><strong>検証すべき仮説</strong></p>
-          <ol>
-            <li><strong>語彙レベル</strong>：批評専門用語の借用・翻訳・内在化過程</li>
-            <li><strong>文体レベル</strong>：論証構造・修辞技法の変化パターン</li>
-            <li><strong>引用レベル</strong>：典拠の多様化・国際化の進展度合い</li>
-            <li><strong>制度レベル</strong>：学術誌・大学における評価基準の変容</li>
-          </ol>
-          <p><strong>分析における留意点</strong></p>
-          <ul>
-            <li>一方向的影響関係の想定を避け、相互的交流を考慮</li>
-            <li>時代区分は統計的変化点に基づく客観的設定</li>
-            <li>「影響」と「独自発展」の区別における慎重な判定</li>
-          </ul>
-        </section>
-      </section>
+
 
     </div>
   </div>
