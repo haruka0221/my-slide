@@ -248,28 +248,81 @@
 
 <section>
   <section>
-          <h2>1. これまでの研究：基盤構築</h2>
-          <h3>1-1. 博士課程での取り組み（2022-2025）</h3>
-          <p><strong>対象</strong></p>
-          <ul>
-            <li>二次資料：20世紀モダニズム批評における対象作品への参照分布</li>
-            <li>一次テキスト：20世紀転換期作品の影響参照(作品間の参照・継承)の分布</li>
-            <li>共通の問い：参照はどこに、どれだけ「集中／分散」しているか</li>
-          </ul>
-          <p><strong>計量的手法</strong></p>
-          <ul>
-            <li>共通の比較軸：分布の偏り（例：集中度・偏りの大きさ・上位シェア）</li>
-            <li>共通の比較単位：時代 × 雑誌 × 地域で層別し、一次／二次を並べて比較</li>
-            <li>品質確保：手順の再現性と透明性（抽出 → 指標 → 可視化 → 解釈 の手順を公開）</li>
-            <li>補助観点：雑誌アブストラクトのトピック分布で主題の偏在を確認</li>
-          </ul>
+  <h2>1. これまでの研究：博士課程での取り組み（二次資料）</h2>
 
-          <p><strong>具体的成果</strong></p>
-          <ul>
-            <li>The Conradian 49(2) 掲載論文（2024.11）</li>
-            <li>コンラッド研究15号 著者推定研究（2024.3）</li>
-          </ul>
-  </section>
+  <!-- 動機-->
+  <div style="border:1px solid #eee;border-radius:14px;padding:14px;max-width:1100px;margin:0 auto 12px">
+    <p style="margin:0 0 6px"><strong>動機（NMS の検証）</strong></p>
+    <p style="margin:0">
+      Walkowitz らの <em>temporal / horizontal / vertical expansion</em>（New Modernist Studies）は
+      実際の批評に現れているのか？── 20世紀のモダニズム<strong>批評</strong>における
+      <u>対象作品への参照分布</u>を可視化して確かめる。
+    </p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:18px;align-items:start;max-width:1100px;margin:0 auto;">
+    <!-- 左：実装（データづくり＋手法） -->
+    <div style="border:1px solid #eee;border-radius:14px;padding:14px">
+      <p style="margin:0 0 6px"><strong>データ選別・抽出プロセス</strong></p>
+      <pre style="margin:0 8px 10px 0;font-size:12.5px;line-height:1.5;background:#fafafa;border:1px solid #eee;border-radius:10px;padding:10px;overflow:auto"><code>HTRC Extracted Features Dataset
+↓
+主要学術誌の特定（PMLA, ELH, Modernism/modernity など）
+↓
+1940年代以降の論文を「時代・分野」で層化サンプリング
+↓
+メタデータ付与（発表年／著者／一次資料情報）</code></pre>
+
+      <p style="margin:0 0 6px"><strong>具体的分析手法</strong></p>
+      <ul style="margin:0 0 0 1.1em">
+        <li>自然言語処理（NLP）＋人手アノテーションの併用</li>
+        <li>引用箇所（passage-level）の自動抽出</li>
+        <li>直接引用・間接参照・要約の分類パターン化</li>
+      </ul>
+    </div>
+
+    <!-- 右：比較枠組み＋何が得られるか／任意の書影 -->
+    <div style="border:1px solid #eee;border-radius:14px;padding:14px">
+      <p style="margin:0 0 6px"><strong>比較分析の枠組み（参照分布）</strong></p>
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead>
+          <tr>
+            <th style="text-align:left;border-bottom:1px solid #eee;padding:6px 4px">次元</th>
+            <th style="text-align:left;border-bottom:1px solid #eee;padding:6px 4px">見るもの</th>
+            <th style="text-align:left;border-bottom:1px solid #eee;padding:6px 4px">手法</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:6px 4px"><strong>時代別</strong></td>
+            <td style="padding:6px 4px">1940s→2020s の引用パターン変遷</td>
+            <td style="padding:6px 4px">時系列分析</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 4px"><strong>雑誌別</strong></td>
+            <td style="padding:6px 4px">PMLA と専門誌の傾向差</td>
+            <td style="padding:6px 4px">カイ二乗検定</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 4px"><strong>ジャンル別</strong></td>
+            <td style="padding:6px 4px">理論批評 vs 作家論の参照スタイル</td>
+            <td style="padding:6px 4px">クラスター分析</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="margin:10px 0 6px"><strong>抽出される特徴量（例）</strong></p>
+      <ul style="margin:0 0 0 1.1em">
+        <li>一次／二次文献比率、直引用／要約引用の分布</li>
+        <li>locator（章・頁・行）明示率</li>
+        <li>地理的・時代的な偏り度合い</li>
+      </ul>
+
+      <!-- 任意：NMS 書影を入れるなら下の img の src を指定 -->
+      <!-- <img src="https://..." alt="New Modernist Studies 関連書影（任意）" style="width:100%;height:auto;margin-top:10px;border-radius:10px;object-fit:cover;"> -->
+    </div>
+  </div>
+</section>
+
         
   <section>
     <h3>1-2. 二次資料（批評テキストの雑誌・時代・ジャンル別特徴抽出）</h3>
@@ -325,6 +378,100 @@
   </section>
 </section>
 
+<section>
+<section>
+  <h2>2. 現在の取り組み：HTRC活用による大規模分析</h2>
+
+  <h3>2-1. 大規模データを扱う前に：①群を作る ②群を比べる</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1100px;margin:0 auto">
+    <!-- ① 群づくり -->
+    <div style="border:1px solid #eee;border-radius:14px;padding:14px">
+      <p style="margin:0 0 6px"><strong>① データをどう「群」に分けるか</strong></p>
+      <ul style="margin:0 0 0 1.1em">
+        <li>条件：年代／雑誌／地域／出版社／ジャンル</li>
+        <li>層別：時代 × 雑誌 × 地域</li>
+        <li>サンプリング：群サイズの調整</li>
+      </ul>
+    </div>
+
+    <!-- ② 群どうしの比較 -->
+    <div style="border:1px solid #eee;border-radius:14px;padding:14px">
+      <p style="margin:0 0 6px"><strong>② 「群」同士をどう比較するか</strong></p>
+      <ul style="margin:0 0 0 1.1em">
+        <li>比較軸：集中度／偏りの大きさ／上位シェア</li>
+        <li>検定：時系列・群間の差の確認</li>
+        <li>可視化：分布曲線／ヒートマップ</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+<section>
+
+  <h3>2-2. HathiTrust Research Center（HTRC）データの活用</h3>
+
+  <!-- 方法論的課題-->
+  <div style="border:1px solid #eee;border-radius:14px;padding:12px;margin-bottom:10px">
+    <p style="margin:0 0 6px"><strong>方法論的課題</strong></p>
+    <p style="margin:0">
+      大規模コーパスを「何で束ねるか／どう比較するか」。HTRCの派生データ（Derived Datasets）と実行環境を使い分け、
+      再現可能な<strong>群（グループ）比較</strong>の設計をとる。
+    </p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:16px;align-items:start">
+    <!-- ① 群をどう作るか -->
+    <div style="border:1px solid #eee;border-radius:14px;padding:12px">
+  <p style="margin:0 0 6px"><strong>① データセットを作る → 公開 → 群を作る</strong></p>
+
+  <p style="margin:0 0 6px">HTDL 全体 → 英文学<strong>批評</strong>論文コーパスの構築</p>
+  <pre style="margin:0 0 10px;font-size:12.5px;line-height:1.5;background:#fafafa;border:1px solid #eee;border-radius:10px;padding:10px;overflow:auto"><code>HathiTrust Digital Library（HTDL）
+↓  メタデータ条件で抽出（言語=EN／学術誌・批評／年代 等）
+↓  記事単位の切り出し（巻・号→記事）
+↓  コーパス化（書誌・発表年・誌名・版情報 付与）
+↓  公開（ワークセット／派生データとして共有）
+</code></pre>
+
+  <p style="margin:0 0 6px">公開コーパスの中で「群」を定義</p>
+  <ul style="margin:0 0 0 1.1em">
+    <li>時代群：1940s／1960s／…</li>
+    <li>雑誌・出版群：PMLA／ELH／Modernism/modernity／主要出版社</li>
+    <li>ジャンル群：理論批評／作家論 ほか</li>
+    <li>版・地域群：版の違い／地域（発行地・対象地域）</li>
+  </ul>
+</div>
+
+
+
+
+    <!-- ② 群どうしをどう比べるか -->
+    <div style="border:1px solid #eee;border-radius:14px;padding:12px">
+      <p style="margin:0 0 6px"><strong>② 群どうしをどう比較するか</strong></p>
+      <ul style="margin:0 0 8px 1.1em">
+        <li><b>参照分布</b>：群ごとに対象作品への参照を集計し、<b>集中／分散</b>を指標化
+          <span style="opacity:.85">（例：HHI・Gini・上位10%シェア）</span>。</li>
+        <li><b>傾向差の検定</b>：雑誌群A vs 専門誌群B などで、<b>カイ二乗</b>や<b>時系列比較</b>を適用。</li>
+        <li><b>可視化</b>：群別の分布曲線・ロングテール比・ヒートマップで差を直感化。</li>
+      </ul>
+      <p style="margin:6px 0 0;font-size:12.5px;opacity:.85">
+        非公開テキストを読む必要がある場合は<b>Data Capsule</b>上で非消費的分析を実行（出力のみ持ち出し可）。</p>
+    </div>
+  </div>
+
+  <!-- HTRCの選択肢（データ/環境）を一段で要約 -->
+  <div style="margin-top:10px;border:1px solid #eee;border-radius:14px;padding:10px">
+    <p style="margin:0 0 6px"><strong>HTRCで使えるもの（要約）</strong></p>
+    <ul style="margin:0 0 0 1.1em">
+      <li><b>Derived Datasets</b>：<u>Extracted Features（EF）</u>＝ページ／巻レベルの語数・品詞・行・ヘッダ情報等の統計（最新はv2系、数千万冊規模）。</li>
+      <li><b>Analytics/Worksets</b>：GUIやAPIで群を作る起点。</li>
+      <li><b>Data Capsules</b>：保護環境のVMで全文に対する非消費的テキスト解析を実行、審査後に結果のみ出力。</li>
+    </ul>
+  </div>
+</section>
+</section>
 
 
 
