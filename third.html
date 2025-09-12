@@ -299,6 +299,10 @@
 
 </section>
 
+
+
+
+
 <section>
   <h3>B. 関係分析（批評テキストとフィクション作品の対応）</h3>
 
@@ -352,7 +356,118 @@
       </ul>
     </div>
   </div>
+
+  <div id="csv-preview" class="csv-box"></div>
+  <small id="csv-meta" class="muted"></small>
+  <button id="csv-more" style="margin-top:8px;">さらに表示</button>
+
+  <script>
+    (function(){
+      // ① そのまま埋め込む（ここを書き換え） or ② 下のdataSrcを使う
+      const inlineCSV = `htid,recordid,oclc,locnum,author,imprint,date,place,enumcron,subjects,title,prob80precise,genrepages,totalpages,englishpct,datetype,startdate,enddate,imprintdate
+nyp.33433067374037,8618252,11558660,PN6140.L7B7,"Boyer, Abel,",London;Printed for J. Hartley;1701.,1701,enk,,Letters,"Letters of wit, politicks and morality",0.52,185,422,1.0,s,1701,,1701
+uc2.ark+=13960=t0js9xc1p,7700038,13238040,,,London;1702.,1702,enk,,,"The infernal wanderer; or, The Devil ranging upon earth",0.68,15,22,0.999,s,1702,,1702
+mdp.39015009144422,1525544,23621601,,"Fernández, Jerónimo.",London;Printed for E. Tracy;1703.,1703,enk,,,The honour of chivalry,0.84,381,402,1.0,s,1703,,1703
+mdp.39015030155215,1797410,23633278,,"La Calprenède, Gaultier de Coste,", "London;Printed for Isaac Cleave...;1703.",1703,enk,,King of Macedonia;...,The famous history of Cassandra,0.84,614,639,1.0,s,1703,,1703
+`;
+      const dataSrc = null; // 例: "data/books_sample.csv" に置けばここにパスを入れる
+      const PREVIEW_ROWS = 6;
+      const CHUNK = 10;
+
+      const box = document.getElementById('csv-preview');
+      const meta = document.getElementById('csv-meta');
+      const moreBtn = document.getElementById('csv-more');
+
+      let rows = [], shown = 0;
+
+      function parseCSV(text){
+        // 簡易CSVパーサ（ダブルクオート対応）
+        const out = []; let row=[], field="", q=false;
+        for (let i=0;i<text.length;i++){
+          const c=text[i], n=text[i+1];
+          if (q){
+            if (c === '"' && n === '"'){ field+='"'; i++; }
+            else if (c === '"'){ q=false; }
+            else { field+=c; }
+          } else {
+            if (c === '"'){ q=true; }
+            else if (c === ','){ row.push(field); field=""; }
+            else if (c === '\n'){ row.push(field); out.push(row); row=[]; field=""; }
+            else if (c === '\r'){ /* skip */ }
+            else { field+=c; }
+          }
+        }
+        if (field.length || row.length) { row.push(field); out.push(row); }
+        return out.filter(r => r.length && r.some(x=>x!=='')); // 空行除去
+      }
+
+      function render(add){
+        const frag = document.createDocumentFragment();
+        if (!box.firstChild){
+          const table = document.createElement('table');
+          table.className = 'csv';
+          const thead = document.createElement('thead');
+          const trh = document.createElement('tr');
+          rows[0].forEach(h => {
+            const th = document.createElement('th');
+            th.textContent = h;
+            trh.appendChild(th);
+          });
+          thead.appendChild(trh);
+          table.appendChild(thead);
+          table.appendChild(document.createElement('tbody'));
+          box.appendChild(table);
+        }
+        const tbody = box.querySelector('tbody');
+        const start = shown? shown+1 : 1; // 0=header
+        const end = Math.min(rows.length-1, (shown? shown:0) + add);
+        for (let r=start; r<=end; r++){
+          const tr = document.createElement('tr');
+          rows[r].forEach((c, i) => {
+            const td = document.createElement('td');
+            td.textContent = c;
+            if (i>6) td.className = 'tight'; // 後半カラムは狭める
+            tr.appendChild(td);
+          });
+          frag.appendChild(tr);
+        }
+        tbody.appendChild(frag);
+        shown = end;
+        const cols = rows[0]?.length || 0;
+        meta.textContent = `プレビュー：${shown-0}/${rows.length-1} 行・${cols} 列（全体は大きすぎてスライドに収まらないため一部のみ表示）`;
+        moreBtn.style.display = (shown < rows.length-1) ? 'inline-block' : 'none';
+      }
+
+      async function boot(){
+        let text = inlineCSV;
+        if (dataSrc){
+          const res = await fetch(dataSrc);
+          text = await res.text();
+        }
+        rows = parseCSV(text);
+        render(Math.max(PREVIEW_ROWS, CHUNK));
+      }
+
+      // スライドが見えたとき初期化（reveal.jsがなくても動きます）
+      if (document.readyState === 'complete' || document.readyState === 'interactive') boot();
+      else document.addEventListener('DOMContentLoaded', boot);
+
+      moreBtn.addEventListener('click', ()=> render(CHUNK));
+    })();
+  </script>
+
+  <style>
+    .csv-box{ max-height: 360px; overflow:auto; border:1px solid #ddd; border-radius:8px; }
+    table.csv{ border-collapse:collapse; width:100%; font-size:13px; }
+    table.csv th, table.csv td{ border-bottom:1px solid #eee; padding:4px 6px; vertical-align:top; }
+    table.csv th{ position:sticky; top:0; background:#fafafa; z-index:1; }
+    td.tight{ max-width:180px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; }
+    .muted{ color:#666; display:block; margin-top:6px; }
+  </style>
 </section>
+
+
+
 
 
 <!-- スライド1：現在の取り組み＝単著が主役 -->
