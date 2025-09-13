@@ -331,197 +331,76 @@
 
 
 <section>
+
 <section>
   <h2>2. 現在の取り組み：HTRC活用による大規模分析</h2>
-  <h3>2-1. 大規模データを扱う前に：①群を作る ②群を比べる</h2>
+  <h3>2-1. 観察：引用の主舞台は「雑誌」ではなく<strong>単著</strong></h3>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1100px;margin:0 auto">
-    <!-- ① 群づくり -->
-    <div style="border:1px solid #eee;border-radius:14px;padding:14px">
-      <p style="margin:0 0 6px"><strong>① データをどう「群」に分けるか</strong></p>
-      <ul style="margin:0 0 0 1.1em">
-        <li>条件：年代／雑誌／地域／出版社／ジャンル</li>
-        <li>層別：時代 × 雑誌 × 地域</li>
-        <li>サンプリング：群サイズの調整</li>
+  <ul>
+    <li>計量分析（Piper 2020）によれば、主要な批評テキストの引用源の中心は<strong>モノグラフ</strong>である。</li>
+    <li>雑誌論文のみを指標にすると、参照分布や選好の実態を取りこぼす。</li>
+    <li>単著の比重を正面から扱い、雑誌との整合的な比較枠で読み替える必要がある。</li>
+  </ul>
+
+  <aside class="note">
+    ねらい：単著と雑誌を同一の比較軸（集中／分散・上位シェア・時代／地域）で並列に検証する。
+  </aside>
+</section>
+
+<section>
+  <h2>2-2. HTRC を使う理由</h2>
+  <div class="grid">
+    <div class="card">
+      <h4>非消費的に単著を扱える</h4>
+      <ul>
+        <li><strong>Extracted Features（EF）</strong>を用いて、ページ／行ごとの語頻度・品詞・レイアウトを統計的に取得する。</li>
+        <li><strong>Data Capsule（DC）</strong>上での実行により、<strong>著作権配慮</strong>のままモデル学習や集計を実施する。</li>
+        <li>EF＋DCにより、<strong>図表や再配布を避けつつ再現可能</strong>な分析パイプラインを構成できる。</li>
       </ul>
     </div>
-
-    <!-- ② 群どうしの比較 -->
-    <div style="border:1px solid #eee;border-radius:14px;padding:14px">
-      <p style="margin:0 0 6px"><strong>② 「群」同士をどう比較するか</strong></p>
-      <ul style="margin:0 0 0 1.1em">
-        <li>比較軸：集中度／偏りの大きさ／上位シェア</li>
-        <li>検定：時系列・群間の差の確認</li>
-        <li>可視化：分布曲線／ヒートマップ</li>
+    <div class="card">
+      <h4>単著コーパスを拡張できる</h4>
+      <ul>
+        <li>HTDL の書誌と <strong>Workset</strong> でモノグラフ群を定義し、年代・出版社・地域で層別する。</li>
+        <li>雑誌側の結果と同じ指標（集中度・分散・上位シェア）で <strong>直結比較</strong>できる。</li>
+        <li>学位論文・シリーズ巻・新版差など、<strong>単著特有の粒度</strong>を反映できる。</li>
       </ul>
     </div>
   </div>
 
-  <div id="csv-preview" class="csv-box"></div>
-  <small id="csv-meta" class="muted"></small>
-  <button id="csv-more" style="margin-top:8px;">さらに表示</button>
-
-  <script>
-    (function(){
-      // ① そのまま埋め込む（ここを書き換え） or ② 下のdataSrcを使う
-      const inlineCSV = `htid,recordid,oclc,locnum,author,imprint,date,place,enumcron,subjects,title,prob80precise,genrepages,totalpages,englishpct,datetype,startdate,enddate,imprintdate
-nyp.33433067374037,8618252,11558660,PN6140.L7B7,"Boyer, Abel,",London;Printed for J. Hartley;1701.,1701,enk,,Letters,"Letters of wit, politicks and morality",0.52,185,422,1.0,s,1701,,1701
-uc2.ark+=13960=t0js9xc1p,7700038,13238040,,,London;1702.,1702,enk,,,"The infernal wanderer; or, The Devil ranging upon earth",0.68,15,22,0.999,s,1702,,1702
-mdp.39015009144422,1525544,23621601,,"Fernández, Jerónimo.",London;Printed for E. Tracy;1703.,1703,enk,,,The honour of chivalry,0.84,381,402,1.0,s,1703,,1703
-mdp.39015030155215,1797410,23633278,,"La Calprenède, Gaultier de Coste,", "London;Printed for Isaac Cleave...;1703.",1703,enk,,King of Macedonia;...,The famous history of Cassandra,0.84,614,639,1.0,s,1703,,1703
-`;
-      const dataSrc = null; // 例: "data/books_sample.csv" に置けばここにパスを入れる
-      const PREVIEW_ROWS = 6;
-      const CHUNK = 10;
-
-      const box = document.getElementById('csv-preview');
-      const meta = document.getElementById('csv-meta');
-      const moreBtn = document.getElementById('csv-more');
-
-      let rows = [], shown = 0;
-
-      function parseCSV(text){
-        // 簡易CSVパーサ（ダブルクオート対応）
-        const out = []; let row=[], field="", q=false;
-        for (let i=0;i<text.length;i++){
-          const c=text[i], n=text[i+1];
-          if (q){
-            if (c === '"' && n === '"'){ field+='"'; i++; }
-            else if (c === '"'){ q=false; }
-            else { field+=c; }
-          } else {
-            if (c === '"'){ q=true; }
-            else if (c === ','){ row.push(field); field=""; }
-            else if (c === '\n'){ row.push(field); out.push(row); row=[]; field=""; }
-            else if (c === '\r'){ /* skip */ }
-            else { field+=c; }
-          }
-        }
-        if (field.length || row.length) { row.push(field); out.push(row); }
-        return out.filter(r => r.length && r.some(x=>x!=='')); // 空行除去
-      }
-
-      function render(add){
-        const frag = document.createDocumentFragment();
-        if (!box.firstChild){
-          const table = document.createElement('table');
-          table.className = 'csv';
-          const thead = document.createElement('thead');
-          const trh = document.createElement('tr');
-          rows[0].forEach(h => {
-            const th = document.createElement('th');
-            th.textContent = h;
-            trh.appendChild(th);
-          });
-          thead.appendChild(trh);
-          table.appendChild(thead);
-          table.appendChild(document.createElement('tbody'));
-          box.appendChild(table);
-        }
-        const tbody = box.querySelector('tbody');
-        const start = shown? shown+1 : 1; // 0=header
-        const end = Math.min(rows.length-1, (shown? shown:0) + add);
-        for (let r=start; r<=end; r++){
-          const tr = document.createElement('tr');
-          rows[r].forEach((c, i) => {
-            const td = document.createElement('td');
-            td.textContent = c;
-            if (i>6) td.className = 'tight'; // 後半カラムは狭める
-            tr.appendChild(td);
-          });
-          frag.appendChild(tr);
-        }
-        tbody.appendChild(frag);
-        shown = end;
-        const cols = rows[0]?.length || 0;
-        meta.textContent = `プレビュー：${shown-0}/${rows.length-1} 行・${cols} 列（全体は大きすぎてスライドに収まらないため一部のみ表示）`;
-        moreBtn.style.display = (shown < rows.length-1) ? 'inline-block' : 'none';
-      }
-
-      async function boot(){
-        let text = inlineCSV;
-        if (dataSrc){
-          const res = await fetch(dataSrc);
-          text = await res.text();
-        }
-        rows = parseCSV(text);
-        render(Math.max(PREVIEW_ROWS, CHUNK));
-      }
-
-      // スライドが見えたとき初期化（reveal.jsがなくても動きます）
-      if (document.readyState === 'complete' || document.readyState === 'interactive') boot();
-      else document.addEventListener('DOMContentLoaded', boot);
-
-      moreBtn.addEventListener('click', ()=> render(CHUNK));
-    })();
-  </script>
-
-  <style>
-    .csv-box{ max-height: 360px; overflow:auto; border:1px solid #ddd; border-radius:8px; }
-    table.csv{ border-collapse:collapse; width:100%; font-size:13px; }
-    table.csv th, table.csv td{ border-bottom:1px solid #eee; padding:4px 6px; vertical-align:top; }
-    table.csv th{ position:sticky; top:0; background:#fafafa; z-index:1; }
-    td.tight{ max-width:180px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; }
-    .muted{ color:#666; display:block; margin-top:6px; }
-  </style>
+  <aside class="note">
+    効用：単著に寄る参照傾向を可視化し、NMS以降の拡張が実務の参照にどう現れているかを検証する。
+  </aside>
 </section>
 
-
-
-
-
-<!-- スライド1：現在の取り組み＝単著が主役 -->
 <section>
-  <h3>2-2. HTRCで単著（モノグラフ）を本格分析</h3>
+  <h2>2-3. 体制と進め方</h2>
   <ul>
-    <li>対象：英文学研究の<strong>単著</strong>（研究書・章レベルを含む）</li>
-    <li>狙い：単著と雑誌批評を<strong>同じ比較軸</strong>で並列評価（参照の集中／分散）</li>
-    <li>HTRCの利点：<u>書籍コーパスの規模</u>＋<u>権利配慮の環境</u>（非消費的分析）で単著を扱える</li>
+    <li><strong>中央大学</strong>：NII「AI等の活用を推進する研究データエコシステム構築事業」を受託するプロジェクトに参画する。</li>
+    <li><strong>HTRC共同</strong>：<li>HTRC協力研究者である Ted Underwood 教授の協力のもと、批評テキスト向けワークセット整備と派生指標の作成を担当する。</li>
+    <li><strong>進め方</strong>：
+      <ol>
+        <li>単著ワークセットの確定（英文学・批評関連のコア領域）。</li>
+        <li>EF集計とDC内実験で、参照分布・情報ダイナミクス指標を算出する。</li>
+        <li>雑誌側の指標と統一ダッシュボードで照合し、<strong>拡張の実証</strong>に結び付ける。</li>
+      </ol>
+    </li>
   </ul>
+
+  <div class="cta">
+    単著中心の参照実態をHTRCで定量化し、雑誌偏重の見取り図をアップデートする。
+  </div>
 </section>
 
-<!-- スライド2：単著コーパスの作成フロー（HTDL→コーパス→公開） -->
-<section>
-  <h3>2-3. 単著コーパス：HTDL → 抽出 → 成形 → 公開</h3>
-  <pre style="font-size:12.5px;line-height:1.5;background:#fafafa;border:1px solid #eee;border-radius:10px;padding:10px;overflow:auto"><code>HathiTrust Digital Library（HTDL）
-↓  条件抽出（言語=英語／資料種別=書籍／主題=英文学・文学批評／年代）
-↓  版のまとまりを統一（版・刷・電子版をワーク単位にまとめる）
-↓  章・節などの単位情報と書誌メタを付与（年／著者／出版社／シリーズ 等）
-↓  ワークセットとして公開（抽出条件・ID・件数・日付を明記）
-</code></pre>
-  <p style="font-size:12.5px;opacity:.85;margin:6px 0 0">＊権利制約がある単著は Data Capsule 等の保護環境で非消費的に処理。</p>
-<br></br>
- <p style="margin:0 0 6px"><strong>群（グループ）を定義</strong></p>
-  <ul>
-    <li>年代群：1940s／1960s／1980s／2000s…</li>
-    <li>出版社群：大学出版会／商業大手／シリーズ別</li>
-    <li>地域群：発行地・対象地域（UK／US／英連邦 等）</li>
-    <li>版・シリーズ：同一ワーク内の版差／シリーズ所属</li>
-  </ul>
-  <p style="font-size:12.5px;opacity:.85;margin:6px 0 0">＊群ごとのサンプル数は最小セルに合わせて調整。</p>
-</section>
+<style>
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  .card{border:1px solid #e6e6e6;border-radius:12px;padding:14px;background:#fafafa}
+  .card h4{margin:.2rem 0 .4rem;font-size:1.05rem}
+  .note{margin-top:10px;color:#444;background:#f8f8ff;border-left:4px solid #556;border-radius:8px;padding:8px 10px;font-size:.95rem}
+  .cta{margin-top:12px;background:#f2fbf3;border-left:4px solid #1b8f3e;border-radius:8px;padding:10px;color:#145a27}
+  @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+</style>
 
-<!-- スライド4：群どうしの比較（参照分布の一軸） -->
-<section>
-  <h3>2-4. 群の比較：参照分布（引用の集中／分散）</h3>
-  <p style="margin:0 0 6px"><strong>比較の軸</strong></p>
-  <ul>
-    <li>集中度（どれだけ少数に集まるか）</li>
-    <li>分布の不均衡さ（全体の偏りの大きさ）</li>
-    <li>上位シェア（上位10%が何％を占めるか）</li>
-  </ul>
-  <br></br>
-  <p style="margin:6px 0 6px"><strong>見せ方</strong></p>
-  <ul>
-    <li>分布曲線／ロングテール比／ヒートマップ（年代×出版社×地域で並置）</li>
-  </ul>
-  <br></br>
-<p style="margin:0 0 6px"><strong>位置づけ：雑誌批評との補完関係</strong></p>
-
-  <ul>
-    <li>単著（本）を本格的に扱えるのが HTRC 活用の最大の強み</li>
-    <li>雑誌批評の結果と<strong>同一の比較軸</strong>で照合し、全体像を提示</li>
-  </ul>
 </section>
 </section>
 
@@ -538,8 +417,9 @@ mdp.39015030155215,1797410,23633278,,"La Calprenède, Gaultier de Coste,", "Lond
   <div style="border:1px solid #eee;border-radius:14px;padding:14px">
     <p style="margin:0 0 6px"><strong>参照枠（Franco Moretti）</strong></p>
     <ul style="margin:0 0 6px 1.1em">
-      <li>樹（tree）＝分化：<em>“the passage from unity to diversity”</em>（統一→多様化）。</li>
-      <li>波（wave）＝収斂：<em>“uniformity engulfing an initial diversity”</em>（多様→均質化）。</li>
+      <li>波（wave）＝<em>“uniformity engulfing an initial diversity”</em>（多様→均質化）。</li>
+      <li>樹（tree）＝<em>“the passage from unity to diversity”</em>（統一→多様化）。</li>
+      
     </ul>
 
     <p style="margin:8px 0 0">
@@ -551,96 +431,51 @@ mdp.39015030155215,1797410,23633278,,"La Calprenède, Gaultier de Coste,", "Lond
       出典：Franco Moretti, “Conjectures on World Literature,” <em>New Left Review</em> 1 (2000). 
     </p>
   </div>
-</section>
 
-
-        <!-- S2: データの射程（英＝HTRCの批評、日＝国文研+NDL） -->
-<section>
-  <h2>3-1. データとスコープ</h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-    <div style="border:1px solid #eee;border-radius:14px;padding:12px">
-      <p style="margin:0 0 6px"><strong>英語側（批評）</strong></p>
-      <ul style="margin:0 0 0 1.1em">
-        <li>出所：HTDL/HTRC（批評を含む学術誌の論文）</li>
-        <li>期間：1940s–2020s</li>
-        <li>単位：記事（巻・号 → 記事）＋ 書誌メタ（誌名・年・著者 等）</li>
-      </ul>
-    </div>
-    <div style="border:1px solid #eee;border-radius:14px;padding:12px">
-      <p style="margin:0 0 6px"><strong>日本語側（批評）</strong></p>
-      <ul style="margin:0 0 0 1.1em">
-        <li>出所：国文学論文目録DB → NDLデジタルで本文取得</li>
-        <li>期間：大正–令和（英側と重なる範囲で揃える）</li>
-        <li>単位：記事（雑誌・紀要等）＋ 書誌メタ（誌名・年・著者 等）</li>
-      </ul>
-    </div>
+  <div class="card">
+    <p>Moretti が示した距離化・波（拡散／収斂）・樹（分岐）の観察枠に沿い、参照の<strong>寄り方</strong>と<strong>広がり方</strong>を、英語と日本語で同じ観点から点検する。</p>
+    <ul>
+      <li>入口：日本語側は<strong>国文学研究資料館の論文目録</strong>を起点に書誌を標準化し、可能な範囲で <strong>NDLデジタル</strong>本文に接続する。</li>
+      <li>整合：英語側（HTRC）と単位・観点をそろえて比較する。単著も含めて参照実践の全体像を描く。</li>
+    </ul>
   </div>
 </section>
 
-
-
-        <!-- S3: 群の定義（英／日で左右対称に揃える） -->
 <section>
-  <h2>3-2. 群（グループ）の設計</h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-    <div style="border:1px solid #eee;border-radius:14px;padding:12px">
-      <p style="margin:0 0 6px"><strong>共通の層別</strong></p>
-      <ul style="margin:0 0 6px 1.1em">
-        <li>時代：1940s／60s／80s／2000s…</li>
-        <li>媒体：総合誌（例：PMLA 相当）／専門誌</li>
-        <li>領域：理論批評／作家論／方法論 など</li>
-      </ul>
-      <p style="margin:0;opacity:.85;font-size:12.5px">※ 群サイズは最小セルに合わせて調整。</p>
-    </div>
-    <div style="border:1px solid #eee;border-radius:14px;padding:12px">
-      <p style="margin:0 0 6px"><strong>群の例</strong></p>
-      <ul style="margin:0 0 0 1.1em">
-        <li>英：PMLA/ELH/Modernism/modernity × 時代</li>
-        <li>日：主要国文学誌／大学紀要 × 時代</li>
-      </ul>
-    </div>
+  <h2>A. 「中心化（収斂）」をどう見るか</h2>
+  <div class="card">
+    <p>背景には Casanova（中心の権威化）、Damrosch（ハイパーカノン）、Guillory（教育制度）を置く。読みの観点は平易に統一する。</p>
+    <ul>
+      <li>よく引かれる著者・作品が<strong>定番へ寄っていく</strong>か。</li>
+      <li>引用や注の<strong>書きぶりが揃っていく</strong>か。</li>
+      <li>海外の研究書や英語文献への参照が<strong>共通拠点に集まる</strong>か。</li>
+    </ul>
+    <p class="note">日本側では、雑誌・紀要に加え単著の参照も拾い、英語側と同じ観点で可視化する。</p>
   </div>
 </section>
 
-
-        <!-- S4: 波（収斂）を測る指標セット -->
 <section>
-  <h2>3-3. 「波」＝収斂の指標（英↔日で並列に算出）</h2>
-  <ul>
-    <li>引用スタイルの収斂：直接引用比率・locator明示率（章/頁/行）の上昇</li>
-    <li>参照の国際化：海外文献シェア、英語一次・二次の割合</li>
-    <li>論証の形式化：注・参考文献の整形式率、フォーマット規格の採用</li>
-    <li>分布の集中：上位典拠への集中度（上位10%シェア／HHI）</li>
-  </ul>
+  <h2>B. 「多様化（分化）」をどう見るか</h2>
+  <div class="card">
+    <p>背景には Even-Zohar（ポリシステム）と、大規模分析（Underwood／Piper／Canon-Archive）を置く。日本の議論（例：80年代の柄谷行人ほか）を参照し、制度・言語・翻訳の配置を明示して対比する。</p>
+    <ul>
+      <li>参照先の<strong>顔ぶれが枝分かれ</strong>していくか（時代・地域・分野）。</li>
+      <li><strong>媒体の幅</strong>（学会誌／紀要／単著／シリーズ）が広がるか。</li>
+      <li>扱う対象（作家群・テーマ）が<strong>新しい方向へ増える</strong>か。</li>
+    </ul>
+    <p class="note">結果は時代差・媒体差を軸に読み分け、日英で同じ観点にそろえて報告する。</p>
+  </div>
 </section>
 
-
-        <!-- S5: 樹（分化）を測る指標セット -->
-<section>
-  <h2>3-4. 「樹」＝分化の指標（多様化の可視化）</h2>
-  <ul>
-    <li>参照先の多様度：典拠エントロピー／ユニーク典拠数の時系列</li>
-    <li>媒体の多様度：誌・出版社バラエティ指数（Herfindahl の逆数等）</li>
-    <li>地域・対象の広がり：国内外／地域別の参照カバレッジ</li>
-    <li>分岐の検出：変化点（収斂→分化／分化→再収斂）の年代特定</li>
-  </ul>
-</section>
+<style>
+  .card{border:1px solid #e6e6e6;border-radius:12px;padding:14px;background:#fafafa}
+  .note{color:#444;margin-top:6px}
+</style>
 
 
 
-<!-- S6: 解析フロー（英/日に同一手順を適用） -->
-<section>
-  <h2>3-5. 解析フロー（左右対称・同一手順）</h2>
-  <pre style="font-size:12.5px;line-height:1.5;background:#fafafa;border:1px solid #eee;border-radius:10px;padding:10px;overflow:auto"><code>コーパス構築（英＝HTRC／日＝国文研→NDL）
-↓  参照抽出（引用・間接参照・要約）と正規化（典拠ID）
-↓  群の定義（時代×媒体×領域）：英／日で対称に
-↓  指標算出：「波」（収斂）／「樹」（分化）を別々に計測
-↓  可視化：分布曲線・上位シェア・多様度・変化点
-↓  読み：どこが均質化し、どこが多様化したかを地図化
-</code></pre>
-  <p style="margin:6px 0 0;opacity:.85;font-size:12.5px">※ 「波」と「樹」は独立指標として先に出し、相関は最後に確認。</p>
-</section>
-        
+
+
 </section>
 
 
