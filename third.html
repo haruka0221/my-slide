@@ -14,6 +14,7 @@
     .reveal h1 { font-size: 50px; }
     .reveal h2 { font-size: 33px; }
     .reveal h3 { font-size: 28px; }
+    .reveal h4 { font-size: 27px; }
     .reveal ul, .reveal ol { margin-left: 0.3; }
     table { font-size: 22px; }
     blockquote { font-style: normal; }
@@ -373,9 +374,6 @@
     </div>
   </div>
 
-  <aside class="note">
-    効用：単著に寄る参照傾向を可視化し、NMS以降の拡張が実務の参照にどう現れているかを検証する。
-  </aside>
 </section>
 
 <section>
@@ -403,7 +401,7 @@
     </div>
 
     <div class="lane-label">DC 外（オンライン）</div>
-    <div class="lane">
+    <div class="lane lane--nowrap">
       <div class="step">
         <div class="step-title">②ʼ ID 正規化</div>
         <div class="step-body">Crossref / VIAF / CiNii 等で<br>著者・書誌IDを付与</div>
@@ -426,6 +424,16 @@
   .flow{display:grid;grid-template-columns:160px 1fr;gap:10px;align-items:start}
   .lane-label{font-weight:700;color:#444;margin-top:6px}
   .lane{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+
+  /* 横固定レーン（折り返さない・小さくても横スクロール） */
+.lane--nowrap{
+  flex-wrap:nowrap;
+  overflow-x:auto;          /* 幅が足りない時は横スクロール */
+  -webkit-overflow-scrolling: touch;
+}
+.step,.arrow{flex:0 0 auto} /* 折り返しを防ぐため固定幅要素として扱う */
+
+
   .step{
     min-width:190px;max-width:280px;
     border:1px solid #e5e7eb;border-radius:12px;background:#fafafa;
