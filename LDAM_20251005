@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>英文学批評の言説地図</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reset.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/theme/simple.css" id="theme" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/monokai.css" id="highlight-theme" />
+  <style>
+    .reveal section { font-size: 28px; }
+    .reveal h1 { font-size: 50px; }
+    .reveal h2 { font-size: 33px; }
+    .reveal h3 { font-size: 28px; }
+    .reveal h4 { font-size: 27px; }
+    .reveal ul, .reveal ol { margin-left: 0.3; }
+    table { font-size: 22px; }
+    blockquote { font-style: normal; }
+    .reveal-viewport { background: #F6F7F9; }
+    /* スライド本文を左揃えにする */
+    .reveal .slides section {
+    text-align: left;
+    }
+    .reveal .slides section h1{
+     text-align: center;
+    }
+
+  </style>
+</head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section>
+        <br></br>
+        <br></br>
+        <h1>英文学批評の言説地図</h1>
+        <h2>雑誌間の主題分布と語彙特性の計量的記述</h2>
+        <hr /><br></br>
+        <h2>筒井遥<br />人間文化研究機構 本部人間文化研究創発センター（特任助教）</h2>
+        <h2>2025年10月5日(日)<br />データ分析研究会</h2>
+      </section>
+
+
+      <section>
+      <section data-background-color="#F6F7F9">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start">
+
+    <style>
+      .title{margin:0 0 10px;font-weight:800;letter-spacing:.01em}
+      .sub{margin:0 0 14px;color:#6b7280;font-size:14px}
+      .card{position:relative;border-radius:16px;overflow:hidden}
+      .cap{margin-top:8px;font-size:12px;color:#6b7280;text-align:center}
+      .frame{width:100%;height:400px;border:0;display:block}
+      .soft-edge{box-shadow:0 10px 28px rgba(15,23,42,.10)}
+      .light{background:#fff;border:1px solid #e6e8eb}
+      .dark{background:#0b0f14;border:1px solid #0f172a}
+    </style>
+
+    
+    <div>
+      <h3 class="title" style="color:#0f172a">精読 / Close Reading</h3>
+      <p class="sub">単位：テキスト・版・場面・発話・注（ミクロ）</p>
+      <figure>
+        
+        <iframe class="frame"
+          src="https://digital.bodleian.ox.ac.uk/embed/iframe/?url=https%3A%2F%2Fdigital.bodleian.ox.ac.uk%2Fobjects%2F390fd0e8-9eae-475d-9564-ed916ab9035c%2Fsurfaces%2Fb5a4a8fa-540d-47cc-9e49-1285adc6c980%2F"
+          title="Bodleian Library First Folio" allowfullscreen></iframe>
+      </figure>
+      <div class="cap">Bodleian Library, Arch. G c.7. Licensed under CC BY-NC 4.0.</div>
+    </div>
+
+    
+    <div>
+      <h3 class="title" style="color:#0f172a">遠読 / Distant Reading</h3>
+      <p class="sub">単位：コーパス・雑誌・版元・地域・時代（マクロ）</p>
+      <figure>
+        
+        <img class="frame" alt="Network visualization (CC-licensed)"
+             src="https://upload.wikimedia.org/wikipedia/commons/9/90/Kencf0618FacebookNetwork.jpg"
+             style="object-fit:cover;filter:contrast(1.05) saturate(.9) brightness(.92)">
+      </figure>
+      <div class="cap" style="color:#94a3b8">"Data visualization of Facebook relationships" by Kencf0618. Source: Wikimedia Commons. Licensed under CC BY-SA 3.0.</div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+      <section>
+
+        
+        <h2 style="margin:0 0 10px">A. 代表テキストの基盤整備</h2>
+  <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start;max-width:1100px;margin:0 auto;">
+    
+    <figure class="card light soft-edge">
+        
+        
+        <iframe class="frame"
+          src="https://gallica.bnf.fr/ark:/12148/btv1b6000495j/f31.item.zoom"
+          title="Bodleian Library First Folio" allowfullscreen></iframe>
+      </figure>
+
+    
+    <div style="background:#fff;border:1px solid #eee;border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.06)">
+    
+      <ul style="margin:0 0 10px 1.1em">
+  <li><strong>デジタル化・保存・共有</strong>（IIIF：安定配信・相互運用）</li>
+  <li><strong>機械可読な構造化</strong>（TEI/XML：場面・発話・注を明示）</li>
+  <li><strong>比較・可視化</strong>（
+    <a href="https://frankensteinvariorum.org/" target="_blank" rel="noopener">版差<span aria-hidden="true">↗</span></a>・本文系譜・上演史などの再利用）
+  </li>
+</ul>
+
+    </div>
+  </div>
+</section>
+
+
+    
+
+
+      <section>
+        <h2 style="margin:0 0 10px">B. 大規模コーパスの遠読・モデル化</h2>
+  <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start;max-width:1100px;margin:0 auto;">
+  
+    <figure style="margin:0;background:#fff;border:1px solid #eee;border-radius:14px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,.06)">
+      <figcaption style="font-size:14px;color:#666;margin:0 0 8px">
+        Books & Articles per Year (1964–2003) — after Damrosch (2006), Fig. 3
+      </figcaption>
+      <svg viewBox="0 0 690 360" style="width:100%;height:auto" font-family="system-ui, sans-serif">
+        <!-- 軸 -->
+        <line x1="70" y1="300" x2="660" y2="300" stroke="#999"/>
+        <line x1="70" y1="60"  x2="70"  y2="300" stroke="#999"/>
+        <text x="30" y="180" transform="rotate(-90 30,180)" font-size="12" fill="#666">Annual average</text>
+        <!-- 目安線 -->
+        <g stroke="#ddd" opacity="0.8">
+          <line x1="70" y1="220" x2="660" y2="220"/>
+          <line x1="70" y1="140" x2="660" y2="140"/>
+          <line x1="70" y1="100" x2="660" y2="100"/>
+        </g>
+        <g font-size="11" fill="#666">
+          <text x="62" y="224" text-anchor="end">~80</text>
+          <text x="62" y="144" text-anchor="end">~160</text>
+          <text x="62" y="104" text-anchor="end">~200</text>
+        </g>
+        <!-- 棒（最大192を高さ220に正規化） -->
+        <!-- scale = 220/192 ≈ 1.1458 -->
+        <g fill="#4a6">
+          <!-- Joyce 192 -->
+          <rect x="105" y="110"  width="70" height="192" rx="6"/>
+          <!-- Proust 77 --->
+          <rect x="205" y="225" width="70" height="77" rx="6" fill="#6a7"/>
+          <!-- Lispector 9   -->
+          <rect x="305" y="289.7" width="70" height="10.3" rx="6" fill="#8ab"/>
+          <!-- Tagore 7 -->
+          <rect x="405" y="292.0" width="70" height="8.0" rx="6" fill="#8ab"/>
+          <!-- Premchand 0.5  -->
+          <rect x="505" y="299.43" width="70" height="0.57" rx="3" fill="#8ab"/>
+          <!-- Ichiyo 0.4 -->
+          <rect x="605" y="299.54" width="70" height="0.46" rx="3" fill="#8ab"/>
+        </g>
+        <!-- ラベル -->
+        <g font-size="12" fill="#333">
+          <text x="140" y="318" text-anchor="middle"><tspan>Joyce</tspan><tspan x="140" dy="14" fill="#666">192</tspan></text>
+          <text x="240" y="318" text-anchor="middle"><tspan>Proust</tspan><tspan x="240" dy="14" fill="#666">77</tspan></text>
+          <text x="340" y="318" text-anchor="middle"><tspan>Lispector</tspan><tspan x="340" dy="14" fill="#666">9</tspan></text>
+          <text x="440" y="318" text-anchor="middle"><tspan>Tagore</tspan><tspan x="440" dy="14" fill="#666">7</tspan></text>
+          <text x="540" y="318" text-anchor="middle"><tspan>Premchand</tspan><tspan x="540" dy="14" fill="#666">0.5</tspan></text>
+          <text x="640" y="318" text-anchor="middle"><tspan>Ichiyo</tspan><tspan x="640" dy="14" fill="#666">0.4</tspan></text>
+        </g>
+        <!-- 注 -->
+        <text x="360" y="50" text-anchor="middle" font-size="13" fill="#333">
+          Hypercanonical concentration vs. long-tail (1964–2003)
+        </text>
+      </svg>
+      <figcaption style="font-size:12px;color:#666;margin-top:6px">
+        Data: Damrosch’s table (Annual average). Redrawn for clarity (not a facsimile of the original figure).<a href="https://www.academia.edu/figures/10927258/figure-3-books-and-articles-on-joyce-et-al" target="_blank" rel="noopener">↗</a>
+      </figcaption>
+    </figure>
+
+    <!-- 右：解説 -->
+    <div style="background:#fff;border:1px solid #eee;border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.06)">
+      
+      <ul style="margin:0 0 10px 1.1em">
+  
+  <li><strong>大規模コーパスの収集・整備</strong></li>
+  <li><strong>遠読の視角と指標の整備</strong>：対象コーパスの分布を可視化・数値化</li>
+</ul>
+
+<div style="margin-top:6px;padding:10px 12px;background:#fafafa;border-left:4px solid #444;border-radius:10px">
+  → Morettiはthe great unreadという概念で、膨大な未読・未検証領域を問題化<br>
+  → Damroschは世界文学研究における集中と偏在を指摘<br>
+</div>
+
+</ul>
+
+    </div>
+  </div>
+</section>
+</section>
+
+
+
+
+<section>
+
+  <h2>研究概要：研究の背景</h2>
+
+  <p><strong>規範的要請</strong></p>
+  <ul>
+          <li>「世界文学」の視座（Moretti, 2000）</li>
+          <li>モダニズム研究の拡張論（Mao &amp; Walkowitz, 2008）</li>
+          <li>フェミニスト批評・ポストコロニアル批評の多様性要求</li>
+        </ul>
+
+  <p><strong>現状の分布</strong></p>
+  <ul>
+    <li>引用分布の偏り：カノン作品・上位誌／主要出版社に集約（Wellmon &amp; Piper, 2017）</li>
+    <li>言語スタイルの偏り：一般化表現優位 → 差異の縮減（Piper, 2020）</li>
+  </ul>
+
+  <br></br>
+  <div style="padding:12px 16px;background:#fafafa;border-left:4px solid #444;border-radius:10px;max-width:800px;margin:0 auto">
+    → 方針：要請から乖離している現状を整理・把握する
+
+</section>
+
+<section>
+  <section>
+  <h2>1. これまでの研究：博士課程での取り組み</h2>
+  <h3>1-1. 動機</h3>
+
+  <ul>
+    <li><strong>背景</strong>：2000年代以降、英語圏モダニズム研究は、少数カノン中心の精読から、対象と射程を広げる流れへ。</li>
+    
+    <li><strong>検証課題</strong>：この「拡張」の宣言は、実際の批評実践の参照分布にどこまで現れているのかを、可視化して確かめる。</li>
+  </ul>
+
+    <blockquote class="pull">
+    “One could do worse than light on ‘expansion’ to sum up recent transformations in modernist literary scholarship … [the field has] broadened in scope in temporal, spatial, and vertical directions. (p. 737)”
+    <cite>Mao & Walkowitz, “The New Modernist Studies,” <em>PMLA</em> 123.3 (2008).</cite>
+  </blockquote>
+
+ 
+  </blockquote>
+
+  <style>
+    .pull{font-size:1.4rem;line-height:1.55;border-left:3px solid #222;padding:10px 14px;background:#fafafa;margin:0 0 10px}
+    .pull cite,.mini cite{display:block;font-size:.95rem;color:#666;margin-top:6px}
+    .mini{font-size:1.1rem;line-height:1.5;border-left:4px solid #999;padding:8px 12px;background:#f6f6f6;margin:0}
+  </style>
+
+     
+  </section>
+
+<section>
+  <h3>1-2. 検証の視点――内部分析と関係分析</h3>
+
+  <h3><strong>A. 内部分析</strong>：批評の実践と関心の変化を長期スパンで捉える。</h3>
+
+
+<table style="width:100%;border-collapse:collapse">
+  <thead>
+    <tr><th style="text-align:left;padding:4px 6px;">観点</th><th style="text-align:left;padding:4px 6px;">観察項目</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:4px 6px;">引用の型</td><td style="padding:4px 6px;">一次/二次・直/要約・章/頁の所在明示（年次推移）</td></tr>
+    <tr><td style="padding:4px 6px;">媒体差</td><td style="padding:4px 6px;">総合誌/専門誌/単行書で上記指標の分布比較</td></tr>
+    <tr><td style="padding:4px 6px;">構造距離</td><td style="padding:4px 6px;">誌内凝集・誌間コサイン類似度で重なり判定</td></tr>
+  </tbody>
+</table>
+
+
+ <style>
+  .img-with-right-cap{
+    display:flex;
+    align-items:center;    /* 中央揃えに変更 */
+    gap:16px;
+    max-width:100%;
+  }
+  .img-with-right-cap img{
+    height:420px;          /* 必要に調整可 */
+    width:auto;
+    display:block;
+  }
+  .img-with-right-cap .cap{
+    font-size:0.95rem;
+    line-height:1.4;
+    color:#444;
+    max-width:22rem;       /* 横幅を広げて1–2行で収める */
+    white-space:normal;    /* 念のため通常改行 */
+  }
+</style>
+
+<div class="img-with-right-cap">
+  <img
+    src="https://haruka0221.github.io/my-slide/media/CosineSim.png"
+    alt="PMLA・Reps・Meta のトピック間コサイン類似度ヒートマップ。">
+  <div class="cap">
+    PMLA・Reps・Meta3誌のトピック間コサイン類似度。明るいほど類似が高い。各誌は誌内でまとまり、誌間の重なりは限定的に見える。<a href="https://colab.research.google.com/drive/15-cnEY3REjs_kQbmKU_TxFNr6Lnij2WG?usp=sharing">(詳細)</a> <br>関連データと解析スクリプトは <a href="https://github.com/haruka0221/doaj-british-modernism-analysis" target="_blank" rel="noopener">GitHub</a> で公開している。
+  </div>
+</div>
+
+</section>
+
+
+<section>
+  <h3><strong>B. 関係分析</strong>：批評の立場と、選好される作品群（作品トレンド）との対応</h3>
+  <ul>
+
+
+<table style="width:100%;border-collapse:collapse">
+  <thead>
+    <tr>
+      <th style="text-align:left;padding:4px 6px;">観点</th>
+      <th style="text-align:left;padding:4px 6px;">評価内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:4px 6px;">分布</td>
+      <td style="padding:4px 6px;">参照作品の出現分布を要約（上位集中・裾野の広がり）</td>
+    </tr>
+    <tr>
+      <td style="padding:4px 6px;">偏り</td>
+      <td style="padding:4px 6px;">立場別の選好傾向（時代・地域・ジャンル）を比較</td>
+    </tr>
+    <tr>
+      <td style="padding:4px 6px;">対応</td>
+      <td style="padding:4px 6px;">作品側指標（例：情報ダイナミクス）と選好の対応を検定</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  <!-- ここだけが“スクロール枠” -->
+  <div style="
+      height:70vh;
+      overflow:auto;
+      border:1px solid #ddd;
+      border-radius:12px;
+      padding:8px;
+      box-sizing:border-box;
+      background:#fff;
+    ">
+    <img src="https://haruka0221.github.io/my-slide/media/19th_century15.png"
+         alt="モダニズム期：参照作品の対応" style="display:block;width:100%;height:auto;margin:0 0 12px;">
+    <img src="https://haruka0221.github.io/my-slide/media/modernist15.png"
+         alt="19世紀：参照作品の対応" style="display:block;width:100%;height:auto;">
+  </div>
+
+  <div style="margin-top:8px;font-size:.6em;color:#555;">
+    モダニズム／19世紀の指標（例：情報開示パターン）を基準ラベル化し、傾向ごとの参照選好を比較。
+  </div>
+</section>
+
+
+</section>
+
+      
+<section>
+<section>
+  <h2>2. 現在の取り組み：HTRC活用による大規模分析</h2>
+   <h3>2-1. 観察と課題</h3>
+  <ul>
+    <li><strong>観察</strong>：計量分析（Piper 2020）によれば、主要批評テキストの引用源の中心は<u>モノグラフ</u>である。</li>
+    <li><strong>含意</strong>：単著の重みを正面から扱い、<u>雑誌と同一指標で横並び比較</u>できる枠組みが必要。</li>
+ </ul>
+ <br></br>
+  <div style="padding:12px 16px;background:#fafafa;border-left:4px solid #444;border-radius:10px;max-width:800px;margin:0 auto">
+  <p style="margin:8px 0 0">
+      → 単著コーパスの整備と、著作権配慮下での大規模分析を可能にする環境が求められる。
+    </p>
+
+</section>
+
+<section>
+    <h3 style="margin-top:12px">2-2. 手法（非消費的ワークフロー）</h3>
+  <ul>
+    <li><strong>HTRC Extracted Features（EF）</strong> <a href="https://analytics.hathitrust.org/deriveddatasets/" target="_blank" rel="noopener">↗</a>
+      ：ページ／行ごとの語頻度・品詞などの統計情報のみを取得。</li>
+    <li><strong>Data Capsule（DC）</strong> <a href="https://api.lib.kyushu-u.ac.jp/opac_download_md/1794497/handouts_downie_htrc_kyushu_2017_withJapanese.pdf" target="_blank" rel="noopener">↗</a>
+      ：VM上のカプセル内で学習・集計を実行（著作権配慮のまま、結果のみ持ち出し）。</li>
+  </ul>
+
+<br></br>
+  
+  <h3 style="margin:0 0 12px">Data Capsule の2モード</h3>
+
+  <div class="dc-grid">
+    <!-- メンテナンス -->
+    <div class="dc-card dc-maint">
+      <div class="dc-title">Maintenance mode</div>
+      <table class="dc-table">
+        <tr>
+          <td>ネットワーク接続</td>
+          <td class="r"><span class="badge ok">可</span></td>
+        </tr>
+        <tr>
+          <td>生データの利用</td>
+          <td class="r"><span class="badge no">不可</span></td>
+        </tr>
+      </table>
+      <p class="dc-usage">用途：セットアップ／投入（外から入れるのは自由）</p>
+    </div>
+
+    <!-- 切替 -->
+    <div class="dc-switch">
+      <div class="dc-switch-icon">⇄</div>
+      <div class="dc-switch-text">切替</div>
+    </div>
+
+    <!-- 保護 -->
+    <div class="dc-card dc-protect">
+      <div class="dc-title">Secure mode</div>
+      <table class="dc-table">
+        <tr>
+          <td>ネットワーク接続</td>
+          <td class="r"><span class="badge no">不可</span></td>
+        </tr>
+        <tr>
+          <td>生データの利用</td>
+          <td class="r"><span class="badge ok">可</span></td>
+        </tr>
+      </table>
+      <p class="dc-usage">用途：安全に実行（生データは読み取りのみ／結果は後で審査）</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dc-grid{
+    display:grid; grid-template-columns:1fr 72px 1fr;
+    gap:14px; align-items:stretch;
+  }
+  .dc-card{
+    border:1px solid #e5e7eb; border-radius:12px; padding:12px;
+    background:#fff; display:flex; flex-direction:column; min-height:140px;
+  }
+  .dc-title{font-weight:700; margin-bottom:8px}
+  .dc-maint .dc-title{color:hsl(0, 50%, 35%)}
+  .dc-protect .dc-title{color:hsl(231, 73%, 53%)}
+
+  .dc-table{width:100%; border-collapse:collapse; font-size:1.05em; flex:1}
+  .dc-table td{padding:6px 0}
+  .dc-table td.r{text-align:right}
+
+  .badge{padding:2px 10px; border-radius:999px; font-size:.9em}
+  .badge.ok{background:#dcfce7; color:hsl(231, 73%, 53%)}
+  .badge.no{background:#fee2e2; color:hsl(0, 50%, 35%)}
+
+  .dc-usage{
+    margin:8px 0 0; font-size:.92em; color:#444
+  }
+
+  .dc-switch{
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    color:#475569; gap:4px;
+  }
+  .dc-switch-icon{font-size:22px; line-height:1}
+  .dc-switch-text{font-size:.9em}
+
+  /* 幅が狭いときは縦積み＋スイッチを間に表示 */
+  @media (max-width: 900px){
+    .dc-grid{grid-template-columns:1fr; gap:10px}
+    .dc-switch{flex-direction:row; justify-content:flex-start}
+    .dc-switch-icon{margin-right:6px}
+  }
+</style>
+
+
+
+<section>
+  <h3>2-3. 進め方</h3>
+
+  <div class="flow">
+    <!-- Lane labels -->
+    <div class="lane-label lane-label--secure">Secure mode</div>
+    <div class="lane">
+      <div class="step">
+        <div class="step-title">① Workset 確定</div>
+        <div class="step-body">HTDL/HTRC から抽出・整形</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <div class="step-title">② 参照抽出</div>
+        <div class="step-body">GROBID / Anystyle で<br>参考文献・本文参照を構造化</div>
+      </div>
+      <div class="arrow">⇣</div>
+    </div>
+
+    <div class="lane-label lane-label--maint">Maintenance mode</div>
+    <div class="lane lane--nowrap">
+      <div class="step">
+        <div class="step-title">②ʼ ID 正規化</div>
+        <div class="step-body">Crossref / VIAF / CiNii 等で<br>著者・書誌IDを付与</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <div class="step-title">③ 直引用・再利用検出</div>
+        <div class="step-body">ICOMA で章・節単位の<br>テキスト対応を同定</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <div class="step-title">④ 可視化・検証</div>
+        <div class="step-body">NetworkX/Gephi：参照ネットワーク<br>Altair/Plotly：時系列<br>→「中心化／多様化」を読む</div>
+      </div>
+    </div>
+  </div>
+<p class="flow-note">※ ID 正規化は Secure mode 制約のため <strong>DC 外</strong>で実施。</p>
+
+<style>
+  .flow{display:grid;grid-template-columns:160px 1fr;gap:10px;align-items:start}
+  .lane-label{font-weight:700;color:#444;margin-top:6px}
+  .lane-label--secure { color:hsl(231, 73%, 53%); }
+.lane-label--maint  { color:hsl(0, 50%, 35%); } 
+
+  .lane{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+
+  /* 横固定レーン（折り返さない・小さくても横スクロール） */
+.lane--nowrap{
+  flex-wrap:nowrap;
+  overflow-x:auto;          /* 幅が足りない時は横スクロール */
+  -webkit-overflow-scrolling: touch;
+}
+.step,.arrow{flex:0 0 auto} /* 折り返しを防ぐため固定幅要素として扱う */
+
+
+  .step{
+    min-width:190px;max-width:280px;
+    border:1px solid #e5e7eb;border-radius:12px;background:#fafafa;
+    padding:10px 12px;box-shadow:0 1px 0 rgba(0,0,0,.03)
+  }
+  .step-title{font-weight:400;margin-bottom:2px}
+  .step-body{font-size:.92rem;line-height:1.35;color:#333}
+  .arrow{
+    font-size:40px;line-height:1;color:#888;padding:0 4px;user-select:none
+  }
+  .flow-note{font-size:.85rem;color:#555;margin-top:8px}
+  /* 小さめ画面で縦積み */
+  @media (max-width: 900px){
+    .flow{grid-template-columns:1fr}
+    .lane-label{margin-top:14px}
+  }
+</style>
+
+
+</section>
+
+<style>
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  .card{border:1px solid #e6e6e6;border-radius:12px;padding:14px;background:#fafafa}
+  .card h4{margin:.2rem 0 .4rem;font-size:1.05rem}
+  .note{margin-top:10px;color:#444;background:#f8f8ff;border-left:4px solid #556;border-radius:8px;padding:8px 10px;font-size:.95rem}
+  .cta{margin-top:12px;background:#f2fbf3;border-left:4px solid #1b8f3e;border-radius:8px;padding:10px;color:#145a27}
+  @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+</style>
+
+</section>
+</section>
+
+
+
+
+
+
+      
+<section>    
+<section>
+  <h2>3. これからやりたいこと：日本における英文学研究との比較検証</h2>
+<p>日本で生産された英文学批評の広い層（雑誌・紀要・単著・シリーズ）を対象に、参照実践の推移を長期スパンで可視化する。</p>
+<p style="margin:8px 0 0">
+      → 広い粒度でとらえた全体像から、<strong>地域・制度・媒体の細やかさ</strong>を回復。
+    </p>
+  <div style="border:1px solid #eee;border-radius:14px;padding:14px">
+    
+  </div>
+
+  <div class="card">
+  <p style="margin:0 0 6px"><strong>参照枠（Franco Moretti）</strong></p>
+    <ul style="margin:0 0 6px 1.1em">
+      <li>波（wave）＝<em>“uniformity engulfing an initial diversity”</em>（多様→均質化）。</li>
+      <li>樹（tree）＝<em>“the passage from unity to diversity”</em>（統一→多様化）。</li>
+      
+    </ul>
+
+    
+    <p style="margin:8px 0 0;font-size:12.5px;opacity:.85">
+      出典：Franco Moretti, “Conjectures on World Literature,” <em>New Left Review</em> 1 (2000). 
+    </p>
+
+  </div>
+</section>
+
+<section>
+
+  
+    <p>日本の英文学研究は<strong>雑誌・叢書・翻訳が連動</strong>する編集実践を早期に整え、
+    国際的に例外的なスピードで知のインフラを形成した。*
+    代表例として『<strong>英語青年</strong>』（1898–）の長期的ネットワークが挙げられる。</p>
+  <div class="card">
+    <ul>
+  <li><strong>中心の持続性</strong>：どの著者クラスターが長期にわたって可視の「中心」を占めるか。</li>
+  <li><strong>ランドマークの波及</strong>：個々のランドマーク批評書（モノグラフ・総論）の影響圏がどこまで広がるか。</li>
+  <li><strong>翻訳と版の転機</strong>：翻訳の出現や版の更新が参照の分岐点になっているか。</li>
+  <li><strong>核の重なりとずれ</strong>：英語圏の核と日本の研究実践の核が、どこで重なり、どこで離れていくか。</li>
+</ul>
+    <div style="margin-top:6px;padding:10px 12px;background:#fafafa;border-left:4px solid #444;border-radius:10px">
+      → 研究実践の地域差・制度差を踏まえた上で、英語圏の参照分布と比較する。
+  </div>
+
+  <p style="margin:8px 0 0;font-size:12.5px;opacity:.85">
+      *土井光知ほか監修『日本の英学100年 明治編』研究社、1968年、24頁。
+    </p>
+  </section>
+
+</section>
+
+
+
+
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/notes/notes.min.js"></script>
+  <script>
+    Reveal.initialize({
+  hash: true,
+  slideNumber: true,
+  transition: 'none',
+  center: false,     // 中央寄せレイアウトをやめる（高さを稼ぐ）
+  margin: 0.02,      // スライドの外側余白を小さく
+  minScale: 0.05,    // ここを小さくすると “もっと” 縮小できる
+  maxScale: 1.00,
+  plugins: [ RevealHighlight, RevealNotes ]
+});
+
+  </script>
+</body>
+</html>
