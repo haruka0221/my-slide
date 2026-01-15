@@ -48,3 +48,24 @@
       </section>
 
 
+
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/notes/notes.min.js"></script>
+  <script>
+    Reveal.initialize({
+  hash: true,
+  slideNumber: true,
+  transition: 'none',
+  center: false,     // 中央寄せレイアウトをやめる（高さを稼ぐ）
+  margin: 0.02,      // スライドの外側余白を小さく
+  minScale: 0.05,    // ここを小さくすると “もっと” 縮小できる
+  maxScale: 1.00,
+  plugins: [ RevealHighlight, RevealNotes ]
+});
+
+  </script>
+</body>
+</html>
