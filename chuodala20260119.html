@@ -57,17 +57,16 @@
         <h3>研究の背景と自動化への要請</h3>
         <div class="two-col">
           <div>
-            <h4>「引用・影響関係」調査の現状</h4>
+            <h4>引用・影響関係調査の現状</h4>
             <ul>
-              [cite_start]<li>テクスト間の照合作業は研究者の手作業に依存しており、転記コストが極めて高い [cite: 4, 12, 594]。</li>
-              [cite_start]<li>人為的エラーの発生が避けられず、データの信頼性を損なう要因となっている [cite: 17, 19, 605]。</li>
-              [cite_start]<li>独自形式による記録が一般的であり、データの相互運用性が低い [cite: 124, 1117]。</li>
+              <li>テクスト間の照合作業は研究者の手作業に依存しており、転記コストが極めて高い </li>
+              <li>人為的エラーの発生が避けられず、データの信頼性を損なう要因となっている </li>
+              <li>独自形式による記録が一般的であり、データの相互運用性が低い </li>
             </ul>
           </div>
           <div class="important-box">
             <h4>開発指針</h4>
-            [cite_start]<p><strong>「AIは提案、人間が決定」</strong>[cite: 30-32]</p>
-            [cite_start]<p>専門的知見の介入を前提とし、検証可能な構造化データ（JSON/CSV）を生成する [cite: 34-37, 958]。</p>
+            <p>専門的知見の介入を前提とし、検証可能な構造化データ（JSON/CSV）を生成する </p>
           </div>
         </div>
         
@@ -98,14 +97,17 @@
       <section>
         <h3>統合カタログとvrefシステムの設計</h3>
         <ul>
-          [cite_start]<li><strong>統合検索インターフェース</strong>：文学作品と聖書を単一の検索窓で処理 [cite: 92-93, 128]。</li>
+          <li><strong>統合検索インターフェース</strong>：文学作品と聖書を単一の検索窓で処理 </li>
           <li><strong>vref（Verse Reference）の採用</strong>：
             <ul>
-              [cite_start]<li>BibleNLP準拠の8桁数値IDにより、翻訳版を問わない厳密な特定を実現 [cite: 196-217]。</li>
-              [cite_start]<li>O(1)の計算複雑度で3万節超の聖書テクストへ高速アクセスする [cite: 219-221]。</li>
+              <li>BibleNLP準拠の8桁数値IDにより、翻訳版を問わない厳密な特定を実現 </li>
+              <li>O(1)の計算複雑度で3万節超の聖書テクストへ高速アクセスする </li>
             </ul>
           </li>
         </ul>
+      </section>
+
+      <section>
         <div style="margin-top: 20px;">
           <h4>【デモンストレーション1】</h4>
           <p>ローカルDBからの高速なテキスト抽出フロー</p>
@@ -119,11 +121,14 @@
           <div>
             <h4>Split View機能の利点</h4>
             <ul>
-              [cite_start]<li>同一PDFの本文と注釈（文末注等）を左右に並列表示 [cite: 925-926]。</li>
-              [cite_start]<li>頻繁なページ遷移による思考の断絶を解消する [cite: 927-929]。</li>
-              [cite_start]<li>PDF.jsによるOCRレイヤーを活用し、精密なテキスト選択を実現 [cite: 921-922]。</li>
+              <li>同一PDFの本文と注釈（文末注等）を左右に並列表示 </li>
+              <li>頻繁なページ遷移による思考の断絶を解消する </li>
+              <li>PDF.jsによるOCRレイヤーを活用し、精密なテキスト選択を実現 </li>
             </ul>
           </div>
+      </section>
+
+      <section>
           <div>
             <h4>【デモンストレーション2】</h4>
             <p>文末注に対応した画面二分割の実践</p>
@@ -135,10 +140,14 @@
       <section>
         <h3>AIによる略語体系の動的解釈</h3>
         <ul>
-          [cite_start]<li><strong>課題</strong>：論文ごとに異なる略語体系（例：PL = Paradise Lost）[cite: 376-378]。</li>
-          [cite_start]<li><strong>解決策</strong>：OpenAI Vision APIが凡例ページを直接画像解析し、辞書を自動構築 [cite: 381-382]。</li>
-          [cite_start]<li><strong>実装</strong>：高解像度レンダリング画像のBase64転送による高精度認識 [cite: 465-474, 557-564]。</li>
+          <li><strong>課題</strong>：論文ごとに異なる略語体系（例：PL = Paradise Lost）</li>
+          <li><strong>解決策</strong>：OpenAI Vision APIが凡例ページを直接画像解析し、辞書を自動構築 </li>
+          <li><strong>実装</strong>：高解像度レンダリング画像のBase64転送による高精度認識 </li>
         </ul>
+      </section>
+
+      <section>
+
         <div style="margin-top: 20px;">
           <h4>【デモンストレーション3】</h4>
           <p>[OpenAI API] 略語リストの自動抽出</p>
@@ -152,16 +161,19 @@
           <div>
             <h4>効率化の実績</h4>
             <ul>
-              [cite_start]<li>1ページあたりの作業時間を約5分から30秒へ短縮（削減率90%）[cite: 866-867]。</li>
-              [cite_start]<li>脚注内の「行番号参照」をAIが認識し、関連箇所を自動提示 [cite: 655-660]。</li>
-              [cite_start]<li>研究者は提示された候補から学術的整合性を確認し保存を決定 [cite: 613, 874-877]。</li>
+              <li>1ページあたりの作業時間を約5分から30秒へ短縮（削減率90%）</li>
+              <li>脚注内の「行番号参照」をAIが認識し、関連箇所を自動提示 </li>
+              <li>研究者は提示された候補から学術的整合性を確認し保存を決定 </li>
             </ul>
           </div>
+        </div>
+      </section>
+      
+      <section>
           <div>
-            <h4>【デモンストレーション4】</h4>
-            <p>[OpenAI API] ターゲット／ソーステキストの自動抽出</p>
-            <iframe class="frame" src="https://www.youtube.com/embed/QBrOLi3hqj0" title="YouTube video player" allowfullscreen></iframe>
-          </div>
+          <h4>【デモンストレーション4】</h4>
+          <p>[OpenAI API] ターゲット／ソーステキストの自動抽出</p>
+          <iframe class="frame" src="https://www.youtube.com/embed/QBrOLi3hqj0" title="YouTube video player" allowfullscreen></iframe>
         </div>
       </section>
 
@@ -170,13 +182,13 @@
         <div class="important-box">
           <h4>人文学とAIの共創に向けて</h4>
           <ul>
-            [cite_start]<li><strong>透明性の確保</strong>：AIの処理過程を可視化し、学術的検証可能性を担保する [cite: 34-35]。</li>
-            [cite_start]<li><strong>コーパス拡張</strong>：Project Gutenbergミラー（7万作品）との高度な連携 [cite: 151-160]。</li>
-            [cite_start]<li><strong>MCPの統合</strong>：Model Context Protocolによる、AIと大規模外部リソースの動的接続 [cite: 57, 1291-1294]。</li>
+            <li><strong>透明性の確保</strong>：AIの処理過程を可視化し、学術的検証可能性を担保する </li>
+            <li><strong>コーパス拡張</strong>：Project Gutenbergミラー（7万作品）との高度な連携 </li>
+            <li><strong>MCPの統合</strong>：Model Context Protocolによる、AIと大規模外部リソースの動的接続 </li>
           </ul>
         </div>
         <p style="margin-top: 30px; text-align: center; font-weight: bold; font-size: 32px; color: #0369a1;">
-          [cite_start]個人研究者が活用可能な「軽量かつ実用的なDHツール」の普及を目指す [cite: 8, 1386-1389]
+          個人研究者が活用可能な軽量かつ実用的なDHツールの普及を目指す 
         </p>
       </section>
 
