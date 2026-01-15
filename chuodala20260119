@@ -10,62 +10,195 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/theme/simple.css" id="theme" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/monokai.css" id="highlight-theme" />
   <style>
-    .reveal section { font-size: 28px; }
-    .reveal h1 { font-size: 50px; }
-    .reveal h2 { font-size: 33px; }
-    .reveal h3 { font-size: 28px; }
-    .reveal h4 { font-size: 27px; }
-    .reveal ul, .reveal ol { margin-left: 0.3; }
-    table { font-size: 22px; }
-    blockquote { font-style: normal; }
-    .reveal-viewport { background: #F6F7F9; }
-    /* スライド本文を左揃えにする */
-    .reveal .slides section {
-    text-align: left;
+    :root {
+      --r-main-font-size: 26px;
+      --r-heading-text-transform: none;
+      --r-heading-font-weight: bold;
     }
-    .reveal .slides section h1{
-     text-align: left;
-    }
-
+    .reveal section { font-size: 26px; line-height: 1.5; }
+    .reveal h1 { font-size: 48px; color: #1e293b; margin-bottom: 20px; }
+    .reveal h2 { font-size: 30px; color: #334155; margin-bottom: 15px; }
+    .reveal h3 { font-size: 28px; color: #0f172a; border-left: 8px solid #0ea5e9; padding-left: 15px; margin-bottom: 25px; }
+    .reveal h4 { font-size: 24px; color: #0369a1; margin-top: 20px; margin-bottom: 10px; }
+    .reveal ul, .reveal ol { margin-left: 1.2em; margin-bottom: 20px; }
+    .reveal li { margin-bottom: 10px; }
+    .reveal-viewport { background: #F8FAFC; }
+    
+    /* レイアウト調整 */
+    .reveal .slides section { text-align: left; padding: 40px; }
+    .reveal .slides section h1 { text-align: left; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+    .frame { width: 100%; height: 450px; border: 0; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .important-box { background: #e2e8f0; padding: 20px; border-radius: 8px; border-left: 5px solid #64748b; }
+    hr { border: 0; border-top: 1px solid #cbd5e1; margin: 20px 0; }
   </style>
 </head>
-
 
 <body>
   <div class="reveal">
     <div class="slides">
 
       <section>
-        <br></br>
-        <br></br>
-        <h1>Human-in-the-Loopによる引用解決ツール</h1>
-        <h2>ワークフローとライブデモンストレーション</h2>
-        <h2>A Human-in-the-Loop Citation Resolution Tool: Live Demonstration and Workflow</h2>
-        <hr /><br></br>
-        <h2>筒井遥<br />人間文化研究機構 人間文化研究創発センター DH推進室（特任助教）</h2>
-        <h2>Haruka Tsutsui<br/>Digital Humanities Projects Office at the National Institutes for the Humanities (NIHU)</h2>
-        <h2>2026年1月19日(月)<br />人文学におけるテクスト分析のデジタル的試み 2025</h2>
+        <div style="margin-top: 100px;">
+          <h1>Human-in-the-Loopによる引用解決ツール</h1>
+          <p style="font-size: 32px; color: #64748b;">ワークフローとライブデモンストレーション</p>
+          <p style="font-size: 22px; color: #94a3b8;">A Human-in-the-Loop Citation Resolution Tool: Live Demonstration and Workflow</p>
+          <hr />
+          <div style="margin-top: 40px;">
+            <p style="font-size: 24px; font-weight: bold;">筒井遥</p>
+            <p style="font-size: 20px;">人間文化研究機構 人間文化研究創発センター DH推進室（特任助教）</p>
+            <p style="font-size: 20px; color: #64748b;">Digital Humanities Projects Office at the National Institutes for the Humanities (NIHU)</p>
+            <p style="font-size: 20px; margin-top: 20px;">2026年1月19日(月)<br />人文学におけるテクスト分析のデジタル的試み 2025</p>
+          </div>
+        </div>
       </section>
 
+      <section>
+        <h3>研究の背景と自動化への要請</h3>
+        <div class="two-col">
+          <div>
+            <h4>「引用・影響関係」調査の現状</h4>
+            <ul>
+              [cite_start]<li>テクスト間の照合作業は研究者の手作業に依存しており、転記コストが極めて高い [cite: 4, 12, 594]。</li>
+              [cite_start]<li>人為的エラーの発生が避けられず、データの信頼性を損なう要因となっている [cite: 17, 19, 605]。</li>
+              [cite_start]<li>独自形式による記録が一般的であり、データの相互運用性が低い [cite: 124, 1117]。</li>
+            </ul>
+          </div>
+          <div class="important-box">
+            <h4>開発指針</h4>
+            [cite_start]<p><strong>「AIは提案、人間が決定」</strong>[cite: 30-32]</p>
+            [cite_start]<p>専門的知見の介入を前提とし、検証可能な構造化データ（JSON/CSV）を生成する [cite: 34-37, 958]。</p>
+          </div>
+        </div>
+        
+        <svg viewBox="0 0 900 180" style="width:100%; height:auto; font-family:system-ui,sans-serif; margin-top:30px">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+              <path d="M0,0 L10,5 L0,10 Z" fill="#64748b" />
+            </marker>
+          </defs>
+          <rect x="10" y="30" width="260" height="100" rx="8" fill="#0ea5e9" opacity="0.1" stroke="#0ea5e9" stroke-width="2"/>
+          <text x="140" y="70" text-anchor="middle" font-size="18" font-weight="bold" fill="#0369a1">1. AIによる自動抽出</text>
+          <text x="140" y="100" text-anchor="middle" font-size="14" fill="#0369a1">関連箇所の効率的な特定</text>
 
+          <line x1="270" y1="80" x2="310" y2="80" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+
+          <rect x="320" y="30" width="260" height="100" rx="8" fill="#22c55e" opacity="0.1" stroke="#22c55e" stroke-width="2"/>
+          <text x="450" y="70" text-anchor="middle" font-size="18" font-weight="bold" fill="#15803d">2. 研究者による検証</text>
+          <text x="450" y="100" text-anchor="middle" font-size="14" fill="#15803d">学術的妥当性の判断・修正</text>
+
+          <line x1="580" y1="80" x2="620" y2="80" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+
+          <rect x="630" y="30" width="260" height="100" rx="8" fill="#f59e0b" opacity="0.1" stroke="#f59e0b" stroke-width="2"/>
+          <text x="760" y="70" text-anchor="middle" font-size="18" font-weight="bold" fill="#b45309">3. 構造化保存</text>
+          <text x="760" y="100" text-anchor="middle" font-size="14" fill="#b45309">再利用可能なユニバーサル形式</text>
+        </svg>
+      </section>
+
+      <section>
+        <h3>統合カタログとvrefシステムの設計</h3>
+        <ul>
+          [cite_start]<li><strong>統合検索インターフェース</strong>：文学作品と聖書を単一の検索窓で処理 [cite: 92-93, 128]。</li>
+          <li><strong>vref（Verse Reference）の採用</strong>：
+            <ul>
+              [cite_start]<li>BibleNLP準拠の8桁数値IDにより、翻訳版を問わない厳密な特定を実現 [cite: 196-217]。</li>
+              [cite_start]<li>O(1)の計算複雑度で3万節超の聖書テクストへ高速アクセスする [cite: 219-221]。</li>
+            </ul>
+          </li>
+        </ul>
+        <div style="margin-top: 20px;">
+          <h4>【デモンストレーション1】</h4>
+          <p>ローカルDBからの高速なテキスト抽出フロー</p>
+          <iframe class="frame" src="https://www.youtube.com/embed/hnlE9f4U6es" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <section>
+        <h3>研究ワークフローを最適化するUI設計</h3>
+        <div class="two-col">
+          <div>
+            <h4>Split View機能の利点</h4>
+            <ul>
+              [cite_start]<li>同一PDFの本文と注釈（文末注等）を左右に並列表示 [cite: 925-926]。</li>
+              [cite_start]<li>頻繁なページ遷移による思考の断絶を解消する [cite: 927-929]。</li>
+              [cite_start]<li>PDF.jsによるOCRレイヤーを活用し、精密なテキスト選択を実現 [cite: 921-922]。</li>
+            </ul>
+          </div>
+          <div>
+            <h4>【デモンストレーション2】</h4>
+            <p>文末注に対応した画面二分割の実践</p>
+            <iframe class="frame" src="https://www.youtube.com/embed/IoQxe4ENTzw" title="YouTube video player" allowfullscreen></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>AIによる略語体系の動的解釈</h3>
+        <ul>
+          [cite_start]<li><strong>課題</strong>：論文ごとに異なる略語体系（例：PL = Paradise Lost）[cite: 376-378]。</li>
+          [cite_start]<li><strong>解決策</strong>：OpenAI Vision APIが凡例ページを直接画像解析し、辞書を自動構築 [cite: 381-382]。</li>
+          [cite_start]<li><strong>実装</strong>：高解像度レンダリング画像のBase64転送による高精度認識 [cite: 465-474, 557-564]。</li>
+        </ul>
+        <div style="margin-top: 20px;">
+          <h4>【デモンストレーション3】</h4>
+          <p>[OpenAI API] 略語リストの自動抽出</p>
+          <iframe class="frame" src="https://www.youtube.com/embed/b1ZnwViTuoE" title="YouTube video player" allowfullscreen style="height: 350px;"></iframe>
+        </div>
+      </section>
+
+      <section>
+        <h3>脚注解析によるテクストペアの自動抽出</h3>
+        <div class="two-col">
+          <div>
+            <h4>効率化の実績</h4>
+            <ul>
+              [cite_start]<li>1ページあたりの作業時間を約5分から30秒へ短縮（削減率90%）[cite: 866-867]。</li>
+              [cite_start]<li>脚注内の「行番号参照」をAIが認識し、関連箇所を自動提示 [cite: 655-660]。</li>
+              [cite_start]<li>研究者は提示された候補から学術的整合性を確認し保存を決定 [cite: 613, 874-877]。</li>
+            </ul>
+          </div>
+          <div>
+            <h4>【デモンストレーション4】</h4>
+            <p>[OpenAI API] ターゲット／ソーステキストの自動抽出</p>
+            <iframe class="frame" src="https://www.youtube.com/embed/QBrOLi3hqj0" title="YouTube video player" allowfullscreen></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>今後の展望と結び</h3>
+        <div class="important-box">
+          <h4>人文学とAIの共創に向けて</h4>
+          <ul>
+            [cite_start]<li><strong>透明性の確保</strong>：AIの処理過程を可視化し、学術的検証可能性を担保する [cite: 34-35]。</li>
+            [cite_start]<li><strong>コーパス拡張</strong>：Project Gutenbergミラー（7万作品）との高度な連携 [cite: 151-160]。</li>
+            [cite_start]<li><strong>MCPの統合</strong>：Model Context Protocolによる、AIと大規模外部リソースの動的接続 [cite: 57, 1291-1294]。</li>
+          </ul>
+        </div>
+        <p style="margin-top: 30px; text-align: center; font-weight: bold; font-size: 32px; color: #0369a1;">
+          [cite_start]個人研究者が活用可能な「軽量かつ実用的なDHツール」の普及を目指す [cite: 8, 1386-1389]
+        </p>
+      </section>
 
     </div>
   </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/notes/notes.min.js"></script>
   <script>
     Reveal.initialize({
-  hash: true,
-  slideNumber: true,
-  transition: 'none',
-  center: false,     // 中央寄せレイアウトをやめる（高さを稼ぐ）
-  margin: 0.02,      // スライドの外側余白を小さく
-  minScale: 0.05,    // ここを小さくすると “もっと” 縮小できる
-  maxScale: 1.00,
-  plugins: [ RevealHighlight, RevealNotes ]
-});
-
+      hash: true,
+      slideNumber: 'c/t',
+      transition: 'slide',
+      center: false,
+      margin: 0.1,
+      minScale: 0.2,
+      maxScale: 1.5,
+      width: 1200,
+      height: 800,
+      plugins: [RevealHighlight, RevealNotes]
+    });
   </script>
 </body>
 </html>
