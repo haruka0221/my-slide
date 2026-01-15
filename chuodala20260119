@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Human-in-the-Loopによる引用解決ツール──ワークフローとライブデモンストレーション</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reset.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/theme/simple.css" id="theme" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/monokai.css" id="highlight-theme" />
+  <style>
+    .reveal section { font-size: 28px; }
+    .reveal h1 { font-size: 50px; }
+    .reveal h2 { font-size: 33px; }
+    .reveal h3 { font-size: 28px; }
+    .reveal h4 { font-size: 27px; }
+    .reveal ul, .reveal ol { margin-left: 0.3; }
+    table { font-size: 22px; }
+    blockquote { font-style: normal; }
+    .reveal-viewport { background: #F6F7F9; }
+    /* スライド本文を左揃えにする */
+    .reveal .slides section {
+    text-align: left;
+    }
+    .reveal .slides section h1{
+     text-align: left;
+    }
+
+  </style>
+</head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section>
+        <br></br>
+        <br></br>
+        <h1>Human-in-the-Loopによる引用解決ツール</h1>
+        <h2>ワークフローとライブデモンストレーション</h2>
+        <h2>A Human-in-the-Loop Citation Resolution Tool: Live Demonstration and Workflow</h2>
+        <hr /><br></br>
+        <h2>筒井遥<br />人間文化研究機構 人間文化研究創発センター DH推進室（特任助教）</h2>
+        <h2>Haruka Tsutsui<br/>Digital Humanities Projects Office at the National Institutes for the Humanities (NIHU)</h2>
+        <h2>2026年1月19日(月)<br />人文学におけるテクスト分析のデジタル的試み 2025</h2>
+      </section>
+
+
