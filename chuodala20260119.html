@@ -203,8 +203,7 @@
           <h4>【デモンストレーション1】</h4>
           <p>手動によるテキストペアの選択・入力・保存のフロー</p>
           <iframe class="frame" src="https://youtu.be/in1l08F1bQI" title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+              allowfullscreen style="height: 380px;"></iframe>
         </div>
       </section>
 
@@ -258,7 +257,7 @@
 
       </section>
 
-
+    <section>
       <section>
         <h3 style="margin-bottom:30px">1-1. AIによる自動抽出のワークフロー</h3>
 
@@ -286,18 +285,18 @@
         <div
           style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; text-align: center;">
           <div style="padding: 20px; background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0;">
-            <div style="font-size: 40px; margin-bottom: 10px;">📄</div>
-            <div style="font-size: 18px; font-weight: bold; color: #0369a1;">画像解析</div>
+           
+            <div style="font-size: 28px; font-weight: bold; color: #0369a1;">画像解析</div>
             <div style="font-size: 14px; margin-top: 5px;">PDFページを画像としてAIへ送信</div>
           </div>
           <div style="padding: 20px; background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0;">
-            <div style="font-size: 40px; margin-bottom: 10px;">🤖</div>
-            <div style="font-size: 18px; font-weight: bold; color: #0369a1;">情報抽出</div>
+            
+            <div style="font-size: 28px; font-weight: bold; color: #0369a1;">情報抽出</div>
             <div style="font-size: 14px; margin-top: 5px;">プロンプトに従い必要な要素を特定</div>
           </div>
           <div style="padding: 20px; background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0;">
-            <div style="font-size: 40px; margin-bottom: 10px;">⌨️</div>
-            <div style="font-size: 18px; font-weight: bold; color: #0369a1;">自動入力</div>
+            
+            <div style="font-size: 28px; font-weight: bold; color: #0369a1;">自動入力</div>
             <div style="font-size: 14px; margin-top: 5px;">ブラウザ内の各項目へ適切に配分</div>
           </div>
         </div>
@@ -627,114 +626,420 @@
     </div>
 
  </section>
+</section>
 
 
-      <section>
-        <h3>統合カタログとvrefシステムの設計</h3>
-        <ul>
-          <li><strong>統合検索インターフェース</strong>：文学作品と聖書を単一の検索窓で処理 </li>
-          <li><strong>vref（Verse Reference）の採用</strong>：
-            <ul>
-              <li>BibleNLP準拠の8桁数値IDにより、翻訳版を問わない厳密な特定を実現 </li>
-              <li>O(1)の計算複雑度で3万節超の聖書テクストへ高速アクセスする </li>
-            </ul>
-          </li>
+<section>
+
+<section>
+  <h3 style="margin-bottom:30px">2-1.統合カタログとvrefシステムの設計</h3>
+
+  <div style="margin-bottom:25px">
+    <h4 style="color: #0369a1; font-size: 24px; border-bottom: 1px solid #cbd5e1; padding-bottom: 5px;">
+      1. 多様なコーパスの統合基盤
+    </h4>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px;">
+      <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center;">
+        <div style="font-size: 14px; color: #64748b; font-weight: bold;">Literature</div>
+        <div style="font-size: 18px; color: #1e293b; margin-top: 5px;">Project Gutenberg</div>
+        <div style="font-size: 13px; color: #94a3b8;">約7万作品のローカルミラー</div>
+      </div>
+      <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center;">
+        <div style="font-size: 14px; color: #64748b; font-weight: bold;">Sacred Texts</div>
+        <div style="font-size: 18px; color: #1e293b; margin-top: 5px;">BibleNLP (eBible)</div>
+        <div style="font-size: 13px; color: #94a3b8;">多言語・多翻訳の聖書テクスト群</div>
+      </div>
+      <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center;">
+        <div style="font-size: 14px; color: #64748b; font-weight: bold;">Future Archive</div>
+        <div style="font-size: 18px; color: #1e293b; margin-top: 5px;">IA / HathiTrust</div>
+        <div style="font-size: 13px; color: #94a3b8;">広域デジタルアーカイブとの連携</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col" style="gap: 20px;">
+    <div>
+      <h4 style="color: #0369a1; font-size: 22px;">統合検索エンジン</h4>
+      <ul style="font-size: 21px; line-height: 1.5;">
+        <li><strong>ExtendedCSVCatalogSystem</strong><br>単一の検索窓で全DBを横断処理し、クエリのパターン（ローマ数字や節番号）から対象を自動判別</li>
+        <li><strong>柔軟な同定アルゴリズム</strong><br>作品タイトルのファジーマッチングにより、表記揺れを含むクエリを正確なソースファイルへ紐付け</li>
+      </ul>
+    </div>
+
+    <div style="background: #1e293b; padding: 20px; border-radius: 12px; color: #f8fafc;">
+      <h4 style="color: #38bdf8; font-size: 22px; margin-top: 0;">聖書参照の標準化：vref</h4>
+      <div style="font-family: monospace; background: #0f172a; padding: 10px; border-radius: 6px; font-size: 24px; text-align: center; color: #fbbf24; margin-bottom: 10px;">
+        BB CCC VVV
+      </div>
+      <ul style="font-size: 18px; line-height: 1.4; color: #cbd5e1;">
+        <li>BibleNLP準拠の8桁数値IDによる節特定</li>
+        <li>翻訳版や言語の差異を吸収し、常に同一の参照ポイントを確保する共通言語</li>
+        <li>KJV聖書31,102節へのランダムアクセスを実現</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <h3 style="margin-bottom:22px">2-2. 検索プロセス：文学作品 (Literature)</h3>
+
+  <div class="two-col" style="gap: 18px; align-items: start;">
+
+    <!-- LEFT: process (compact, not a wall of text) -->
+    <div style="display:flex; flex-direction:column; gap:12px;">
+
+      <!-- Input -->
+      <div style="
+        background:#ffffff;
+        padding:14px 16px;
+        border-radius:10px;
+        border:1px solid #e2e8f0;
+        box-shadow:0 6px 18px rgba(0,0,0,.05);
+      ">
+        <div style="font-size:13px; color:#64748b; letter-spacing:.02em; margin-bottom:6px;">
+          Input Query
+        </div>
+        <div style="font-size:22px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:#0f172a;">
+          Paradise Lost I.47–48
+        </div>
+      </div>
+
+      <!-- Flow strip -->
+      <div style="
+        background:#ffffff;
+        padding:14px 16px;
+        border-radius:10px;
+        border:1px solid #e2e8f0;
+        box-shadow:0 6px 18px rgba(0,0,0,.05);
+      ">
+        <div style="font-size:13px; color:#64748b; letter-spacing:.02em; margin-bottom:10px;">
+          Process
+        </div>
+
+        <!-- horizontal mini-steps -->
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+
+          <div style="
+            padding:8px 10px;
+            border-radius:999px;
+            background:rgba(14,165,233,.10);
+            color:#0f172a;
+            font-size:18px;
+            white-space:nowrap;
+          ">
+            1) クエリ解析
+          </div>
+
+          <div style="color:#94a3b8; font-size:18px;">→</div>
+
+          <div style="
+            padding:8px 10px;
+            border-radius:999px;
+            background:rgba(34,197,94,.10);
+            color:#0f172a;
+            font-size:18px;
+            white-space:nowrap;
+          ">
+            2) カタログ照合
+          </div>
+
+          <div style="color:#94a3b8; font-size:18px;">→</div>
+
+          <div style="
+            padding:8px 10px;
+            border-radius:999px;
+            background:rgba(168,85,247,.10);
+            color:#0f172a;
+            font-size:18px;
+            white-space:nowrap;
+          ">
+            3) 行抽出
+          </div>
+
+        </div>
+
+        <!-- minimal details (two lines only) -->
+        <div style="margin-top:12px; font-size:18px; line-height:1.45; color:#0f172a;">
+          <div>タイトル：Paradise Lost　　Book：I → 1　　範囲：47–48行</div>
+          
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: JSON (bounded width + no huge empty block) -->
+    <div style="
+      background:#0f172a;
+      padding:14px 16px;
+      border-radius:12px;
+      color:#f8fafc;
+      box-shadow:0 10px 28px rgba(0,0,0,.18);
+      max-width: 760px;
+    ">
+      <div style="font-size:14px; color:#7dd3fc; letter-spacing:.02em; margin-bottom:8px;">
+        Output: Structured Data (JSON)
+      </div>
+
+      <pre style="
+        font-size:24px;
+        line-height:1.05;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        background: transparent;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        white-space: pre;
+        overflow: hidden;   /* 右下の巨大スクロール感を抑える */
+      "><code class="language-json">{
+  "type": "literature",
+  "source": "pg:paradise_lost",
+  "title": "Paradise Lost",
+  "author": "John Milton",
+  "text": "To bottomless perdition, there to dwell/ In Adamantine Chains and penal Fire,",
+  "confidence": 0.95,
+  "metadata": {
+    "lines": "47-48",
+    "source_file": "PL_Milton.txt"
+  }
+}</code></pre>
+
+      <div style="margin-top:10px; font-size:16px; color:#94a3b8;">
+        JSONは内部記録用の形式。後段の検索・再利用・集計の入口になる。
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section>
+  <h3 style="margin-bottom:22px">2-3. 検索プロセス：聖書 (Bible)</h3>
+
+  <div class="two-col" style="gap: 18px; align-items: start;">
+
+    <!-- LEFT: process (compact) -->
+    <div style="display:flex; flex-direction:column; gap:12px;">
+
+      <!-- Input -->
+      <div style="
+        background:#ffffff;
+        padding:14px 16px;
+        border-radius:10px;
+        border:1px solid #e2e8f0;
+        box-shadow:0 6px 18px rgba(0,0,0,.05);
+      ">
+        <div style="font-size:13px; color:#64748b; letter-spacing:.02em; margin-bottom:6px;">
+          Input Query
+        </div>
+        <div style="font-size:22px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:#0f172a;">
+          Genesis 1:1–2
+        </div>
+      </div>
+
+      <!-- Flow strip -->
+      <div style="
+        background:#ffffff;
+        padding:14px 16px;
+        border-radius:10px;
+        border:1px solid #e2e8f0;
+        box-shadow:0 6px 18px rgba(0,0,0,.05);
+      ">
+        <div style="font-size:13px; color:#64748b; letter-spacing:.02em; margin-bottom:10px;">
+          Process
+        </div>
+
+        <!-- horizontal mini-steps -->
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+
+          <div style="
+            padding:8px 10px;
+            border-radius:999px;
+            background:rgba(14,165,233,.10);
+            color:#0f172a;
+            font-size:18px;
+            white-space:nowrap;
+          ">
+            1) 参照解析
+          </div>
+
+          <div style="color:#94a3b8; font-size:18px;">→</div>
+
+          <div style="
+            padding:8px 10px;
+            border-radius:999px;
+            background:rgba(245,158,11,.14);
+            color:#0f172a;
+            font-size:18px;
+            white-space:nowrap;
+          ">
+            2) vref 変換
+          </div>
+
+          <div style="color:#94a3b8; font-size:18px;">→</div>
+
+          <div style="
+            padding:8px 10px;
+            border-radius:999px;
+            background:rgba(168,85,247,.10);
+            color:#0f172a;
+            font-size:18px;
+            white-space:nowrap;
+          ">
+            3) 該当節抽出
+          </div>
+
+        </div>
+
+        <!-- minimal details -->
+        <div style="margin-top:12px; font-size:18px; line-height:1.45; color:#0f172a;">
+          <div>書名：Genesis　章：1　節：1–2</div>
+          <div style="color:#475569; margin-top:6px;">
+            vref：01001001–01001002（翻訳版に依存しない節ID）　→　KJV等から該当範囲を取得
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: JSON (bounded + readable) -->
+    <div style="
+      background:#0f172a;
+      padding:14px 16px;
+      border-radius:12px;
+      color:#f8fafc;
+      box-shadow:0 10px 28px rgba(0,0,0,.18);
+      max-width: 760px;
+    ">
+      <div style="font-size:14px; color:#7dd3fc; letter-spacing:.02em; margin-bottom:8px;">
+        Output: Structured Data (JSON)
+      </div>
+
+      <pre style="
+        font-size:24px;
+        line-height:1.05;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        background: transparent;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        white-space: pre;
+        overflow: hidden;
+      "><code class="language-json">{
+  "type": "bible",
+  "source": "bible:kjv",
+  "title": "Genesis 1:1-2",
+  "text": "In the beginning God created the heaven and the earth./ And the earth was without form, and void; ...",
+  "confidence": 1.0,
+  "metadata": {
+    "book": "Genesis",
+    "chapter": 1,
+    "verses": "1-2",
+    "vref_start": "01001001",
+    "vref_end": "01001002"
+  }
+}</code></pre>
+
+      <div style="margin-top:10px; font-size:16px; color:#94a3b8;">
+        vrefにより「章節」をID化し、言語・翻訳版をまたいで同一の節を確実に参照できる。
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</section>
+
+<section>
+  <h3 style="margin-bottom:30px">研究ワークフローを最適化するUI設計（1）</h3>
+
+  <div class="two-col" style="align-items: stretch;">
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <div style="background: rgba(34, 197, 94, 0.05); padding: 25px; border-radius: 12px; border-left: 10px solid #22c55e;">
+        <h4 style="margin-top:0; color: #15803d;">フルテキストビューアーによる正確な範囲調整</h4>
+        <ul style="font-size: 24px; line-height: 1.6; margin-top: 15px;">
+          <li><strong>アノテーション箇所の微調整</strong><br>抽出されたテキストの開始行・終了行を、コンテクストを確認しながらその場で細かく修正可能</li>
+          <br>
+          <li><strong>直感的な範囲選択</strong><br>コーパス内の全行を表示し、Shift+Click等による直感的な行範囲指定をサポート</li>
+          
+          
         </ul>
-      </section>
+      </div>
 
-      <section>
-        <div style="margin-top: 20px;">
-          <h4>【デモンストレーション1】</h4>
-          <p>ローカルDBからの高速なテキスト抽出フロー</p>
-          <iframe class="frame" src="https://www.youtube.com/embed/hnlE9f4U6es" title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-        </div>
-      </section>
+      
+    </div>
 
-      <section>
-        <h3>研究ワークフローを最適化するUI設計</h3>
+    <div style="display: flex; flex-direction: column;">
+      <h4 style="margin-top:0; color: #1e293b;">【実演】ローカルDBからの抽出と微調整</h4>
+      <iframe class="frame" src="https://www.youtube.com/embed/hnlE9f4U6es" title="YouTube video player" allowfullscreen style="flex-grow: 1; min-height: 380px;"></iframe>
+    </div>
+  </div>
+</section>
 
-        <div>
-          <h4>Split View機能の利点</h4>
-          <ul>
-            <li>同一PDFの本文と注釈（文末注等）を左右に並列表示 </li>
-            <li>頻繁なページ遷移による思考の断絶を解消する </li>
-            <li>PDF.jsによるOCRレイヤーを活用し、精密なテキスト選択を実現 </li>
-          </ul>
-        </div>
+<section>
+  <h3 style="margin-bottom:30px">研究ワークフローを最適化するUI設計（2）</h3>
 
-      </section>
-
-      <section>
-        <div>
-          <h4>【デモンストレーション2】</h4>
-          <p>文末注に対応した画面二分割の実践</p>
-          <iframe class="frame" src="https://www.youtube.com/embed/IoQxe4ENTzw" title="YouTube video player"
-            allowfullscreen></iframe>
-        </div>
-
-      </section>
-
-      <section>
-        <h3>AIによる略語体系の動的解釈</h3>
-        <ul>
-          <li><strong>課題</strong>：論文ごとに異なる略語体系（例：PL = Paradise Lost）</li>
-          <li><strong>解決策</strong>：OpenAI Vision APIが凡例ページを直接画像解析し、辞書を自動構築 </li>
-          <li><strong>実装</strong>：高解像度レンダリング画像のBase64転送による高精度認識 </li>
+  <div class="two-col" style="align-items: stretch;">
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <div style="background: rgba(14, 165, 233, 0.05); padding: 25px; border-radius: 12px; border-left: 10px solid #0ea5e9;">
+        <h4 style="margin-top:0; color: #0369a1;">画面二分割（Split View）による参照効率化</h4>
+        <ul style="font-size: 24px; line-height: 1.6; margin-top: 15px;">
+          <li><strong>文末注への即時アクセス</strong><br>同一PDF内の「本文」と「注釈ページ」を左右に独立して並列表示</li>
+          <br>
+          <li><strong>シームレスなページ移動</strong><br>左右それぞれのビューアーが独立したナビゲーションを持ち、頻繁なページ遷移による断絶を解消</li>
         </ul>
-      </section>
+      </div>
+      
+     
+    </div>
 
-      <section>
+    <div style="display: flex; flex-direction: column;">
+      <h4 style="margin-top:0; color: #1e293b;">【実演】文末注に対応した二分割表示</h4>
+      <iframe class="frame" src="https://www.youtube.com/embed/IoQxe4ENTzw" title="YouTube video player" allowfullscreen style="flex-grow: 1; min-height: 380px;"></iframe>
+    </div>
+  </div>
+</section>
 
-        <div style="margin-top: 20px;">
-          <h4>【デモンストレーション3】</h4>
-          <p>[OpenAI API] 略語リストの自動抽出</p>
-          <iframe class="frame" src="https://www.youtube.com/embed/b1ZnwViTUoE" title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen style="width:100%; height:350px; border:0;">
-          </iframe>
 
-        </div>
-      </section>
+<section>
+  <h3 style="margin-bottom:30px">結びに代えて：人文学研究とデジタル・ワークフローの展望</h3>
 
-      <section>
-        <h3>脚注解析によるテクストペアの自動抽出</h3>
-
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+    
+    <div style="display: flex; flex-direction: column; gap: 35px;">
+      
+      <div style="display: flex; align-items: flex-start; gap: 15px;">
+        <div style="min-width: 4px; height: 50px; background: #475569; border-radius: 2px;"></div>
         <div>
-          <h4>効率化の実績</h4>
-          <ul>
-            <li>1ページあたりの作業時間を約5分から30秒へ短縮（削減率90%）</li>
-            <li>脚注内の「行番号参照」をAIが認識し、関連箇所を自動提示 </li>
-            <li>研究者は提示された候補から学術的整合性を確認し保存を決定 </li>
-          </ul>
+          <strong style="font-size: 24px; color: #1e293b; display: block; margin-bottom: 8px;">解析プロセスの透明化と検証可能性の担保</strong>
+          <span style="font-size: 21px; color: #475569;">AIによる提示情報の補完と人間による最終検証を峻別し、学術的妥当性を保持するワークフローの確立</span>
         </div>
+      </div>
 
-      </section>
-
-      <section>
+      <div style="display: flex; align-items: flex-start; gap: 15px;">
+        <div style="min-width: 4px; height: 50px; background: #475569; border-radius: 2px;"></div>
         <div>
-          <h4>【デモンストレーション4】</h4>
-          <p>[OpenAI API] ターゲット／ソーステキストの自動抽出</p>
-          <iframe class="frame" src="https://www.youtube.com/embed/QBrOLi3hqj0" title="YouTube video player"
-            allowfullscreen></iframe>
+          <strong style="font-size: 24px; color: #1e293b; display: block; margin-bottom: 8px;">外部アーカイブとの連携による調査範囲の拡張</strong>
+          <span style="font-size: 21px; color: #475569;">実装済みのProject Gutenbergミラーに加え、Internet ArchiveやHathiTrust等の大規模リポジトリとのメタデータ連携の深化</span>
         </div>
-      </section>
+      </div>
 
-      <section>
-        <h3>今後の展望と結び</h3>
-        <div class="important-box">
-          <h4>人文学とAIの共創に向けて</h4>
-          <ul>
-            <li><strong>透明性の確保</strong>：AIの処理過程を可視化し、学術的検証可能性を担保する </li>
-            <li><strong>コーパス拡張</strong>：Project Gutenbergミラー（7万作品）との高度な連携 </li>
-            <li><strong>MCPの統合</strong>：Model Context Protocolによる、AIと大規模外部リソースの動的接続 </li>
-          </ul>
+      <div style="display: flex; align-items: flex-start; gap: 15px;">
+        <div style="min-width: 4px; height: 50px; background: #475569; border-radius: 2px;"></div>
+        <div>
+          <strong style="font-size: 24px; color: #1e293b; display: block; margin-bottom: 8px;">独自リポジトリとAIの動的連携の試行</strong>
+          <span style="font-size: 21px; color: #475569;">Model Context Protocol（MCP）サーバーの構築を通じた、AIによる自律的な文献参照プロセスの最適化とその検証</span>
         </div>
-        <p style="margin-top: 30px; text-align: center; font-weight: bold; font-size: 32px; color: #0369a1;">
-          個人研究者が活用可能な軽量かつ実用的なDHツールの普及を目指す
-        </p>
-      </section>
+      </div>
+
+    </div>
+  </div>
+
+  </div>
+</section>
+
+
+
 
     </div>
   </div>
