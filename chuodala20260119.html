@@ -875,21 +875,21 @@
       <div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1;">
         <div style="font-size: 11px; color: #64748b; font-weight: 700;">STEP 2: 典拠同定</div>
         <div style="font-size: 17px; color: #1e293b; font-weight: bold; margin-top: 4px;">統合カタログ照合</div>
-        <div style="font-size: 14px; color: #475569; margin-top: 2px;">ファジー検索によりPGミラー内の正確なファイルを特定</div>
+        <div style="font-size: 14px; color: #475569; margin-top: 2px;">カタログ内から対象ID "2199" を特定</div>
       </div>
       <div style="text-align:center; color:#cbd5e1; font-size:12px; margin: -4px 0;">▼</div>
 
       <div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1;">
-        <div style="font-size: 11px; color: #64748b; font-weight: 700;">STEP 3: 参照正規化</div>
-        <div style="font-size: 17px; color: #1e293b; font-weight: bold; margin-top: 4px;">行番号マッピング</div>
-        <div style="font-size: 14px; color: #475569; margin-top: 2px;">ローマ数字「I」を「Book 1」とし、物理的な行範囲を確定</div>
+        <div style="font-size: 11px; color: #64748b; font-weight: 700;">STEP 3: パス生成</div>
+        <div style="font-size: 17px; color: #1e293b; font-weight: bold; margin-top: 4px;">階層ディレクトリ・解決</div>
+        <div style="font-size: 14px; color: #475569; margin-top: 2px;">ID "2199" から分散パス "2/1/9/2199/" を動的に生成</div>
       </div>
       <div style="text-align:center; color:#cbd5e1; font-size:12px; margin: -4px 0;">▼</div>
 
       <div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1;">
         <div style="font-size: 11px; color: #64748b; font-weight: 700;">STEP 4: コンテンツ抽出</div>
-        <div style="font-size: 17px; color: #1e293b; font-weight: bold; margin-top: 4px;">オンデマンド抽出</div>
-        <div style="font-size: 14px; color: #475569; margin-top: 2px;">ファイル内の47-48行目のみを部分的に読み込み</div>
+        <div style="font-size: 17px; color: #1e293b; font-weight: bold; margin-top: 4px;">オンデマンド取得 & Cleaning</div>
+        <div style="font-size: 14px; color: #475569; margin-top: 2px;">特定パスから読込・ヘッダー削除等のクレンジングを実行</div>
       </div>
     </div>
 
@@ -897,23 +897,25 @@
       <div style="font-size:13px; color:#7dd3fc; letter-spacing:.02em; margin-bottom:10px; font-weight: bold;">Output: Structured Data (JSON)</div>
       <pre style="font-size:18px; line-height:1.2; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: transparent; margin: 0; white-space: pre-wrap; word-break: break-all;"><code class="language-json">{
   "type": "literature",
-  "source": "pg:paradise_lost",
+  "pg_id": 2199,
   "title": "Paradise Lost",
   "author": "John Milton",
   "text": "To bottomless perdition, there to dwell...",
-  "confidence": 0.95,
+  "source": "mirror",
   "metadata": {
+    "path": "2/1/9/2199/2199.txt",
     "lines": "47-48",
-    "source_file": "PL_Milton.txt"
+    "clean_stats": {
+      "reduction": "12.4%"
+    }
   }
 }</code></pre>
       <div style="margin-top:15px; font-size:15px; color:#94a3b8; border-top: 1px solid #334155; padding-top: 10px;">
-        JSON形式での構造化により、後段のテキスト解析や集計処理へのシームレスな移行を可能にする
+        Gutenberg特有の階層構造（IDの各桁をディレクトリ化）を解決し、7万作品超への効率的なアクセスを実現する
       </div>
     </div>
   </div>
 </section>
-
 <section>
   <h3 style="margin-bottom:26px; color: #1e293b;">2-3. 検索プロセス：聖書 (Bible)</h3>
 
