@@ -200,14 +200,12 @@
 
       <section>
         <div style="margin-top: 20px;">
-          <h4>【デモンストレーション1】</h4>
+          <h4>【実演】手動によるテキストペアの選択・入力・保存のフロー</h4>
           <p>手動によるテキストペアの選択・入力・保存のフロー</p>
-          <iframe class="frame" src="https://youtu.be/in1l08F1bQI" title="YouTube video player"
+          <iframe class="frame" src="https://www.youtube.com/embed/in1l08F1bQI" title="YouTube video player"
               allowfullscreen style="height: 380px;"></iframe>
         </div>
       </section>
-
-
 
 
 
@@ -632,51 +630,195 @@
 <section>
 
 <section>
-  <h3 style="margin-bottom:30px">2-1.統合カタログとvrefシステムの設計</h3>
+  <h3 style="margin-bottom:30px">統合リポジトリの構成と拡張ロードマップ</h3>
 
-  <div style="margin-bottom:25px">
-    <h4 style="color: #0369a1; font-size: 24px; border-bottom: 1px solid #cbd5e1; padding-bottom: 5px;">
-      1. 多様なコーパスの統合基盤
+  <div style="margin-bottom:40px">
+    <h4 style="color: #1e293b; font-size: 22px; border-bottom: 2px solid #0ea5e9; padding-bottom: 8px; margin-bottom: 20px;">
+      現行システムにおける統合基盤
     </h4>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px;">
-      <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center;">
-        <div style="font-size: 14px; color: #64748b; font-weight: bold;">Literature</div>
-        <div style="font-size: 18px; color: #1e293b; margin-top: 5px;">Project Gutenberg</div>
-        <div style="font-size: 13px; color: #94a3b8;">約7万作品のローカルミラー</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      
+      <div style="background: rgba(14, 165, 233, 0.05); padding: 20px; border-radius: 8px; border: 1px solid #0ea5e9; text-align: center;">
+        <div style="font-size: 12px; color: #0ea5e9; font-weight: bold; letter-spacing: 0.1em;">IMPLEMENTED / LINE-BASED</div>
+        <div style="font-size: 20px; color: #1e293b; margin-top: 10px; font-weight: bold;">Project Gutenberg</div>
+        <div style="font-size: 15px; color: #475569; margin-top: 5px;">約7万作品のローカルミラーによる高速検索・抽出</div>
       </div>
-      <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center;">
-        <div style="font-size: 14px; color: #64748b; font-weight: bold;">Sacred Texts</div>
-        <div style="font-size: 18px; color: #1e293b; margin-top: 5px;">BibleNLP (eBible)</div>
-        <div style="font-size: 13px; color: #94a3b8;">多言語・多翻訳の聖書テクスト群</div>
+
+      <div style="background: rgba(14, 165, 233, 0.05); padding: 20px; border-radius: 8px; border: 1px solid #0ea5e9; text-align: center;">
+        <div style="font-size: 12px; color: #0ea5e9; font-weight: bold; letter-spacing: 0.1em;">IMPLEMENTED / VERSE-BASED</div>
+        <div style="font-size: 20px; color: #1e293b; margin-top: 10px; font-weight: bold;">BibleNLP (eBible)</div>
+        <div style="font-size: 15px; color: #475569; margin-top: 5px;">vref体系に基づく多言語・多翻訳テクストの正規化</div>
       </div>
-      <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center;">
-        <div style="font-size: 14px; color: #64748b; font-weight: bold;">Future Archive</div>
-        <div style="font-size: 18px; color: #1e293b; margin-top: 5px;">IA / HathiTrust</div>
-        <div style="font-size: 13px; color: #94a3b8;">広域デジタルアーカイブとの連携</div>
+
+    </div>
+  </div>
+
+  <div>
+    <h4 style="color: #475569; font-size: 22px; border-bottom: 2px dashed #cbd5e1; padding-bottom: 8px; margin-bottom: 20px;">
+      将来的な連携先と多角的参照体系の構築
+    </h4>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      
+      <div style="background: #f8fafc; padding: 20px; border-radius: 8px; border: 1px dashed #94a3b8; text-align: center;">
+        <div style="font-size: 12px; color: #64748b; font-weight: bold; letter-spacing: 0.1em;">CTS URN PROTOCOL</div>
+        <div style="font-size: 20px; color: #1e293b; margin-top: 10px; font-weight: bold;">Perseus Digital Library</div>
+        <div style="font-size: 15px; color: #475569; margin-top: 5px;">
+          階層的識別子（CTS URN）に基づく参照体系が整備されており、<br>高精度なテクスト単位での位置特定が可能となる
+        </div>
+      </div>
+
+      <div style="background: #f8fafc; padding: 20px; border-radius: 8px; border: 1px dashed #94a3b8; text-align: center;">
+        <div style="font-size: 12px; color: #64748b; font-weight: bold; letter-spacing: 0.1em;">METADATA & PAGE-BASED ARCHIVE</div>
+        <div style="font-size: 20px; color: #1e293b; margin-top: 10px; font-weight: bold;">Internet Archive / HathiTrust</div>
+        <div style="font-size: 15px; color: #475569; margin-top: 5px;">
+          PGよりも大規模なデジタル資料群への書誌情報および該当テキスト<br>への到達可能性を拡張する（外部リポジトリとの中継的接続）
+        </div>
+      </div>
+
+    </div>
+  
+  </div>
+
+</section>
+
+
+
+<section>
+  
+  <h3 style="margin-bottom:30px">聖書典拠のグローバル・スタンダード：vref体系</h3>
+
+  <div class="two-col" style="gap: 30px; align-items: stretch;">
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <div style="background: rgba(14, 165, 233, 0.05); padding: 25px; border-radius: 12px; border-left: 10px solid #56717dab;">
+        <h4 style="margin-top:0; color: #1f4154;">PAB-NLPによる共通基盤の提供</h4>
+        <ul style="font-size: 21px; line-height: 1.6; margin-top: 15px;">
+          <li><strong>国際的な研究規格</strong><br>SIL International等の研究グループが提唱する、聖書テクストの計算機的処理のための標準仕様</li>
+          <br>
+          <li><strong>不変の座標系（Verse Grid）</strong><br>プロテスタント正典に基づく全31,102節を「共通の行（Line）」として固定し、翻訳の差異を正規化</li>
+          <br>
+          <li><strong>言語を超えた並列化</strong><br>eBible等の大規模コーパスと連携し、1000以上の言語・翻訳間で同一箇所を即座に特定</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background: #1e293b; padding: 25px; border-radius: 12px; color: #f8fafc; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <h4 style="color: #f9fafb; font-size: 22px; margin-top: 0; border-bottom: 1px solid #334155; padding-bottom: 10px;">ID構造：BB CCC VVV</h4>
+      
+      <div style="font-family: 'Courier New', monospace; background: #0f172a; padding: 15px; border-radius: 6px; font-size: 28px; text-align: center; color: #fbbf24; margin: 20px 0; border: 1px solid #334155;">
+        <span style="color: #ef4444;">01</span> <span style="color: #22c55e;">001</span> <span style="color: #38bdf8;">001</span>
+      </div>
+      
+      <ul style="font-size: 18px; line-height: 1.5; color: #cbd5e1;">
+        <li><strong style="color: #ef4444;">BB (01-66)</strong>：USFM規格に準拠した書名インデックス</li>
+        <li><strong style="color: #22c55e;">CCC (001-999)</strong>：章番号</li>
+        <li><strong style="color: #38bdf8;">VVV (001-999)</strong>：節番号</li>
+      </ul>
+
+      <div style="margin-top: 25px; border-top: 1px solid #334155; padding-top: 15px; font-size: 16px; color: #94a3b8; line-height: 1.4;">
+        KJV聖書全31,102節へのランダムアクセスを可能にし、文学作品との統合的分析における参照の揺れを解消
       </div>
     </div>
   </div>
 
-  <div class="two-col" style="gap: 20px;">
-    <div>
-      <h4 style="color: #0369a1; font-size: 22px;">統合検索エンジン</h4>
-      <ul style="font-size: 21px; line-height: 1.5;">
-        <li><strong>ExtendedCSVCatalogSystem</strong><br>単一の検索窓で全DBを横断処理し、クエリのパターン（ローマ数字や節番号）から対象を自動判別</li>
-        <li><strong>柔軟な同定アルゴリズム</strong><br>作品タイトルのファジーマッチングにより、表記揺れを含むクエリを正確なソースファイルへ紐付け</li>
-      </ul>
+</section>>
+
+
+<section>
+  <h3 style="margin-bottom:30px">古典典拠の標準規格：CTS URNとCITE Architecture</h3>
+
+  <div class="two-col" style="gap: 30px; align-items: stretch;">
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <div style="background: rgba(15, 23, 42, 0.05); padding: 25px; border-radius: 12px; border-left: 10px solid #475569ac;">
+        <h4 style="margin-top:0; color: #1e293b;">デジタル古典学の共通言語</h4>
+        <ul style="font-size: 21px; line-height: 1.6; margin-top: 15px;">
+          <li><strong>Canonical Text Services (CTS)</strong><br>Perseus等で採用されている、階層的なテキスト構造を同定するためのプロトコル</li>
+          <br>
+          <li><strong>版に依存しない参照</strong><br>紙の書籍のページ数ではなく、作品固有の論理構造（巻・詩行等）に基づきテキストを特定</li>
+          <br>
+          <li><strong>永続的識別子 (URN)</strong><br>ウェブ上の場所ではなく、テキストそのもののアイデンティティを指し示すURN形式を採用</li>
+        </ul>
+      </div>
     </div>
 
-    <div style="background: #1e293b; padding: 20px; border-radius: 12px; color: #f8fafc;">
-      <h4 style="color: #38bdf8; font-size: 22px; margin-top: 0;">聖書参照の標準化：vref</h4>
-      <div style="font-family: monospace; background: #0f172a; padding: 10px; border-radius: 6px; font-size: 24px; text-align: center; color: #fbbf24; margin-bottom: 10px;">
-        BB CCC VVV
+    <div style="background: #1e293b; padding: 25px; border-radius: 12px; color: #f8fafc;">
+      <h4 style="color: #f4f7f8; font-size: 22px; margin-top: 0; border-bottom: 1px solid #334155; padding-bottom: 10px;">CTS URN の階層構造</h4>
+      
+      <div style="font-family: 'Courier New', monospace; background: #0f172a; padding: 15px; border-radius: 6px; font-size: 18px; text-align: left; color: #fbbf24; margin: 20px 0; line-height: 1.4; border: 1px solid #334155;">
+        urn:cts:<span style="color: #ef4444;">greekLit</span>:<span style="color: #22c55e;">tlg0012.tlg001</span>:<span style="color: #38bdf8;">1.1</span>
       </div>
-      <ul style="font-size: 18px; line-height: 1.4; color: #cbd5e1;">
-        <li>BibleNLP準拠の8桁数値IDによる節特定</li>
-        <li>翻訳版や言語の差異を吸収し、常に同一の参照ポイントを確保する共通言語</li>
-        <li>KJV聖書31,102節へのランダムアクセスを実現</li>
+      
+      <ul style="font-size: 18px; line-height: 1.5; color: #cbd5e1;">
+        <li><strong style="color: #ef4444;">Namespace</strong>：greekLit (ギリシャ文学)</li>
+        <li><strong style="color: #22c55e;">Work ID</strong>：ホメロス『イリアス』</li>
+        <li><strong style="color: #38bdf8;">Passage</strong>：第1巻 第1行</li>
       </ul>
+
+      <div style="margin-top: 25px; border-top: 1px solid #334155; padding-top: 15px; font-size: 16px; color: #94a3b8; line-height: 1.4;">
+        聖書のvrefと同様、将来的な統合カタログへの古典DB組み込みにおいて、機械的なマッチングを可能にする重要な規格
+      </div>
     </div>
+  </div>
+</section>
+
+</section>
+
+
+<section>
+
+
+<section>
+  <h3 style="margin-bottom:26px; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
+    2-1. 典拠の同定を自動化する共通参照体系の構築
+  </h3>
+
+  <div style="display:flex; flex-direction:column; gap:12px;">
+
+    <div style="background:#ffffff; padding:16px 20px; border-radius:8px; border:1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+      <div style="font-size:13px; color:#64748b; font-weight:700; margin-bottom:6px; letter-spacing: 0.05em;">INPUT</div>
+      <div style="font-size:22px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; color:#334155; font-weight: bold;">
+        "Paradise Lost I.47–48"　／　"Genesis 1:1–2"
+      </div>
+      <div style="font-size:16px; color:#64748b; margin-top:8px;">
+        作品名＋章・巻・行・節など、書籍に実際に使われている参照表現をそのまま受け取る
+      </div>
+    </div>
+
+    <div style="text-align:center; color:#cbd5e1; font-size:18px; margin: -4px 0;">▼</div>
+
+    <div style="background:#f1f5f9; padding:16px 20px; border-radius:8px; border-left:4px solid #475569;">
+      <div style="font-weight:700; font-size:19px; margin-bottom:6px; color:#1e293b;">
+        1. 参照表現の解析
+      </div>
+      <div style="font-size:19px; line-height:1.5; color:#334155;">
+        作品名と参照表現（ローマ数字・章節・行レンジなど）を分離して指定範囲を正規化
+      </div>
+    </div>
+
+    <div style="text-align:center; color:#cbd5e1; font-size:18px; margin: -4px 0;">▼</div>
+
+    <div style="background:#f1f5f9; padding:16px 20px; border-radius:8px; border-left:4px solid #475569;">
+      <div style="font-weight:700; font-size:19px; margin-bottom:6px; color:#1e293b;">
+        2. 統合カタログ照合（ファジー検索）
+      </div>
+      <div style="font-size:19px; line-height:1.5; color:#334155;">
+        表記揺れを許容しながら該当作品を同定し、対応するファイル／エントリへ紐付ける
+      </div>
+    </div>
+
+    <div style="text-align:center; color:#cbd5e1; font-size:18px; margin: -4px 0;">▼</div>
+
+    <div style="background:#f1f5f9; padding:16px 20px; border-radius:8px; border-left:4px solid #475569;">
+      <div style="font-weight:700; font-size:19px; margin-bottom:6px; color:#1e293b;">
+        3. 範囲抽出（オンデマンド）
+      </div>
+      <div style="font-size:19px; line-height:1.5; color:#334155;">
+        同定した作品から、指定範囲だけを取り出して表示・記録に回す
+      </div>
+      <div style="font-size:15px; color:#64748b; margin-top:8px;">
+        長大なテキストを常時読み込まず、必要箇所のみ取得する
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -805,7 +947,7 @@
 }</code></pre>
 
       <div style="margin-top:10px; font-size:16px; color:#94a3b8;">
-        JSONは内部記録用の形式。後段の検索・再利用・集計の入口になる。
+        JSONは内部記録用の形式。後段の検索・再利用・集計の入口になる
       </div>
     </div>
 
@@ -950,52 +1092,71 @@
 
 </section>
 
+
 <section>
-  <h3 style="margin-bottom:30px">研究ワークフローを最適化するUI設計（1）</h3>
-
-  <div class="two-col" style="align-items: stretch;">
-    <div style="display: flex; flex-direction: column; gap: 15px;">
-      <div style="background: rgba(34, 197, 94, 0.05); padding: 25px; border-radius: 12px; border-left: 10px solid #22c55e;">
-        <h4 style="margin-top:0; color: #15803d;">フルテキストビューアーによる正確な範囲調整</h4>
-        <ul style="font-size: 24px; line-height: 1.6; margin-top: 15px;">
-          <li><strong>アノテーション箇所の微調整</strong><br>抽出されたテキストの開始行・終了行を、コンテクストを確認しながらその場で細かく修正可能</li>
-          <br>
-          <li><strong>直感的な範囲選択</strong><br>コーパス内の全行を表示し、Shift+Click等による直感的な行範囲指定をサポート</li>
-          
-          
-        </ul>
-      </div>
-
-      
+  <h3 style="margin-bottom:30px; color: #1e293b;">研究ワークフローを最適化するUI設計（1）</h3>
+<br>
+<br>
+  <div class="two-col" style="align-items: flex-start; gap: 30px;">
+    <div style="background: #ffffff; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);">
+      <h4 style="margin-top:0; margin-bottom: 20px; color: #1e293b; font-size: 22px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
+        フルテキストビューアーによる正確な範囲調整
+      </h4>
+      <ul style="font-size: 20px; line-height: 1.7; color: #334155; margin: 0; padding-left: 1.2em;">
+        <li style="margin-bottom: 15px;">
+          <strong style="color: #1e293b;">アノテーション箇所の微調整</strong><br>
+          抽出されたテキストの開始行・終了行を、前後のコンテクストを確認しながらその場で直感的に修正
+        </li>
+        <li>
+          <strong style="color: #1e293b;">シームレスな範囲選択</strong><br>
+          コーパス内の全行を俯瞰し、Shift+Click等の標準的な操作で素早く行範囲を指定
+        </li>
+      </ul>
     </div>
 
-    <div style="display: flex; flex-direction: column;">
-      <h4 style="margin-top:0; color: #1e293b;">【実演】ローカルDBからの抽出と微調整</h4>
-      <iframe class="frame" src="https://www.youtube.com/embed/hnlE9f4U6es" title="YouTube video player" allowfullscreen style="flex-grow: 1; min-height: 380px;"></iframe>
+    <div style="display: flex; flex-direction: column; width: 100%;">
+      
+      <div style="border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <iframe class="frame" src="https://www.youtube.com/embed/hnlE9f4U6es" title="YouTube video player" allowfullscreen style="width: 100%; aspect-ratio: 16/9; border: none;"></iframe>
+      </div>
+
+      <h4 style="margin-top:0; margin-bottom: 15px; color: #475569; font-size: 18px; font-weight: 600;">
+        【実演】ローカルDBからの抽出と微調整
+      </h4>
     </div>
   </div>
 </section>
 
 <section>
-  <h3 style="margin-bottom:30px">研究ワークフローを最適化するUI設計（2）</h3>
+  <h3 style="margin-bottom:30px; color: #1e293b;">研究ワークフローを最適化するUI設計（2）</h3>
 
-  <div class="two-col" style="align-items: stretch;">
-    <div style="display: flex; flex-direction: column; gap: 15px;">
-      <div style="background: rgba(14, 165, 233, 0.05); padding: 25px; border-radius: 12px; border-left: 10px solid #0ea5e9;">
-        <h4 style="margin-top:0; color: #0369a1;">画面二分割（Split View）による参照効率化</h4>
-        <ul style="font-size: 24px; line-height: 1.6; margin-top: 15px;">
-          <li><strong>文末注への即時アクセス</strong><br>同一PDF内の「本文」と「注釈ページ」を左右に独立して並列表示</li>
-          <br>
-          <li><strong>シームレスなページ移動</strong><br>左右それぞれのビューアーが独立したナビゲーションを持ち、頻繁なページ遷移による断絶を解消</li>
-        </ul>
-      </div>
-      
-     
+  <div class="two-col" style="align-items: flex-start; gap: 30px;">
+    <div style="background: #ffffff; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);">
+      <h4 style="margin-top:0; margin-bottom: 20px; color: #1e293b; font-size: 22px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
+        画面二分割（Split View）による参照効率化
+      </h4>
+      <ul style="font-size: 20px; line-height: 1.7; color: #334155; margin: 0; padding-left: 1.2em;">
+        <li style="margin-bottom: 15px;">
+          <strong style="color: #1e293b;">文末注への即時アクセス</strong><br>
+          同一PDF内の「本文ページ」と「注釈ページ」を左右に並列表示し、相互参照を効率化
+        </li>
+        <li>
+          <strong style="color: #1e293b;">思考を妨げないページ移動</strong><br>
+          左右のビューアーが独立したナビゲーションを持ち、頻繁なページ遷移による断絶を解消
+        </li>
+      </ul>
     </div>
 
-    <div style="display: flex; flex-direction: column;">
-      <h4 style="margin-top:0; color: #1e293b;">【実演】文末注に対応した二分割表示</h4>
-      <iframe class="frame" src="https://www.youtube.com/embed/IoQxe4ENTzw" title="YouTube video player" allowfullscreen style="flex-grow: 1; min-height: 380px;"></iframe>
+    <div style="display: flex; flex-direction: column; width: 100%;">
+      
+      <div style="border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <iframe class="frame" src="https://www.youtube.com/embed/IoQxe4ENTzw" title="YouTube video player" allowfullscreen style="width: 100%; aspect-ratio: 16/9; border: none;"></iframe>
+      </div>
+
+      <h4 style="margin-top:0; margin-bottom: 15px; color: #475569; font-size: 18px; font-weight: 600;">
+        【実演】文末注に対応した二分割表示
+      </h4>
+
     </div>
   </div>
 </section>
