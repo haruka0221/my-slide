@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英文学とデジタル・ヒューマニティーズ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/theme/black.min.css">
+<style>
+  :root {
+    --bg-deep: #0f1117;
+    --bg-card: #1a1d27;
+    --gold: #c9a84c;
+    --gold-light: #e2c478;
+    --ivory: #f2ede4;
+    --muted: #8a8fa8;
+    --accent-red: #c0392b;
+    --accent-teal: #2eacb5;
+    --accent-green: #4caf7d;
+    --border: rgba(201, 168, 76, 0.25);
+  }
+  .reveal-viewport { background: var(--bg-deep); }
+  .reveal {
+    font-family: 'Lora', 'Noto Serif JP', Georgia, serif;
+    font-size: 36px;
+    color: var(--ivory);
+  }
+  .reveal h1, .reveal h2, .reveal h3 {
+    font-family: 'Playfair Display', 'Noto Serif JP', serif;
+    color: var(--ivory);
+    text-transform: none;
+    letter-spacing: -0.01em;
+    text-shadow: none;
+    line-height: 1.15;
+  }
+  .reveal h1 { font-size: 1.8em; font-weight: 700; }
+  .reveal h2 { font-size: 1.3em; font-weight: 700; color: var(--gold-light); margin-bottom: 0.4em; }
+  .reveal p { line-height: 1.65; margin: 0.4em 0; }
+  .reveal .slides section { padding: 20px 40px; text-align: left; }
+
+  .title-slide { text-align: center !important; }
+  .title-slide .deck-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.35em; color: var(--gold);
+    letter-spacing: 0.25em; text-transform: uppercase;
+    margin-bottom: 1.2em; display: block;
+  }
+  .title-slide h1 {
+    font-size: 1.55em; line-height: 1.2; margin-bottom: 0.5em;
+    background: linear-gradient(135deg, var(--ivory) 60%, var(--gold-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .title-slide .subtitle {
+    font-size: 0.5em; color: var(--muted); font-style: italic; margin-bottom: 2em; line-height: 1.6;
+  }
+  .title-meta {
+    display: flex; justify-content: center; gap: 2.5em;
+    font-size: 0.36em; color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    border-top: 1px solid var(--border); padding-top: 0.8em; margin-top: 1em;
+  }
+  .title-meta span { color: var(--gold); }
+
+  .chapter-slide {
+    display: flex !important; flex-direction: column; justify-content: center; min-height: 100%;
+    background: linear-gradient(135deg, #0f1117 0%, #1a1d2f 100%);
+  }
+  .chapter-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.32em;
+    color: var(--gold); letter-spacing: 0.3em; margin-bottom: 0.6em;
+  }
+  .chapter-slide h2 { font-size: 1.5em; color: var(--ivory); border-left: 4px solid var(--gold); padding-left: 0.5em; }
+  .chapter-slide p { font-size: 0.48em; color: var(--muted); max-width: 80%; margin-top: 1em; line-height: 1.7; }
+
+  .callout {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    padding: 0.55em 0.9em; margin: 0.5em 0; font-size: 0.78em; line-height: 1.6;
+  }
+  .callout.red   { border-left-color: var(--accent-red); }
+  .callout.teal  { border-left-color: var(--accent-teal); }
+  .callout.green { border-left-color: var(--accent-green); }
+
+  .blockquote {
+    border-left: 3px solid var(--gold); padding: 0.4em 0.8em;
+    color: var(--ivory); font-style: italic; font-size: 0.78em;
+    margin: 0.6em 0; line-height: 1.65; background: rgba(201,168,76,0.06);
+  }
+  .blockquote cite { display: block; font-size: 0.75em; font-style: normal; color: var(--muted); margin-top: 0.4em; }
+  .blockquote.lg { font-size: 0.7em; }
+
+  .reveal table { font-size: 0.6em; width: 100%; border-collapse: collapse; margin: 0.5em 0; }
+  .reveal table th {
+    background: rgba(201,168,76,0.18); color: var(--gold-light);
+    font-family: 'JetBrains Mono', monospace; font-weight: 500;
+    padding: 0.45em 0.7em; border-bottom: 1px solid var(--border); text-align: left;
+  }
+  .reveal table td { padding: 0.38em 0.7em; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--ivory); }
+  .reveal table tr:last-child td { border-bottom: none; }
+  .hi { color: var(--gold-light); font-weight: 600; }
+  .lo { color: var(--muted); }
+
+  .two-col   { display: grid; grid-template-columns: 1fr 1fr;     gap: 1em;   align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8em; align-items: start; }
+
+  .stat-row { display: flex; gap: 0.8em; margin: 0.5em 0; }
+  .stat-card {
+    flex: 1; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 4px; padding: 0.6em 0.8em; text-align: center;
+  }
+  .stat-card .num   { font-size: 1.5em; font-family: 'Playfair Display', serif; color: var(--gold-light); display: block; line-height: 1.1; }
+  .stat-card .label { font-size: 0.35em; color: var(--muted); line-height: 1.4; margin-top: 0.2em; font-family: 'JetBrains Mono', monospace; }
+
+  .bar-row   { display: flex; align-items: center; margin: 0.28em 0; font-size: 0.55em; }
+  .bar-label { width: 11em; color: var(--muted); text-align: right; padding-right: 0.7em; font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
+  .bar-track { flex: 1; background: rgba(255,255,255,0.06); height: 1.4em; border-radius: 2px; overflow: hidden; }
+  .bar-fill  { height: 100%; background: var(--gold); border-radius: 2px; display: flex; align-items: center; padding-left: 0.5em; }
+  .bar-fill.teal { background: var(--accent-teal); }
+  .bar-fill.red  { background: var(--accent-red); }
+  .bar-val   { font-size: 0.9em; color: var(--bg-deep); font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+  .bar-pct   { width: 4em; color: var(--ivory); padding-left: 0.5em; font-family: 'JetBrains Mono', monospace; }
+
+  .timeline { position: relative; padding-left: 1.5em; }
+  .timeline::before { content: ''; position: absolute; left: 0.35em; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--gold), transparent); }
+  .tl-item  { position: relative; margin-bottom: 0.48em; font-size: 0.54em; }
+  .tl-item::before { content: ''; position: absolute; left: -1.28em; top: 0.35em; width: 0.6em; height: 0.6em; border-radius: 50%; background: var(--gold); }
+  .tl-year  { color: var(--gold); font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+  .tl-text  { color: var(--ivory); }
+  .tl-sub   { color: var(--muted); font-style: italic; }
+
+  .pill {
+    display: inline-block; font-size: 0.55em;
+    font-family: 'JetBrains Mono', monospace; padding: 0.15em 0.6em;
+    border-radius: 2em; margin: 0.1em; border: 1px solid currentColor;
+  }
+  .pill.gold  { color: var(--gold); }
+  .pill.red   { color: var(--accent-red); }
+  .pill.teal  { color: var(--accent-teal); }
+  .pill.muted { color: var(--muted); }
+
+  .author-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5em; }
+  .author-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 4px; padding: 0.5em 0.7em; font-size: 0.55em;
+  }
+  .author-card .name  { color: var(--gold-light); font-weight: 600; font-size: 1.05em; }
+  .author-card .count { font-family: 'JetBrains Mono', monospace; font-size: 1.2em; color: var(--ivory); }
+  .author-card .role  { color: var(--muted); font-style: italic; font-size: 0.9em; }
+
+  .refs { font-size: 0.42em; color: var(--muted); line-height: 1.7; font-family: 'JetBrains Mono', monospace; }
+  .refs .ref-item { margin-bottom: 0.4em; border-left: 2px solid var(--border); padding-left: 0.8em; }
+  .refs .ref-item .ref-key { color: var(--gold); }
+
+  .sec-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.34em;
+    color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 0.3em; display: block;
+  }
+
+  .reveal ul { margin: 0.3em 0; padding-left: 1.2em; }
+  .reveal ul li { margin-bottom: 0.25em; font-size: 0.72em; line-height: 1.55; color: var(--ivory); }
+  .reveal ul li strong { color: var(--gold-light); }
+
+  .small  { font-size: 0.65em !important; }
+  .muted  { color: var(--muted) !important; }
+  .gold   { color: var(--gold-light) !important; }
+  .mono   { font-family: 'JetBrains Mono', monospace !important; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- 00 TITLE -->
+<section class="title-slide">
+  <span class="deck-label">Guest Lecture · 2025.05.18 · 15:10–16:50</span>
+  <h1>社会文化批評の観点から考える<br>英文学とデジタル・ヒューマニティーズ</h1>
+  <p class="subtitle">English Literature and Digital Humanities:<br>A Sociocultural-Critical Perspective</p>
+  <div class="title-meta">
+    <div>場所 <span>中央大学</span></div>
+    <div>対象 <span>15誌 · 10年分 · 8,940件の脚注</span></div>
+    <div>方法 <span>OpenAlex API · PDF Scan · LLM分類</span></div>
+  </div>
+</section>
+
+<!-- 01 問いと調査概要 -->
+<section>
+  <span class="sec-label">The Question</span>
+  <h2>「DHは英文学研究に根付いているか？」</h2>
+  <div class="stat-row">
+    <div class="stat-card"><span class="num">15</span><span class="label">英文学系<br>ジャーナル</span></div>
+    <div class="stat-card"><span class="num">10年</span><span class="label">2016–2025<br>調査期間</span></div>
+    <div class="stat-card"><span class="num">4手法</span><span class="label">独立した<br>三角測量</span></div>
+    <div class="stat-card"><span class="num">8,940</span><span class="label">CI脚注件数<br>LLM分類</span></div>
+  </div>
+  <div class="callout" style="margin-top:0.7em; font-size:0.65em">
+    <strong>調査設計のポイント：</strong>
+    単純なキーワード検索（= 上限値）だけでは偽陽性が多い。
+    それを補完するため——①CI全254本のPDF脚注を正規表現で直接スキャン（最高精度）、
+    ②Python・R・Stylo・HathiTrust等の固有名を直接確認（強シグナル）、
+    ③DH方法論書への被引用チェック（暗黙的DH）——の3手法を追加。
+    数値はすべて「上限値か直接証拠か」を区別して解釈する。
+  </div>
+  <p style="font-size:0.5em; color:var(--muted); margin-top:0.5em">
+    筒井遥（2026）"Digital Humanities in Literary Studies: A Quantitative Survey of Major Journals"
+  </p>
+</section>
+
+<!-- 02 対象ジャーナル -->
+<section>
+  <span class="sec-label">Journals</span>
+  <h2>対象ジャーナルと比較基準</h2>
+  <div class="two-col">
+    <div>
+      <p style="font-size:0.52em; color:var(--gold); margin-bottom:0.4em">主要英文学誌</p>
+      <table>
+        <thead><tr><th>誌名</th><th>10年件数</th></tr></thead>
+        <tbody>
+          <tr><td>PMLA</td><td>1,203</td></tr>
+          <tr><td>ELH</td><td>424</td></tr>
+          <tr><td>Critical Inquiry</td><td>945</td></tr>
+          <tr><td>Novel</td><td>397</td></tr>
+          <tr><td>Victorian Studies</td><td>1,707</td></tr>
+          <tr><td>Modernism/modernity</td><td>723</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <p style="font-size:0.52em; color:var(--accent-teal); margin-bottom:0.4em">DH専門誌（比較基準）</p>
+      <table>
+        <thead><tr><th>誌名</th><th>年平均</th></tr></thead>
+        <tbody>
+          <tr><td>DSH</td><td class="hi">95本/年</td></tr>
+          <tr><td>Cultural Analytics</td><td class="hi">21本/年</td></tr>
+          <tr><td colspan="2" style="color:var(--muted); font-style:italic; font-size:0.9em">対して——</td></tr>
+          <tr><td>PMLA DH実践（推定）</td><td class="lo">&lt;1本/年</td></tr>
+          <tr><td>英文学11誌 DH実践</td><td class="lo">≈ゼロ</td></tr>
+        </tbody>
+      </table>
+      <div class="callout teal" style="margin-top:0.7em; font-size:0.62em">
+        DH専門誌と英文学主要誌の間には<strong>数十〜数百倍</strong>の実践量の差がある
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 PMLA -->
+<section>
+  <span class="sec-label">Results I — PMLA</span>
+  <h2>PMDAの実態：特集号効果という罠</h2>
+  <div class="two-col">
+    <div>
+      <p style="font-size:0.55em; margin-bottom:0.4em">DHキーワード出現件数（上限値）</p>
+      <table style="font-size:0.5em">
+        <thead><tr><th>年</th><th>DH</th><th>comput.</th><th>distant</th></tr></thead>
+        <tbody>
+          <tr><td>2016</td><td class="hi">9</td><td>1</td><td>5</td></tr>
+          <tr><td>2017</td><td>2</td><td>1</td><td>9</td></tr>
+          <tr><td>2018</td><td>3</td><td>2</td><td>2</td></tr>
+          <tr><td>2019</td><td>1</td><td>0</td><td>1</td></tr>
+          <tr><td>2020</td><td class="hi">10</td><td>4</td><td>4</td></tr>
+          <tr><td>2021–25</td><td>4–12</td><td>0–1</td><td>3–7</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="callout" style="font-size:0.6em">
+        <strong>2016年スパイク</strong><br>
+        Vol.131 No.2「Ecological DH」特集号に<strong>7/9件が集中</strong>
+      </div>
+      <div class="callout" style="font-size:0.6em; margin-top:0.5em">
+        <strong>2020年スパイク</strong><br>
+        Vol.135 No.1「DHと多様性・人種」特集号に<strong>8/9件が集中</strong>
+      </div>
+      <div class="callout red" style="margin-top:0.5em; font-size:0.6em">
+        抄録20本を目視確認：<br>
+        実践論文 <strong>3本</strong> ／ メタ議論 12本 ／ 書評・言及 5本<br>
+        <span class="muted small">Morettiへの被引用12本中、方法論的実践として使ったケースは約1本</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CI スキャン -->
+<section>
+  <span class="sec-label">Results II — Critical Inquiry</span>
+  <h2>CI PDF脚注スキャン：254本中7本（2.8%）</h2>
+  <p style="font-size:0.56em; margin-bottom:0.5em">
+    2019–2025の全254本のPDF・脚注8,940行を正規表現スキャン。DHシグナル確認：<strong class="gold">7本</strong>。
+  </p>
+  <table>
+    <thead><tr><th>論文</th><th>検出語</th><th>年</th></tr></thead>
+    <tbody>
+      <tr><td>Bode 2023</td><td class="mono small">computational</td><td>2023</td></tr>
+      <tr><td>Franta &amp; Silver 2024</td><td class="mono small">computational</td><td>2024</td></tr>
+      <tr><td>Geoghegan 2025</td><td class="mono small">computational</td><td>2025</td></tr>
+      <tr><td>Lee 2025</td><td class="mono small">machine learning</td><td>2025</td></tr>
+      <tr><td>Liu 2025</td><td class="mono small">digital humanities</td><td>2025</td></tr>
+      <tr><td>Parker 2025</td><td class="mono small">computational, machine learning</td><td>2025</td></tr>
+    </tbody>
+  </table>
+  <div class="callout" style="margin-top:0.6em; font-size:0.62em">
+    7本中5本が2022年以降——ごく最近になってわずかに増加している傾向は見える。
+    ただし全254本中2.8%であることは変わらない。
+  </div>
+  <div class="callout red" style="font-size:0.62em">
+    また、2019年にCI誌がDH関連で最初に大きく注目した論文（Da 2019）は、
+    DHへの<em>批判論文</em>だった——それ自体が英文学批評誌とDHの距離を象徴している。
+  </div>
+</section>
+
+<!-- 05 引用著者 -->
+<section>
+  <span class="sec-label">Citation Landscape</span>
+  <h2>CI脚注で引用される著者たち</h2>
+  <div class="author-grid">
+    <div class="author-card">
+      <div class="name">Foucault</div>
+      <div class="count">42 mentions</div>
+      <div class="role">権力・系譜学</div>
+    </div>
+    <div class="author-card">
+      <div class="name">Cavell</div>
+      <div class="count">21 mentions</div>
+      <div class="role">普通言語哲学</div>
+    </div>
+    <div class="author-card">
+      <div class="name">Schmitt</div>
+      <div class="count">16 mentions</div>
+      <div class="role">政治哲学</div>
+    </div>
+    <div class="author-card">
+      <div class="name">Latour</div>
+      <div class="count">11 mentions</div>
+      <div class="role">STS・アクターネット</div>
+    </div>
+    <div class="author-card">
+      <div class="name">R. Williams</div>
+      <div class="count">11 mentions</div>
+      <div class="role">文化唯物論</div>
+    </div>
+    <div class="author-card">
+      <div class="name">Derrida</div>
+      <div class="count">10 mentions</div>
+      <div class="role">脱構築</div>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:0.8em; font-size:0.62em">
+    CIの引用景観はフランス理論・分析哲学・STS系が中心。
+    Moretti・Jockers・Underwood（CLS系）の名前は今回の調査期間のCI脚注にほぼ現れない——
+    ただしCIは批評理論特化誌であり、すべての英文学誌を代表するわけではない点に留意。
+  </div>
+</section>
+
+<!-- CHAPTER BREAK: 歴史 -->
+<section class="chapter-slide">
+  <div class="chapter-num">PART II</div>
+  <h2>DHの歴史的背景</h2>
+  <p>著者推定という問いは、コンピュータが生まれるずっと前から存在していた。</p>
+</section>
+
+<!-- 06 Ford Madox Ford -->
+<section>
+  <span class="sec-label">Attribution Anxiety — 1909</span>
+  <h2>計算文学研究を恐れた小説家</h2>
+  <div class="blockquote lg">
+    "One may care infinitely little for the fate of one's work and yet be almost hypochondriacally anxious as to the form its publication shall take—if the publication is likely to occur posthumously.
+    <strong>I became at once dreadfully afraid that some philologist of that Posterity for which one writes, might, in the course of his hyena occupations, disinter these poor bones and, attributing sentence one to writer A and sentence two to B, maul at least one of our memories.</strong>
+    With the nature of those crimes one is only too well acquainted."
+    <cite>— Ford Madox Ford, "Preface," in <em>The Nature of a Crime</em> (1909), xi.
+    （Joseph Conradとの共著序文）</cite>
+  </div>
+  <div class="callout teal" style="margin-top:0.7em; font-size:0.63em">
+    <strong>何がわかるか：</strong>
+    1909年——Burrowsの計算スタイリスティクス（1986）より77年前——に、
+    小説家フォードが「フィロロジスト（文献学者）によるセンテンスごとの著者帰属」を
+    "hyena occupations"（屍肉を漁る仕事）と呼んで<em>すでに恐怖していた</em>。<br>
+    ▶ 計算文学研究への不安は、コンピュータよりも古い。
+    職業科学者以外の文学者の間でもこの問いは認識されていた。
+  </div>
+</section>
+
+<!-- 07 DHの歴史年表 -->
+<section>
+  <span class="sec-label">History of DH</span>
+  <h2>計算文学研究の系譜</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-year">1851–1901</span>
+      <span class="tl-text"> De Morgan・Mendenhall——著者推定の原型。
+        <span class="tl-sub">物理学者・数学者が<em>Science</em>・<em>Popular Science Monthly</em>に発表。「科学と文学が隣り合っていた時代」。</span>
+      </span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1986</span>
+      <span class="tl-text"> Burrows, <em>Computation into Criticism</em>——オースティン研究。計算スタイリスティクスの嚆矢。</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2000–2005</span>
+      <span class="tl-text"> Moretti "Conjectures on World Literature" → <em>Graphs, Maps, Trees</em>（Verso）——遠読の提唱。</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2010</span>
+      <span class="tl-text"> Stanford Literary Lab 設立。</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2012</span>
+      <span class="tl-text"> <strong>Heuser &amp; Le-Khac（SLL Pamphlet 4）</strong>：2,958作の英国19c小説で「telling → showing」仮説。
+        <span class="tl-sub">→ 同年 <strong>Underwood &amp; Sellers</strong>（<em>Journal of Digital Humanities</em>）が修正：小説固有の変化でなく、英語全体の長期的語源的揺り戻しが原因だった。</span>
+      </span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2012</span>
+      <span class="tl-text"> Fish批判「Mind Your P's and B's」<em>NYT</em>。Ramsay <em>Reading Machines</em>（U of Illinois P）。</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2013–2019</span>
+      <span class="tl-text"> Jockers <em>Macroanalysis</em>・Underwood <em>Distant Horizons</em>・大規模ジェンダー研究群。</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2019</span>
+      <span class="tl-text"> <strong>Da論文 → CIオンラインフォーラム。</strong></span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2021–2023</span>
+      <span class="tl-text"> Weidman &amp; Pastor（Orlando研究）・Walsh（Computational Reception Studies）。</span>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Heuser→Underwood の具体例 -->
+<section>
+  <span class="sec-label">A Case in Revisability</span>
+  <h2>CLSの修正可能性：telling から showing へ、そして…</h2>
+  <div class="two-col">
+    <div>
+      <p style="font-size:0.55em; color:var(--gold-light); margin-bottom:0.3em">Heuser &amp; Le-Khac（SLL Pamphlet 4, 2012）</p>
+      <div class="callout" style="font-size:0.6em">
+        2,958冊の19c英国小説。<br>
+        ラテン語系「抽象的価値語」（<em>integrity, sensibility</em>）が減少し、
+        ゲルマン系「身体・具体語」（<em>finger, chin, red</em>）が増加。<br>
+        → <strong>小説的リアリズムの台頭（telling → showing）の語彙的実証</strong>と解釈。
+      </div>
+    </div>
+    <div>
+      <p style="font-size:0.55em; color:var(--accent-teal); margin-bottom:0.3em">Underwood &amp; Sellers（<em>Journal of Digital Humanities</em> 1/2, 2012）</p>
+      <div class="callout teal" style="font-size:0.6em">
+        詩・小説・ノンフィクション4,275点を18c〜19cにわたって語源別に分析。<br>
+        → 同じ変化が小説<em>だけでなく</em>詩・非文学にも見られる。<br>
+        <strong>「小説のリアリズム化」ではなく、18cのラテン語化 → 19c初頭の揺り戻しという
+        英語全体の長期的ダイナミクスの一部</strong>に過ぎなかった。
+      </div>
+    </div>
+  </div>
+  <div class="callout green" style="margin-top:0.6em; font-size:0.62em">
+    <strong>何を示すか：</strong>
+    CLSの結論は修正される——Da批判者は「誤りだらけ」と読み、
+    Underwoodは「検証・再現・修正できること自体がCLSの強みだ」と反論する。
+  </div>
+</section>
+
+<!-- 09 遠読 -->
+<section>
+  <span class="sec-label">Distant Reading</span>
+  <h2>遠読（Distant Reading）とは何か</h2>
+  <div class="blockquote">
+    "The trouble with close reading is…it necessarily depends on an extremely small canon…
+    If you want to understand literature as a system, you need a different kind of approach."
+    <cite>— Franco Moretti, <em>Graphs, Maps, Trees</em> (Verso, 2005)</cite>
+  </div>
+  <div class="two-col" style="margin-top:0.6em">
+    <div>
+      <p style="font-size:0.6em; color:var(--gold-light)">精読（Close Reading）</p>
+      <ul>
+        <li>テキストの内部を精密に読む</li>
+        <li>ニュアンス・文脈・意図</li>
+        <li>カノン数十〜数百作品</li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-size:0.6em; color:var(--accent-teal)">遠読（Distant Reading）</p>
+      <ul>
+        <li>数千〜数万作品を計量的に分析</li>
+        <li>パターン・傾向・歴史的変化</li>
+        <li>「偉大な読まれざるもの（the great unread）」</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:0.6em; font-size:0.6em">
+    モレッティの挑発的転換：「テキストを精読して解釈する」から「テキストを数え、グラフ化し、地図に載せよ」へ。<br>
+    Stanford Literary Lab（2010）が制度的拠点。
+  </div>
+</section>
+
+<!-- CHAPTER BREAK: 批判 -->
+<section class="chapter-slide">
+  <div class="chapter-num">PART III</div>
+  <h2>DHへの批判系譜</h2>
+  <p>Fish（2012）→ Da（2019）→ Spivak（2003→DH応用）<br>
+  三つの異なる問いの方向。</p>
+</section>
+
+<!-- 10 Fish — P's and B's -->
+<section>
+  <span class="sec-label">Critique I — Fish (2012)</span>
+  <h2>Stanley Fish：「P's and B's」とは何か</h2>
+  <div class="callout" style="font-size:0.6em; margin-bottom:0.5em">
+    <strong>「P's and B's」とは——</strong>
+    Fishが分析したのはミルトン『失楽園』（1667）第I巻の一節。
+    堕天使たちを描く場面に唇音・閉鎖音（P・B）が高頻度で現れる。
+    コンピュータはこのパターンを検出できる——しかし<span style="color:var(--accent-red)">そのP・Bの多さは<em>何を意味するのか</em>？</span>
+    ミルトンの神学・詩的伝統・意図という「解釈の枠組み」なしには、
+    数字は意味にならない、というのがFishの論点。
+    タイトル "Mind Your P's and B's" は "mind your p's and q's"（行儀よくしろ）のもじり。
+  </div>
+  <div class="blockquote">
+    "The digital humanities…have little place for the investigations…in the business of
+    asking and answering…what does it mean?"
+    <cite>— Fish, "Mind Your P's and B's: The Digital Humanities and Interpretation,"
+    <em>New York Times</em>, Jan. 23, 2012</cite>
+  </div>
+  <div class="callout teal" style="margin-top:0.5em; font-size:0.6em">
+    <strong>DH側の反論（Ramsay 2011ほか）：</strong>
+    「アルゴリズムは解釈を<em>置き換える</em>のではなく、
+    <em>新しい読解への誘導</em>を行う。
+    P・Bのパターンは答えではなく、批評家が問いを立てるための<em>出発点</em>だ。
+    Fishが批判するミルトン分析と同様、<em>形式への注目</em>はFish自身の批評にも共通する関心がある。」
+    <br><span class="muted">— 参照：Ramsay, <em>Reading Machines: Toward an Algorithmic Criticism</em> (U of Illinois P, 2011)</span>
+  </div>
+</section>
+
+<!-- 11 Da -->
+<section>
+  <span class="sec-label">Critique II — Da (2019)</span>
+  <h2>Nan Z. Da：「CLSの方法論はそもそも誤っている」</h2>
+  <div class="blockquote">
+    "What is robust is obvious and what is not obvious is not robust."
+    <cite>— Da, "The Computational Case against Computational Literary Studies,"
+    <em>Critical Inquiry</em> 45, no.3 (2019): 601–639</cite>
+  </div>
+  <div class="two-col" style="margin-top:0.5em">
+    <div>
+      <p style="font-size:0.52em; color:var(--gold-light); margin-bottom:0.3em">方法論的批判</p>
+      <ul>
+        <li><strong>ストップワードのジレンマ：</strong>機能語を残すと意味なし、除外すると差異消失</li>
+        <li><strong>LDA不安定性：</strong>データ1%削除でトピック全変化、再現性なし</li>
+        <li><strong>個別研究の再検証：</strong>Piper・Long &amp; So・Algee-Hewittの処理ミスを指摘</li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li><strong>「膨大なデータ神話」の否定：</strong>ML不要な量のテキストに「AI必要」は誇張</li>
+        <li><strong>目的のミスマッチ：</strong>統計は「意味を削ぐ」が文学研究は「意味の複雑さを読む」</li>
+      </ul>
+      <div class="callout red" style="margin-top:0.5em; font-size:0.58em">
+        CLS批判として最も体系的・実証的な論文。<br>
+        2019年に大きな波紋を呼び、CIオンラインフォーラムへ。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 CI Forum -->
+<section>
+  <span class="sec-label">The Forum — CI Online 2019</span>
+  <h2>CIオンラインフォーラム2019：論争の構造</h2>
+  <p style="font-size:0.5em; color:var(--muted); margin-bottom:0.4em">
+    <em>Critical Inquiry</em> 公式ブログでの多者間論争（2019年3月〜）
+  </p>
+  <table>
+    <thead><tr><th>論者</th><th>立場</th><th>主な主張</th></tr></thead>
+    <tbody>
+      <tr><td>Algee-Hewitt</td><td><span class="pill teal">DH擁護</span></td><td class="small">EDA（探索的）とCDA（確認的）を混同している</td></tr>
+      <tr><td>Underwood</td><td><span class="pill teal">DH擁護</span></td><td class="small">トピックモデルの確率的性質は欠点でなく前提</td></tr>
+      <tr><td>Long &amp; So</td><td><span class="pill teal">DH擁護</span></td><td class="small">Daの批判は文脈を無視したオリエンタリズムに陥っている</td></tr>
+      <tr><td>Klein</td><td><span class="pill gold">フェミニスト批判</span></td><td class="small">データ構築の不可視の労働（女性・有色人種が担う）</td></tr>
+      <tr><td>Fish</td><td><span class="pill red">Da支持</span></td><td class="small">意図なきデータマイニングは無責任</td></tr>
+      <tr><td>Bode</td><td><span class="pill muted">CLS懐疑</span></td><td class="small">DaのCLS定義が狭すぎる。キュレーションを排除</td></tr>
+    </tbody>
+  </table>
+  <div class="callout" style="margin-top:0.5em; font-size:0.58em">
+    この論争がウェブ上で展開されたこと自体、DHの「開かれた知識生産」を体現——
+    かつ英文学の中心的批評誌がDHを「実践」ではなく「論争の場」として迎えた典型例。
+  </div>
+</section>
+
+<!-- CHAPTER BREAK: 社会文化批評 -->
+<section class="chapter-slide">
+  <div class="chapter-num">PART IV</div>
+  <h2>社会文化批評の観点から</h2>
+  <p>スピヴァク・データの政治性・<br>フェミニスト／ブラック・デジタル・ヒューマニティーズ</p>
+</section>
+
+<!-- 13 Walsh -->
+<section>
+  <span class="sec-label">New Directions</span>
+  <h2>Walsh（2023）：Computational Reception Studies</h2>
+  <div class="blockquote">
+    「読書・受容・テキスト流通に関する問いを探求する新興サブフィールド」
+    <cite>— Walsh, "The Challenges and Possibilities of Social Media Data,"
+    in <em>Debates in the Digital Humanities 2023</em>, pp.275–294 (U of Minnesota P)</cite>
+  </div>
+  <div class="two-col" style="margin-top:0.5em">
+    <div>
+      <p style="font-size:0.55em; color:var(--muted)">従来のCLS</p>
+      <ul>
+        <li>文学テキスト<em>そのもの</em>を計算分析</li>
+        <li>コーパス→パターン発見</li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-size:0.55em; color:var(--gold)">Reception Studies</p>
+      <ul>
+        <li><strong>Goodreadsのレビュー・評価データ</strong>（「古典」概念とAmazonの絡み合い）</li>
+        <li><strong>Twitterでの引用パターン</strong>：James Baldwinの言葉が<em>Black Lives Matter</em>（BLM）運動——2013年創設、2020年George Floyd事件を機に世界規模で拡大——の文脈でどう再流通したか</li>
+        <li><strong>公共図書館・出版・プラットフォームデータ</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout teal" style="margin-top:0.5em; font-size:0.6em">
+    「テキストをどう読むか」から<strong>「テキストはどのように読まれてきたか」</strong>へ——
+    プラットフォーム・経済・権力との絡み合いを可視化する。
+  </div>
+</section>
+
+<!-- 14 スピヴァク -->
+<section>
+  <span class="sec-label">Critique III — Postcolonial</span>
+  <h2>スピヴァク：<em>Death of a Discipline</em>（2003）</h2>
+  <div class="blockquote">
+    "The literary is…attended by the irreducible complexity of language
+    which escapes the merely computational."
+    <cite>— Gayatri Chakravorty Spivak, <em>Death of a Discipline</em>, Columbia UP, 2003</cite>
+  </div>
+  <p style="font-size:0.52em; color:var(--muted); margin-bottom:0.3em">
+    元来は比較文学への問い。<em>differences</em> 25.1（2014）特集「In the Shadows of the Digital Humanities」でDH批判の参照枠として読み直された。
+  </p>
+  <ul>
+    <li><strong>コーパスの偏り：</strong>遠読は英語圏・欧米中心の大規模コーパスを「文学史」として提示しがちだ</li>
+    <li><strong>デジタル化の政治性：</strong>何がデジタル化され、何がされないか——それ自体が権力の配置を反映する</li>
+    <li><strong>DHの言語政治：</strong>「DHは遠読を優先することで文学とその言語への精密な関与を格下げにした」</li>
+    <li><strong>文学の複雑さの擁護：</strong>ニュアンス・他者の言語への注意こそが人文学の本来の使命である</li>
+  </ul>
+</section>
+
+<!-- 15 データの政治性 -->
+<section>
+  <span class="sec-label">Data Politics</span>
+  <h2>データの政治性：偏りの三つの構造</h2>
+  <div class="three-col">
+    <div class="callout" style="font-size:0.58em">
+      <p style="color:var(--gold-light); margin:0 0 0.3em">① コーパスの偏り</p>
+      HathiTrust・Project Gutenbergは英語・欧米テキスト中心。非英語圏・植民地文学は分析の「外側」に置かれる。遠読が描く「文学史」は誰の文学史か？
+    </div>
+    <div class="callout" style="font-size:0.58em">
+      <p style="color:var(--gold-light); margin:0 0 0.3em">② ジェンダーのバイナリ化</p>
+      Mandell（2019）：「量的文化分析においてジェンダーのカテゴリが生物学化・二項化・本質化されている」——Weidman &amp; Pastorの<em>Orlando</em>研究はこの問題を自覚的に反転させた。
+    </div>
+    <div class="callout" style="font-size:0.58em">
+      <p style="color:var(--gold-light); margin:0 0 0.3em">③ 労働の不可視化</p>
+      Klein（CIフォーラム2019）：データ構築・キュレーションの「見えない労働」を女性・有色人種が担う構造。Colored Conventions Projectのような実践が評価されなければならない。
+    </div>
+  </div>
+  <div class="callout green" style="margin-top:0.7em; font-size:0.62em">
+    <strong>フェミニスト・ブラック・デジタル・ヒューマニティーズ：</strong><br>
+    Posner &amp; Klein "Data as Media"（<em>Feminist Media Histories</em> 3, no.3, 2017）——
+    データを「知識の一次カテゴリ」ではなく「自らの資料に対する方向性」として捉え直す。<br>
+    Mandell, "Gender and Cultural Analytics," <em>Debates in the Digital Humanities 2019</em>.
+  </div>
+</section>
+
+<!-- 16 反省的節 -->
+<section>
+  <span class="sec-label">Reflexivity</span>
+  <h2>本調査自身の偏りを問い直す</h2>
+  <div class="two-col">
+    <div>
+      <p style="font-size:0.55em; color:var(--accent-red); margin-bottom:0.3em">この調査が含む偏り</p>
+      <ul>
+        <li>英語圏ジャーナルのみを「英文学」と呼んでいる</li>
+        <li>OpenAlexのカバレッジ自体が英語・北米中心</li>
+        <li>CI一誌が批評理論特化誌という制約</li>
+        <li>「DH実践」の定義を計算論的手法に絞りすぎていないか？</li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-size:0.55em; color:var(--accent-green); margin-bottom:0.3em">データ化の前に問うべきこと</p>
+      <ul>
+        <li>何を「データ」と呼ぶか——その選択は理論的である</li>
+        <li>「見えない」ことと「存在しない」ことは別物</li>
+        <li>LLMによる分類（Claude Haiku）の限界</li>
+        <li>デジタルアーカイブ参照（EEBO等）≠ DH実践</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:0.5em; font-size:0.6em">
+    スピヴァク的問いは今日の調査にも返ってくる：
+    「4手法すべてが同一の方向を示した」という三角測量の収束は、
+    それ自体が特定の認識論的枠組みを採用した結果である——その枠組みを自覚すること。
+  </div>
+</section>
+
+<!-- 17 歴史学との対比 -->
+<section>
+  <span class="sec-label">Comparative Perspective</span>
+  <h2>分野横断比較：歴史学（AHR）との対比</h2>
+  <table>
+    <thead><tr><th>比較項目</th><th>PMLA（英文学）</th><th>AHR（歴史学）</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>DH実践論文の分布</td>
+        <td class="hi">2特集号に集中</td>
+        <td style="color:var(--accent-teal)">毎年通常号に分散</td>
+      </tr>
+      <tr>
+        <td>DHキーワード上限率</td>
+        <td class="hi">10.6%（高い）</td>
+        <td>0.7%（低い）</td>
+      </tr>
+      <tr>
+        <td>DH実践論文数（10年推定）</td>
+        <td class="lo">≈3本</td>
+        <td style="color:var(--accent-teal)">≈4–5本</td>
+      </tr>
+      <tr>
+        <td>DHへの批判フォーラム</td>
+        <td class="hi">Da 2019（CI）</td>
+        <td class="lo">確認されない</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout" style="margin-top:0.6em; font-size:0.62em">
+    逆説：PMLAの方がDHキーワード出現率は高いが、実践論文数はAHRの方が多い。<br>
+    英文学でのDH語彙の多さは「特集号効果＋職能論争＋批判フォーラム」の産物である。
+  </div>
+</section>
+
+<!-- 18 まとめ -->
+<section>
+  <span class="sec-label">Synthesis</span>
+  <h2>まとめ：問いとして残るもの</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6em; margin-top:0.3em">
+    <div class="callout" style="font-size:0.6em">
+      <strong>① 方法と解釈の緊張</strong><br>
+      計算論的手法は「新しいことを教えてくれる」のか、「すでに知っていることの再確認」か？（Da vs DHer）
+    </div>
+    <div class="callout" style="font-size:0.6em">
+      <strong>② データの政治性</strong><br>
+      何がデジタル化され、誰の言語で、誰のテキストが分析されるか——権力の非対称性を再生産しないために。（スピヴァク・Klein）
+    </div>
+    <div class="callout" style="font-size:0.6em">
+      <strong>③ スケールの問題</strong><br>
+      遠読と精読は競合するのか、補完しあうのか。2,958作品の「パターン」はどの個別作品の読みを変えるか？
+    </div>
+    <div class="callout" style="font-size:0.6em">
+      <strong>④「誤り」の生産性</strong><br>
+      Weidman &amp; Pastorが示したように、バイナリなフレームが問題含みでも「誤り」が新しい読みを開くことはあるか？
+    </div>
+    <div class="callout" style="font-size:0.6em; grid-column: 1 / -1">
+      <strong>⑤ 受容のデータ化</strong><br>
+      Walsh型の受容研究は、プラットフォーム・出版資本・アルゴリズムを「可視化」する。しかしそのデータ自体がプラットフォームに依存している——この循環をどう解くか？
+    </div>
+  </div>
+</section>
+
+<!-- 19 参考文献 -->
+<section>
+  <span class="sec-label">References</span>
+  <h2>参考文献（抄）</h2>
+  <div class="refs">
+    <div class="ref-item"><span class="ref-key">Ford 1909</span> Ford, F.M. "Preface." In <em>The Nature of a Crime</em> (with Conrad, J.). xi.</div>
+    <div class="ref-item"><span class="ref-key">Burrows 1986</span> Burrows, J.F. <em>Computation into Criticism</em>. Oxford: Clarendon Press.</div>
+    <div class="ref-item"><span class="ref-key">Moretti 2000, 2005</span> Moretti, F. "Conjectures on World Literature." <em>New Left Review</em>; <em>Graphs, Maps, Trees</em>. Verso.</div>
+    <div class="ref-item"><span class="ref-key">Heuser &amp; Le-Khac 2012</span> <em>A Quantitative Literary History of 2,958 Nineteenth-Century British Novels</em>. SLL Pamphlet 4.</div>
+    <div class="ref-item"><span class="ref-key">Underwood &amp; Sellers 2012</span> "The Emergence of Literary Diction." <em>Journal of Digital Humanities</em> 1, no.2 (Spring 2012).</div>
+    <div class="ref-item"><span class="ref-key">Ramsay 2011</span> <em>Reading Machines: Toward an Algorithmic Criticism</em>. University of Illinois Press.</div>
+    <div class="ref-item"><span class="ref-key">Fish 2012</span> "Mind Your P's and B's." <em>New York Times</em>, Jan. 23, 2012.</div>
+    <div class="ref-item"><span class="ref-key">Jockers 2013</span> <em>Macroanalysis</em>. University of Illinois Press.</div>
+    <div class="ref-item"><span class="ref-key">Underwood 2019</span> <em>Distant Horizons</em>. University of Chicago Press.</div>
+    <div class="ref-item"><span class="ref-key">Da 2019</span> "The Computational Case against Computational Literary Studies." <em>Critical Inquiry</em> 45(3): 601–639.</div>
+    <div class="ref-item"><span class="ref-key">Weidman &amp; Pastor 2021</span> "Modernism and Gender at the Limits of Stylometry." <em>DHQ</em> 15, no.4.</div>
+    <div class="ref-item"><span class="ref-key">Spivak 2003</span> <em>Death of a Discipline</em>. Columbia University Press.</div>
+    <div class="ref-item"><span class="ref-key">Posner &amp; Klein 2017</span> "Data as Media." <em>Feminist Media Histories</em> 3, no.3.</div>
+    <div class="ref-item"><span class="ref-key">Mandell 2019</span> "Gender and Cultural Analytics." <em>Debates in the Digital Humanities 2019</em>.</div>
+    <div class="ref-item"><span class="ref-key">Walsh &amp; Antoniak 2021</span> "The Goodreads 'Classics'." <em>Cultural Analytics</em> 6.</div>
+    <div class="ref-item"><span class="ref-key">Walsh 2023</span> "Challenges and Possibilities of Social Media Data." <em>Debates in DH 2023</em>: 275–294.</div>
+    <div class="ref-item"><span class="ref-key">筒井 2026</span> 筒井遥. "Digital Humanities in Literary Studies: A Quantitative Survey." [OpenAlex API]</div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="title-slide">
+  <span class="deck-label" style="margin-bottom:2em">Thank You · ご清聴ありがとうございました</span>
+  <h1 style="font-size:1.1em; margin-bottom:0.6em">
+    数字は文学の「外側」を照らす。<br>
+    <span style="-webkit-text-fill-color: var(--gold);">しかし文学の「内側」は<br>依然として読まれなければならない。</span>
+  </h1>
+  <p class="subtitle">
+    — The numbers illuminate what surrounds literature.<br>
+    But literature itself still has to be read.
+  </p>
+  <div class="title-meta" style="margin-top:2em">
+    <div>調査 <span>筒井遥（2026）</span></div>
+    <div>データ <span>OpenAlex · PDF · Claude Haiku</span></div>
+    <div>議論 <span>Da 2019 · Spivak 2003 · Walsh 2023</span></div>
+  </div>
+</section>
+
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  progress: true,
+  controls: true,
+  center: false,
+  transition: 'fade',
+  transitionSpeed: 'slow',
+  backgroundTransition: 'fade',
+  width: 1280,
+  height: 720,
+  margin: 0.06,
+  plugins: []
+});
+</script>
+</body>
+</html>
