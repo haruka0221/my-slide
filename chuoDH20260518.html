@@ -9,6 +9,37 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/theme/black.min.css">
 <style>
+
+
+/* ── Viewport centering fix ── */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;          /* スクロールバーが幅を食わないように */
+}
+
+.reveal-viewport {
+  position: fixed;           /* 必ず画面全体に貼り付く */
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reveal {
+  /* reveal.js が内部で width/height を px で書き込むので
+     position:relative と margin:auto で水平中央に戻す */
+  position: relative !important;
+  margin: auto !important;
+}
+</style>
+
+<style>
   :root {
     --bg-deep: #0f1117;
     --bg-card: #1a1d27;
@@ -863,7 +894,7 @@
     <!-- 右：散布図画像 -->
     <div style="text-align:center;">
       <img
-        src="media/scatter_edition_sitelink_v6.png"
+        src="assets/scatter_edition_sitelink_v6.png"
         alt="版数と国際的知名度の分布（1880–1950 英語フィクション 34,789件）"
         style="
           max-width:100%;
@@ -1088,6 +1119,9 @@
 
 </div>
 </div>
+<!-- ══════════════════════════════════════════════════
+     修正箇所②：末尾の <script> を下記に差し替え
+     ══════════════════════════════════════════════════ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.js"></script>
 <script>
 Reveal.initialize({
@@ -1099,9 +1133,17 @@ Reveal.initialize({
   transition: 'fade',
   transitionSpeed: 'slow',
   backgroundTransition: 'fade',
-  width: 1280,
-  height: 720,
-  margin: 0.06,
+
+  /* ── サイズ設定（ここが核心） ──────────────────────
+     width / height を固定 px にせず、
+     ビューポートに対する比率＋スケール幅で指定する。
+     reveal.js が自動で拡縮・中央揃えしてくれる。     */
+  width: 1200,          /* 1280→1200 に縮小（余白ができる） */
+  height: 700,
+  margin: 0.04,         /* スライド外周の余白（全幅の4%） */
+  minScale: 0.3,        /* 縮小の下限（小さい画面でも崩れない） */
+  maxScale: 1.5,        /* 拡大の上限 */
+
   plugins: []
 });
 </script>
