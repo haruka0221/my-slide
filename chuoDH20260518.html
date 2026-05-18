@@ -321,61 +321,249 @@ html, body {
 <!-- ══════════════════════════════════════════════════ -->
 <!--  01  問いと調査設計（redesigned）                  -->
 <!-- ══════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════
+     タイトルの直後に挿入。既存の slide 01 は削除する。
+     ══════════════════════════════════════════════════ -->
+
+<!-- ── SLIDE A：Methodological Commons ── -->
+<section>
+  <span class="sec-label">Starting Point</span>
+  <h2>Methodological Commons としてのDH</h2>
+
+  <div class="two-col" style="gap:1.4em; align-items:center;">
+
+    <!-- 左：図 -->
+    <div style="text-align:center;">
+      <img
+        src="media/McCarty_Short_map.png"
+        alt="Methodological Commons（McCarty & Short, 2002）"
+        style="
+          max-width: 100%;
+          max-height: 360px;
+          border: 1px solid var(--border-blue);
+          display: block;
+          margin: 0 auto;
+          filter: brightness(0.92) contrast(1.05);
+        "
+      />
+      <p style="font-size:0.38em; color:var(--muted); margin-top:0.4em; font-family:'JetBrains Mono',monospace; line-height:1.5;">
+        Willard McCarty &amp; Harold Short (2002)<br>
+        "An intellectual and disciplinary map of humanities computing"<br>
+        via HUMANIST / Alliance of Digital Humanities Organizations
+      </p>
+    </div>
+
+    <!-- 右：問い -->
+    <div>
+      <div class="callout blue" style="font-size:0.65em; margin-bottom:0.6em;">
+        DHはComputer Science・Linguistics・Sociology・History
+        といった学問を繋ぐ「方法論的共有地（Methodological Commons）」として
+        構想された。Literature &amp; the arts もその一角を占めている。
+      </div>
+
+      <div class="callout red" style="font-size:0.65em; margin-bottom:0.6em;">
+        <strong>問い：</strong><br>
+        この地図が描かれてから20年以上が経つ。<br>
+        英文学研究において、このCommonsは<br>
+        実際にどれだけ使われてきたのか？
+      </div>
+
+      <div style="font-size:0.52em; color:var(--muted); line-height:1.65;">
+        主要英文学ジャーナル15誌・10年分のデータを、<br>
+        4つの独立した手法で調べた。
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── SLIDE B：キーワードスクロール → 調査設計 ── -->
 <section>
   <span class="sec-label">The Question & Design</span>
   <h2>「DHは英文学研究に根付いているか？」</h2>
 
-  <div class="stat-row" style="margin-bottom:0.6em">
-    <div class="stat-card"><span class="num">15</span><span class="label">英文学系<br>ジャーナル</span></div>
-    <div class="stat-card"><span class="num">10年</span><span class="label">2016–2025<br>調査期間</span></div>
-    <div class="stat-card"><span class="num">4</span><span class="label">独立した<br>調査手法</span></div>
-    <div class="stat-card"><span class="num">8,940</span><span class="label">CI脚注件数<br>LLM分類</span></div>
+  <!-- スクロールする検索キーワード -->
+  <div style="
+    position: relative;
+    overflow: hidden;
+    height: 2.8em;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid var(--border-blue);
+    border-radius: 3px;
+    margin-bottom: 0.7em;
+  ">
+    <!-- グラデーションで左右をフェード -->
+    <div style="
+      position:absolute; top:0; left:0; width:6em; height:100%;
+      background: linear-gradient(to right, #0f1117, transparent);
+      z-index:2; pointer-events:none;
+    "></div>
+    <div style="
+      position:absolute; top:0; right:0; width:6em; height:100%;
+      background: linear-gradient(to left, #0f1117, transparent);
+      z-index:2; pointer-events:none;
+    "></div>
+
+    <!-- スクロールするテキスト帯 -->
+    <div id="kw-scroll" style="
+      display: flex;
+      align-items: center;
+      height: 100%;
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.48em;
+      gap: 1.2em;
+      padding: 0 1em;
+      animation: kwscroll 28s linear infinite;
+    ">
+      <!-- 同じリストを2回並べることでシームレスループ -->
+      <span style="color:var(--gold)">distant reading</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Moretti</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Jockers</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">computational</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Underwood</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">digital humanities</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Ramsay</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">stylometry</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Burrows</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">topic model</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Algee-Hewitt</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">text mining</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Heuser</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">machine learning</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Stanford Literary Lab</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">corpus linguistics</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Da</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">Python</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">R</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">Stylo</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">HathiTrust</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">word embedding</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Bamman</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">quantitative</span>
+      <span style="color:var(--muted)">·</span>
+      <!-- 2周目 -->
+      <span style="color:var(--gold)">distant reading</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Moretti</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Jockers</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">computational</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Underwood</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">digital humanities</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Ramsay</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">stylometry</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Burrows</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">topic model</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Algee-Hewitt</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">text mining</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Heuser</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">machine learning</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Stanford Literary Lab</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">corpus linguistics</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Da</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">Python</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">R</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">Stylo</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">HathiTrust</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">word embedding</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Bamman</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">quantitative</span>
+    </div>
   </div>
 
-  <!-- Methodology table -->
-  <div class="method-row">
-    <div class="method-num">①</div>
-    <div class="method-body">
-      <span class="mname">DHキーワード全文検索</span>
-      <span class="msub">（OpenAlex API）</span><br>
-      タイトル・抄録のキーワードマッチ。偽陽性が多く、数値はすべて上限値として扱う
-    </div>
-    <div class="method-period">2016–2025</div>
-    <div><span class="badge upper">上限値</span></div>
-  </div>
-  <div class="method-row">
-    <div class="method-num">②</div>
-    <div class="method-body">
-      <span class="mname">DH方法論書への被引用チェック</span>
-      <span class="msub">（Moretti・Jockers・Underwood等）</span><br>
-      「DHキーワードを使わないDH実践（暗黙的DH）」を捕捉する
-    </div>
-    <div class="method-period">2010–2025</div>
-    <div><span class="badge upper">上限値</span></div>
-  </div>
-  <div class="method-row">
-    <div class="method-num">③</div>
-    <div class="method-body">
-      <span class="mname">CI PDF脚注スキャン</span>
-      <span class="msub">（254本・8,940行を正規表現で直接抽出）</span><br>
-      偽陽性除去済みの最高精度手法
-    </div>
-    <div class="method-period">2019–2025</div>
-    <div><span class="badge high">高精度</span></div>
-  </div>
-  <div class="method-row">
-    <div class="method-num">④</div>
-    <div class="method-body">
-      <span class="mname">計算論的実践の強シグナル確認</span>
-      <span class="msub">（Python・R・Stylo・HathiTrust等の固有名）</span><br>
-      DH実践の直接的な痕跡を本文から探す
-    </div>
-    <div class="method-period">2010–2025</div>
-    <div><span class="badge direct">直接証拠</span></div>
-  </div>
+  <style>
+  @keyframes kwscroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  </style>
 
-  
+ <!-- 調査設計テーブル（①②③のみ・④削除） -->
+<div class="method-row">
+  <div class="method-num">①</div>
+  <div class="method-body">
+    <span class="mname">キーワード検索</span>
+    <span class="msub">対象：OpenAlex収録の15誌論文　検索部位：タイトル・抄録</span><br>
+    "digital humanities" "distant reading" "computational" 等のキーワードでAPIを叩いた。
+    タイトル・抄録に含まれているかどうかしか見ておらず、ノイズが多い。数値は上限値として扱う。
+  </div>
+  <div class="method-period">2016–2025</div>
+  <div><span class="badge upper">上限値</span></div>
+</div>
+
+<div class="method-row">
+  <div class="method-num">②</div>
+  <div class="method-body">
+    <span class="mname">被引用チェック</span>
+    <span class="msub">対象：OpenAlex収録の15誌論文　検索部位：参考文献リスト</span><br>
+    Moretti・Jockers・Underwood等のDH方法論書を参考文献に含む論文をAPIで抽出した。
+    キーワードを使わずにDH実践をした論文を拾う目的だが、理論的言及との区別はできない。
+  </div>
+  <div class="method-period">2010–2025</div>
+  <div><span class="badge upper">上限値</span></div>
+</div>
+
+<div class="method-row">
+  <div class="method-num">③</div>
+  <div class="method-body">
+    <span class="mname">PDF脚注スキャン</span>
+    <span class="msub">対象：Critical Inquiry 254本のPDFファイル　検索部位：脚注テキスト全行（8,940行）</span><br>
+    PDFを直接入手してテキストを抽出し、脚注行を正規表現でスキャン。
+    分類にはClaude Haiku APIを使用。①②と異なり本文脚注を直接見るため、ノイズが少なく高精度な手法。
+  </div>
+  <div class="method-period">2019–2025</div>
+  <div><span class="badge high">高精度</span></div>
+</div>
 </section>
+
+
+
 
 <!-- ══════════════════════════════════════════════════ -->
 <!--  02  調査結果（rephrased）                         -->
@@ -420,7 +608,7 @@ html, body {
 
       <p style="font-size:0.52em; color:var(--gold-light); margin:0.7em 0 0.3em">CI脚注8,940件の証拠構造</p>
       <div class="bar-row">
-        <div class="bar-label">二次的学術文献</div>
+        <div class="bar-label">文学批評論文</div>
         <div class="bar-track"><div class="bar-fill" style="width:76.9%"><span class="bar-val">76.9%</span></div></div>
       </div>
       <div class="bar-row">
@@ -441,26 +629,6 @@ html, body {
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════ -->
-<!--  03  引用著者（unchanged）                         -->
-<!-- ══════════════════════════════════════════════════ -->
-<section>
-  <span class="sec-label">Citation Landscape</span>
-  <h2>CI脚注で引用される著者たち</h2>
-  <div class="author-grid">
-    <div class="author-card"><div class="name">Foucault</div><div class="count">42 mentions</div><div class="role">権力・系譜学</div></div>
-    <div class="author-card"><div class="name">Cavell</div><div class="count">21 mentions</div><div class="role">普通言語哲学</div></div>
-    <div class="author-card"><div class="name">Schmitt</div><div class="count">16 mentions</div><div class="role">政治哲学</div></div>
-    <div class="author-card"><div class="name">Latour</div><div class="count">11 mentions</div><div class="role">STS・アクターネット</div></div>
-    <div class="author-card"><div class="name">R. Williams</div><div class="count">11 mentions</div><div class="role">文化唯物論</div></div>
-    <div class="author-card"><div class="name">Derrida</div><div class="count">10 mentions</div><div class="role">脱構築</div></div>
-  </div>
-  <div class="callout" style="margin-top:0.8em; font-size:0.62em">
-    CIの引用景観はフランス理論・分析哲学・STS系が中心。
-    Moretti・Jockers・Underwood（CLS系）の名前は今回の調査期間のCI脚注にほぼ現れない。
-    ただしCIは批評理論特化誌であり、すべての英文学誌を代表するわけではない点に留意。
-  </div>
-</section>
 
 </section>
 
@@ -675,6 +843,115 @@ html, body {
   </div>
 </section>
 
+</section>
+
+
+
+<section>
+<!-- ══════════════════════════════════════════════════ -->
+<!--  PART V: 社会文化批評                              -->
+<!-- ══════════════════════════════════════════════════ -->
+<section class="chapter-slide">
+  <div class="chapter-num">PART V</div>
+  <h2>社会文化批評の観点から</h2>
+  <p>正典のずれは見えてきたが、「誰の正典か」という問いは、<br>
+  データ設計の段階にすでに埋め込まれている。<br>
+  スピヴァク・データの政治性・フェミニスト／ブラック・デジタル・ヒューマニティーズ</p>
+</section>
+
+<!-- 13 Walsh（unchanged） -->
+<!-- ── Walsh slide（差し替え用） ── -->
+<section>
+  <span class="sec-label">New Directions</span>
+  <h2>Walsh（2023）：Computational Reception Studies</h2>
+  <div class="blockquote">
+    「読書・受容・テキスト流通に関する問いを探求する新興サブフィールド」
+    <cite>— Walsh, "The Challenges and Possibilities of Social Media Data,"
+    in <em>Debates in the Digital Humanities 2023</em>, pp.275–294 (U of Minnesota P)</cite>
+  </div>
+  <div class="two-col" style="margin-top:0.55em;">
+
+    <!-- 左：従来のCLS（拡充） -->
+    <div>
+      <p style="font-size:0.52em; color:var(--muted); font-family:'JetBrains Mono',monospace; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.4em;">従来のCLS</p>
+      <ul>
+        <li><strong>文学テキストそのものを計算分析</strong></li>
+        <li>コーパス → パターン・傾向の発見</li>
+        <li>文体・語彙・トピックモデルによるジャンル分類</li>
+        <li>時系列での言語・スタイルの変化を追う</li>
+        <li>例：Moretti（遠読）・Jockers（マクロ分析）・Underwood（文学史の長期変化）</li>
+      </ul>
+      <div class="callout" style="font-size:0.58em; margin-top:0.5em;">
+        <strong>問い：</strong>テキストはどのように書かれているか<br>
+        <span class="muted">→ 「作品の内側」にある構造・パターンを探る</span>
+      </div>
+    </div>
+
+    <!-- 右：Reception Studies -->
+    <div>
+      <p style="font-size:0.52em; color:var(--gold); font-family:'JetBrains Mono',monospace; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.4em;">Reception Studies</p>
+      <ul>
+        <li><strong>Goodreadsのレビュー・評価データ</strong>（「古典」概念とAmazonの絡み合い）</li>
+        <li><strong>Social Mediaでの引用パターン：</strong>James Baldwinの言葉が <em>Black Lives Matter</em>（BLM）運動——2013年創設、2020年George Floyd事件を機に世界規模で拡大——の文脈でどう再流通したか</li>
+        <li><strong>公共図書館・出版・プラットフォームデータ</strong></li>
+      </ul>
+      <div class="callout teal" style="font-size:0.58em; margin-top:0.5em;">
+        <strong>問い：</strong>テキストは<em>どのように読まれてきたか</em><br>
+        <span class="muted">→ プラットフォーム・経済・権力との絡み合いを可視化する</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 14 スピヴァク（unchanged） -->
+<section>
+  <span class="sec-label">Critique — Postcolonial</span>
+  <h2>スピヴァク：<em>Death of a Discipline</em>（2003）</h2>
+  <div class="blockquote">
+    "The literary is…attended by the irreducible complexity of language which escapes the merely computational."
+    <cite>— Gayatri Chakravorty Spivak, <em>Death of a Discipline</em>, Columbia UP, 2003</cite>
+  </div>
+  <p style="font-size:0.52em; color:var(--muted); margin-bottom:0.3em">
+    元来は比較文学への問い。<em>differences</em> 25.1（2014）特集「In the Shadows of the Digital Humanities」でDH批判の参照枠として読み直された。
+  </p>
+  <ul>
+    <li><strong>コーパスの偏り：</strong>遠読は英語圏・欧米中心のコーパスを「文学史」として提示しがちだ</li>
+    <li><strong>デジタル化の政治性：</strong>何がデジタル化され、何がされないか。それ自体が権力の配置を反映する</li>
+    <li><strong>DHの言語政治：</strong>「DHは遠読を優先することで文学とその言語への精密な関与を格下げにした」</li>
+    <li><strong>文学の複雑さの擁護：</strong>ニュアンス・他者の言語への注意こそが人文学の本来の使命である</li>
+  </ul>
+  <div class="callout" style="margin-top:0.4em; font-size:0.6em">
+    事例研究から問い直す：Open Library・Wikidataのカバレッジは英語・欧米圏に偏っている。
+    「34,789作品の地形図」はどの言語の、誰の文学の地形図なのか？
+  </div>
+</section>
+
+<!-- 15 データの政治性（unchanged） -->
+<section>
+  <span class="sec-label">Data Politics</span>
+  <h2>データの政治性：偏りの三つの構造</h2>
+  <div class="three-col">
+    <div class="callout" style="font-size:0.58em">
+      <p style="color:var(--gold-light); margin:0 0 0.3em">① コーパスの偏り</p>
+      HathiTrust・Project Gutenbergは英語・欧米テキスト中心。非英語圏・植民地文学は分析の「外側」に置かれる。遠読が描く「文学史」は誰の文学史か？
+    </div>
+    <div class="callout" style="font-size:0.58em">
+      <p style="color:var(--gold-light); margin:0 0 0.3em">② ジェンダーのバイナリ化</p>
+      Mandell（2019）：「量的文化分析においてジェンダーのカテゴリが生物学化・二項化・本質化されている」——Weidman &amp; Pastorの<em>Orlando</em>研究はこの問題を自覚的に反転させた。
+    </div>
+    <div class="callout" style="font-size:0.58em">
+      <p style="color:var(--gold-light); margin:0 0 0.3em">③ 労働の不可視化</p>
+      Klein（CIフォーラム2019）：データ構築・キュレーションの「見えない労働」を女性・有色人種が担う構造。Colored Conventions Projectのような実践が評価されなければならない。
+    </div>
+  </div>
+  <div class="callout green" style="margin-top:0.7em; font-size:0.62em">
+    <strong>フェミニスト・ブラック・デジタル・ヒューマニティーズ：</strong><br>
+    Posner &amp; Klein "Data as Media"（<em>Feminist Media Histories</em> 3, no.3, 2017）——
+    データを「知識の一次カテゴリ」ではなく「自らの資料に対する方向性」として捉え直す。<br>
+    Mandell, "Gender and Cultural Analytics," <em>Debates in the Digital Humanities 2019</em>.
+  </div>
+</section>
 </section>
 
 <section>
@@ -948,113 +1225,6 @@ html, body {
         ▶ 何が「正典」かは、<em>どの経路で見るか</em>に依存する。
       </div>
     </div>
-  </div>
-</section>
-</section>
-
-<section>
-<!-- ══════════════════════════════════════════════════ -->
-<!--  PART V: 社会文化批評                              -->
-<!-- ══════════════════════════════════════════════════ -->
-<section class="chapter-slide">
-  <div class="chapter-num">PART V</div>
-  <h2>社会文化批評の観点から</h2>
-  <p>正典のずれは見えてきたが、「誰の正典か」という問いは、<br>
-  データ設計の段階にすでに埋め込まれている。<br>
-  スピヴァク・データの政治性・フェミニスト／ブラック・デジタル・ヒューマニティーズ</p>
-</section>
-
-<!-- 13 Walsh（unchanged） -->
-<!-- ── Walsh slide（差し替え用） ── -->
-<section>
-  <span class="sec-label">New Directions</span>
-  <h2>Walsh（2023）：Computational Reception Studies</h2>
-  <div class="blockquote">
-    「読書・受容・テキスト流通に関する問いを探求する新興サブフィールド」
-    <cite>— Walsh, "The Challenges and Possibilities of Social Media Data,"
-    in <em>Debates in the Digital Humanities 2023</em>, pp.275–294 (U of Minnesota P)</cite>
-  </div>
-  <div class="two-col" style="margin-top:0.55em;">
-
-    <!-- 左：従来のCLS（拡充） -->
-    <div>
-      <p style="font-size:0.52em; color:var(--muted); font-family:'JetBrains Mono',monospace; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.4em;">従来のCLS</p>
-      <ul>
-        <li><strong>文学テキストそのものを計算分析</strong></li>
-        <li>コーパス → パターン・傾向の発見</li>
-        <li>文体・語彙・トピックモデルによるジャンル分類</li>
-        <li>時系列での言語・スタイルの変化を追う</li>
-        <li>例：Moretti（遠読）・Jockers（マクロ分析）・Underwood（文学史の長期変化）</li>
-      </ul>
-      <div class="callout" style="font-size:0.58em; margin-top:0.5em;">
-        <strong>問い：</strong>テキストはどのように書かれているか<br>
-        <span class="muted">→ 「作品の内側」にある構造・パターンを探る</span>
-      </div>
-    </div>
-
-    <!-- 右：Reception Studies -->
-    <div>
-      <p style="font-size:0.52em; color:var(--gold); font-family:'JetBrains Mono',monospace; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.4em;">Reception Studies</p>
-      <ul>
-        <li><strong>Goodreadsのレビュー・評価データ</strong>（「古典」概念とAmazonの絡み合い）</li>
-        <li><strong>Social Mediaでの引用パターン：</strong>James Baldwinの言葉が <em>Black Lives Matter</em>（BLM）運動——2013年創設、2020年George Floyd事件を機に世界規模で拡大——の文脈でどう再流通したか</li>
-        <li><strong>公共図書館・出版・プラットフォームデータ</strong></li>
-      </ul>
-      <div class="callout teal" style="font-size:0.58em; margin-top:0.5em;">
-        <strong>問い：</strong>テキストは<em>どのように読まれてきたか</em><br>
-        <span class="muted">→ プラットフォーム・経済・権力との絡み合いを可視化する</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- 14 スピヴァク（unchanged） -->
-<section>
-  <span class="sec-label">Critique — Postcolonial</span>
-  <h2>スピヴァク：<em>Death of a Discipline</em>（2003）</h2>
-  <div class="blockquote">
-    "The literary is…attended by the irreducible complexity of language which escapes the merely computational."
-    <cite>— Gayatri Chakravorty Spivak, <em>Death of a Discipline</em>, Columbia UP, 2003</cite>
-  </div>
-  <p style="font-size:0.52em; color:var(--muted); margin-bottom:0.3em">
-    元来は比較文学への問い。<em>differences</em> 25.1（2014）特集「In the Shadows of the Digital Humanities」でDH批判の参照枠として読み直された。
-  </p>
-  <ul>
-    <li><strong>コーパスの偏り：</strong>遠読は英語圏・欧米中心のコーパスを「文学史」として提示しがちだ</li>
-    <li><strong>デジタル化の政治性：</strong>何がデジタル化され、何がされないか。それ自体が権力の配置を反映する</li>
-    <li><strong>DHの言語政治：</strong>「DHは遠読を優先することで文学とその言語への精密な関与を格下げにした」</li>
-    <li><strong>文学の複雑さの擁護：</strong>ニュアンス・他者の言語への注意こそが人文学の本来の使命である</li>
-  </ul>
-  <div class="callout" style="margin-top:0.4em; font-size:0.6em">
-    事例研究から問い直す：Open Library・Wikidataのカバレッジは英語・欧米圏に偏っている。
-    「34,789作品の地形図」はどの言語の、誰の文学の地形図なのか？
-  </div>
-</section>
-
-<!-- 15 データの政治性（unchanged） -->
-<section>
-  <span class="sec-label">Data Politics</span>
-  <h2>データの政治性：偏りの三つの構造</h2>
-  <div class="three-col">
-    <div class="callout" style="font-size:0.58em">
-      <p style="color:var(--gold-light); margin:0 0 0.3em">① コーパスの偏り</p>
-      HathiTrust・Project Gutenbergは英語・欧米テキスト中心。非英語圏・植民地文学は分析の「外側」に置かれる。遠読が描く「文学史」は誰の文学史か？
-    </div>
-    <div class="callout" style="font-size:0.58em">
-      <p style="color:var(--gold-light); margin:0 0 0.3em">② ジェンダーのバイナリ化</p>
-      Mandell（2019）：「量的文化分析においてジェンダーのカテゴリが生物学化・二項化・本質化されている」——Weidman &amp; Pastorの<em>Orlando</em>研究はこの問題を自覚的に反転させた。
-    </div>
-    <div class="callout" style="font-size:0.58em">
-      <p style="color:var(--gold-light); margin:0 0 0.3em">③ 労働の不可視化</p>
-      Klein（CIフォーラム2019）：データ構築・キュレーションの「見えない労働」を女性・有色人種が担う構造。Colored Conventions Projectのような実践が評価されなければならない。
-    </div>
-  </div>
-  <div class="callout green" style="margin-top:0.7em; font-size:0.62em">
-    <strong>フェミニスト・ブラック・デジタル・ヒューマニティーズ：</strong><br>
-    Posner &amp; Klein "Data as Media"（<em>Feminist Media Histories</em> 3, no.3, 2017）——
-    データを「知識の一次カテゴリ」ではなく「自らの資料に対する方向性」として捉え直す。<br>
-    Mandell, "Gender and Cultural Analytics," <em>Debates in the Digital Humanities 2019</em>.
   </div>
 </section>
 </section>
