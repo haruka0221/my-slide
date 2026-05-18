@@ -829,12 +829,12 @@ html, body {
   <table>
     <thead><tr><th>論者</th><th>立場</th><th>主な主張</th></tr></thead>
     <tbody>
-      <tr><td>Algee-Hewitt</td><td><span class="pill teal">DH擁護</span></td><td class="small">EDA（探索的）とCDA（確認的）を混同している</td></tr>
-      <tr><td>Underwood</td><td><span class="pill teal">DH擁護</span></td><td class="small">トピックモデルの確率的性質は欠点でなく前提</td></tr>
-      <tr><td>Long &amp; So</td><td><span class="pill teal">DH擁護</span></td><td class="small">Daの批判は文脈を無視したオリエンタリズムに陥っている</td></tr>
-      <tr><td>Klein</td><td><span class="pill gold">フェミニスト批判</span></td><td class="small">データ構築の不可視の労働（女性・有色人種が担う）</td></tr>
-      <tr><td>Fish</td><td><span class="pill red">Da支持</span></td><td class="small">意図なきデータマイニングは無責任</td></tr>
-      <tr><td>Bode</td><td><span class="pill muted">CLS懐疑</span></td><td class="small">DaのCLS定義が狭すぎる。キュレーションを排除</td></tr>
+      <tr><td>Algee-Hewitt</td><td><span class="pill teal">DH擁護</span></td><td class="small">Daは「仮説を検証する分析（CDA）」の基準でCLS全体を裁いているが、文学研究で重要なのは仮説なしにデータからパターンを発見する「探索的分析（EDA）」だ。統計は読解を代替するのではなく新たな読解へと導くものである</td></tr>
+      <tr><td>Underwood</td><td><span class="pill teal">DH擁護</span></td><td class="small">トピックモデルは実行のたびに結果が変わるが、それは手法の前提であり欠陥ではない。探索的分析のツールを「仮説検証の道具」と誤解した批判だ</td></tr>
+      <tr><td>Long &amp; So</td><td><span class="pill teal">DH擁護</span></td><td class="small">Daは予測モデルから特徴量をひとつ抜き出してモデルが壊れると批判したが、複数の特徴量が組み合わさって機能するモデルの一部だけを変えるのは不当。また俳句分類モデルに中国古詩を持ち込んだのは歴史的文脈を無視している</td></tr>
+      <tr><td>Klein</td><td><span class="pill gold">構造的批判</span></td><td class="small">DH分野でデータ構築・メタデータ整理・キュレーションといった評価されにくい労働を担うのは女性・有色人種が多い。Colored Conventions Projectのような実践が正当に評価されるべきだ</td></tr>
+      <tr><td>Fish</td><td><span class="pill red">Da支持</span></td><td class="small">文章の長さや語頻度などの形式的特徴は、意図・文脈・文学史を抜きにしては意味をなさない。それらを排除したデータマイニングは自明なことを大げさに言うか恣意的な結論しか生まない</td></tr>
+      <tr><td>Bode</td><td><span class="pill muted">定義批判</span></td><td class="small">DaのCLS定義は機械学習による語パターン分析に限定されており、データ構築・キュレーション・メタデータ分析といった重要なデジタル文学研究を最初から排除している</td></tr>
     </tbody>
   </table>
   <div class="callout" style="margin-top:0.5em; font-size:0.58em">
@@ -852,11 +852,11 @@ html, body {
 <!--  PART V: 社会文化批評                              -->
 <!-- ══════════════════════════════════════════════════ -->
 <section class="chapter-slide">
-  <div class="chapter-num">PART V</div>
-  <h2>社会文化批評の観点から</h2>
-  <p>正典のずれは見えてきたが、「誰の正典か」という問いは、<br>
-  データ設計の段階にすでに埋め込まれている。<br>
-  スピヴァク・データの政治性・フェミニスト／ブラック・デジタル・ヒューマニティーズ</p>
+  <div class="chapter-num">PART IV</div>
+  <h2>社会文化批評の観点からみる建設的な展望</h2>
+  <p>DH批判を建設的に活かしていく<br>
+  ポストコロニアル批評・フェミニズム・ブラック・スタディーズの観点から、<br>
+  データそのものの政治性を問い直す。</p>
 </section>
 
 <!-- 13 Walsh（unchanged） -->
@@ -896,7 +896,7 @@ html, body {
         <li><strong>公共図書館・出版・プラットフォームデータ</strong></li>
       </ul>
       <div class="callout teal" style="font-size:0.58em; margin-top:0.5em;">
-        <strong>問い：</strong>テキストは<em>どのように読まれてきたか</em><br>
+        <strong>問い：</strong>テキストはどのように読まれてきたか<br>
         <span class="muted">→ プラットフォーム・経済・権力との絡み合いを可視化する</span>
       </div>
     </div>
@@ -907,24 +907,36 @@ html, body {
 <!-- 14 スピヴァク（unchanged） -->
 <section>
   <span class="sec-label">Critique — Postcolonial</span>
-  <h2>スピヴァク：<em>Death of a Discipline</em>（2003）</h2>
+  <h2>スピヴァク：固有性（Singularity）の擁護</h2>
+
   <div class="blockquote">
-    "The literary is…attended by the irreducible complexity of language which escapes the merely computational."
-    <cite>— Gayatri Chakravorty Spivak, <em>Death of a Discipline</em>, Columbia UP, 2003</cite>
+    "Our concern is not how to situate the peaks of the literary production of the world
+    on a level playing field but to ask what makes literary cases singular.
+    The singular is the always universalizable, never the universal."
+    <cite>— Spivak &amp; Damrosch, "Comparative Literature/World Literature,"
+    <em>Comparative Literature Studies</em> 48.4 (2011): 469</cite>
   </div>
-  <p style="font-size:0.52em; color:var(--muted); margin-bottom:0.3em">
-    元来は比較文学への問い。<em>differences</em> 25.1（2014）特集「In the Shadows of the Digital Humanities」でDH批判の参照枠として読み直された。
+
+  <p style="font-size:0.55em; color:var(--muted); font-style:italic; margin:0.4em 0 0.6em;">
+    「私たちの関心は、世界の文学的産物の頂点を公平な競技場に並べることではなく、
+    文学的事例を特異（singular）たらしめるものは何かを問うことにある。
+    特異なものとはつねに普遍化可能なものであり、けっして普遍的なものではない。」
   </p>
-  <ul>
-    <li><strong>コーパスの偏り：</strong>遠読は英語圏・欧米中心のコーパスを「文学史」として提示しがちだ</li>
-    <li><strong>デジタル化の政治性：</strong>何がデジタル化され、何がされないか。それ自体が権力の配置を反映する</li>
-    <li><strong>DHの言語政治：</strong>「DHは遠読を優先することで文学とその言語への精密な関与を格下げにした」</li>
-    <li><strong>文学の複雑さの擁護：</strong>ニュアンス・他者の言語への注意こそが人文学の本来の使命である</li>
-  </ul>
-  <div class="callout" style="margin-top:0.4em; font-size:0.6em">
-    事例研究から問い直す：Open Library・Wikidataのカバレッジは英語・欧米圏に偏っている。
-    「34,789作品の地形図」はどの言語の、誰の文学の地形図なのか？
+
+  <div class="callout" style="font-size:0.58em;">
+    <strong>universal（普遍的）vs universalizable（普遍化可能）</strong><br>
+    「普遍的」＝どこにでも当てはまる一般法則に回収すること。
+    遠読がピーク（名作の頂点）を統計的に並べる作業はこちらに近い。<br>
+    「普遍化可能」＝ある作品・事例の固有性を保ちながら、誰にでも開かれている可能性を持つこと。
+    スピヴァクが求めるのは後者——固有性（singularity）への精密な関与。
   </div>
+
+  <div class="callout" style="font-size:0.58em; margin-top:0.4em;">
+    元来は比較文学への問い（<em>Death of a Discipline</em>, Columbia UP, 2003）。
+    <em>differences</em> 25.1（2014）特集「In the Shadows of the Digital Humanities」で
+    DH批判の参照枠として読み直された。
+  </div>
+
 </section>
 
 <!-- 15 データの政治性（unchanged） -->
@@ -959,7 +971,7 @@ html, body {
 <!--  PART IV: 事例研究（博論）                         -->
 <!-- ══════════════════════════════════════════════════ -->
 <section class="chapter-slide chapter-slide-blue">
-  <div class="chapter-num">PART IV — CASE STUDY</div>
+  <div class="chapter-num">PART V — CASE STUDY</div>
   <h2>DHが「できること」の事例：正典形成の地形図</h2>
   <p>批判を踏まえたうえで丁寧に設計すれば、<br>
   DHは「誰の文学が、どの経路で正典化されてきたか」を可視化できる。<br>
@@ -1276,12 +1288,12 @@ html, body {
     <div class="ref-item"><span class="ref-key">Da 2019</span> "The Computational Case against Computational Literary Studies." <em>Critical Inquiry</em> 45(3): 601–639.</div>
     <div class="ref-item"><span class="ref-key">McGrath, Higgins &amp; Hintze 2018</span> [PhD syllabi canonical set]. <em>Journal of Cultural Analytics</em>.</div>
     <div class="ref-item"><span class="ref-key">Weidman &amp; Pastor 2021</span> "Modernism and Gender at the Limits of Stylometry." <em>DHQ</em> 15, no.4.</div>
-    <div class="ref-item"><span class="ref-key">Spivak 2003</span> <em>Death of a Discipline</em>. Columbia University Press.</div>
+    <div class="ref-item"><span class="ref-key">Spivak 2003</span> Spivak, G.C. <em>Death of a Discipline</em>. Columbia University Press.</div>
+<div class="ref-item"><span class="ref-key">Spivak &amp; Damrosch 2011</span> "Comparative Literature/World Literature: A Discussion." <em>Comparative Literature Studies</em> 48.4: 455–485.</div>
     <div class="ref-item"><span class="ref-key">Posner &amp; Klein 2017</span> "Data as Media." <em>Feminist Media Histories</em> 3, no.3.</div>
     <div class="ref-item"><span class="ref-key">Mandell 2019</span> "Gender and Cultural Analytics." <em>Debates in the Digital Humanities 2019</em>.</div>
     <div class="ref-item"><span class="ref-key">Walsh &amp; Antoniak 2021</span> "The Goodreads 'Classics'." <em>Cultural Analytics</em> 6.</div>
     <div class="ref-item"><span class="ref-key">Walsh 2023</span> "Challenges and Possibilities of Social Media Data." <em>Debates in DH 2023</em>: 275–294.</div>
-    <div class="ref-item"><span class="ref-key">筒井 2026a</span> 筒井遥. "Digital Humanities in Literary Studies: A Quantitative Survey." [OpenAlex API]</div>
     <div class="ref-item"><span class="ref-key">筒井 2026b</span> 筒井遥. "LLM多段階推論による書誌DB横断照合." 東京大学五月祭 / KCL国際学会（予定）.</div>
   </div>
 </section>
