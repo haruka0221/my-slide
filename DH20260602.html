@@ -1,1 +1,2511 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英文学とデジタル・ヒューマニティーズ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/theme/black.min.css">
+
+<style>
+
+
+/* ── Viewport centering fix ── */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;          /* スクロールバーが幅を食わないように */
+}
+
+.reveal-viewport {
+  position: fixed;           /* 必ず画面全体に貼り付く */
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reveal {
+  /* reveal.js が内部で width/height を px で書き込むので
+     position:relative と margin:auto で水平中央に戻す */
+  position: relative !important;
+  margin: auto !important;
+}
+</style>
+
+<style>
+  :root {
+    --bg-deep: #0f1117;
+    --bg-card: #1a1d27;
+    --gold: #c9a84c;
+    --gold-light: #e2c478;
+    --ivory: #f2ede4;
+    --muted: #8a8fa8;
+    --accent-red: #c0392b;
+    --accent-teal: #2eacb5;
+    --accent-green: #4caf7d;
+    --accent-blue: #4a90c4;
+    --border: rgba(201,168,76,0.25);
+    --border-blue: rgba(74,144,196,0.3);
+  }
+  .reveal-viewport { background: var(--bg-deep); }
+  .reveal {
+    font-family: 'Lora','Noto Serif JP',Georgia,serif;
+    font-size: 36px; color: var(--ivory);
+  }
+  .reveal h1,.reveal h2,.reveal h3 {
+    font-family: 'Playfair Display','Noto Serif JP',serif;
+    color: var(--ivory); text-transform: none;
+    letter-spacing: -0.01em; text-shadow: none; line-height: 1.15;
+  }
+  .reveal h1 { font-size:1.8em; font-weight:700; }
+  .reveal h2 { font-size:1.3em; font-weight:700; color:var(--gold-light); margin-bottom:0.4em; }
+  .reveal p  { line-height:1.65; margin:0.4em 0; }
+  .reveal .slides section { padding:20px 40px; text-align:left; }
+
+  /* ── Title ── */
+  .title-slide { text-align:center !important; }
+  .title-slide .deck-label {
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.35em; color:var(--gold);
+    letter-spacing:0.25em; text-transform:uppercase;
+    margin-bottom:1.2em; display:block;
+  }
+  .title-slide h1 {
+    font-size:1.55em; line-height:1.2; margin-bottom:0.5em;
+    background:linear-gradient(135deg,var(--ivory) 60%,var(--gold-light));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .title-slide .subtitle {
+    font-size:0.5em; color:var(--muted); font-style:italic; margin-bottom:2em; line-height:1.6;
+  }
+  .title-meta {
+    display:flex; justify-content:center; gap:2.5em;
+    font-size:0.36em; color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    border-top:1px solid var(--border); padding-top:0.8em; margin-top:1em;
+  }
+  .title-meta span { color:var(--gold); }
+
+  /* ── Chapter breaks ── */
+  .chapter-slide {
+    display:flex !important; flex-direction:column; justify-content:center; min-height:100%;
+    background:linear-gradient(135deg,#0f1117 0%,#1a1d2f 100%);
+  }
+  .chapter-num {
+    font-family:'JetBrains Mono',monospace; font-size:0.32em;
+    color:var(--gold); letter-spacing:0.3em; margin-bottom:0.6em;
+  }
+  .chapter-slide h2 { font-size:1.5em; color:var(--ivory); border-left:4px solid var(--gold); padding-left:0.5em; }
+  .chapter-slide p { font-size:0.48em; color:var(--muted); max-width:80%; margin-top:1em; line-height:1.7; }
+  .chapter-slide-blue .chapter-num { color:var(--accent-blue); }
+  .chapter-slide-blue h2 { border-left-color:var(--accent-blue); }
+
+  /* ── Callouts ── */
+  .callout {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-left:4px solid var(--gold);
+    padding:0.55em 0.9em; margin:0.5em 0; font-size:0.78em; line-height:1.6;
+  }
+  .callout.red   { border-left-color:var(--accent-red); }
+  .callout.teal  { border-left-color:var(--accent-teal); }
+  .callout.green { border-left-color:var(--accent-green); }
+  .callout.blue  { border-left-color:var(--accent-blue); background:rgba(74,144,196,0.07); }
+
+  /* ── Block quotes ── */
+  .blockquote {
+    border-left:3px solid var(--gold); padding:0.4em 0.8em;
+    color:var(--ivory); font-style:italic; font-size:0.78em;
+    margin:0.6em 0; line-height:1.65; background:rgba(201,168,76,0.06);
+  }
+  .blockquote cite { display:block; font-size:0.75em; font-style:normal; color:var(--muted); margin-top:0.4em; }
+  .blockquote.lg { font-size:0.70em; }
+
+  /* ── Tables ── */
+  .reveal table { font-size:0.5em; width:100%; border-collapse:collapse; margin:0.5em 0; }
+  .reveal table th {
+    background:rgba(201,168,76,0.18); color:var(--gold-light);
+    font-family:'JetBrains Mono',monospace; font-weight:500;
+    padding:0.45em 0.7em; border-bottom:1px solid var(--border); text-align:left;
+  }
+  .reveal table td { padding:0.38em 0.7em; border-bottom:1px solid rgba(255,255,255,0.06); color:var(--ivory); }
+  .reveal table tr:last-child td { border-bottom:none; }
+  .hi  { color:var(--gold-light); font-weight:600; }
+  .lo  { color:var(--muted); }
+  .blu { color:var(--accent-blue); font-weight:600; }
+
+  /* ── Methodology table (Slide 01) ── */
+  .method-row {
+    display:grid;
+    grid-template-columns: 1.8em 1fr 5em 5em;
+    gap:0 0.6em;
+    align-items:center;
+    padding:0.38em 0.6em;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    font-size:0.58em;
+  }
+  .method-row:first-child { border-top:1px solid rgba(255,255,255,0.06); }
+  .method-num {
+    font-family:'JetBrains Mono',monospace;
+    color:var(--gold); font-size:1.1em; font-weight:600; text-align:center;
+  }
+  .method-body { color:var(--ivory); line-height:1.45; }
+  .method-body .mname { font-weight:600; }
+  .method-body .msub { color:var(--muted); font-size:0.9em;  }
+  .method-period { font-family:'JetBrains Mono',monospace; color:var(--muted); font-size:0.9em; text-align:center; }
+  .badge {
+    display:inline-block; font-family:'JetBrains Mono',monospace;
+    font-size:0.85em; padding:0.1em 0.5em; border-radius:1em;
+    border:1px solid currentColor; text-align:center;
+  }
+  .badge.upper { color:var(--muted); }
+  .badge.high  { color:var(--accent-teal); }
+  .badge.direct{ color:var(--accent-blue); }
+
+  /* ── Grids ── */
+  .two-col   { display:grid; grid-template-columns:1fr 1fr;     gap:1em;   align-items:start; }
+  .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.8em; align-items:start; }
+
+  /* ── Stat cards ── */
+  .stat-row { display:flex; gap:0.8em; margin:0.5em 0; }
+  .stat-card {
+    flex:1; background:var(--bg-card); border:1px solid var(--border);
+    border-radius:4px; padding:0.6em 0.8em; text-align:center;
+  }
+  .stat-card.blue { border-color:var(--border-blue); }
+  .stat-card .num   { font-size:1.5em; font-family:'Playfair Display',serif; color:var(--gold-light); display:block; line-height:1.1; }
+  .stat-card.blue .num { color:var(--accent-blue); }
+  .stat-card .label { font-size:0.35em; color:var(--muted); line-height:1.4; margin-top:0.2em; font-family:'JetBrains Mono',monospace; }
+
+  /* ── Bars ── */
+  .bar-row   { display:flex; align-items:center; margin:0.28em 0; font-size:0.55em; }
+  .bar-label { width:11em; color:var(--muted); text-align:right; padding-right:0.7em; font-family:'JetBrains Mono',monospace; flex-shrink:0; }
+  .bar-track { flex:1; background:rgba(255,255,255,0.06); height:1.4em; border-radius:2px; overflow:hidden; }
+  .bar-fill  { height:100%; background:var(--gold); border-radius:2px; display:flex; align-items:center; padding-left:0.5em; }
+  .bar-fill.teal { background:var(--accent-teal); }
+  .bar-fill.red  { background:var(--accent-red); }
+  .bar-fill.blue { background:var(--accent-blue); }
+  .bar-fill.dim  { background:rgba(255,255,255,0.2); }
+  .bar-val   { font-size:0.9em; color:var(--bg-deep); font-family:'JetBrains Mono',monospace; font-weight:500; }
+  .bar-pct   { width:5em; color:var(--ivory); padding-left:0.5em; font-family:'JetBrains Mono',monospace; }
+
+  /* ── Timeline ── */
+  .timeline { position:relative; padding-left:1.5em; }
+  .timeline::before { content:''; position:absolute; left:0.35em; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--gold),transparent); }
+  .tl-item  { position:relative; margin-bottom:0.46em; font-size:0.53em; }
+  .tl-item::before { content:''; position:absolute; left:-1.28em; top:0.35em; width:0.6em; height:0.6em; border-radius:50%; background:var(--gold); }
+  .tl-item.me::before { background:var(--accent-blue); }
+  .tl-year  { color:var(--gold); font-family:'JetBrains Mono',monospace; font-weight:500; }
+  .tl-item.me .tl-year { color:var(--accent-blue); }
+  .tl-text  { color:var(--ivory); }
+  .tl-sub   { color:var(--muted); font-style:italic; }
+
+  /* ── Pills ── */
+  .pill {
+    display:inline-block; font-size:0.55em;
+    font-family:'JetBrains Mono',monospace; padding:0.15em 0.6em;
+    border-radius:2em; margin:0.1em; border:1px solid currentColor;
+  }
+  .pill.gold  { color:var(--gold); }
+  .pill.red   { color:var(--accent-red); }
+  .pill.teal  { color:var(--accent-teal); }
+  .pill.blue  { color:var(--accent-blue); }
+  .pill.muted { color:var(--muted); }
+
+  /* ── Author cards ── */
+  .author-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5em; }
+  .author-card {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:4px; padding:0.5em 0.7em; font-size:0.55em;
+  }
+  .author-card .name  { color:var(--gold-light); font-weight:600; font-size:1.05em; }
+  .author-card .count { font-family:'JetBrains Mono',monospace; font-size:1.2em; color:var(--ivory); }
+  .author-card .role  { color:var(--muted); font-style:italic; font-size:0.9em; }
+
+  /* ── Pipeline (Case Study) ── */
+  .pipe-row { display:flex; align-items:stretch; gap:0; margin:0.5em 0; }
+  .pipe-step {
+    flex:1; padding:0.45em 0.4em;
+    background:rgba(74,144,196,0.1); border:1px solid var(--border-blue); text-align:center;
+  }
+  .pipe-step.fail { background:rgba(192,73,43,0.1); border-color:rgba(192,73,43,0.3); }
+  .pipe-n { font-size:0.32em; color:var(--accent-blue); font-family:'JetBrains Mono',monospace; letter-spacing:0.06em; margin-bottom:0.2em; }
+  .pipe-n.fail { color:var(--accent-red); }
+  .pipe-t { font-size:0.42em; font-weight:600; color:var(--ivory); line-height:1.2; }
+  .pipe-s { font-size:0.36em; color:var(--muted); margin-top:0.15em; line-height:1.3; }
+  .pipe-arr { font-size:0.6em; color:var(--accent-blue); padding:0 0.1em; display:flex; align-items:center; flex-shrink:0; }
+
+  /* ── DB tags ── */
+  .db-row { display:flex; gap:0.3em; flex-wrap:wrap; margin:0.3em 0; align-items:center; }
+  .db-tag {
+    font-family:'JetBrains Mono',monospace; font-size:0.38em;
+    padding:0.15em 0.55em; border:1px solid rgba(255,255,255,0.2); color:var(--muted);
+  }
+  .db-tag.hi { border-color:var(--accent-blue); color:var(--accent-blue); }
+
+  /* ── Canon tension items ── */
+  .tension-item {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:0.25em 0.6em; margin-bottom:0.2em;
+    background:rgba(74,144,196,0.08); border-left:3px solid var(--accent-blue);
+    font-size:0.55em;
+  }
+  .tension-title { color:var(--ivory); font-style:italic; }
+  .tension-val   { font-family:'JetBrains Mono',monospace; color:var(--accent-blue); font-weight:600; }
+
+  /* ── F1 blocks ── */
+  .f1-block { background:rgba(74,144,196,0.1); border:1px solid var(--border-blue); border-top:3px solid var(--accent-blue); padding:0.4em 0.6em; text-align:center; }
+  .f1-num   { font-family:'Playfair Display',serif; font-size:1.6em; color:var(--accent-blue); line-height:1; }
+  .f1-label { font-family:'JetBrains Mono',monospace; font-size:0.35em; color:var(--muted); margin-top:0.2em; }
+
+  /* ── References ── */
+  .refs { font-size:0.42em; color:var(--muted); line-height:1.7; font-family:'JetBrains Mono',monospace; }
+  .refs .ref-item { margin-bottom:0.4em; border-left:2px solid var(--border); padding-left:0.8em; }
+  .refs .ref-item .ref-key { color:var(--gold); }
+
+  /* ── Section label ── */
+  .sec-label {
+    font-family:'JetBrains Mono',monospace; font-size:0.34em;
+    color:var(--gold); letter-spacing:0.2em; text-transform:uppercase;
+    margin-bottom:0.3em; display:block;
+  }
+  .sec-label.blue { color:var(--accent-blue); }
+
+  /* ── Lists ── */
+  .reveal ul { margin:0.3em 0; padding-left:1.2em; }
+  .reveal ul li { margin-bottom:0.25em; font-size:0.72em; line-height:1.55; color:var(--ivory); }
+  .reveal ul li strong { color:var(--gold-light); }
+
+  /* ── Utils ── */
+  .small { font-size:0.65em !important; }
+  .muted { color:var(--muted) !important; }
+  .gold  { color:var(--gold-light) !important; }
+  .mono  { font-family:'JetBrains Mono',monospace !important; }
+  .dv { border:none; border-top:1px solid rgba(255,255,255,0.08); margin:0.5em 0; }
+
+  /* ── Spike annotation (Slide 02) ── */
+  .spike-box {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-left:4px solid var(--gold-light);
+    padding:0.4em 0.7em; margin:0.25em 0; font-size:0.57em; line-height:1.5;
+  }
+  .spike-year { font-family:'JetBrains Mono',monospace; color:var(--gold-light); font-weight:600; margin-right:0.4em; }
+  .spike-count { font-family:'JetBrains Mono',monospace; color:var(--accent-red); font-weight:600; }
+  .spike-note  { color:var(--muted); }
+
+
+ 
+  .journal-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .journal-grid > div {
+    min-width: 0;
+  }
+
+  table.tight {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 0.58em;
+  }
+
+  table.tight th,
+  table.tight td {
+    padding: 0.35em 0.45em;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    vertical-align: top;
+    word-break: keep-all;
+  }
+
+  table.tight th {
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  table.tight td:nth-child(2),
+  table.tight td:nth-child(3) {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--muted);
+    font-size: 0.92em;
+  }
+
+  table.tight th:nth-child(1),
+  table.tight td:nth-child(1) {
+    width: 58%;
+  }
+
+  table.tight th:nth-child(2),
+  table.tight td:nth-child(2) {
+    width: 24%;
+  }
+
+  table.tight th:nth-child(3),
+  table.tight td:nth-child(3) {
+    width: 18%;
+    text-align: right;
+  }
+
+
+
+
+
+  /* 右端切れ対策：paddingを幅の内側に含める */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  .reveal,
+  .reveal .slides,
+  .reveal .slides section,
+  .slide {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .reveal .slides section {
+    padding: 18px 32px;
+    overflow: hidden;
+  }
+
+  /* 横並び表がスライド幅を超えないようにする */
+  .journal-grid {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .journal-grid > div {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  table.tight {
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+    font-size: 0.52em;
+  }
+
+  table.tight th,
+  table.tight td {
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: anywhere;
+    padding: 0.32em 0.38em;
+  }
+
+  table.tight th:nth-child(1),
+  table.tight td:nth-child(1) {
+    width: 52%;
+  }
+
+  table.tight th:nth-child(2),
+  table.tight td:nth-child(2) {
+    width: 30%;
+  }
+
+  table.tight th:nth-child(3),
+  table.tight td:nth-child(3) {
+    width: 18%;
+    text-align: right;
+  }
+
+  /* ── Block quote ── */
+.bq{border-left:3px solid var(--gold);padding:0.4em 0.8em;color:var(--ivory);font-style:italic;font-size:0.72em;margin:0.55em 0;line-height:1.7;background:rgba(201,168,76,0.05);}
+.bq cite{display:block;font-size:0.78em;font-style:normal;color:var(--muted);margin-top:0.35em;}
+
+
+/* ── dh_reception_slides 用追加CSS ──────────────────────────
+   既存スタイルシートの末尾に追記するだけでよい。
+   既存クラスと重複するものは含めない。
+────────────────────────────────────────────────────────── */
+
+/* テーブル上部の小見出しラベル */
+.tl {
+  font-size: 0.44em;
+  color: var(--gold-light);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2em;
+  margin-top: 0.5em;
+  display: block;
+}
+
+/* テーブル内 数値セル（右揃え・等幅）*/
+.reveal table td.n,
+.reveal table th.n {
+  font-family: 'JetBrains Mono', monospace;
+  text-align: right;
+}
+
+/* テーブル内 ゼロ値の強調 */
+.zero {
+  color: var(--accent-red);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+}
+
+/* テーブル内 赤テキスト */
+.re2 {
+  color: var(--accent-red);
+  font-weight: 600;
+}
+
+/* テーブル内 teal テキスト */
+.te2 {
+  color: var(--accent-teal);
+}
+
+/* テーブル内 green テキスト */
+.ok {
+  color: var(--accent-green);
+}
+
+/* テーブルの強調行（スパイク行）*/
+.reveal table tr.sp td {
+  background: rgba(192, 57, 43, 0.10);
+}
+
+/* スライド下部の小注記 */
+.note {
+  font-size: 0.42em;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 0.35em;
+  line-height: 1.65;
+}
+
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.95fr;
+    gap: 0.8rem;
+    align-items: start;
+    width: 100%;
+  }
+
+  .mini-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 0.48em;
+    margin: 0;
+  }
+
+  .mini-table th,
+  .mini-table td {
+    padding: 0.28em 0.35em;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    vertical-align: top;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    line-height: 1.25;
+  }
+
+  .mini-table th {
+    color: var(--gold-light);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+  }
+
+  .mini-table td:nth-child(2),
+  .mini-table td:nth-child(3) {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--muted);
+  }
+
+  .mini-table th:nth-child(1),
+  .mini-table td:nth-child(1) {
+    width: 45%;
+  }
+
+  .mini-table th:nth-child(2),
+  .mini-table td:nth-child(2) {
+    width: 28%;
+  }
+
+  .mini-table th:nth-child(3),
+  .mini-table td:nth-child(3) {
+    width: 27%;
+  }
+
+  .subhead {
+    font-size: 0.5em;
+    color: var(--gold-light);
+    margin: 0 0 0.35em 0;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .note {
+    font-size: 0.42em;
+    color: var(--muted);
+    line-height: 1.45;
+    margin-top: 0.55em;
+  }
+
+  
+</style>
+
+
+<style>
+  .results-grid3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.9fr;
+    gap: 0.55rem;
+    align-items: start;
+    width: 100%;
+  }
+
+  .compact-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 0.42em;
+    margin: 0;
+  }
+
+  .compact-table th,
+  .compact-table td {
+    padding: 0.22em 0.28em;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    line-height: 1.18;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+
+  .compact-table th {
+    color: var(--gold-light);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+  }
+
+  .compact-table td:nth-child(2) {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  .compact-table th:nth-child(1),
+  .compact-table td:nth-child(1) {
+    width: 58%;
+  }
+
+  .compact-table th:nth-child(2),
+  .compact-table td:nth-child(2) {
+    width: 42%;
+  }
+
+  .subhead {
+    font-size: 0.43em;
+    color: var(--gold-light);
+    margin: 0 0 0.25em 0;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .note {
+    font-size: 0.34em;
+    color: var(--muted);
+    line-height: 1.35;
+    margin-top: 0.45em;
+  }
+
+  .reveal h2 {
+    font-size: 1.05em;
+    margin-bottom: 0.35em;
+  }
+
+  .reveal .slides section {
+    padding: 14px 28px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+</style>
+
+<style>
+  .ci-grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 0.7rem;
+    align-items: start;
+    width: 100%;
+  }
+
+  .ci-mini {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 0.43em;
+    margin: 0;
+  }
+
+  .ci-mini th,
+  .ci-mini td {
+    padding: 0.24em 0.3em;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    line-height: 1.22;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+
+  .ci-mini th {
+    color: var(--gold-light);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+  }
+
+  .ci-mini td.num {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .ci-mini th:nth-child(1),
+  .ci-mini td:nth-child(1) {
+    width: 62%;
+  }
+
+  .ci-mini th:nth-child(2),
+  .ci-mini td:nth-child(2) {
+    width: 38%;
+  }
+
+  .ci-note {
+    font-size: 0.34em;
+    color: var(--muted);
+    line-height: 1.35;
+    margin-top: 0.45em;
+  }
+</style>
+
+<style>
+  .ci-grid2 {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 0.6rem;
+    align-items: start;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .ci-mini {
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 0.40em;
+    margin: 0;
+  }
+
+  .ci-mini th,
+  .ci-mini td {
+    padding: 0.22em 0.28em;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    line-height: 1.18;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    white-space: normal;
+  }
+
+  .ci-mini th {
+    color: var(--gold-light);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+  }
+
+  .ci-mini td.num {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--muted);
+    text-align: right;
+    white-space: normal;
+  }
+
+  .ci-mini .pct {
+    color: var(--ivory);
+    font-size: 0.95em;
+  }
+
+  .ci-mini .subnum {
+    color: var(--muted);
+    font-size: 0.86em;
+  }
+
+  .ci-mini th:nth-child(1),
+  .ci-mini td:nth-child(1) {
+    width: 60%;
+  }
+
+  .ci-mini th:nth-child(2),
+  .ci-mini td:nth-child(2) {
+    width: 40%;
+  }
+
+  .ci-note {
+    font-size: 0.32em;
+    color: var(--muted);
+    line-height: 1.32;
+    margin-top: 0.38em;
+  }
+
+  .ci-box {
+    background: rgba(74,144,196,0.07);
+    border: 1px solid rgba(74,144,196,0.22);
+    border-left: 3px solid var(--accent-blue);
+    padding: 0.35em 0.5em;
+    font-size: 0.38em;
+    line-height: 1.35;
+    margin-top: 0.45em;
+  }
+
+  .reveal h2 {
+    font-size: 1.02em;
+    margin-bottom: 0.30em;
+  }
+</style>
+
+<style>
+.strategy-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.55rem;
+}
+.strategy-card{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.035);
+  padding:.45em .6em;
+  font-size:.46em;
+  line-height:1.35;
+}
+.strategy-card .t{
+  color:var(--gold-light);
+  font-family:'JetBrains Mono',monospace;
+  margin-bottom:.2em;
+}
+
+/* ── Code-like box ── */
+.code-box{background:#111418;border:1px solid rgba(255,255,255,0.12);border-left:3px solid var(--blue);padding:0.45em 0.8em;font-family:'JetBrains Mono',monospace;font-size:0.50em;color:#a8c4e0;line-height:1.7;margin:0.4em 0;}
+.code-box .cm{color:var(--muted);}
+.code-box .kw{color:var(--gold);}
+.code-box .ok{color:var(--green);}
+.code-box .ng{color:var(--red);}
+
+
+/* ── Bubble chart ── */
+.bubble-area{position:relative;width:100%;height:260px;background:var(--bg-card);border:1px solid var(--border-blue);border-radius:4px;overflow:hidden;}
+.bubble{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:0.30em;color:#fff;cursor:default;transition:transform 0.2s;}
+.bubble:hover{transform:scale(1.08);}
+.bubble-tooltip{position:absolute;background:rgba(15,17,23,0.95);border:1px solid var(--gold);padding:0.3em 0.6em;font-size:0.28em;font-family:'JetBrains Mono',monospace;color:var(--ivory);pointer-events:none;white-space:nowrap;z-index:10;display:none;}
+.axis-label{position:absolute;font-family:'JetBrains Mono',monospace;font-size:0.28em;color:var(--muted);}
+
+
+
+</style>
+
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  00  TITLE                                         -->
+<!-- ══════════════════════════════════════════════════ -->
+<section class="title-slide">
+  <span class="deck-label">Guest Lecture · 2025.05.18 · 15:10–16:50</span>
+  <h1>社会文化批評の観点から考える<br>英文学とデジタル・ヒューマニティーズ</h1>
+  <p class="subtitle">English Literature and Digital Humanities:<br>A Sociocultural-Critical Perspective</p>
+  <div class="title-meta">
+    <div>場所 <span>中央大学</span></div>
+    <div>講演者 <span>筒井遥（人間文化研究機構）</span></div>
+  </div>
+</section>
+
+<section>
+<!-- ══════════════════════════════════════════════════ -->
+<!--  01  問いと調査設計（redesigned）                  -->
+<!-- ══════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════
+     タイトルの直後に挿入。既存の slide 01 は削除する。
+     ══════════════════════════════════════════════════ -->
+
+<!-- ── SLIDE A：Methodological Commons ── -->
+<section>
+  <span class="sec-label">Starting Point</span>
+  <h2>Methodological Commons としてのDH</h2>
+
+  <div class="two-col" style="gap:1.4em; align-items:center;">
+
+    <!-- 左：図 -->
+    <div style="text-align:center;">
+      <img
+        src="media/McCarty_Short_map.png"
+        alt="Methodological Commons（McCarty & Short, 2002）"
+        style="
+          max-width: 100%;
+          max-height: 360px;
+          border: 1px solid var(--border-blue);
+          display: block;
+          margin: 0 auto;
+          filter: brightness(0.92) contrast(1.05);
+        "
+      />
+      <p style="font-size:0.38em; color:var(--muted); margin-top:0.4em; font-family:'JetBrains Mono',monospace; line-height:1.5;">
+        Willard McCarty &amp; Harold Short (2002)<br>
+        "An intellectual and disciplinary map of humanities computing"<br>
+        via HUMANIST / Alliance of Digital Humanities Organizations
+      </p>
+    </div>
+
+    <!-- 右：問い -->
+    <div>
+      <div class="callout blue" style="font-size:0.65em; margin-bottom:0.6em;">
+        DHはComputer Science・Linguistics・Sociology・History
+        といった学問を繋ぐ「方法論的共有地（Methodological Commons）」として
+        構想された。Literature &amp; the arts もその一角を占めている。
+      </div>
+
+      <div class="callout red" style="font-size:0.65em; margin-bottom:0.6em;">
+        <strong>問い：</strong><br>
+        この地図が描かれてから20年以上が経つ。<br>
+        英文学研究において、このCommonsは<br>
+        実際にどれだけ使われてきたのか？
+      </div>
+
+      <div style="font-size:0.52em; color:var(--muted); line-height:1.65;">
+        主要英文学ジャーナル15誌・10年分のデータを、<br>
+        4つの独立した手法で調べた。
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── SLIDE B：キーワードスクロール → 調査設計 ── -->
+<section>
+  <span class="sec-label">The Question & Design</span>
+  <h2>DHは英文学研究に根付いているか？</h2>
+
+  <!-- スクロールする検索キーワード -->
+  <div style="
+    position: relative;
+    overflow: hidden;
+    height: 2.8em;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid var(--border-blue);
+    border-radius: 3px;
+    margin-bottom: 0.7em;
+  ">
+    <!-- グラデーションで左右をフェード -->
+    <div style="
+      position:absolute; top:0; left:0; width:6em; height:100%;
+      background: linear-gradient(to right, #0f1117, transparent);
+      z-index:2; pointer-events:none;
+    "></div>
+    <div style="
+      position:absolute; top:0; right:0; width:6em; height:100%;
+      background: linear-gradient(to left, #0f1117, transparent);
+      z-index:2; pointer-events:none;
+    "></div>
+
+    <!-- スクロールするテキスト帯 -->
+    <div id="kw-scroll" style="
+      display: flex;
+      align-items: center;
+      height: 100%;
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.48em;
+      gap: 1.2em;
+      padding: 0 1em;
+      animation: kwscroll 28s linear infinite;
+    ">
+      <!-- 同じリストを2回並べることでシームレスループ -->
+      <span style="color:var(--gold)">distant reading</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Moretti</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Jockers</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">computational</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Underwood</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">digital humanities</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Ramsay</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">stylometry</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Burrows</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">topic model</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Algee-Hewitt</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">text mining</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Heuser</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">machine learning</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Stanford Literary Lab</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">corpus linguistics</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Da</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">Python</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">R</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">Stylo</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">HathiTrust</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">word embedding</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Bamman</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">quantitative</span>
+      <span style="color:var(--muted)">·</span>
+      <!-- 2周目 -->
+      <span style="color:var(--gold)">distant reading</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Moretti</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Jockers</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">computational</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Underwood</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">digital humanities</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Ramsay</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">stylometry</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Burrows</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">topic model</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Algee-Hewitt</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">text mining</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Heuser</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">machine learning</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Stanford Literary Lab</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">corpus linguistics</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Da</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">Python</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">R</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">Stylo</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">HathiTrust</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">word embedding</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">Bamman</span>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">quantitative</span>
+    </div>
+  </div>
+
+  <style>
+  @keyframes kwscroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  </style>
+
+ <!-- 調査設計テーブル（①②③のみ・④削除） -->
+<div class="method-row">
+  <div class="method-num">①</div>
+  <div class="method-body">
+    <span class="mname">キーワード検索</span>
+    <span class="msub">対象：OpenAlex収録の15誌論文　検索部位：タイトル・抄録</span><br>
+    "digital humanities" "distant reading" "computational" 等のキーワードでAPIを叩いた。
+    タイトル・抄録に含まれているかどうかしか見ておらず、ノイズが多い。数値は上限値として扱う。
+  </div>
+  <div class="method-period">2016–2025</div>
+  <div><span class="badge upper">上限値</span></div>
+</div>
+
+<div class="method-row">
+  <div class="method-num">②</div>
+  <div class="method-body">
+    <span class="mname">被引用チェック</span>
+    <span class="msub">対象：OpenAlex収録の15誌論文　検索部位：参考文献リスト</span><br>
+    Moretti・Jockers・Underwood等のDH方法論書を参考文献に含む論文をAPIで抽出した。
+    キーワードを使わずにDH実践をした論文を拾う目的だが、理論的言及との区別はできない。
+  </div>
+  <div class="method-period">2010–2025</div>
+  <div><span class="badge upper">上限値</span></div>
+</div>
+
+<div class="method-row">
+  <div class="method-num">③</div>
+  <div class="method-body">
+    <span class="mname">PDF脚注スキャン</span>
+    <span class="msub">対象：Critical Inquiry 254本のPDFファイル　検索部位：脚注全8,940行</span><br>
+    PDFを直接入手してテキストを抽出し、脚注行を正規表現でスキャン。
+    分類にはClaude Haiku APIを使用。①②と異なり本文脚注を直接見るため、ノイズが少なく高精度な手法。
+  </div>
+  <div class="method-period">2019–2025</div>
+  <div><span class="badge high">高精度</span></div>
+</div>
+</section>
+
+
+
+<section>
+  <span class="sec-label">Results</span>
+  <h2>OpenAlex検索結果(2016–2025年)</h2>
+
+  <div class="results-grid3">
+    <div>
+      <p class="subhead">主要英文学・批評誌</p>
+      <table class="compact-table">
+        <thead>
+          <tr>
+            <th>誌</th>
+            <th>検索結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="hi">PMLA</td><td>100/1203 = 8.3%</td></tr>
+          <tr><td class="hi">ELH</td><td>42/424 = 9.9%</td></tr>
+          <tr><td class="hi">Novel</td><td>47/413 = 11.4%</td></tr>
+          <tr><td class="hi">Critical Inquiry</td><td>27/945 = 2.9%</td></tr>
+          <tr><td class="hi">Modernism/modernity</td><td>36/723 = 5.0%</td></tr>
+          <tr><td class="hi">Journal of Modern Literature</td><td>9/618 = 1.5%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <p class="subhead">時代別専門誌</p>
+      <table class="compact-table">
+        <thead>
+          <tr>
+            <th>誌</th>
+            <th>検索結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="hi">Shakespeare Quarterly</td><td>5/427 = 1.2%</td></tr>
+          <tr><td class="hi">Victorian Studies</td><td>62/1707 = 3.6%</td></tr>
+          <tr><td class="hi">James Joyce Quarterly</td><td>19/531 = 3.6%</td></tr>
+          <tr><td class="hi">ELT 1880–1920</td><td>0/50 = 0.0%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <p class="subhead">比較対象</p>
+      <table class="compact-table">
+        <thead>
+          <tr>
+            <th>誌</th>
+            <th>検索結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="hi">Cultural Analytics</td><td>143/211 = 67.8%</td></tr>
+          <tr><td class="hi">DSH</td><td>430/954 = 45.1%</td></tr>
+          <tr><td class="hi">AHR</td><td>56/8125 = 0.7%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p class="note">
+    ※OpenAlex APIで2016–2025年の各誌を検索。検索語は digital humanities / distant reading / computational literary / text mining / stylometry / topic model。各キーワードの検索結果をOpenAlex work idで重複除去した上限値であり、DH実践論文数ではない。
+  </p>
+</section>
+
+
+
+<!-- ══════════════════════════════════
+  03  PMLA キーワード出現数（年別表）
+══════════════════════════════════ -->
+<section>
+
+  <h2>PMLA における DHキーワード年別出現数</h2>
+  <div class="two-col" style="gap:1.2em;align-items:start;">
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>年</th>
+            <th style="text-align:right;">digital<br>humanities</th>
+            <th style="text-align:right;">computational</th>
+            <th style="text-align:right;">distant<br>reading</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="sp">
+            <td class="hi">2016</td>
+            <td class="n re2">9</td>
+            <td class="n">1</td>
+            <td class="n">5</td>
+            <td><span class="re2">Vol.131 No.2 特集号</span></td>
+          </tr>
+          <tr><td>2017</td><td class="n">2</td><td class="n">1</td><td class="n">9</td><td class="lo">—</td></tr>
+          <tr><td>2018</td><td class="n">3</td><td class="n">2</td><td class="n">2</td><td class="lo">—</td></tr>
+          <tr><td>2019</td><td class="n">1</td><td class="n">0</td><td class="n">1</td><td class="lo">—</td></tr>
+          <tr class="sp">
+            <td class="hi">2020</td>
+            <td class="n re2">10</td>
+            <td class="n">4</td>
+            <td class="n">4</td>
+            <td><span class="re2">Vol.135 No.1 特集号</span></td>
+          </tr>
+          <tr><td>2021</td><td class="n">4</td><td class="n">0</td><td class="n">0</td><td class="lo">—</td></tr>
+          <tr><td>2022–2025</td><td class="n">4–12</td><td class="n">0–1</td><td class="n">3–7</td><td class="lo">—</td></tr>
+        </tbody>
+      </table>
+      <p class="note">
+        ※ <span class="re2">赤字</span>は特集号効果によるスパイク。<br>
+        2016年: 7/9件が「Ecological Digital Humanities」特集号（Vol.131 No.2）に集中。<br>
+        2020年: 8/9件が「DHと多様性・人種」特集号（Vol.135 No.1）に集中。
+      </p>
+    </div>
+    <div>
+      <div class="tl">抄録確認（2016–2022、20本）の内訳</div>
+      <table>
+        <thead><tr><th>分類</th><th style="text-align:right;">件数</th></tr></thead>
+        <tbody>
+          <tr><td>DHを方法として使用した<strong>実践論文</strong></td><td class="n ok">3本</td></tr>
+          <tr><td>DHを職能・制度として論じるメタ議論</td><td class="n">12本</td></tr>
+          <tr><td>言及・書評・返答のみ</td><td class="n lo">5本</td></tr>
+        </tbody>
+      </table>
+      <div class="tl" style="margin-top:.7em;">Moretti被引用12本の性格（目視確認）</div>
+      <table>
+        <thead><tr><th>引用の性格</th><th style="text-align:right;">件数（推定）</th></tr></thead>
+        <tbody>
+          <tr><td>遠読の実践として使用</td><td class="n ok">≈ 1本</td></tr>
+          <tr><td>世界文学・比較文学の理論家として言及</td><td class="n lo">≈ 9本</td></tr>
+          <tr><td>その他</td><td class="n lo">≈ 2本</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+  04  CI PDF脚注スキャンの結果（手法③）
+══════════════════════════════════ -->
+<section>
+  <h2>Critical Inquiry 2019–2025</h2>
+  <div class="two-col" style="gap:1.2em;align-items:start;">
+    <div>
+      <table>
+        <thead><tr><th>論文</th><th>検出語</th><th>年</th></tr></thead>
+        <tbody>
+          <tr><td>Bode 2023</td><td class="te2">computational</td><td class="n">2023</td></tr>
+          <tr><td>Franta &amp; Silver 2024</td><td class="te2">computational</td><td class="n">2024</td></tr>
+          <tr><td>Geoghegan 2025</td><td class="te2">computational</td><td class="n">2025</td></tr>
+          <tr><td>Lee 2025</td><td class="te2">machine learning</td><td class="n">2025</td></tr>
+          <tr><td>Liu 2025</td><td class="te2">digital humanities</td><td class="n">2025</td></tr>
+          <tr><td>Parisi 2022</td><td class="te2">computational</td><td class="n">2022</td></tr>
+          <tr><td>Parker 2025</td><td class="te2">computational, machine learning</td><td class="n">2025</td></tr>
+        </tbody>
+      </table>
+      <p class="note">
+        254本中 <strong style="color:var(--gl);">7本（2.8%）</strong>のみ DHシグナルを確認。<br>
+        7本中5本が2022年以降に集中。<br>
+        スキャン方法：PDFからテキスト抽出 → 脚注分離 → 正規表現 \b 単語境界マッチ<br>
+        抽出成功：248/254 PDF（脚注中央値 38件/PDF）
+      </p>
+    </div>
+    <div>
+      <div class="tl">CI タイトルスキャン（1974–2025）で確認されたDH関連論文</div>
+      <table>
+        <thead><tr><th>年</th><th>論文</th><th>性格</th></tr></thead>
+        <tbody>
+          
+          <tr class="sp">
+            <td>2019</td>
+            <td>The Computational Case against CLS（Da 2019）</td>
+            <td><span class="re2">DHへの批判</span></td>
+          </tr>
+          <tr class="sp">
+            <td>2019</td>
+            <td>Computational Literary Studies: Participant Forum Responses</td>
+            <td><span class="re2">批判的フォーラム</span></td>
+          </tr>
+          <tr>
+            <td>2021</td>
+            <td>Data as Symbolic Form: W.E.B. Du Bois</td>
+            <td class="lo">批評的概念論</td>
+          </tr>
+          <tr>
+            <td>2021</td>
+            <td>Artificial Antisemitism: Critical Theory and Datafication</td>
+            <td class="lo">批評的概念論</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note">
+        CIに「DH」が本格的に登場した最初の瞬間が、<br>
+        DHへの批判論文（Da 2019）だった。<br>
+        DH方法論書8著作への CI 被引用（2010–2025）：全件 <span class="re2">0件</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+</section>
+
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  PAT II: 歴史                                     -->
+<!-- ══════════════════════════════════════════════════ -->
+<section>
+<section class="chapter-slide">
+  <div class="chapter-num">PART II</div>
+  <h2>DH文学研究の歴史的背景</h2>
+  <p>著者推定という問いは、コンピュータが生まれるずっと前から存在していた。</p>
+</section>
+
+<!-- 04 Ford Madox Ford（unchanged） -->
+<section>
+  <span class="sec-label">Attribution Anxiety — 1909</span>
+  <h2>計算文学研究を恐れた小説家</h2>
+  <div class="blockquote lg">
+    "One may care infinitely little for the fate of one's work and yet be almost hypochondriacally anxious as to the form its publication shall take—if the publication is likely to occur posthumously.
+    <strong>I became at once dreadfully afraid that some philologist of that Posterity for which one writes, might, in the course of his hyena occupations, disinter these poor bones and, attributing sentence one to writer A and sentence two to B, maul at least one of our memories.</strong>
+    With the nature of those crimes one is only too well acquainted."
+    <cite>— Ford Madox Ford, "Preface," in <em>The Nature of a Crime</em> (1909), xi.（Joseph Conradとの共著序文）</cite>
+  </div>
+  <div class="callout teal" style="margin-top:0.7em; font-size:0.63em">
+    1909年（Burrowsの計算スタイリスティクス（1986）より77年前）に、
+    フォードが「フィロロジストによるセンテンスごとの著者帰属」を "hyena occupations" と呼んで恐怖していた。<br>
+    ▶ 計算文学研究への不安は、コンピュータよりも古い。職業研究者以外の文学者にも認知されていた問いだった。
+  </div>
+</section>
+
+<!-- 05 DHの歴史年表（expanded — more objective CLS history） -->
+<section>
+  <span class="sec-label">History of CLS</span>
+  <h2>計算文学研究の系譜</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-year">1851–1901</span>
+      <span class="tl-text"> De Morgan・Mendenhall——著者推定の原型。<span class="tl-sub">物理学者・数学者が<em>Science</em>・<em>Popular Science Monthly</em>に発表。</span></span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1986</span>
+      <span class="tl-text"> Burrows, <em>Computation into Criticism</em>——機能語頻度によるオースティン研究。計算スタイリスティクスの嚆矢。</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2000–2005</span>
+      <span class="tl-text"> Moretti——「遠読（distant reading）」の提唱。<span class="tl-sub"><em>New Left Review</em>（2000）→ <em>Graphs, Maps, Trees</em>（Verso, 2005）。Stanford Literary Lab（2010）設立。</span></span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2012</span>
+      <span class="tl-text"> Heuser &amp; Le-Khac（SLL Pamphlet 4）：2,958作の英国19c小説で「telling → showing」仮説。
+        <span class="tl-sub">同年Underwood &amp; Sellers（<em>Journal of Digital Humanities</em>）が反論：語彙変化は小説固有でなく英語全体の長期的揺り戻しだった——CLS内部での修正・反論の典型例。</span>
+      </span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2013–2018</span>
+      <span class="tl-text"> Jockers <em>Macroanalysis</em>（2013）・Underwood <em>Distant Horizons</em>（2019）。
+        <span class="tl-sub">Jockers &amp; Kirilloff（2016）：代名詞＋動詞の組み合わせで男女キャラクター描写の差を計量化。Underwood, Bamman &amp; Lee（2018）：英語フィクションにおけるジェンダー表象の長期的変化。</span></span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2021</span>
+      <span class="tl-text"> Weidman &amp; Pastor：バイナリな性別分類器でウルフ <em>Orlando</em> を分析→性転換場面で文体が切り替わるという発見。<span class="tl-sub">「誤った枠組み」が新しい読みを開いた事例。</span></span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2023</span>
+      <span class="tl-text"> Walsh——Computational Reception Studies：テキスト分析からプラットフォーム・読者受容データへ。</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- 06 遠読（概念のみ・修正例の引用削除） -->
+<section>
+  <span class="sec-label">Distant Reading</span>
+  <h2>遠読（Distant Reading）とは何か</h2>
+  <div class="blockquote">
+    "The trouble with close reading is…it necessarily depends on an extremely small canon…
+    If you want to understand literature as a system, you need a different kind of approach."
+    <cite>— Franco Moretti, <em>Graphs, Maps, Trees</em> (Verso, 2005)</cite>
+  </div>
+  <div class="two-col" style="margin-top:0.6em">
+    <div>
+      <p style="font-size:0.6em; color:var(--gold-light)">精読（Close Reading）</p>
+      <ul>
+        <li>テキストの内部を精密に読む</li>
+        <li>ニュアンス・文脈・意図</li>
+        <li>カノン数十〜数百作品</li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-size:0.6em; color:var(--accent-teal)">遠読（Distant Reading）</p>
+      <ul>
+        <li>数千〜数万作品を計量的に分析</li>
+        <li>パターン・傾向・歴史的変化</li>
+        <li>「偉大な読まれざるもの（the great unread）」</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:0.6em; font-size:0.6em">
+    モレッティの転換：「テキストを精読して解釈する」から「テキストを数え、グラフ化し、地図に載せよ」へ。<br>
+    Stanford Literary Lab（2010年設立）がこの構想の制度的拠点となり、遠読を用いた実証研究が積み重ねられていく。
+  </div>
+</section>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  PART III: 批判系譜                                -->
+<!-- ══════════════════════════════════════════════════ -->
+<section>
+<section class="chapter-slide">
+  <div class="chapter-num">PART III</div>
+  <h2>DHへの批判系譜</h2>
+  <p>Fish（2012）→ Da（2019）→ Spivak（2003→DH応用）<br>
+  三つの異なる問いの方向。</p>
+</section>
+
+<!-- 07 Fish（properly framed as critique） -->
+<section>
+  <span class="sec-label">Critique I — Fish (2012)</span>
+  <h2>Stanley Fish：解釈なき計算への批判</h2>
+
+  <div class="two-col">
+    <div>
+      <p style="font-size:0.55em; color:var(--gold-light); margin-bottom:0.3em">Fishの立場：意図主義的解釈論</p>
+      <div class="callout" style="font-size:0.6em">
+        文学批評の目的は「テキストが意図した意味を精緻に読み解くこと」であり、
+        その意味は文脈・意図・解釈の共同体によってはじめて成立する。<br>
+        数量的パターンは、この枠組みなしには意味をなさない。
+      </div>
+      <div class="blockquote" style="margin-top:0.5em">
+        "The digital humanities…have little place for the investigations…in the business of asking and answering…what does it mean?"
+        <cite>— Fish, "Mind Your P's and B's," <em>NYT</em>, Jan. 23, 2012</cite>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:0.55em; color:var(--muted); margin-bottom:0.3em">Fishの具体例：ミルトン『失楽園』</p>
+      <div class="callout" style="font-size:0.6em">
+        コンピュータで分析すると、堕天使を描く場面（Book I）に
+        唇音・閉鎖音（P・B）が高頻度で現れることがわかる。<br>
+        しかしそのパターンは実際に何を意味するのか？<br>
+        ミルトンの神学・詩的伝統・意図という解釈の枠組みなしには、数字は意味にならない。
+        タイトル "Mind Your P's and B's" はこの批判を一言で示した皮肉。
+      </div>
+      <div class="callout teal" style="margin-top:0.5em; font-size:0.6em">
+        <strong>DH側の反論（Ramsay 2011ほか）：</strong>
+        「アルゴリズムは解釈を置き換えるのではなく、新しい読解への誘導を行う。
+        パターンは答えではなく、問いを立てるための出発点だ。」
+        <span class="muted">— <em>Reading Machines</em> (U of Illinois P, 2011)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Da（soften "処理ミス"） -->
+<section>
+  <span class="sec-label">Critique II — Da (2019)</span>
+  <h2>Nan Z. Da：「CLSの方法論はそもそも誤っている」</h2>
+  <div class="blockquote">
+    "What is robust is obvious and what is not obvious is not robust."
+    <cite>— Da, "The Computational Case against Computational Literary Studies,"
+    <em>Critical Inquiry</em> 45, no.3 (2019): 601–639</cite>
+  </div>
+  <div class="two-col" style="margin-top:0.5em">
+    <div>
+      <p style="font-size:0.52em; color:var(--gold-light); margin-bottom:0.3em">方法論的批判</p>
+      <ul>
+        <li><strong>ストップワードのジレンマ：</strong>機能語を残すと意味なし、除外すると差異消失</li>
+        <li><strong>LDA不安定性：</strong>データをわずかに変えるだけでトピックが大きく変わる。再現性に問題がある</li>
+        <li><strong>既存研究の再検証：</strong>Piper・Long &amp; So・Algee-Hewittらの研究で統計的妥当性に問題があると指摘</li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li><strong>「膨大なデータ神話」の否定：</strong>MLが必要なほどの量ではないのに「AI必要」とするのは誇張</li>
+        <li><strong>目的のミスマッチ：</strong>統計は「意味を削ぐ」が、文学研究は「意味の複雑さを読む」</li>
+      </ul>
+      <div class="callout red" style="margin-top:0.5em; font-size:0.58em">
+        2019年CI誌掲載。CLSへの批判として最も体系的・実証的な論文として大きな波紋を呼び、CIオンラインフォーラムへと発展した。
+      </div>
+    </div>
+  </div>
+  <div class="callout" style="font-size:0.58em; margin-top:0.3em">
+    <strong>なぜHeuser &amp; Le-Khac（2012）→ Underwood &amp; Sellers（2012）の修正例が重要か：</strong>
+    CLSの発見が別の分析で否定されるという事例は、
+    DH側は「修正できること自体が科学的強みだ」と主張するが、
+    Daは逆に「それはCLSの発見が根本的に不安定であることを示している」と読む。
+  </div>
+</section>
+
+<!-- 09 CI Forum（unchanged） -->
+<section>
+  <span class="sec-label">The Forum — CI Online 2019</span>
+  <h2>CIオンラインフォーラム2019：論争の構造</h2>
+  <p style="font-size:0.5em; color:var(--muted); margin-bottom:0.4em">
+    <em>Critical Inquiry</em> 公式ブログでの多者間論争（2019年3月〜）
+  </p>
+  <table>
+    <thead><tr><th>論者</th><th>立場</th><th>主な主張</th></tr></thead>
+    <tbody>
+      <tr><td>Algee-Hewitt</td><td><span class="pill teal">DH擁護</span></td><td class="small">Daは「仮説を検証する分析（CDA）」の基準でCLS全体を裁いているが、文学研究で重要なのは仮説なしにデータからパターンを発見する「探索的分析（EDA）」だ。統計は読解を代替するのではなく新たな読解へと導くものである</td></tr>
+      <tr><td>Underwood</td><td><span class="pill teal">DH擁護</span></td><td class="small">トピックモデルは実行のたびに結果が変わるが、それは手法の前提であり欠陥ではない。探索的分析のツールを「仮説検証の道具」と誤解した批判だ</td></tr>
+      <tr><td>Long &amp; So</td><td><span class="pill teal">DH擁護</span></td><td class="small">Daは予測モデルから特徴量をひとつ抜き出してモデルが壊れると批判したが、複数の特徴量が組み合わさって機能するモデルの一部だけを変えるのは不当。また俳句分類モデルに中国古詩を持ち込んだのは歴史的文脈を無視している</td></tr>
+      <tr><td>Fish</td><td><span class="pill red">Da支持</span></td><td class="small">文章の長さや語頻度などの形式的特徴は、意図・文脈・文学史を抜きにしては意味をなさない。それらを排除したデータマイニングは自明なことを大げさに言うか恣意的な結論しか生まない</td></tr>
+      <tr><td>Klein</td><td><span class="pill gold">構造的批判</span></td><td class="small">DH分野でデータ構築・メタデータ整理・キュレーションといった評価されにくい労働を担うのは女性・有色人種が多い。Colored Conventions Projectのような実践が正当に評価されるべきだ</td></tr>
+      <tr><td>Bode</td><td><span class="pill muted">定義批判</span></td><td class="small">DaのCLS定義は機械学習による語パターン分析に限定されており、データ構築・キュレーション・メタデータ分析といった重要なデジタル文学研究を最初から排除している</td></tr>
+    </tbody>
+  </table>
+
+</section>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  PART IV: 批評実践に即したCLSの再設計                            -->
+<!-- ══════════════════════════════════════════════════ -->
+<section>
+
+  <section class="chapter-slide">
+  <div class="chapter-num">PART IV</div>
+  <h2>批評実践に即したCLSの再設計</h2>
+  <p>
+    Critical Inquiryをケースとして、<br>
+    脚注と本文引用から、文学研究の証拠構造を確認する。
+  </p>
+</section>
+
+<section>
+  <span class="sec-label">Critical Inquiry · Footnotes</span>
+  <h2>脚注分析：何を根拠として引用しているか</h2>
+
+  <div class="ci-grid2">
+    <div>
+      <p class="subhead">抽出・分類条件</p>
+      <table class="ci-mini">
+        <tr><th>対象</th><td class="num">Critical Inquiry<br>2019–2025</td></tr>
+        <tr><th>PDF</th><td class="num">254本</td></tr>
+        <tr><th>抽出単位</th><td class="num">脚注</td></tr>
+        <tr><th>抽出数</th><td class="num">8,940行</td></tr>
+        <tr><th>分類方法</th><td class="num">Claude Haiku</td></tr>
+        
+      </table>
+
+      <div class="ci-box">
+        PDFから脚注テキストを抽出し、各脚注が参照している根拠を分類した。目的は、文学研究論文がどの種類の資料に依拠して議論を組み立てているかを測ること。
+      </div>
+    </div>
+
+    <div>
+      <p class="subhead">分類結果</p>
+      <table class="ci-mini">
+        <thead>
+          <tr>
+            <th>証拠タイプ</th>
+            <th>件数・比率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="hi">二次的学術文献</td>
+            <td class="num">
+              <span class="pct">5,694</span><br>
+              <span class="subnum">76.9%</span>
+            </td>
+          </tr>
+          <tr>
+            <td>哲学・政治等の文献</td>
+            <td class="num">
+              <span class="pct">714</span><br>
+              <span class="subnum">9.6%</span>
+            </td>
+          </tr>
+          <tr>
+            <td>文学・芸術作品</td>
+            <td class="num">
+              <span class="pct">669</span><br>
+              <span class="subnum">9.0%</span>
+            </td>
+          </tr>
+          <tr>
+            <td>流通・制度・数量データ</td>
+            <td class="num">
+              <span class="pct">324</span><br>
+              <span class="subnum">4.4%</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="ci-note">
+        ※比率は、ibid.・著作権表示・PDFノイズ等の分析対象外を除いて計算。脚注では二次的学術文献への依拠が大きい。
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="sec-label">Critical Inquiry · Body Quotations</span>
+  <h2>本文分析：直接引用はどこから来ているか</h2>
+
+  <div class="ci-grid2">
+    <div>
+      <p class="subhead">抽出・分類条件</p>
+      <table class="ci-mini">
+        <tr><th>対象</th><td class="num">Critical Inquiry<br>2019–2025</td></tr>
+        <tr><th>PDF</th><td class="num">248本</td></tr>
+        <tr><th>抽出単位</th><td class="num">本文中の直接引用</td></tr>
+        <tr><th>抽出条件</th><td class="num">引用符つき<br>8語以上</td></tr>
+        <tr><th>抽出数</th><td class="num">1,385件</td></tr>
+        <tr><th>分析対象</th><td class="num">1,209件</td></tr>
+      </table>
+
+      <div class="ci-box">
+        脚注だけでは、本文中に直接埋め込まれた文学作品の引用を拾いにくい。そのため、本文中のクォーテーションを抽出し、引用元の種類を分類した。
+      </div>
+    </div>
+
+    <div>
+      <p class="subhead">分類結果</p>
+      <table class="ci-mini">
+        <thead>
+          <tr>
+            <th>引用元タイプ</th>
+            <th>件数・語数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="hi">批評家・理論家</td>
+            <td class="num">
+              <span class="pct">799 / 66.1%</span><br>
+              <span class="subnum">語数 70.3%</span>
+            </td>
+          </tr>
+          <tr>
+            <td>文学作品本文</td>
+            <td class="num">
+              <span class="pct">292 / 24.2%</span><br>
+              <span class="subnum">語数 19.7%</span>
+            </td>
+          </tr>
+          <tr>
+            <td>その他一次資料</td>
+            <td class="num">
+              <span class="pct">84 / 6.9%</span><br>
+              <span class="subnum">語数 7.2%</span>
+            </td>
+          </tr>
+          <tr>
+            <td>作家語・作品外</td>
+            <td class="num">
+              <span class="pct">34 / 2.8%</span><br>
+              <span class="subnum">語数 2.8%</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="ci-note">
+        ※判定不能・著者紹介・脚注混入などのノイズを除外。本文では文学作品本文の引用が脚注より多く見える。
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="sec-label">Example · Critical Definition</span>
+  <h2>批評的定義の中にある二つの根拠</h2>
+
+  <div class="bq">
+    “As Jameson and other critics have observed, utopias are fundamentally
+    typified by a break, marked by islands and trenches in both space and time,
+    whereas <strong>I think</strong> dystopias tend to be characterized by
+    a creeping, incremental horror, typical of the dreadful.”
+    <cite>— Robert T. Tally Jr., <em>The Fiction of Dread: Dystopia, Monstrosity, and Apocalypse</em> (Bloomsbury, 2024), p. 4</cite>
+  </div>
+
+  <table class="compact-table" style="margin-top:0.65em;">
+    <tbody>
+      <tr>
+        <td class="hi">utopia</td>
+        <td>Jamesonらの先行批評に依拠して定義される</td>
+      </tr>
+      <tr>
+        <td class="hi">dystopia</td>
+        <td><em>I think</em> を介して、著者自身の批評的判断が示される</td>
+      </tr>
+ 
+    </tbody>
+  </table>
+</section>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  PART V: 一次テキスト                             -->
+<!-- ══════════════════════════════════════════════════ -->
+
+
+<section>
+  <section class="chapter-slide">
+  <div class="chapter-num">PART V</div>
+  <h2>一次テキスト分析の位置づけ</h2>
+  <p>
+    批評的直観を置き換えるのではなく、<br>
+    頻度・分布・比較・著者推定を通じて、その前提を補助的に確認する。
+  </p>
+</section>
+
+<section>
+  <span class="sec-label">Primary Text Strategy</span>
+  <h2>一次テキスト分析の位置づけ</h2>
+
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="t">頻度</div>
+      特定語彙・概念語の出現を確認する。批評的印象の基礎確認。
+    </div>
+
+    <div class="strategy-card">
+      <div class="t">分布</div>
+      作品群・時代・ジャンル間の偏りを見る。トピックモデル等で傾向を把握。
+    </div>
+
+    <div class="strategy-card">
+      <div class="t">比較</div>
+      ジャンル・作者・時期の差異を比べ、読解の前提を相対化する。
+    </div>
+
+    <div class="strategy-card">
+      <div class="t">著者推定</div>
+      共著・帰属・文体差を確認し、批評の前提となる書誌的事実を点検する。
+    </div>
+  </div>
+</section>
+
+</section>
+
+
+
+<section>
+
+<!-- ══════════════════════════════════════════════════ -->
+
+<!--  PART VI: 受容・批評・書誌の地形図                  -->
+
+<!-- ══════════════════════════════════════════════════ -->
+
+<section class="chapter-slide">
+  <div class="chapter-num">PART VI</div>
+  <h2>受容・批評・書誌の地形図へ</h2>
+  <p>
+    CLSを一次テキストの語彙パターン分析に限定せず、<br>
+    データ構築・キュレーション・受容・流通まで含めて捉え直す。<br><br>
+    本研究では、Walsh的な受容研究の方向を踏まえつつ、<br>
+    英文学批評の実践に寄り添う形で、作品評価の複数の経路を記述する。
+  </p>
+</section>
+
+
+<section>
+  <span class="sec-label">New Directions</span>
+  <h2>CLS定義の拡張と受容研究への接続</h2>
+
+  <table class="compact-table">
+    <tbody>
+      <tr>
+        <td class="hi">Bode / Klein</td>
+        <td>CLSを語彙パターン分析だけでなく、データ構築・キュレーション・アーカイブの問題として捉え直す</td>
+      </tr>
+      <tr>
+        <td class="hi">Walsh</td>
+        <td>読書・受容・流通を計算的に扱う方向を示す</td>
+      </tr>
+      <tr>
+        <td class="hi">本研究</td>
+        <td>受容研究の方向を、英文学批評・書誌・流通・読者評価の地形図として展開する</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══════════════════════════════════
+  05  D: 地形図アプローチへ
+══════════════════════════════════ -->
+<section>
+  <span class="sec-label blue">Part VI — 融合的アプローチ</span>
+  <h2>言説空間の地形図を描く</h2>
+
+
+  <div class="two-col" style="gap:1.2em;align-items:center;">
+    <div>
+      <div class="callout blue" style="font-size:0.58em;">
+        文学研究は一次テキストだけでなく、
+        批評・引用・制度的評価にも依拠している。
+        本研究では、作品そのものの特徴だけでなく、
+        作品がどの場で見えるようになるのかを測る。
+      </div>
+
+      <table class="compact-table" style="margin-top:0.65em;">
+        <tbody>
+          <tr>
+            <td class="hi">学術的注目</td>
+            <td>研究論文の中で作品名がどれだけ前景化されるか</td>
+          </tr>
+          <tr>
+            <td class="hi">文化的流通</td>
+            <td>版数・図書館所蔵を通じて、作品がどれだけ流通しているか</td>
+          </tr>
+          <tr>
+            <td class="hi">読者受容</td>
+            <td>一般読者の評価数・レビュー数としてどれだけ可視化されるか</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="note">
+        目的は単一の正典ランキングを作ることではなく、評価回路ごとの重なりとずれを記述することである。
+      </p>
+    </div>
+
+    <!-- 右側の3軸概念図はそのまま -->
+
+    <!-- 3軸概念図 -->
+    <div>
+      <p style="font-size:0.42em;color:var(--muted);text-align:center;margin-bottom:0.3em;font-family:'JetBrains Mono',monospace;">三つの独立した評価回路</p>
+      <svg viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;max-width:380px;margin:0 auto;">
+        <ellipse cx="128" cy="105" rx="85" ry="65" fill="#4a90c4" fill-opacity=".12" stroke="#4a90c4" stroke-width="1.2" stroke-opacity=".5"/>
+        <ellipse cx="200" cy="105" rx="85" ry="65" fill="#5fa8d0" fill-opacity=".09" stroke="#5fa8d0" stroke-width="1.2" stroke-opacity=".45"/>
+        <ellipse cx="164" cy="158" rx="85" ry="65" fill="#9cc8e0" fill-opacity=".09" stroke="#9cc8e0" stroke-width="1.2" stroke-opacity=".40"/>
+        <ellipse cx="164" cy="125" rx="32" ry="24" fill="#e2c478" fill-opacity=".08" stroke="#e2c478" stroke-width="0.8" stroke-opacity=".35" stroke-dasharray="4,3"/>
+        <text x="164" y="120" text-anchor="middle" font-size="9.5" font-weight="600" fill="#e2c478" font-family="sans-serif">複合的な</text>
+        <text x="164" y="132" text-anchor="middle" font-size="9.5" font-weight="600" fill="#e2c478" font-family="sans-serif">正典化</text>
+        <text x="85" y="35" text-anchor="middle" font-size="10" font-weight="600" fill="#c8e0f4" font-family="sans-serif">学術的注目</text>
+        <text x="85" y="47" text-anchor="middle" font-size="7.5" fill="#6a9ab8" font-family="sans-serif">JSTOR · OpenAlex</text>
+        <text x="238" y="35" text-anchor="middle" font-size="10" font-weight="600" fill="#c8e0f4" font-family="sans-serif">文化的流通</text>
+        <text x="238" y="47" text-anchor="middle" font-size="7.5" fill="#6a9ab8" font-family="sans-serif">OL · HathiTrust</text>
+        <text x="164" y="242" text-anchor="middle" font-size="10" font-weight="600" fill="#c8e0f4" font-family="sans-serif">読者受容（Goodreads）</text>
+        <text x="62" y="148" text-anchor="middle" font-size="7.5" fill="#e07060" font-family="sans-serif">研究先行型</text>
+        <text x="264" y="148" text-anchor="middle" font-size="7.5" fill="#e07060" font-family="sans-serif">流通先行型</text>
+        <text x="164" y="214" text-anchor="middle" font-size="7.5" fill="#e07060" font-family="sans-serif">読者支持型</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+  06  E-1: 6DB照合設計
+══════════════════════════════════ -->
+<section>
+  <span class="sec-label blue">Part E — 技術と現在地</span>
+  <h2>6データベース横断照合の設計</h2>
+
+  
+    <div>
+      <p style="font-size:0.50em;color:var(--gold-light);margin-bottom:0.3em;">対象: 英語フィクション 1880–1950 <strong style="color:var(--ivory)">34,789作品</strong></p>
+      <p style="font-size:0.46em;color:var(--muted);margin-bottom:0.4em;">Open Libraryダンプ（55,615,769件）から抽出</p>
+
+      <table>
+        <thead><tr><th>DB</th><th>指標</th><th>軸</th></tr></thead>
+        <tbody>
+          <tr><td class="hi">JSTOR </td><td>論文への言及数</td><td>学術的注目</td></tr>
+          <tr><td class="hi">OpenAlex</td><td>広義の学術可視性</td><td>学術的注目</td></tr>
+          <tr><td class="hi">Open Library</td><td>版数（edition_count）</td><td>文化的流通</td></tr>
+          <tr><td class="hi">HathiTrust</td><td>図書館所蔵数（htid_count）</td><td>文化的流通</td></tr>
+          <tr><td class="hi">Goodreads</td><td>読者評価数</td><td>読者受容</td></tr>
+          <tr><td class="lo">Wikidata</td><td>言語版数（sitelink）</td><td>国際的知名度</td></tr>
+        </tbody>
+      </table>
+    </div>
+   
+    
+  
+</section>
+
+
+<section>
+  <span class="sec-label blue">Part E — JSTOR照合の技術</span>
+  <h2>JSTOR 161万論文から作品への言及を数える</h2>
+
+  <!-- pipeline: full width -->
+  <p class="subhead">照合パイプライン</p>
+  <div class="pipe-row" style="width:100%; margin-bottom:0.65em;">
+    <div class="pipe-step">
+      <div class="pipe-n">INPUT</div>
+      <div class="pipe-t">JSTOR 161万件</div>
+      <div class="pipe-s">Language &amp; Literature<br>論文タイトル</div>
+    </div>
+    <div class="pipe-arr">→</div>
+    <div class="pipe-step">
+      <div class="pipe-n">STEP 1</div>
+      <div class="pipe-t">タイトル照合</div>
+      <div class="pipe-s">作品タイトルが<br>論文タイトルに出現</div>
+    </div>
+    <div class="pipe-arr">→</div>
+    <div class="pipe-step">
+      <div class="pipe-n">STEP 2</div>
+      <div class="pipe-t">著者姓確認</div>
+      <div class="pipe-s">短タイトル・一般語は<br>著者姓を確認</div>
+    </div>
+    <div class="pipe-arr">→</div>
+    <div class="pipe-step">
+      <div class="pipe-n">OUTPUT</div>
+      <div class="pipe-t">言及数</div>
+      <div class="pipe-s">作品ごとの<br>論文タイトル言及数</div>
+    </div>
+  </div>
+
+  <!-- lower half: left/right -->
+  <div class="two-col" style="gap:1em; align-items:start;">
+    <div>
+      <p class="subhead">照合条件</p>
+      <div class="code-box" style="font-size:0.48em; line-height:1.45;">
+        <span class="kw">例:</span> Heart of Darkness / Conrad<br>
+        ✓ <span class="ok">作品タイトル</span> “Heart of Darkness” が論文タイトルに出現<br>
+        ✓ <span class="ok">著者姓</span> “Conrad” を必要に応じて確認<br><br>
+
+        <span class="kw">補正が必要なケース</span><br>
+        <span class="ng">短タイトル</span> “Kim” → 一般語・人名ノイズ → 著者姓必須<br>
+        <span class="ng">一般語</span> “The Pit” / “Alas!” → 手動補正<br>
+        <span class="ng">固有名詞</span> “Ulysses” → 著者フィルタなしで再計算
+      </div>
+    </div>
+
+    <div>
+      <p class="subhead">照合結果例（canonical 98件）</p>
+      <table class="jstor-result-table">
+  <thead>
+    <tr><th>作品</th><th>JSTOR</th><th>OL版数</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="hi">Ulysses</td><td>582</td><td>684</td></tr>
+    <tr><td class="hi">Heart of Darkness</td><td>157</td><td>1,099</td></tr>
+    <tr><td class="hi">The Great Gatsby</td><td>64</td><td>1,181</td></tr>
+    <tr><td>White Fang</td><td>0</td><td>387</td></tr>
+    <tr><td>Tarzan of the Apes</td><td>0</td><td>226</td></tr>
+  </tbody>
+</table>
+
+      <p class="note">
+        ※JSTOR L&amp;Lは論文タイトル言及の下限値。本文・抄録言及は含まない。
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══════════════════════════════════
+  08  E-3: 地形図の現在地
+══════════════════════════════════ -->
+<section>
+  <span class="sec-label blue">Part E — 地形図の現在地</span>
+  <h2>作品評価の地形図：三軸の交差と乖離</h2>
+
+  <div class="two-col" style="gap:1em;align-items:start;">
+    <div>
+      <p style="font-size:0.48em;color:var(--gold-light);margin-bottom:0.3em;">
+        canonical 98作品のJSTOR × OL版数分布<br>
+        <span style="color:var(--muted);">バブルサイズ = Goodreads評価数（2017年値・相対）</span>
+      </p>
+
+      <!-- バブルチャート -->
+      <div class="bubble-area" id="bubble-chart">
+        <!-- 軸ラベル -->
+        <span class="axis-label" style="bottom:5px;left:50%;transform:translateX(-50%);">← JSTOR L&amp;L 言及数（対数）→</span>
+        <span class="axis-label" style="left:3px;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:center;">OL版数（対数）↑</span>
+
+        <!-- グリッド線（薄く） -->
+        <svg style="position:absolute;top:0;left:0;width:100%;height:100%;" preserveAspectRatio="none">
+          <line x1="15%" y1="0" x2="15%" y2="100%" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="40%" y1="0" x2="40%" y2="100%" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="70%" y1="0" x2="70%" y2="100%" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="0" y1="25%" x2="100%" y2="25%" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="0" y1="55%" x2="100%" y2="55%" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="0" y1="80%" x2="100%" y2="80%" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        </svg>
+
+        <!-- Ulysses: 高JSTOR(582)・中版数・中Goodreads -->
+        <div class="bubble" style="width:44px;height:44px;background:rgba(201,168,76,0.8);left:80%;top:30%;margin-left:-22px;margin-top:-22px;" title="Ulysses / Joyce｜JSTOR:582 OL:? GR:中">Ulyss</div>
+
+        <!-- Heart of Darkness: 高JSTOR(157)・中版数・中GR -->
+        <div class="bubble" style="width:36px;height:36px;background:rgba(74,144,196,0.8);left:68%;top:40%;margin-left:-18px;margin-top:-18px;" title="Heart of Darkness / Conrad｜JSTOR:157">HoD</div>
+
+        <!-- Dracula: 中JSTOR(63)・高版数(736)・超高GR(711K) -->
+        <div class="bubble" style="width:54px;height:54px;background:rgba(192,57,43,0.75);left:55%;top:15%;margin-left:-27px;margin-top:-27px;" title="Dracula / Stoker｜JSTOR:63 OL:736 GR:711K">Drcula</div>
+
+        <!-- Great Gatsby: 中高JSTOR(64)・高版数・超高GR(2.8M) -->
+        <div class="bubble" style="width:62px;height:62px;background:rgba(46,172,181,0.75);left:56%;top:22%;margin-left:-31px;margin-top:-31px;" title="The Great Gatsby / Fitzgerald｜JSTOR:64 OL:高 GR:2.8M">Gatsby</div>
+
+        <!-- Mrs Dalloway: 中JSTOR(47)・中版数・中GR -->
+        <div class="bubble" style="width:30px;height:30px;background:rgba(201,168,76,0.65);left:50%;top:45%;margin-left:-15px;margin-top:-15px;" title="Mrs. Dalloway / Woolf｜JSTOR:47">Dall.</div>
+
+        <!-- White Fang: JSTOR=0・高版数(387)・高GR -->
+        <div class="bubble" style="width:46px;height:46px;background:rgba(255,255,255,0.2);border:2px dashed var(--red);left:10%;top:18%;margin-left:-23px;margin-top:-23px;" title="White Fang / London｜JSTOR:0 OL:387 GR:高">WFang</div>
+
+        <!-- Tarzan: JSTOR=0・高版数(226)・高GR -->
+        <div class="bubble" style="width:38px;height:38px;background:rgba(255,255,255,0.15);border:2px dashed var(--red);left:10%;top:32%;margin-left:-19px;margin-top:-19px;" title="Tarzan of the Apes / Burroughs｜JSTOR:0 OL:226">Tarzn</div>
+
+        <!-- 中位群 -->
+        <div class="bubble" style="width:22px;height:22px;background:rgba(74,144,196,0.5);left:43%;top:52%;margin-left:-11px;margin-top:-11px;" title="The Secret Agent / Conrad｜JSTOR:71">S.Ag</div>
+        <div class="bubble" style="width:20px;height:20px;background:rgba(74,144,196,0.4);left:38%;top:60%;margin-left:-10px;margin-top:-10px;" title="Dubliners / Joyce｜JSTOR:76">Dub.</div>
+        <div class="bubble" style="width:18px;height:18px;background:rgba(201,168,76,0.35);left:30%;top:65%;margin-left:-9px;margin-top:-9px;" title="Sister Carrie / Dreiser｜JSTOR:31">S.C.</div>
+
+        <!-- 凡例 -->
+        <div style="position:absolute;right:6px;bottom:18px;font-size:0.26em;font-family:'JetBrains Mono',monospace;color:var(--muted);line-height:1.6;background:rgba(15,17,23,0.8);padding:0.3em 0.5em;">
+          バブルサイズ ≈ Goodreads評価数<br>
+          <span style="color:var(--red);">点線</span> = JSTOR=0（Hollow Canon）
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p style="font-size:0.48em;color:var(--gold-light);margin-bottom:0.3em;">地形図が示す4つのゾーン</p>
+
+      <div class="callout blue" style="font-size:0.57em;margin-bottom:0.35em;">
+        <strong style="color:var(--ivory);">学術・流通・読者が交差する領域</strong>（右上）<br>
+        Ulysses・Heart of Darkness・Great Gatsby<br>
+        → 三軸で「複合的正典」
+      </div>
+      <div class="callout" style="font-size:0.57em;margin-bottom:0.35em;">
+        <strong style="color:var(--ivory);">流通・読者は強いが学術に不可視</strong>（左上）<br>
+        White Fang・Tarzan of the Apes・Dracula<br>
+        → Hollow Canon / 「Shadow Canon」
+      </div>
+      <div class="callout" style="font-size:0.57em;margin-bottom:0.35em;">
+        <strong style="color:var(--ivory);">学術は強いが読者受容は小さい</strong>（右下）<br>
+        The Secret Agent・Mrs. Dalloway等<br>
+        → 「研究先行型」正典
+      </div>
+      <div style="font-size:0.48em;color:var(--muted);margin-top:0.5em;line-height:1.6;">
+        ※ バブルチャートは概念的可視化。<br>
+        JSTOR・OL値は第1次スキャン値（論文注記予定）。<br>
+        Goodreads: 2017年UCSD Book Graph。
+      </div>
+    </div>
+  </div>
+</section>
+
+</section>
+
+
+
+<section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  PART V: 社会文化批評                              -->
+<!-- ══════════════════════════════════════════════════ -->
+<section class="chapter-slide">
+  <div class="chapter-num">PART IV</div>
+  <h2>社会文化批評の観点からみる建設的な展望</h2>
+  <p>DH批判を建設的に活かしていく<br>
+  ポストコロニアル批評・フェミニズム・ブラック・スタディーズの観点から、<br>
+  データそのものの政治性を問い直す。</p>
+</section>
+
+<!-- 13 Walsh（unchanged） -->
+<!-- ── Walsh slide（差し替え用） ── -->
+<section>
+  <span class="sec-label">New Directions</span>
+  <h2>Walsh（2023）：Computational Reception Studies</h2>
+  <div class="blockquote">
+    「読書・受容・テキスト流通に関する問いを探求する新興サブフィールド」
+    <cite>— Walsh, "The Challenges and Possibilities of Social Media Data,"
+    in <em>Debates in the Digital Humanities 2023</em>, pp.275–294 (U of Minnesota P)</cite>
+  </div>
+  <div class="two-col" style="margin-top:0.55em;">
+
+    <!-- 左：従来のCLS（拡充） -->
+    <div>
+      <p style="font-size:0.52em; color:var(--muted); font-family:'JetBrains Mono',monospace; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.4em;">従来のCLS</p>
+      <ul>
+        <li><strong>文学テキストそのものを計算分析</strong></li>
+        <li>コーパス → パターン・傾向の発見</li>
+        <li>文体・語彙・トピックモデルによるジャンル分類</li>
+        <li>時系列での言語・スタイルの変化を追う</li>
+        <li>例：Moretti（遠読）・Jockers（マクロ分析）・Underwood（文学史の長期変化）</li>
+      </ul>
+      <div class="callout" style="font-size:0.58em; margin-top:0.5em;">
+        <strong>問い：</strong>テキストはどのように書かれているか<br>
+        <span class="muted">→ 「作品の内側」にある構造・パターンを探る</span>
+      </div>
+    </div>
+
+    <!-- 右：Reception Studies -->
+    <div>
+      <p style="font-size:0.52em; color:var(--gold); font-family:'JetBrains Mono',monospace; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.4em;">Reception Studies</p>
+      <ul>
+        <li><strong>Goodreadsのレビュー・評価データ</strong>（「古典」概念とAmazonの絡み合い）</li>
+        <li><strong>Social Mediaでの引用パターン：</strong>James Baldwinの言葉が <em>Black Lives Matter</em>（BLM）運動——2013年創設、2020年George Floyd事件を機に世界規模で拡大——の文脈でどう再流通したか</li>
+        <li><strong>公共図書館・出版・プラットフォームデータ</strong></li>
+      </ul>
+      <div class="callout teal" style="font-size:0.58em; margin-top:0.5em;">
+        <strong>問い：</strong>テキストはどのように読まれてきたか<br>
+        <span class="muted">→ プラットフォーム・経済・権力との絡み合いを可視化する</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 14 スピヴァク（unchanged） -->
+<section>
+  <span class="sec-label">Critique — Postcolonial</span>
+  <h2>スピヴァク：固有性（Singularity）の擁護</h2>
+
+  <div class="blockquote">
+    "Our concern is not how to situate the peaks of the literary production of the world
+    on a level playing field but to ask what makes literary cases singular.
+    The singular is the always universalizable, never the universal."
+    <cite>— Spivak &amp; Damrosch, "Comparative Literature/World Literature,"
+    <em>Comparative Literature Studies</em> 48.4 (2011): 469</cite>
+  </div>
+
+  <p style="font-size:0.55em; color:var(--muted); font-style:italic; margin:0.4em 0 0.6em;">
+    「私たちの関心は、世界の文学的産物の頂点を公平な競技場に並べることではなく、
+    文学的事例を特異（singular）たらしめるものは何かを問うことにある。
+    特異なものとはつねに普遍化可能なものであり、けっして普遍的なものではない。」
+  </p>
+
+  <div class="callout" style="font-size:0.58em;">
+    <strong>universal（普遍的）vs universalizable（普遍化可能）</strong><br>
+    「普遍的」＝どこにでも当てはまる一般法則に回収すること。
+    遠読がピーク（名作の頂点）を統計的に並べる作業はこちらに近い。<br>
+    「普遍化可能」＝ある作品・事例の固有性を保ちながら、誰にでも開かれている可能性を持つこと。
+    スピヴァクが求めるのは後者——固有性（singularity）への精密な関与。
+  </div>
+
+  <div class="callout" style="font-size:0.58em; margin-top:0.4em;">
+    元来は比較文学への問い（<em>Death of a Discipline</em>, Columbia UP, 2003）。
+    <em>differences</em> 25.1（2014）特集「In the Shadows of the Digital Humanities」で
+    DH批判の参照枠として読み直された。
+  </div>
+
+</section>
+
+<!-- 15 データの政治性（unchanged） -->
+<section>
+  <span class="sec-label">Data Politics</span>
+  <h2>データの政治性：偏りの三つの構造</h2>
+  <div class="three-col">
+    <div class="callout" style="font-size:0.58em">
+      <p style="color:var(--gold-light); margin:0 0 0.3em">① コーパスの偏り</p>
+      HathiTrust・Project Gutenbergは英語・欧米テキスト中心。非英語圏・植民地文学は分析の「外側」に置かれる。遠読が描く「文学史」は誰の文学史か？
+    </div>
+    <div class="callout" style="font-size:0.58em">
+      <p style="color:var(--gold-light); margin:0 0 0.3em">② ジェンダーのバイナリ化</p>
+      Mandell（2019）：「量的文化分析においてジェンダーのカテゴリが生物学化・二項化・本質化されている」——Weidman &amp; Pastorの<em>Orlando</em>研究はこの問題を自覚的に反転させた。
+    </div>
+    <div class="callout" style="font-size:0.58em">
+      <p style="color:var(--gold-light); margin:0 0 0.3em">③ 労働の不可視化</p>
+      Klein（CIフォーラム2019）：データ構築・キュレーションの「見えない労働」を女性・有色人種が担う構造。Colored Conventions Projectのような実践が評価されなければならない。
+    </div>
+  </div>
+  <div class="callout green" style="margin-top:0.7em; font-size:0.62em">
+    <strong>フェミニスト・ブラック・デジタル・ヒューマニティーズ：</strong><br>
+    Posner &amp; Klein "Data as Media"（<em>Feminist Media Histories</em> 3, no.3, 2017）——
+    データを「知識の一次カテゴリ」ではなく「自らの資料に対する方向性」として捉え直す。<br>
+    Mandell, "Gender and Cultural Analytics," <em>Debates in the Digital Humanities 2019</em>.
+  </div>
+</section>
+</section>
+
+<section>
+<!-- ══════════════════════════════════════════════════ -->
+<!--  PART IV: 事例研究（博論）                         -->
+<!-- ══════════════════════════════════════════════════ -->
+<section class="chapter-slide chapter-slide-blue">
+  <div class="chapter-num">PART V — CASE STUDY</div>
+  <h2>DHが「できること」の事例：正典形成の地形図</h2>
+  <p>批判を踏まえたうえで丁寧に設計すれば、<br>
+  DHは「誰の文学が、どの経路で正典化されてきたか」を可視化できる。<br>
+  博士論文研究の技術的背景と、そこから見えてきた発見。</p>
+</section>
+
+
+
+<!-- ─────────────────────────────────────────────────────────────────
+     SLIDE A  三軸の地形図（概念図）
+     ───────────────────────────────────────────────────────────────── -->
+<section>
+  <span class="sec-label blue">Case Study — Research Design</span>
+  <h2>三軸の交差と乖離</h2>
+
+  <div class="two-col" style="align-items:center; gap:1.4em;">
+
+    <!-- 左：テキスト説明 -->
+    <div>
+     
+
+      <!-- 学術的注目軸 -->
+      <div style="background:rgba(74,144,196,0.12); border:1px solid var(--border-blue); border-left:4px solid var(--accent-blue); padding:0.45em 0.7em; margin-bottom:0.35em;">
+        <div style="font-size:0.52em; font-weight:600; color:var(--accent-blue); font-family:'JetBrains Mono',monospace; letter-spacing:0.05em; margin-bottom:0.2em;">学術的注目軸</div>
+        <div style="font-size:0.5em; color:var(--ivory);">JSTOR言及数・OpenAlex言及数</div>
+        <div style="font-size:0.45em; color:var(--muted); font-family:'JetBrains Mono',monospace; margin-top:0.15em;">JSTOR ↔ OpenAlex 順位相関 ρ = 0.293</div>
+      </div>
+
+      <!-- 文化的流通軸 -->
+      <div style="background:rgba(74,144,196,0.07); border:1px solid rgba(74,144,196,0.2); border-left:4px solid #5fa8d0; padding:0.45em 0.7em; margin-bottom:0.35em;">
+        <div style="font-size:0.52em; font-weight:600; color:#7fc4e0; font-family:'JetBrains Mono',monospace; letter-spacing:0.05em; margin-bottom:0.2em;">文化的流通軸</div>
+        <div style="font-size:0.5em; color:var(--ivory);">Open Library 版数・HathiTrust 収録数</div>
+        <div style="font-size:0.45em; color:var(--muted); font-family:'JetBrains Mono',monospace; margin-top:0.15em;">OL ↔ HathiTrust 順位相関 ρ = 0.257</div>
+      </div>
+
+      <!-- 読者受容軸 -->
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.12); border-left:4px solid var(--muted); padding:0.45em 0.7em; margin-bottom:0.6em;">
+        <div style="font-size:0.52em; font-weight:600; color:var(--muted); font-family:'JetBrains Mono',monospace; letter-spacing:0.05em; margin-bottom:0.2em;">読者受容軸</div>
+        <div style="font-size:0.5em; color:var(--muted); font-style:italic;">Goodreads 評価・読者数 → 次フェーズ</div>
+      </div>
+
+     
+    </div>
+
+    <!-- 右：SVG（黒背景用リカラー） -->
+    <div>
+      <p style="font-size:0.42em; color:var(--muted); text-align:center; margin-bottom:0.3em; font-family:'JetBrains Mono',monospace;">三指標の交差と乖離（概念図）</p>
+      <svg viewBox="0 0 300 248" xmlns="http://www.w3.org/2000/svg"
+           style="display:block; width:100%; max-width:420px; margin:0 auto;">
+
+        <!-- three ellipses — lightened fills for dark bg -->
+        <ellipse cx="128" cy="108" rx="88" ry="68"
+                 fill="#4a90c4" fill-opacity=".13"
+                 stroke="#4a90c4" stroke-width="1.2" stroke-opacity=".55"/>
+        <ellipse cx="200" cy="108" rx="88" ry="68"
+                 fill="#7fb3d6" fill-opacity=".10"
+                 stroke="#7fb3d6" stroke-width="1.2" stroke-opacity=".50"/>
+        <ellipse cx="164" cy="162" rx="88" ry="68"
+                 fill="#9cc8e0" fill-opacity=".10"
+                 stroke="#9cc8e0" stroke-width="1.2" stroke-opacity=".45"/>
+
+        <!-- inner dashed rings showing overlap density -->
+        <ellipse cx="164" cy="128" rx="60" ry="46"
+                 fill="none" stroke="#e2c478" stroke-width="0.7"
+                 stroke-opacity=".18" stroke-dasharray="4,4"/>
+        <ellipse cx="164" cy="128" rx="34" ry="26"
+                 fill="#e2c478" fill-opacity=".06"
+                 stroke="#e2c478" stroke-width="0.7"
+                 stroke-opacity=".30" stroke-dasharray="4,4"/>
+
+        <!-- divergence zones (red dashed) -->
+        <ellipse cx="106" cy="152" rx="26" ry="20"
+                 fill="none" stroke="#e07060" stroke-width="1"
+                 stroke-opacity=".55" stroke-dasharray="3,3"/>
+        <ellipse cx="222" cy="152" rx="26" ry="20"
+                 fill="none" stroke="#e07060" stroke-width="1"
+                 stroke-opacity=".55" stroke-dasharray="3,3"/>
+        <ellipse cx="164" cy="68" rx="28" ry="18"
+                 fill="none" stroke="#e07060" stroke-width="1"
+                 stroke-opacity=".55" stroke-dasharray="3,3"/>
+
+        <!-- centre label -->
+        <text x="164" y="121" text-anchor="middle" font-size="10"
+              font-weight="600" fill="#e2c478" font-family="sans-serif">複合的な正典化</text>
+        <text x="164" y="134" text-anchor="middle" font-size="8"
+              fill="#b0c8e0" font-family="sans-serif">三指標が重なる領域</text>
+
+        <!-- zone labels — bright enough for dark bg -->
+        <text x="66" y="95" text-anchor="middle" font-size="8.5"
+              font-weight="600" fill="#7fc4e0" font-family="sans-serif">研究先行型</text>
+        <text x="66" y="107" text-anchor="middle" font-size="7.5"
+              fill="#6a9ab8" font-family="sans-serif">流通・読者なし</text>
+
+        <text x="262" y="95" text-anchor="middle" font-size="8.5"
+              font-weight="600" fill="#7fc4e0" font-family="sans-serif">流通先行型</text>
+        <text x="262" y="107" text-anchor="middle" font-size="7.5"
+              fill="#6a9ab8" font-family="sans-serif">研究・読者なし</text>
+
+        <text x="164" y="202" text-anchor="middle" font-size="8.5"
+              font-weight="600" fill="#7fc4e0" font-family="sans-serif">読者支持型</text>
+        <text x="164" y="213" text-anchor="middle" font-size="7.5"
+              fill="#6a9ab8" font-family="sans-serif">研究・流通記録なし</text>
+
+        <!-- axis labels (top) -->
+        <text x="90" y="24" text-anchor="middle" font-size="10"
+              font-weight="600" fill="#c8e0f4" font-family="sans-serif">学術的評価</text>
+        <text x="90" y="36" text-anchor="middle" font-size="7.5"
+              fill="#6a9ab8" font-family="sans-serif">JSTOR · OpenAlex</text>
+
+        <text x="228" y="24" text-anchor="middle" font-size="10"
+              font-weight="600" fill="#c8e0f4" font-family="sans-serif">文化的流通</text>
+        <text x="228" y="36" text-anchor="middle" font-size="7.5"
+              fill="#6a9ab8" font-family="sans-serif">OL · HathiTrust</text>
+
+        <text x="164" y="247" text-anchor="middle" font-size="10"
+              font-weight="600" fill="#c8e0f4" font-family="sans-serif">読者受容（Goodreads）</text>
+
+        <!-- footnote inside SVG -->
+        <text x="164" y="187" text-anchor="middle" font-size="7"
+              fill="#e07060" font-family="sans-serif" opacity=".75">
+          点線＝乖離が生じうる領域（研究の問い）
+        </text>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+<!-- 10 問題設定（unchanged） -->
+<section>
+  <span class="sec-label blue">Case Study — Problem</span>
+  <h2>問題設定：データベースの連携不足
+
+  </h2>
+  <div class="callout blue" style="font-size:0.65em; margin-bottom:0.6em">
+    <strong>博士論文の目的：</strong>
+    英語フィクション（1880–1950）の正典形成を、学術的引用・文化的流通・読者受容という
+    複数の経路から追い、その「地形図」を描く。
+  </div>
+  <div class="two-col">
+    <div>
+      <p style="font-size:0.55em; color:var(--gold-light); margin-bottom:0.3em">対象</p>
+      <div class="callout" style="font-size:0.6em">
+        Open Libraryダンプ（55,615,769件）から抽出した<strong>34,789作品</strong>（英語フィクション、1880–1950）
+      </div>
+      <p style="font-size:0.55em; color:var(--gold-light); margin:0.5em 0 0.3em">連携させたいDB</p>
+      <div class="db-row">
+        <div class="db-tag hi">Open Library</div>
+        <div class="db-tag hi">Wikidata</div>
+        <div class="db-tag">JSTOR</div>
+        <div class="db-tag">OpenAlex</div>
+        <div class="db-tag">HathiTrust</div>
+        <div class="db-tag">Goodreads</div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:0.55em; color:var(--accent-red); margin-bottom:0.3em">問題：共通スキーマがない</p>
+      <ul>
+        <li><strong>識別子の多義性：</strong><em>Treasure Island</em> → OCLC番号が281件。版・翻訳ごとに別IDが発行される</li>
+        <li><strong>エンティティ混同：</strong>著者名表記ゆれ 7,553件 / 合本・シリーズ 648件</li>
+        <li><strong>内部重複：</strong><em>Ivanhoe</em> → 15件のwork_keyに分裂</li>
+        <li><strong>収録構造の限界：</strong>著作権制約・フィルタによる構造的不可能</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 11 解法と結果（unchanged） -->
+<section>
+  <span class="sec-label blue">Case Study — Solution & Results</span>
+  <h2>解法：4段階LLMエージェントパイプライン</h2>
+  <div class="pipe-row" style="margin-bottom:0.5em">
+    <div class="pipe-step"><div class="pipe-n">STEP 1</div><div class="pipe-t">著者エンティティ<br>取得</div><div class="pipe-s">名前正規化<br>→ Wikidata API</div></div>
+    <div class="pipe-arr">→</div>
+    <div class="pipe-step"><div class="pipe-n">STEP 2</div><div class="pipe-t">SPARQL<br>著作リスト</div><div class="pipe-s">QID →<br>著作一覧</div></div>
+    <div class="pipe-arr">→</div>
+    <div class="pipe-step"><div class="pipe-n">STEP 3</div><div class="pipe-t">LLM<br>整合性判定</div><div class="pipe-s">タイトル・年・<br>文脈で照合</div></div>
+    <div class="pipe-arr">→</div>
+    <div class="pipe-step"><div class="pipe-n">STEP 4</div><div class="pipe-t">タイトル<br>直接検索</div><div class="pipe-s">フォールバック<br>（Step3失敗時）</div></div>
+  </div>
+  <div class="callout red" style="font-size:0.6em; margin-bottom:0.6em">
+    <strong>なぜ多段階か：</strong>
+    単一ステップで「LLMにQIDを直接生成させる」と<strong>全件ハルシネーション（0/8）</strong>。
+    LLMはWikidata QIDを記憶していない。SPARQL経由の推論が不可欠。
+  </div>
+  <div class="three-col">
+    <div class="f1-block"><div class="f1-num">0.969</div><div class="f1-label">F1スコア</div></div>
+    <div class="f1-block"><div class="f1-num">0.987</div><div class="f1-label">Precision</div></div>
+    <div class="f1-block" style="border-top-color:var(--accent-teal)"><div class="f1-num" style="color:var(--accent-teal)">+0.45</div><div class="f1-label">vs 文字列類似度<br>ベースライン（0.516）</div></div>
+  </div>
+  <div class="callout" style="margin-top:0.5em; font-size:0.58em">
+    <strong>性能の層別：</strong>
+    知名度の高い Easy 層（sitelink ≥ 50）では100%。最も難しい Hard 層（sitelink &lt;5、全体の約半数）でも91.4%。
+    失敗した5件はWikidata側のデータ品質問題（エージェント構造の限界ではない）。
+  </div>
+</section>
+
+<section>
+  <span class="sec-label blue">Case Study — Data</span>
+  <h2>版数と国際的知名度の分布</h2>
+
+  
+
+    <!-- 右：散布図画像 -->
+    <div style="text-align:center;">
+      <img
+        src="media/scatter_edition_sitelink_v6.png"
+        alt="版数と国際的知名度の分布（1880–1950 英語フィクション 34,789件）"
+        style="
+          max-width:100%;
+          max-height:420px;
+          border:1px solid var(--border-blue);
+          display:block;
+          margin:0 auto;
+        "
+      />
+      <p style="font-size:0.38em; color:var(--muted); margin-top:0.4em; font-family:'JetBrains Mono',monospace;">
+        版数 × sitelink 数（1880–1950 英語フィクション 34,789件）
+      </p>
+    </div>
+
+  
+</section>
+
+<!-- 12 発見（unchanged） -->
+<section>
+  <span class="sec-label blue">Case Study — Findings</span>
+  <h2>発見：PhD正典と流通正典のずれ</h2>
+  <div class="two-col">
+    <div>
+      <p style="font-size:0.52em; color:var(--accent-blue); margin-bottom:0.3em">発見① ジャンル分布の乖離</p>
+      <table style="font-size:0.52em">
+        <thead><tr><th>ジャンル</th><th>PhD課題図書*</th><th>版数上位200件</th></tr></thead>
+        <tbody>
+          <tr><td>モダニズム</td><td class="blu">5件</td><td class="lo">—</td></tr>
+          <tr><td>自然主義</td><td class="blu">4件</td><td class="lo">—</td></tr>
+          <tr><td>ファンタジー</td><td class="lo">—</td><td class="hi">33件</td></tr>
+          <tr><td>児童文学</td><td class="lo">—</td><td class="hi">25件</td></tr>
+          <tr><td>探偵小説</td><td class="lo">—</td><td class="hi">13件</td></tr>
+        </tbody>
+      </table>
+      <div class="callout blue" style="margin-top:0.5em; font-size:0.58em">
+        国際的知名度（sitelink）中央値：<br>
+        PhD課題図書 <strong>18</strong> ／ 版数上位200件 <strong>9</strong>
+      </div>
+      <p style="font-size:0.42em; color:var(--muted); margin-top:0.3em">
+        * McGrath, Higgins &amp; Hintze (2018, <em>Journal of Cultural Analytics</em>) の主要大学英文学博士課程課題図書リスト142件から104件を照合・確定した比較基準。
+      </p>
+    </div>
+    <div>
+      <p style="font-size:0.52em; color:var(--accent-red); margin-bottom:0.3em">発見② 緊張の領域：高知名度・高流通 → PhD教育外</p>
+      <div class="tension-item"><span class="tension-title">Alice's Adventures in Wonderland</span><span class="tension-val">sitelink 121</span></div>
+      <div class="tension-item"><span class="tension-title">Animal Farm</span><span class="tension-val">sitelink 120</span></div>
+      <div class="tension-item"><span class="tension-title">The Hobbit</span><span class="tension-val">sitelink 117</span></div>
+      <div class="tension-item"><span class="tension-title">Brave New World</span><span class="tension-val">sitelink 73</span></div>
+      <div class="callout red" style="margin-top:0.5em; font-size:0.6em">
+        国際的な知名度と流通量で見ると圧倒的な存在感を持つ作品群が、博士課程の教育的正典には含まれていない。<br>
+        ▶ 何が「正典」かは、<em>どの経路で見るか</em>に依存する。
+      </div>
+    </div>
+  </div>
+</section>
+</section>
+
+<!-- 16 まとめ（unchanged） -->
+<section>
+  <span class="sec-label">Synthesis</span>
+  <h2>まとめ：問いとして残るもの</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6em; margin-top:0.3em">
+    <div class="callout" style="font-size:0.6em">
+      <strong>① 方法と解釈の緊張</strong><br>
+      計算論的手法は「新しいことを教えてくれる」のか、「すでに知っていることの再確認」か？（Da vs DHer）
+    </div>
+    <div class="callout blue" style="font-size:0.6em">
+      <strong>② 正典の多経路性</strong><br>
+      PhD教育・文化流通・読者受容——同じ「正典」でも経路によって顔が違う（Alice, Animal Farm, Hobbit）。これを可視化するためにこそDB横断照合が必要だった。
+    </div>
+    <div class="callout" style="font-size:0.6em">
+      <strong>③ データの政治性</strong><br>
+      何がデジタル化され、誰の言語で、誰のテキストが分析されるか——権力の非対称性を再生産しないために。（スピヴァク・Klein）
+    </div>
+    <div class="callout" style="font-size:0.6em">
+      <strong>④「誤り」の生産性</strong><br>
+      Weidman &amp; Pastorが示したように、バイナリなフレームが問題含みでも「誤り」が新しい読みを開くことはあるか？
+    </div>
+    <div class="callout" style="font-size:0.6em; grid-column:1/-1">
+      <strong>⑤ 受容のデータ化とプラットフォーム依存</strong><br>
+      Walsh型の受容研究・Goodreads・TwitterのデータはプラットフォームのAPIと利用規約に縛られている——「受容」を可視化するデータ自体が資本の産物である、という循環をどう解くか？
+    </div>
+  </div>
+</section>
+
+<!-- 17 参考文献 -->
+<section>
+  <span class="sec-label">References</span>
+  <h2>参考文献（抄）</h2>
+  <div class="refs">
+    <div class="ref-item"><span class="ref-key">Ford 1909</span> Ford, F.M. "Preface." In <em>The Nature of a Crime</em> (with Conrad, J.). xi.</div>
+    <div class="ref-item"><span class="ref-key">Burrows 1986</span> Burrows, J.F. <em>Computation into Criticism</em>. Oxford: Clarendon Press.</div>
+    <div class="ref-item"><span class="ref-key">Moretti 2000, 2005</span> Moretti, F. "Conjectures on World Literature." <em>NLR</em>; <em>Graphs, Maps, Trees</em>. Verso.</div>
+    <div class="ref-item"><span class="ref-key">Heuser &amp; Le-Khac 2012</span> <em>A Quantitative Literary History of 2,958 Nineteenth-Century British Novels</em>. SLL Pamphlet 4.</div>
+    <div class="ref-item"><span class="ref-key">Underwood &amp; Sellers 2012</span> "The Emergence of Literary Diction." <em>Journal of Digital Humanities</em> 1, no.2.</div>
+    <div class="ref-item"><span class="ref-key">Ramsay 2011</span> <em>Reading Machines: Toward an Algorithmic Criticism</em>. University of Illinois Press.</div>
+    <div class="ref-item"><span class="ref-key">Fish 2012</span> "Mind Your P's and B's." <em>New York Times</em>, Jan. 23.</div>
+    <div class="ref-item"><span class="ref-key">Jockers 2013</span> <em>Macroanalysis</em>. University of Illinois Press.</div>
+    <div class="ref-item"><span class="ref-key">Jockers &amp; Kirilloff 2016</span> "Understanding Gender and Character Agency." <em>Cultural Analytics</em>, Dec.</div>
+    <div class="ref-item"><span class="ref-key">Underwood, Bamman &amp; Lee 2018</span> "The Transformation of Gender in English-Language Fiction." <em>Cultural Analytics</em>, Feb.</div>
+    <div class="ref-item"><span class="ref-key">Underwood 2019</span> <em>Distant Horizons</em>. University of Chicago Press.</div>
+    <div class="ref-item"><span class="ref-key">Da 2019</span> "The Computational Case against Computational Literary Studies." <em>Critical Inquiry</em> 45(3): 601–639.</div>
+    <div class="ref-item"><span class="ref-key">McGrath, Higgins &amp; Hintze 2018</span> [PhD syllabi canonical set]. <em>Journal of Cultural Analytics</em>.</div>
+    <div class="ref-item"><span class="ref-key">Weidman &amp; Pastor 2021</span> "Modernism and Gender at the Limits of Stylometry." <em>DHQ</em> 15, no.4.</div>
+    <div class="ref-item"><span class="ref-key">Spivak 2003</span> Spivak, G.C. <em>Death of a Discipline</em>. Columbia University Press.</div>
+<div class="ref-item"><span class="ref-key">Spivak &amp; Damrosch 2011</span> "Comparative Literature/World Literature: A Discussion." <em>Comparative Literature Studies</em> 48.4: 455–485.</div>
+    <div class="ref-item"><span class="ref-key">Posner &amp; Klein 2017</span> "Data as Media." <em>Feminist Media Histories</em> 3, no.3.</div>
+    <div class="ref-item"><span class="ref-key">Mandell 2019</span> "Gender and Cultural Analytics." <em>Debates in the Digital Humanities 2019</em>.</div>
+    <div class="ref-item"><span class="ref-key">Walsh &amp; Antoniak 2021</span> "The Goodreads 'Classics'." <em>Cultural Analytics</em> 6.</div>
+    <div class="ref-item"><span class="ref-key">Walsh 2023</span> "Challenges and Possibilities of Social Media Data." <em>Debates in DH 2023</em>: 275–294.</div>
+    <div class="ref-item"><span class="ref-key">筒井 2026b</span> 筒井遥. "LLM多段階推論による書誌DB横断照合." 東京大学五月祭 / KCL国際学会（予定）.</div>
+  </div>
+</section>
+
+
+</div>
+</div>
+<!-- ══════════════════════════════════════════════════
+     修正箇所②：末尾の <script> を下記に差し替え
+     ══════════════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  progress: true,
+  controls: true,
+  center: false,
+  transition: 'fade',
+  transitionSpeed: 'slow',
+  backgroundTransition: 'fade',
+
+  /* ── サイズ設定（ここが核心） ──────────────────────
+     width / height を固定 px にせず、
+     ビューポートに対する比率＋スケール幅で指定する。
+     reveal.js が自動で拡縮・中央揃えしてくれる。     */
+  width: 1200,          /* 1280→1200 に縮小（余白ができる） */
+  height: 700,
+  margin: 0.04,         /* スライド外周の余白（全幅の4%） */
+  minScale: 0.3,        /* 縮小の下限（小さい画面でも崩れない） */
+  maxScale: 1.5,        /* 拡大の上限 */
+
+  plugins: []
+});
+</script>
+</body>
+</html>
 
