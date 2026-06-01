@@ -814,6 +814,47 @@ html, body {
 
 </style>
 
+  <style>
+/* ── print-pdf mode fix ─────────────────────────────
+   Reveal.js の ?print-pdf ではスライドを縦に並べる必要があるため、
+   通常表示用の fixed / overflow:hidden を解除する。
+──────────────────────────────────────────────────── */
+
+html.print-pdf,
+body.print-pdf,
+body.print-pdf html {
+  overflow: visible !important;
+  height: auto !important;
+}
+
+body.print-pdf {
+  width: auto !important;
+  min-height: auto !important;
+}
+
+body.print-pdf .reveal-viewport {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+  display: block !important;
+}
+
+body.print-pdf .reveal {
+  position: relative !important;
+  margin: 0 !important;
+}
+
+body.print-pdf .reveal .slides {
+  position: static !important;
+}
+
+body.print-pdf .reveal .slides section {
+  overflow: visible !important;
+}
+</style>
+
 </head>
 <body>
 <div class="reveal">
