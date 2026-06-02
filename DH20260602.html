@@ -814,47 +814,6 @@ html, body {
 
 </style>
 
-  <style>
-/* ── print-pdf mode fix ─────────────────────────────
-   Reveal.js の ?print-pdf ではスライドを縦に並べる必要があるため、
-   通常表示用の fixed / overflow:hidden を解除する。
-──────────────────────────────────────────────────── */
-
-html.print-pdf,
-body.print-pdf,
-body.print-pdf html {
-  overflow: visible !important;
-  height: auto !important;
-}
-
-body.print-pdf {
-  width: auto !important;
-  min-height: auto !important;
-}
-
-body.print-pdf .reveal-viewport {
-  position: static !important;
-  width: auto !important;
-  height: auto !important;
-  min-height: auto !important;
-  overflow: visible !important;
-  display: block !important;
-}
-
-body.print-pdf .reveal {
-  position: relative !important;
-  margin: 0 !important;
-}
-
-body.print-pdf .reveal .slides {
-  position: static !important;
-}
-
-body.print-pdf .reveal .slides section {
-  overflow: visible !important;
-}
-</style>
-
 </head>
 <body>
 <div class="reveal">
@@ -1508,7 +1467,7 @@ body.print-pdf .reveal .slides section {
     </div>
     <div>
       <ul>
-        <li><strong>「膨大なデータ神話」の否定：</strong>MLが必要なほどの量ではないのに「AI必要」とするのは誇張</li>
+        <li><strong>「膨大なデータ神話」の否定：</strong>MLが必要なほどの量ではないのに必要とするのは誇張</li>
         <li><strong>目的のミスマッチ：</strong>統計は「意味を削ぐ」が、文学研究は「意味の複雑さを読む」</li>
       </ul>
       <div class="callout red" style="margin-top:0.5em; font-size:0.58em">
@@ -1516,12 +1475,7 @@ body.print-pdf .reveal .slides section {
       </div>
     </div>
   </div>
-  <div class="callout" style="font-size:0.58em; margin-top:0.3em">
-    <strong>なぜHeuser &amp; Le-Khac（2012）→ Underwood &amp; Sellers（2012）の修正例が重要か：</strong>
-    CLSの発見が別の分析で否定されるという事例は、
-    DH側は「修正できること自体が科学的強みだ」と主張するが、
-    Daは逆に「それはCLSの発見が根本的に不安定であることを示している」と読む。
-  </div>
+
 </section>
 
 <!-- 09 CI Forum（unchanged） -->
@@ -1544,6 +1498,157 @@ body.print-pdf .reveal .slides section {
   </table>
 
 </section>
+
+</section>
+
+
+<section>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  PART VI 扉                                        -->
+<!-- ══════════════════════════════════════════════════ -->
+<section class="chapter-slide">
+  <div class="chapter-num">PART VI</div>
+  <h2>CLS定義の拡張と受容研究への接続</h2>
+  <p>
+    Da論争に先立ち、Liu（2012）は「DHに文化批評はあるのか」を問い、
+    DH実践と批評理論の断絶を問題化した。<br>
+    Da論争でBode・Kleinらはその問いを引き継ぎ、
+    CLSの対象を書誌・流通・データ構築・キュレーションへと拡張することを訴えた。<br>
+    Walsh（2023）はさらに読者受容・プラットフォームデータへと開いた。<br><br>
+    
+  </p>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  VI-1  Bode・Drucker・Klein                        -->
+<!-- ══════════════════════════════════════════════════ -->
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  VI-1  Bode: New Object of Study                    -->
+<!-- ══════════════════════════════════════════════════ -->
+<section>
+  <span class="sec-label">CLS の対象拡張</span>
+  <h2>Bode：方法ではなく、研究対象を拡張する</h2>
+
+  <div class="two-col" style="gap:1em;align-items:start;">
+    <div>
+      <p class="subhead">Katherine Bode（2017）</p>
+
+      <div class="blockquote" style="font-size:.66em;">
+        “not new or integrated methods but a new scholarly object”
+        <cite>
+          — Bode, “The Equivalence of ‘Close’ and ‘Distant’ Reading,”
+          <em>Modern Language Quarterly</em> 78.1 (2017), pp. 77–106
+        </cite>
+      </div>
+
+      <div class="callout blue" style="font-size:.58em;margin-top:.55em;">
+        Bodeは、近読と遠読を統合する「新しい方法」よりも、
+        計算的文学研究が扱うべき「研究対象」そのものを再定義する必要を主張する。
+      </div>
+    </div>
+
+    <div>
+      <p class="subhead">論点</p>
+
+      <ul style="font-size:.58em;line-height:1.6;margin-top:.25em;">
+        <li>MorettiやJockersの方法は、文学システムを抽象的・非歴史的に扱いやすい。</li>
+        <li>作品本文だけでなく、書誌・出版・版・流通の記録を含む「文書記録」の複雑さを扱う必要がある。</li>
+        <li>したがって、CLSの課題は「どの方法を使うか」だけでなく、「何を研究対象として構築するか」にある。</li>
+      </ul>
+
+      <p class="note">
+        Bode, Katherine. “The Equivalence of ‘Close’ and ‘Distant’ Reading; or, Toward a New Object for Data-Rich Literary History.” <em>Modern Language Quarterly</em>, vol. 78, no. 1, 2017, pp. 77–106.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  VI-2  Klein: Invisible Labor and Editorial Work    -->
+<!-- ══════════════════════════════════════════════════ -->
+<section>
+  <span class="sec-label">CLS の対象拡張</span>
+  <h2>Klein：見えにくい労働と編集作業を含める</h2>
+
+  <div class="two-col" style="gap:1em;align-items:start;">
+    <div>
+      <p class="subhead">Lauren F. Klein（2019/2020）</p>
+
+      <div class="blockquote" style="font-size:.66em;">
+        “the multiple forms of labor—affective as much as intellectual”
+        <cite>
+          — Klein, “What the New Computational Rigor Should Be,”
+          <em>Critical Inquiry</em> online forum, 2019
+        </cite>
+      </div>
+
+      <div class="callout blue" style="font-size:.58em;margin-top:.55em;">
+        Kleinは、計算的文学研究を、分析結果だけでなく、
+        データ構築・編集・キュレーション・メンタリングを含む実践として捉える。
+      </div>
+    </div>
+
+    <div>
+      <p class="subhead">論点</p>
+
+      <ul style="font-size:.58em;line-height:1.6;margin-top:.25em;">
+        <li>データセットは自然に存在するのではなく、選別・修復・整備・記述を通じて作られる。</li>
+        <li>そうした作業は、知的労働であるにもかかわらず、研究成果として評価されにくい。</li>
+        <li>CLSを語彙パターン分析だけに限定すると、データを作る労働と、その政治性が見えなくなる。</li>
+      </ul>
+
+      <p class="note">
+        Klein, Lauren F. “Dimensions of Scale: Invisible Labor, Editorial Work, and Quantitative Literary Studies.” <em>PMLA</em>, vol. 135, no. 1, 2020, pp. 23–39.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  VI-3  Walsh（2023）                               -->
+<!-- ══════════════════════════════════════════════════ -->
+<section>
+  <span class="sec-label">New Directions</span>
+  <h2>Walsh（2023）：Computational Reception Studies</h2>
+  <div class="blockquote">
+    「読書・受容・テキスト流通に関する問いを探求する新興サブフィールド」
+    <cite>— Walsh, "The Challenges and Possibilities of Social Media Data,"
+    in <em>Debates in the Digital Humanities 2023</em>, pp.275–294 (U of Minnesota P)</cite>
+  </div>
+  <div class="two-col" style="margin-top:.55em;">
+    <div>
+      <p style="font-size:.52em;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4em;">従来のCLS</p>
+      <ul>
+        <li><strong>文学テキストそのものを計算分析</strong></li>
+        <li>コーパス → パターン・傾向の発見</li>
+        <li>文体・語彙・トピックモデルによるジャンル分類</li>
+        <li>例：Moretti（遠読）・Jockers（マクロ分析）・Underwood（文学史の長期変化）</li>
+      </ul>
+      <div class="callout" style="font-size:.58em;margin-top:.5em;">
+        <strong>問い：</strong>テキストはどのように書かれているか<br>
+        <span style="color:var(--muted);">→「作品の内側」にある構造・パターンを探る</span>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:.52em;color:var(--gold-light);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4em;">Reception Studies</p>
+      <ul>
+        <li><strong>Goodreadsのレビュー・評価データ</strong>（「古典」概念とAmazonの絡み合い）</li>
+        <li><strong>SNSでの引用パターン：</strong>James Baldwinの言葉がBLM運動の文脈でどう再流通したか</li>
+        <li><strong>公共図書館・出版・プラットフォームデータ</strong></li>
+      </ul>
+      <div class="callout teal" style="font-size:.58em;margin-top:.5em;">
+        <strong>問い：</strong>テキストはどのように読まれてきたか<br>
+        <span style="color:var(--muted);">→ プラットフォーム・経済・権力との絡み合いを可視化する</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 </section>
 
@@ -1699,6 +1804,25 @@ body.print-pdf .reveal .slides section {
   </div>
 </section>
 
+
+
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  PART V: 一次テキスト                             -->
+<!-- ══════════════════════════════════════════════════ -->
+
+
+<section>
+  <section class="chapter-slide">
+  <div class="chapter-num">PART V</div>
+  <h2>一次テキスト分析の位置づけ</h2>
+  <p>
+    批評的直観を置き換えるのではなく、<br>
+    頻度・分布・比較・著者推定を通じて、その前提を補助的に確認する。
+  </p>
+</section>
+
 <section>
   <span class="sec-label">Example · Critical Definition</span>
   <h2>批評的定義の中にある二つの根拠</h2>
@@ -1722,23 +1846,6 @@ body.print-pdf .reveal .slides section {
       <em>I think</em> を介して、著者自身の批評的判断が示される
     </div>
   </div>
-</section>
-
-</section>
-
-<!-- ══════════════════════════════════════════════════ -->
-<!--  PART V: 一次テキスト                             -->
-<!-- ══════════════════════════════════════════════════ -->
-
-
-<section>
-  <section class="chapter-slide">
-  <div class="chapter-num">PART V</div>
-  <h2>一次テキスト分析の位置づけ</h2>
-  <p>
-    批評的直観を置き換えるのではなく、<br>
-    頻度・分布・比較・著者推定を通じて、その前提を補助的に確認する。
-  </p>
 </section>
 
 <section>
@@ -1771,155 +1878,7 @@ body.print-pdf .reveal .slides section {
 </section>
 
 
-<section>
 
-
-<!-- ══════════════════════════════════════════════════ -->
-<!--  PART VI 扉                                        -->
-<!-- ══════════════════════════════════════════════════ -->
-<section class="chapter-slide">
-  <div class="chapter-num">PART VI</div>
-  <h2>CLS定義の拡張と受容研究への接続</h2>
-  <p>
-    Da論争に先立ち、Liu（2012）は「DHに文化批評はあるのか」を問い、
-    DH実践と批評理論の断絶を問題化した。<br>
-    Da論争でBode・Kleinらはその問いを引き継ぎ、
-    CLSの対象を書誌・流通・データ構築・キュレーションへと拡張することを訴えた。<br>
-    Walsh（2023）はさらに読者受容・プラットフォームデータへと開いた。<br><br>
-    
-  </p>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════ -->
-<!--  VI-1  Bode・Drucker・Klein                        -->
-<!-- ══════════════════════════════════════════════════ -->
-
-<!-- ══════════════════════════════════════════════════ -->
-<!--  VI-1  Bode: New Object of Study                    -->
-<!-- ══════════════════════════════════════════════════ -->
-<section>
-  <span class="sec-label">CLS の対象拡張</span>
-  <h2>Bode：方法ではなく、研究対象を拡張する</h2>
-
-  <div class="two-col" style="gap:1em;align-items:start;">
-    <div>
-      <p class="subhead">Katherine Bode（2017）</p>
-
-      <div class="blockquote" style="font-size:.66em;">
-        “not new or integrated methods but a new scholarly object”
-        <cite>
-          — Bode, “The Equivalence of ‘Close’ and ‘Distant’ Reading,”
-          <em>Modern Language Quarterly</em> 78.1 (2017), pp. 77–106
-        </cite>
-      </div>
-
-      <div class="callout blue" style="font-size:.58em;margin-top:.55em;">
-        Bodeは、近読と遠読を統合する「新しい方法」よりも、
-        計算的文学研究が扱うべき「研究対象」そのものを再定義する必要を主張する。
-      </div>
-    </div>
-
-    <div>
-      <p class="subhead">論点</p>
-
-      <ul style="font-size:.58em;line-height:1.6;margin-top:.25em;">
-        <li>MorettiやJockersの方法は、文学システムを抽象的・非歴史的に扱いやすい。</li>
-        <li>作品本文だけでなく、書誌・出版・版・流通の記録を含む「文書記録」の複雑さを扱う必要がある。</li>
-        <li>したがって、CLSの課題は「どの方法を使うか」だけでなく、「何を研究対象として構築するか」にある。</li>
-      </ul>
-
-      <p class="note">
-        Bode, Katherine. “The Equivalence of ‘Close’ and ‘Distant’ Reading; or, Toward a New Object for Data-Rich Literary History.” <em>Modern Language Quarterly</em>, vol. 78, no. 1, 2017, pp. 77–106.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════ -->
-<!--  VI-2  Klein: Invisible Labor and Editorial Work    -->
-<!-- ══════════════════════════════════════════════════ -->
-<section>
-  <span class="sec-label">CLS の対象拡張</span>
-  <h2>Klein：見えにくい労働と編集作業を含める</h2>
-
-  <div class="two-col" style="gap:1em;align-items:start;">
-    <div>
-      <p class="subhead">Lauren F. Klein（2019/2020）</p>
-
-      <div class="blockquote" style="font-size:.66em;">
-        “the multiple forms of labor—affective as much as intellectual”
-        <cite>
-          — Klein, “What the New Computational Rigor Should Be,”
-          <em>Critical Inquiry</em> online forum, 2019
-        </cite>
-      </div>
-
-      <div class="callout blue" style="font-size:.58em;margin-top:.55em;">
-        Kleinは、計算的文学研究を、分析結果だけでなく、
-        データ構築・編集・キュレーション・メンタリングを含む実践として捉える。
-      </div>
-    </div>
-
-    <div>
-      <p class="subhead">論点</p>
-
-      <ul style="font-size:.58em;line-height:1.6;margin-top:.25em;">
-        <li>データセットは自然に存在するのではなく、選別・修復・整備・記述を通じて作られる。</li>
-        <li>そうした作業は、知的労働であるにもかかわらず、研究成果として評価されにくい。</li>
-        <li>CLSを語彙パターン分析だけに限定すると、データを作る労働と、その政治性が見えなくなる。</li>
-      </ul>
-
-      <p class="note">
-        Klein, Lauren F. “Dimensions of Scale: Invisible Labor, Editorial Work, and Quantitative Literary Studies.” <em>PMLA</em>, vol. 135, no. 1, 2020, pp. 23–39.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════ -->
-<!--  VI-3  Walsh（2023）                               -->
-<!-- ══════════════════════════════════════════════════ -->
-<section>
-  <span class="sec-label">New Directions</span>
-  <h2>Walsh（2023）：Computational Reception Studies</h2>
-  <div class="blockquote">
-    「読書・受容・テキスト流通に関する問いを探求する新興サブフィールド」
-    <cite>— Walsh, "The Challenges and Possibilities of Social Media Data,"
-    in <em>Debates in the Digital Humanities 2023</em>, pp.275–294 (U of Minnesota P)</cite>
-  </div>
-  <div class="two-col" style="margin-top:.55em;">
-    <div>
-      <p style="font-size:.52em;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4em;">従来のCLS</p>
-      <ul>
-        <li><strong>文学テキストそのものを計算分析</strong></li>
-        <li>コーパス → パターン・傾向の発見</li>
-        <li>文体・語彙・トピックモデルによるジャンル分類</li>
-        <li>例：Moretti（遠読）・Jockers（マクロ分析）・Underwood（文学史の長期変化）</li>
-      </ul>
-      <div class="callout" style="font-size:.58em;margin-top:.5em;">
-        <strong>問い：</strong>テキストはどのように書かれているか<br>
-        <span style="color:var(--muted);">→「作品の内側」にある構造・パターンを探る</span>
-      </div>
-    </div>
-    <div>
-      <p style="font-size:.52em;color:var(--gold-light);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4em;">Reception Studies</p>
-      <ul>
-        <li><strong>Goodreadsのレビュー・評価データ</strong>（「古典」概念とAmazonの絡み合い）</li>
-        <li><strong>SNSでの引用パターン：</strong>James Baldwinの言葉がBLM運動の文脈でどう再流通したか</li>
-        <li><strong>公共図書館・出版・プラットフォームデータ</strong></li>
-      </ul>
-      <div class="callout teal" style="font-size:.58em;margin-top:.5em;">
-        <strong>問い：</strong>テキストはどのように読まれてきたか<br>
-        <span style="color:var(--muted);">→ プラットフォーム・経済・権力との絡み合いを可視化する</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-</section>
 
 
 
