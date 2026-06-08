@@ -215,10 +215,10 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
       <img src="media/methodological_commons_2020ver.jpg" alt="Methodological Commons (McCarty &amp; Short, 2002)"
         style="max-width:100%; max-height:360px; border:1px solid var(--border-blue); display:block; margin:0 auto; filter:brightness(0.92) contrast(1.05);" />
       <p style="font-size:0.38em; color:var(--muted); margin-top:0.4em; font-family:'JetBrains Mono',monospace; line-height:1.5;">
-        Willard McCarty &amp; Harold Short (2002)<br>
-        "An intellectual and disciplinary map of humanities computing"<br>
-        via HUMANIST / Alliance of Digital Humanities Organizations
-      </p>
+  Willard McCarty &amp; Harold Short<br>
+  "Methodological Commons" (updated version provided by Short, 2020)<br>
+  via Kiyonori Nagasaki, <a href="https://digitalnagasaki.hatenablog.com/entry/2020/12/20/182659" style="color:inherit; text-decoration:underline;">"Methodological Commons: デジタル人文学で昔から定番の話"</a>, digitalnagasaki.hatenablog.com (2020/12/20)
+</p>
     </div>
     <div>
       <div class="callout blue" style="font-size:0.65em; margin-bottom:0.6em;">
@@ -299,8 +299,8 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
     <div class="method-num">①</div>
     <div class="method-body">
       <span class="mname">Keyword Search</span>
-      <span class="msub">Target: articles in 15 journals indexed in OpenAlex &nbsp;|&nbsp; Fields searched: title &amp; abstract</span><br>
-      Queried the API with keywords such as "digital humanities," "distant reading," and "computational." Since only titles and abstracts are checked, there is considerable noise. Values are treated as upper-bound estimates.
+      <span class="msub">Target: 15 journals in OpenAlex &nbsp;|&nbsp; Fields: title &amp; abstract</span><br>
+      Queried the API with keywords ("digital humanities," "distant reading," "computational"). Title/abstract only, so noisy. Treated as upper-bound.
     </div>
     <div class="method-period">2016–2025</div>
     <div><span class="badge upper">upper bound</span></div>
@@ -310,8 +310,8 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
     <div class="method-num">②</div>
     <div class="method-body">
       <span class="mname">Citation Proxy Check</span>
-      <span class="msub">Target: articles in 15 journals indexed in OpenAlex &nbsp;|&nbsp; Fields searched: reference lists</span><br>
-      Extracted via API articles that cite key DH methodological works (Moretti, Jockers, Underwood, etc.). Intended to capture implicit DH practice, but cannot distinguish theoretical citation from methodological use.
+      <span class="msub">Target: 15 journals in OpenAlex &nbsp;|&nbsp; Fields: reference lists</span><br>
+      Extracted articles citing key DH works (Moretti, Jockers, Underwood). Captures implicit practice but can't separate theoretical citation from actual use.
     </div>
     <div class="method-period">2010–2025</div>
     <div><span class="badge upper">upper bound</span></div>
@@ -321,8 +321,8 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
     <div class="method-num">③</div>
     <div class="method-body">
       <span class="mname">PDF Footnote Scan</span>
-      <span class="msub">Target: 254 PDF files of Critical Inquiry &nbsp;|&nbsp; Fields searched: all 8,940 footnote lines</span><br>
-      Text extracted directly from PDFs; footnote lines searched by regex. Classification performed with Claude Haiku API. Unlike ① and ②, this method reads actual footnotes, resulting in low noise and high precision.
+      <span class="msub">Target: 254 PDFs of Critical Inquiry &nbsp;|&nbsp; Fields: 8,940 footnote lines</span><br>
+      Text extracted from PDFs; footnotes searched by regex, classified via Claude Haiku API. Reads actual footnotes—low noise, high precision.
     </div>
     <div class="method-period">2019–2025</div>
     <div><span class="badge high">high precision</span></div>
@@ -676,10 +676,123 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 </section>
 </section>
 
+
 <!-- PART IV -->
 <section>
 <section class="chapter-slide">
   <div class="chapter-num">PART IV</div>
+  <h2>The Role of Primary Text Analysis</h2>
+  <p>
+    Not to replace critical intuition,<br>
+    but to check its premises through frequency, distribution, comparison, and authorship attribution.
+  </p>
+</section>
+
+<section>
+  <span class="sec-label">Example · Critical Definition</span>
+  <h2>Two Kinds of Evidence within a Critical Definition</h2>
+  <div class="bq">
+    "As Jameson and other critics have observed, utopias are fundamentally
+    typified by a break, marked by islands and trenches in both space and time,
+    whereas <strong>I think</strong> dystopias tend to be characterized by
+    a creeping, incremental horror, typical of the dreadful."
+    <cite>— Robert T. Tally Jr., <em>The Fiction of Dread: Dystopia, Monstrosity, and Apocalypse</em> (Bloomsbury, 2024), p. 4</cite>
+  </div>
+  <div style="display:flex;gap:1em;margin-top:.7em;">
+    <div class="callout" style="flex:1;font-size:.58em;">
+      <span class="hi">utopia</span><br>
+      Defined by appeal to prior critics (Jameson et al.)
+    </div>
+    <div class="callout blue" style="flex:1;font-size:.58em;">
+      <span class="hi">dystopia</span><br>
+      Introduced via <em>I think</em>—the author's own critical judgment
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="sec-label">Primary Text Strategy</span>
+  <h2>Positioning Primary Text Analysis</h2>
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="t">Frequency</div>
+      Confirm the occurrence of specific vocabulary and conceptual terms. A basic check on critical impressions.
+    </div>
+    <div class="strategy-card">
+      <div class="t">Distribution</div>
+      Examine skews across corpora, periods, and genres. Use topic modeling etc. to identify tendencies.
+    </div>
+    <div class="strategy-card">
+      <div class="t">Comparison</div>
+      Compare differences across genres, authors, and periods to relativize the premises of a reading.
+    </div>
+    <div class="strategy-card">
+      <div class="t">Authorship attribution</div>
+      Verify co-authorship, attribution, and stylistic differences to check the bibliographic facts that criticism takes for granted.
+    </div>
+  </div>
+</section>
+</section><!-- PART IV -->
+<section>
+<section class="chapter-slide">
+  <div class="chapter-num">PART IV</div>
+  <h2>The Role of Primary Text Analysis</h2>
+  <p>
+    Not to replace critical intuition,<br>
+    but to check its premises through frequency, distribution, comparison, and authorship attribution.
+  </p>
+</section>
+
+<section>
+  <span class="sec-label">Example · Critical Definition</span>
+  <h2>Two Kinds of Evidence within a Critical Definition</h2>
+  <div class="bq">
+    "As Jameson and other critics have observed, utopias are fundamentally
+    typified by a break, marked by islands and trenches in both space and time,
+    whereas <strong>I think</strong> dystopias tend to be characterized by
+    a creeping, incremental horror, typical of the dreadful."
+    <cite>— Robert T. Tally Jr., <em>The Fiction of Dread: Dystopia, Monstrosity, and Apocalypse</em> (Bloomsbury, 2024), p. 4</cite>
+  </div>
+  <div style="display:flex;gap:1em;margin-top:.7em;">
+    <div class="callout" style="flex:1;font-size:.58em;">
+      <span class="hi">utopia</span><br>
+      Defined by appeal to prior critics (Jameson et al.)
+    </div>
+    <div class="callout blue" style="flex:1;font-size:.58em;">
+      <span class="hi">dystopia</span><br>
+      Introduced via <em>I think</em>—the author's own critical judgment
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="sec-label">Primary Text Strategy</span>
+  <h2>Positioning Primary Text Analysis</h2>
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="t">Frequency</div>
+      Confirm the occurrence of specific vocabulary and conceptual terms. A basic check on critical impressions.
+    </div>
+    <div class="strategy-card">
+      <div class="t">Distribution</div>
+      Examine skews across corpora, periods, and genres. Use topic modeling etc. to identify tendencies.
+    </div>
+    <div class="strategy-card">
+      <div class="t">Comparison</div>
+      Compare differences across genres, authors, and periods to relativize the premises of a reading.
+    </div>
+    <div class="strategy-card">
+      <div class="t">Authorship attribution</div>
+      Verify co-authorship, attribution, and stylistic differences to check the bibliographic facts that criticism takes for granted.
+    </div>
+  </div>
+</section>
+</section>
+
+<!-- PART V -->
+<section>
+<section class="chapter-slide">
+  <div class="chapter-num">PART V</div>
   <h2>Expanding the Definition of CLS and Connecting to Reception Studies</h2>
   <p>
     Before the Da debate, Liu (2012) asked "Where is cultural criticism in DH?"<br>
@@ -785,10 +898,12 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 </section>
 </section>
 
-<!-- PART V -->
+
+
+<!-- PART VI -->
 <section>
 <section class="chapter-slide">
-  <div class="chapter-num">PART V</div>
+  <div class="chapter-num">PART VI</div>
   <h2>Toward a CLS Responsive to Critical Practice</h2>
   <p>
     Using <em>Critical Inquiry</em> as a case study,<br>
@@ -892,62 +1007,7 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 </section>
 </section>
 
-<!-- PART VI -->
-<section>
-<section class="chapter-slide">
-  <div class="chapter-num">PART VI</div>
-  <h2>The Role of Primary Text Analysis</h2>
-  <p>
-    Not to replace critical intuition,<br>
-    but to check its premises through frequency, distribution, comparison, and authorship attribution.
-  </p>
-</section>
 
-<section>
-  <span class="sec-label">Example · Critical Definition</span>
-  <h2>Two Kinds of Evidence within a Critical Definition</h2>
-  <div class="bq">
-    "As Jameson and other critics have observed, utopias are fundamentally
-    typified by a break, marked by islands and trenches in both space and time,
-    whereas <strong>I think</strong> dystopias tend to be characterized by
-    a creeping, incremental horror, typical of the dreadful."
-    <cite>— Robert T. Tally Jr., <em>The Fiction of Dread: Dystopia, Monstrosity, and Apocalypse</em> (Bloomsbury, 2024), p. 4</cite>
-  </div>
-  <div style="display:flex;gap:1em;margin-top:.7em;">
-    <div class="callout" style="flex:1;font-size:.58em;">
-      <span class="hi">utopia</span><br>
-      Defined by appeal to prior critics (Jameson et al.)
-    </div>
-    <div class="callout blue" style="flex:1;font-size:.58em;">
-      <span class="hi">dystopia</span><br>
-      Introduced via <em>I think</em>—the author's own critical judgment
-    </div>
-  </div>
-</section>
-
-<section>
-  <span class="sec-label">Primary Text Strategy</span>
-  <h2>Positioning Primary Text Analysis</h2>
-  <div class="strategy-grid">
-    <div class="strategy-card">
-      <div class="t">Frequency</div>
-      Confirm the occurrence of specific vocabulary and conceptual terms. A basic check on critical impressions.
-    </div>
-    <div class="strategy-card">
-      <div class="t">Distribution</div>
-      Examine skews across corpora, periods, and genres. Use topic modeling etc. to identify tendencies.
-    </div>
-    <div class="strategy-card">
-      <div class="t">Comparison</div>
-      Compare differences across genres, authors, and periods to relativize the premises of a reading.
-    </div>
-    <div class="strategy-card">
-      <div class="t">Authorship attribution</div>
-      Verify co-authorship, attribution, and stylistic differences to check the bibliographic facts that criticism takes for granted.
-    </div>
-  </div>
-</section>
-</section>
 
 <!-- PART VII -->
 <section>
@@ -1593,6 +1653,51 @@ Conrad’s <em>Heart of Darkness</em>” is often cited as a pivotal moment in l
 </section>
 
 
+
+
+
+<section>
+  <span class="sec-label">Vocabulary Shift</span>
+  <h2>What Persisted Was Not the Same Conrad</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Comparison</th>
+        <th>Terms newly prominent after Achebe</th>
+        <th>Interpretation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1975–1989 vs. pre-1975</td>
+        <td>racism, Africa, imperialism, critical, contextual, Apocalypse Now</td>
+        <td>critique begins to reframe the novella</td>
+      </tr>
+      <tr class="sp">
+        <td>1990–2004 vs. pre-1975</td>
+        <td>Africa, racism, imperialism, Achebe, teaching, third world, contemporary criticism</td>
+        <td>postcolonial and pedagogical reframing becomes explicit</td>
+      </tr>
+      <tr>
+        <td>2005–2019 vs. pre-1975</td>
+        <td>critical, narratives, Africa, politics, reading, contemporary thought, adaptation</td>
+        <td>the reframing persists but disperses into broader critical contexts</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout blue" style="font-size:.6em;">
+    <em>Heart of Darkness</em> remains visible, but the vocabulary of that visibility changes.
+  </div>
+
+  <p class="note">
+    Method: log-odds keyness analysis of JSTOR L&amp;L title/keyword metadata.
+    Target = post-Achebe HoD-title records; comparison = pre-Achebe HoD-title records.
+  </p>
+</section>
+
+
 <section>
   <span class="sec-label">Pedagogical Canon</span>
   <h2><em>Heart of Darkness</em> in Open Syllabus</h2>
@@ -1649,48 +1754,23 @@ Conrad’s <em>Heart of Darkness</em>” is often cited as a pivotal moment in l
 </section>
 
 
-
-
 <section>
-  <span class="sec-label">Vocabulary Shift</span>
-  <h2>What Persisted Was Not the Same Conrad</h2>
+  <span class="sec-label">Reception</span>
+  <h2><em>Heart of Darkness</em> in Open Syllabus</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Comparison</th>
-        <th>Terms newly prominent after Achebe</th>
-        <th>Interpretation</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1975–1989 vs. pre-1975</td>
-        <td>racism, Africa, imperialism, critical, contextual, Apocalypse Now</td>
-        <td>critique begins to reframe the novella</td>
-      </tr>
-      <tr class="sp">
-        <td>1990–2004 vs. pre-1975</td>
-        <td>Africa, racism, imperialism, Achebe, teaching, third world, contemporary criticism</td>
-        <td>postcolonial and pedagogical reframing becomes explicit</td>
-      </tr>
-      <tr>
-        <td>2005–2019 vs. pre-1975</td>
-        <td>critical, narratives, Africa, politics, reading, contemporary thought, adaptation</td>
-        <td>the reframing persists but disperses into broader critical contexts</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="callout blue" style="font-size:.6em;">
-    <em>Heart of Darkness</em> remains visible, but the vocabulary of that visibility changes.
-  </div>
-
-  <p class="note">
-    Method: log-odds keyness analysis of JSTOR L&amp;L title/keyword metadata.
-    Target = post-Achebe HoD-title records; comparison = pre-Achebe HoD-title records.
-  </p>
+<img
+    src="media/opensyllabus_HD.png"
+    alt="Open Syllabus Analytics: English Literature field ranking"
+    style="
+      display:block;
+      width:100%;
+      max-height:505px;
+      object-fit:contain;
+      border-radius:4px;
+    "
+  />
 </section>
+
 
 <section>
   <span class="sec-label">Interpretation</span>
@@ -1716,6 +1796,30 @@ Conrad’s <em>Heart of Darkness</em>” is often cited as a pivotal moment in l
   </p>
 </section>
 </section>
+
+
+<section>
+  <span class="sec-label">Conclusion</span>
+
+  <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:62vh; text-align:center;">
+
+    <div style="font-size:1.0em; line-height:1.7; font-family:'JetBrains Mono',monospace; color:var(--muted);">
+      DH literary research
+    </div>
+
+    <div style="font-size:1.6em; color:var(--accent-blue, var(--border-blue)); margin:0.35em 0;">
+      &#8651;
+    </div>
+
+    <div style="font-size:1.0em; line-height:1.7; font-family:'JetBrains Mono',monospace; color:var(--muted);">
+      literary studies
+    </div>
+
+    <h2 style="margin-top:1.1em;">Building the bridge</h2>
+
+  </div>
+</section>
+
 
 <!-- References -->
 <section>
@@ -1753,6 +1857,11 @@ Conrad’s <em>Heart of Darkness</em>” is often cited as a pivotal moment in l
     <div class="ref-item">
       <span class="ref-key">McCarty &amp; Short 2002</span>
       McCarty, Willard, and Harold Short. "An Intellectual and Disciplinary Map of Humanities Computing." <em>HUMANIST Discussion Group</em>, 2002.
+    </div>
+
+    <div class="ref-item">
+      <span class="ref-key">Nagasaki 2020</span>
+      Nagasaki, Kiyonori. "Methodological Commons: デジタル人文学で昔から定番の話." <em>digitalnagasaki</em>, 20 Dec. 2020, <a href="https://digitalnagasaki.hatenablog.com/entry/2020/12/20/182659" style="color:inherit;">digitalnagasaki.hatenablog.com/entry/2020/12/20/182659</a>.
     </div>
 
     <div class="ref-item">
