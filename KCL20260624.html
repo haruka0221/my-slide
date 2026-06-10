@@ -198,43 +198,55 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
   </div>
 </section>
 
-
+<!-- PART I -->
 <section>
 <section class="chapter-slide">
   <div class="chapter-num">PART I</div>
-  <h2>Starting Points in DH Literary Research</h2>
-  <p>DH was conceived as a methodological commons linking multiple disciplines.<br>
-  Here we examine how that vision has played out within English literary studies.</p>
+
+  <h2>English Literature and Digital Humanities</h2>
+  <p>
+    To what extent has DH become a part of the everyday practice of English literary criticism? This question is explored through a bibliometric analysis of 15 major journals, revealing the current state of DH's influence and presence in the field.
+  </p>
 </section>
 
 <section>
   <span class="sec-label">Starting Point</span>
   <h2>DH as a Methodological Commons</h2>
+
   <div class="two-col" style="gap:1.4em; align-items:center;">
     <div style="text-align:center;">
       <img src="media/methodological_commons_2020ver.jpg" alt="Methodological Commons (McCarty &amp; Short, 2002)"
         style="max-width:100%; max-height:360px; border:1px solid var(--border-blue); display:block; margin:0 auto; filter:brightness(0.92) contrast(1.05);" />
       <p style="font-size:0.38em; color:var(--muted); margin-top:0.4em; font-family:'JetBrains Mono',monospace; line-height:1.5;">
-  Willard McCarty &amp; Harold Short<br>
-  "Methodological Commons" (updated version provided by Short, 2020)<br>
-  via Kiyonori Nagasaki, <a href="https://digitalnagasaki.hatenablog.com/entry/2020/12/20/182659" style="color:inherit; text-decoration:underline;">"Methodological Commons: デジタル人文学で昔から定番の話"</a>, digitalnagasaki.hatenablog.com (2020/12/20)
-</p>
+        Willard McCarty &amp; Harold Short<br>
+        "Methodological Commons" (updated version provided by Short, 2020)<br>
+        via Kiyonori Nagasaki,
+        <a href="https://digitalnagasaki.hatenablog.com/entry/2020/12/20/182659" style="color:inherit; text-decoration:underline;">
+          "Methodological Commons: デジタル人文学で昔から定番の話"
+        </a>, digitalnagasaki.hatenablog.com (2020/12/20)
+      </p>
     </div>
-    <div>
-      <div class="callout blue" style="font-size:0.65em; margin-bottom:0.6em;">
-        DH was conceived as a <strong>Methodological Commons</strong> linking Computer Science, Linguistics, Sociology, History, and other fields. Literature &amp; the arts occupy one corner of this map.
-      </div>
-      <div class="callout red" style="font-size:0.65em; margin-bottom:0.6em;">
-        <strong>Research question:</strong><br>
-        More than 20 years have passed since this map was drawn.<br>
-        How much has this Commons actually been used in English literary studies?
-      </div>
-      <div style="font-size:0.52em; color:var(--muted); line-height:1.65;">
-        We examined 15 major English literary journals over 10 years using four independent methods.
-      </div>
-    </div>
+
+
+<div>
+  <div class="callout blue" style="font-size:0.64em; margin-bottom:0.65em;">
+    DH has long been imagined as a shared methodological space connecting literature, history, linguistics, sociology, computer science, and other fields.
   </div>
+
+  <div class="blockquote" style="font-size:0.7em; line-height:1.45; margin-bottom:0.65em;">
+    “the field has become institutionalized and is no longer a novelty”
+    <cite>— Drucker, “Normative Digital Humanities” p.7.</cite>
+  </div>
+
+<div class="callout red" style="font-size:0.62em; line-height:1.45;"> <strong>Research question:</strong><br> If DH is now institutionally visible, how far has it entered the everyday practice of English literary criticism? </div>
+
+</div>
+
+  </div>
+
+ 
 </section>
+
 
 <section>
   <span class="sec-label">The Question &amp; Design</span>
@@ -295,38 +307,60 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
   </div>
   <style>@keyframes kwscroll { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }</style>
 
-  <div class="method-row">
-    <div class="method-num">①</div>
-    <div class="method-body">
-      <span class="mname">Keyword Search</span>
-      <span class="msub">Target: 15 journals in OpenAlex &nbsp;|&nbsp; Fields: title &amp; abstract</span><br>
-      Queried the API with keywords ("digital humanities," "distant reading," "computational"). Title/abstract only, so noisy. Treated as upper-bound.
+ <div class="method-row" style="display:grid; grid-template-columns:3.2em 1fr 7.5em; gap:.7em; align-items:start; padding:.75em .85em;">
+  <div class="method-num" style="font-size:1.15em;">①</div>
+
+  <div class="method-body" style="line-height:1.45;">
+    <div style="margin-bottom:.25em;">
+      <span class="mname" style="font-size:1.08em; font-weight:700;">Keyword Search</span>
     </div>
-    <div class="method-period">2016–2025</div>
-    <div><span class="badge upper">upper bound</span></div>
+
+
+<div class="msub" style="font-size:.86em; color:var(--muted); margin-bottom:.35em;">
+  15 journals in OpenAlex · title &amp; abstract
+</div>
+
+<div style="font-size:.92em;">
+  Queried keywords such as “digital humanities,” “distant reading,” and “computational.” Because the search is limited to titles and abstracts, the result is treated as an upper-bound estimate.
+</div>
+
+
   </div>
 
-  <div class="method-row">
-    <div class="method-num">②</div>
-    <div class="method-body">
-      <span class="mname">Citation Proxy Check</span>
-      <span class="msub">Target: 15 journals in OpenAlex &nbsp;|&nbsp; Fields: reference lists</span><br>
-      Extracted articles citing key DH works (Moretti, Jockers, Underwood). Captures implicit practice but can't separate theoretical citation from actual use.
+  <div style="text-align:right;">
+    <div class="method-period" style="font-size:.88em; margin-bottom:.35em;">2016–2025</div>
+    <span class="badge upper">upper bound</span>
+  </div>
+</div>
+
+<div class="method-row" style="display:grid; grid-template-columns:3.2em 1fr 7.5em; gap:.7em; align-items:start; padding:.75em .85em;">
+  <div class="method-num" style="font-size:1.15em;">②</div>
+
+  <div class="method-body" style="line-height:1.45;">
+    <div style="margin-bottom:.25em;">
+      <span class="mname" style="font-size:1.08em; font-weight:700;">Citation Proxy Check</span>
     </div>
-    <div class="method-period">2010–2025</div>
-    <div><span class="badge upper">upper bound</span></div>
+
+
+<div class="msub" style="font-size:.86em; color:var(--muted); margin-bottom:.35em;">
+  15 journals in OpenAlex · reference lists
+</div>
+
+<div style="font-size:.92em;">
+  Extracted articles citing key DH works by Moretti, Jockers, and Underwood. This captures possible influence, but does not distinguish theoretical citation from actual methodological use.
+</div>
+
+
   </div>
 
-  <div class="method-row">
-    <div class="method-num">③</div>
-    <div class="method-body">
-      <span class="mname">PDF Footnote Scan</span>
-      <span class="msub">Target: 254 PDFs of Critical Inquiry &nbsp;|&nbsp; Fields: 8,940 footnote lines</span><br>
-      Text extracted from PDFs; footnotes searched by regex, classified via Claude Haiku API. Reads actual footnotes—low noise, high precision.
-    </div>
-    <div class="method-period">2019–2025</div>
-    <div><span class="badge high">high precision</span></div>
+  <div style="text-align:right;">
+    <div class="method-period" style="font-size:.88em; margin-bottom:.35em;">2010–2025</div>
+    <span class="badge upper">upper bound</span>
   </div>
+</div>
+
+
+
 </section>
 
 <section>
@@ -497,190 +531,253 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 
 <!-- PART II -->
 <section>
-<section class="chapter-slide">
+
+  <section class="chapter-slide">
   <div class="chapter-num">PART II</div>
-  <h2>Historical Background of CLS</h2>
-  <p>The question of authorship attribution predates the computer by a very long time.</p>
+  <h2>DH Critique as a Point of Contact</h2>
+  <p>
+    In English literary studies, DH often appears not as everyday method,<br>
+    but as an object of critique. Yet these critiques also open a path<br>
+    toward an expanded view of literary data.
+  </p>
 </section>
 
 <section>
-  <span class="sec-label">Attribution Anxiety — 1909</span>
-  <h2>A Novelist Who Feared Computational Literary Study</h2>
-  <div class="blockquote lg">
-    "One may care infinitely little for the fate of one's work and yet be almost hypochondriacally anxious as to the form its publication shall take—if the publication is likely to occur posthumously.
-    <strong>I became at once dreadfully afraid that some philologist of that Posterity for which one writes, might, in the course of his hyena occupations, disinter these poor bones and, attributing sentence one to writer A and sentence two to B, maul at least one of our memories.</strong>
-    With the nature of those crimes one is only too well acquainted."
-    <cite>— Ford Madox Ford, "Preface," in <em>The Nature of a Crime</em> (1924), xi. (co-authored preface with Joseph Conrad)</cite>
+  <span class="sec-label">DH in English Literary Studies</span>
+  <h2>Pattern, Scale, and Interpretation</h2>
+
+  <p style="font-size:.58em; color:var(--muted); margin-bottom:.8em;">
+    Computational literary studies entered English not only as a set of tools, but as a challenge to the ordinary scale and logic of literary criticism.
+  </p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:.9em; align-items:stretch;">
+
+
+<div class="callout blue" style="padding:.95em;">
+  <p class="subhead" style="font-size:.86em; margin-bottom:.42em;">
+    Scaling literary history
+  </p>
+
+  <p style="font-size:.62em; line-height:1.48; margin:0 0 .55em 0;">
+    Moretti, Jockers, Underwood
+  </p>
+
+  <div class="blockquote" style="font-size:.66em; line-height:1.42; margin-bottom:.55em;">
+    “there are thirty thousand nineteenth-century British novels out there ... no one has read them, no one ever will”
+    <cite>— Moretti, “Conjectures on World Literature” (2000)</cite>
   </div>
-  <div class="callout teal" style="margin-top:0.7em; font-size:0.63em">
-    In 1909—77 years before Burrows's computational stylistics (1986)—Ford called sentence-by-sentence authorship attribution by philologists "hyena occupations."<br>
-    ▶ Anxiety about computational literary study is older than the computer itself. It was a question recognized even by literary practitioners outside academia.
+
+  <p style="font-size:.58em; line-height:1.5; margin:0;">
+    Literary history becomes a problem of scale: corpora, patterns, trends, genre systems, and the “great unread.”
+  </p>
+</div>
+
+<div class="callout gold" style="padding:.95em;">
+  <p class="subhead" style="font-size:.86em; margin-bottom:.42em;">
+    Questioning literary evidence
+  </p>
+
+  <p style="font-size:.62em; line-height:1.48; margin:0 0 .55em 0;">
+    Fish, Hoover, Liu
+  </p>
+
+  <div class="blockquote" style="font-size:.66em; line-height:1.42; margin-bottom:.55em;">
+    “first you run the numbers, and then you see if they prompt an interpretive hypothesis”
+    <cite>— Fish, “Mind Your P’s and B’s” (2012)</cite>
   </div>
+
+  <p style="font-size:.58em; line-height:1.5; margin:0;">
+    The critical question is not whether patterns exist, but when patterns become interpretation, evidence, or literary value.
+  </p>
+</div>
+
+
+  </div>
+
+  <div style="margin-top:.85em; padding:.68em .85em; border:1px solid var(--line); border-radius:14px;">
+    <p style="font-size:.58em; line-height:1.45; margin:0;">
+      This tension is not simply a rejection of DH. It is a debate over how computational patterns can become meaningful within literary criticism.
+    </p>
+  </div>
+
+
 </section>
 
-<section>
-  <span class="sec-label">History of CLS</span>
-  <h2>A Genealogy of Computational Literary Studies</h2>
-  <div class="timeline">
-    <div class="tl-item">
-      <span class="tl-year">1851–1901</span>
-      <span class="tl-text"> De Morgan &amp; Mendenhall — prototypes of authorship attribution. <span class="tl-sub">Published in <em>Science</em> and <em>Popular Science Monthly</em> by physicists and mathematicians.</span></span>
-    </div>
-    <div class="tl-item">
-      <span class="tl-year">1986</span>
-      <span class="tl-text"> Burrows, <em>Computation into Criticism</em> — function-word frequency analysis of Austen. The founding work of computational stylistics.</span>
-    </div>
-    <div class="tl-item">
-      <span class="tl-year">2000–2005</span>
-      <span class="tl-text"> Moretti — proposes "distant reading." <span class="tl-sub"><em>New Left Review</em> (2000) → <em>Graphs, Maps, Trees</em> (Verso, 2005). Stanford Literary Lab founded 2010.</span></span>
-    </div>
-    <div class="tl-item">
-      <span class="tl-year">2012</span>
-      <span class="tl-text"> Heuser &amp; Le-Khac (SLL Pamphlet 4): "telling → showing" hypothesis in 2,958 British 19c novels.
-        <span class="tl-sub">Same year Underwood &amp; Sellers (<em>Journal of Digital Humanities</em>) rebut: lexical change is not novel-specific but reflects a long-term reversal across English as a whole — a paradigm case of CLS-internal correction.</span>
-      </span>
-    </div>
-    <div class="tl-item">
-      <span class="tl-year">2013–2018</span>
-      <span class="tl-text"> Jockers, <em>Macroanalysis</em> (2013); Underwood, <em>Distant Horizons</em> (2019).
-        <span class="tl-sub">Jockers &amp; Kirilloff (2016): quantify gender differences in character depiction via pronoun + verb combinations. Underwood, Bamman &amp; Lee (2018): long-term changes in gender representation in English fiction.</span>
-      </span>
-    </div>
-    <div class="tl-item">
-      <span class="tl-year">2021</span>
-      <span class="tl-text"> Weidman &amp; Pastor: analyze Woolf's <em>Orlando</em> with a binary gender classifier → style shifts at the gender-transformation scene. <span class="tl-sub">A case where a "wrong" framework opened a new reading.</span></span>
-    </div>
-    <div class="tl-item">
-      <span class="tl-year">2023</span>
-      <span class="tl-text"> Walsh — Computational Reception Studies: a move from text analysis toward platform and reader-reception data.</span>
-    </div>
-  </div>
-</section>
+
 
 <section>
-  <span class="sec-label">Distant Reading</span>
-  <h2>What Is Distant Reading?</h2>
+  <span class="sec-label">Critique — Da (2019)</span>
+  <h2>Da: Turning the Objection into an Empirical Critique</h2>
+
   <div class="blockquote">
-    "The trouble with close reading is…it necessarily depends on an extremely small canon…
-    If you want to understand literature as a system, you need a different kind of approach."
-    <cite>— Franco Moretti, <em>Graphs, Maps, Trees</em> (Verso, 2005)</cite>
+    "What is robust is obvious, and what is not obvious is not robust."
+    <cite>— Da, "The Computational Case against Computational Literary Studies,"
+    <em>Critical Inquiry</em> 45.3 (2019): 601–639</cite>
   </div>
-  <div class="two-col" style="margin-top:0.6em">
+
+  <div class="two-col" style="margin-top:0.55em; gap:1em;">
     <div>
-      <p style="font-size:0.6em; color:var(--gold-light)">Close Reading</p>
-      <ul>
-        <li>Careful reading of the interior of a text</li>
-        <li>Nuance, context, authorial intention</li>
-        <li>A canon of tens to hundreds of works</li>
+      <p class="subhead">Technical critique</p>
+      <ul style="font-size:.7em; line-height:1.55;">
+        <li>Stopword choices can change what becomes visible.</li>
+        <li>LDA topic models may be unstable across runs and settings.</li>
+        <li>Existing CLS studies are re-examined for statistical validity and reproducibility.</li>
       </ul>
     </div>
-    <div>
-      <p style="font-size:0.6em; color:var(--accent-teal)">Distant Reading</p>
-      <ul>
-        <li>Quantitative analysis of thousands to tens of thousands of works</li>
-        <li>Patterns, trends, historical change</li>
-        <li>"The great unread"</li>
-      </ul>
-    </div>
+
+
+<div>
+  <p class="subhead">Literary-critical critique</p>
+  <ul style="font-size:.7em; line-height:1.55;">
+    <li>Computational results may be either obvious or statistically fragile.</li>
+    <li>Word-pattern analysis may not produce sufficient literary-critical payoff.</li>
+    <li>The essay raises a broader question about whether CLS can speak to literary interpretation.</li>
+  </ul>
+</div>
+
+
   </div>
-  <div class="callout" style="margin-top:0.6em; font-size:0.6em">
-    Moretti's shift: from "carefully reading and interpreting texts" to "count them, graph them, put them on maps."<br>
-    The Stanford Literary Lab (founded 2010) became the institutional home of this vision, accumulating empirical research using distant reading.
+
+  <div class="callout red" style="margin-top:.65em; font-size:.56em; line-height:1.45;">
+    Da’s essay became a flashpoint because it translated a familiar literary-critical suspicion into a direct critique of published CLS methods.
   </div>
 </section>
+
+
+
+<section>
+  <span class="sec-label">The Forum — CI Online 2019</span>
+  <h2>CI Online Forum 2019: Four Questions Raised by the Debate</h2>
+
+  <p style="font-size:0.46em; color:var(--muted); margin-bottom:0.55em;">
+    Responses to Nan Z. Da’s critique of computational literary studies on the <em>Critical Inquiry</em> official blog
+  </p>
+
+  <table style="font-size:.56em; line-height:1.42; border-collapse:separate; border-spacing:0 .45em;">
+    <thead>
+      <tr>
+        <th style="width:22%;">Focus</th>
+        <th style="width:24%;">Main voices</th>
+        <th>Question raised</th>
+      </tr>
+    </thead>
+
+
+<tbody>
+  <tr>
+    <td style="border-left:6px solid #d98b7f; padding:.58em .7em;">
+      <div style="font-weight:700;">Method</div>
+      <div style="font-size:.82em; color:var(--muted);">statistical validity</div>
+    </td>
+    <td>Da; Algee-Hewitt; Underwood</td>
+    <td class="small">
+      How should CLS results be evaluated: as hypothesis testing, exploratory modeling, or prompts for new interpretation?
+    </td>
+  </tr>
+
+  <tr>
+    <td style="border-left:6px solid #d8b45f; padding:.58em .7em;">
+      <div style="font-weight:700;">Model / Context</div>
+      <div style="font-size:.82em; color:var(--muted);">fairness of testing</div>
+    </td>
+    <td>Long &amp; So; Piper</td>
+    <td class="small">
+      What counts as a fair test of a computational model, especially when models depend on features, training data, and historical context?
+    </td>
+  </tr>
+
+  <tr>
+    <td style="border-left:6px solid #b06f6f; padding:.58em .7em;">
+      <div style="font-weight:700;">Interpretation</div>
+      <div style="font-size:.82em; color:var(--muted);">literary payoff</div>
+    </td>
+    <td>Fish; Da</td>
+    <td class="small">
+      How can formal features and word patterns become meaningful literary-critical evidence?
+    </td>
+  </tr>
+
+  <tr>
+    <td style="border-left:6px solid #6f94b8; padding:.58em .7em;">
+      <div style="font-weight:700;">Object of CLS</div>
+      <div style="font-size:.82em; color:var(--muted);">scope of literary data</div>
+    </td>
+    <td>Bode; Klein; Finn</td>
+    <td class="small">
+      CLS can be understood more broadly than word-pattern analysis, including data construction, curation, metadata, labor, and documentary records.
+    </td>
+  </tr>
+</tbody>
+
+
+  </table>
+
+  <div class="callout blue" style="font-size:.54em; line-height:1.45; margin-top:.55em;">
+    The debate therefore moves from the reliability of particular methods to a broader issue: what kinds of literary data and evidence CLS should study.
+  </div>
+
+  <p class="note" style="margin-top:.45em;">
+    Critical Inquiry Online Forum, 2019.
+  </p>
 </section>
+
+
+<section>
+  <span class="sec-label">After the Da Debate</span>
+  <h2>Two Directions for Expanding Literary Data</h2>
+
+  <p style="font-size:0.48em; color:var(--muted); margin-bottom:0.75em;">
+    After the debate, one possible response is not simply to defend existing methods, but to expand the kinds of evidence that CLS can study.
+  </p>
+
+  <div class="two-col" style="gap:.9em; align-items:stretch;">
+
+
+<div class="callout blue" style="padding:.9em;">
+  <p class="subhead" style="font-size:.82em; margin-bottom:.42em;">
+    Bode: documentary records
+  </p>
+
+  <div class="blockquote" style="font-size:.64em; line-height:1.45; margin-bottom:.65em;">
+    "not new or integrated methods but a new scholarly object"
+    <cite>— Bode, "The Equivalence of 'Close' and 'Distant' Reading" (2017)</cite>
+  </div>
+
+  <p style="font-size:.56em; line-height:1.5; margin:0;">
+    Focus: editions, publication histories, metadata, bibliography, and the documentary record through which literary works are represented.
+  </p>
+</div>
+
+<div class="callout teal" style="padding:.9em;">
+  <p class="subhead" style="font-size:.82em; margin-bottom:.42em;">
+    Walsh: reception data
+  </p>
+
+  <div class="blockquote" style="font-size:.64em; line-height:1.45; margin-bottom:.65em;">
+    "a rich archive of reading, literary reception, and textual circulation"
+    <cite>— Walsh, "The Challenges and Possibilities of Social Media Data" (2023)</cite>
+  </div>
+
+  <p style="font-size:.56em; line-height:1.5; margin:0;">
+    Focus: social media and platform-based traces of reading, including tweeted quotations, Goodreads ratings, BookTok videos, fanfiction, and online reviews.
+  </p>
+</div>
+
+
+  </div>
+
+  <p class="note" style="margin-top:.55em;">
+    Bode, <em>Modern Language Quarterly</em> 78.1 (2017); Walsh, <em>Debates in the Digital Humanities 2023</em>.
+  </p>
+</section>
+
+</section>
+
 
 <!-- PART III -->
 <section>
 <section class="chapter-slide">
   <div class="chapter-num">PART III</div>
-  <h2>A Genealogy of DH Critique</h2>
-  <p>Fish (2012) → Da (2019) → Spivak (2003 → DH application)<br>
-  Three different directions of critique.</p>
-</section>
-
-<section>
-  <span class="sec-label">Critique I — Fish (2012)</span>
-  <h2>Stanley Fish: A Critique of Computation without Interpretation</h2>
-  <div class="two-col">
-    <div>
-      <p style="font-size:0.55em; color:var(--gold-light); margin-bottom:0.3em">Fish's position: intentionalist hermeneutics</p>
-      <div class="callout" style="font-size:0.6em">
-        The goal of literary criticism is "to carefully read and decode the meaning that a text intends." That meaning comes into existence only through context, intention, and the interpretive community. Quantitative patterns are meaningless without this framework.
-      </div>
-      <div class="blockquote" style="margin-top:0.5em">
-        "The digital humanities…have little place for the investigations…in the business of asking and answering…what does it mean?"
-        <cite>— Fish, "Mind Your P's and B's," <em>NYT</em>, Jan. 23, 2012</cite>
-      </div>
-    </div>
-    <div>
-      <p style="font-size:0.55em; color:var(--muted); margin-bottom:0.3em">Fish's example: Milton's <em>Paradise Lost</em></p>
-      <div class="callout" style="font-size:0.6em">
-        Computer analysis shows a high frequency of labial and plosive consonants (P, B) in the scenes depicting the fallen angels (Book I). But what does that pattern actually mean? Without the interpretive framework of Milton's theology, poetic tradition, and intention, the numbers remain meaningless. The title "Mind Your P's and B's" encapsulates this critique in one ironic phrase.
-      </div>
-      <div class="callout teal" style="margin-top:0.5em; font-size:0.6em">
-        <strong>DH rebuttal (Ramsay 2011, et al.):</strong>
-        "The algorithm does not replace interpretation—it guides us toward new readings. A pattern is not an answer; it is a starting point for posing questions."
-        <span class="muted">— <em>Reading Machines</em> (U of Illinois P, 2011)</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <span class="sec-label">Critique II — Da (2019)</span>
-  <h2>Nan Z. Da: "The Methods of CLS Are Fundamentally Flawed"</h2>
-  <div class="blockquote">
-    "What is robust is obvious and what is not obvious is not robust."
-    <cite>— Da, "The Computational Case against Computational Literary Studies,"
-    <em>Critical Inquiry</em> 45, no.3 (2019): 601–639</cite>
-  </div>
-  <div class="two-col" style="margin-top:0.5em">
-    <div>
-      <p style="font-size:0.52em; color:var(--gold-light); margin-bottom:0.3em">Methodological critique</p>
-      <ul>
-        <li><strong>The stopword dilemma:</strong> keeping function words yields noise; removing them erases differences</li>
-        <li><strong>LDA instability:</strong> topics change dramatically with minor data alterations; reproducibility is problematic</li>
-        <li><strong>Re-examination of existing studies:</strong> statistical validity questioned in work by Piper, Long &amp; So, and Algee-Hewitt</li>
-      </ul>
-    </div>
-    <div>
-      <ul>
-        <li><strong>Rejecting the "big data" myth:</strong> claiming ML is necessary for datasets that do not require it is an exaggeration</li>
-        <li><strong>Mismatch of purpose:</strong> statistics "reduce meaning" while literary study "reads the complexity of meaning"</li>
-      </ul>
-      <div class="callout red" style="margin-top:0.5em; font-size:0.58em">
-        Published in CI 2019. The most systematic and empirical critique of CLS, it generated a major controversy that expanded into the CI online forum.
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <span class="sec-label">The Forum — CI Online 2019</span>
-  <h2>CI Online Forum 2019: The Structure of the Debate</h2>
-  <p style="font-size:0.5em; color:var(--muted); margin-bottom:0.4em">
-    Multi-party debate on the <em>Critical Inquiry</em> official blog (March 2019–)
-  </p>
-  <table>
-    <thead><tr><th>Respondent</th><th>Position</th><th>Key argument</th></tr></thead>
-    <tbody>
-      <tr><td>Algee-Hewitt</td><td><span class="pill teal">pro-DH</span></td><td class="small">Da judges all of CLS by the standards of CDA (confirmatory data analysis), but what matters in literary research is EDA (exploratory data analysis)—finding patterns in data without prior hypotheses. Statistics do not replace reading; they lead to new readings.</td></tr>
-      <tr><td>Underwood</td><td><span class="pill teal">pro-DH</span></td><td class="small">Topic models produce different results each run, but that is a premise of the method, not a flaw. Da misreads an exploratory tool as a hypothesis-testing instrument.</td></tr>
-      <tr><td>Long &amp; So</td><td><span class="pill teal">pro-DH</span></td><td class="small">Da's critique removes one feature from a model that works through multiple combined features—an unfair move. Applying a haiku classifier to classical Chinese poetry also ignores historical context.</td></tr>
-      <tr><td>Fish</td><td><span class="pill red">supports Da</span></td><td class="small">Formal features such as sentence length and word frequency are meaningless without intention, context, and literary history. Data mining without these produces either obvious statements or arbitrary conclusions.</td></tr>
-      <tr><td>Klein</td><td><span class="pill gold">structural critique</span></td><td class="small">The structural flaw that invisible labor—data construction, metadata curation, mentoring—disproportionately falls on women and people of color also exists in DH. Practices like the Colored Conventions Project deserve proper recognition.</td></tr>
-      <tr><td>Bode</td><td><span class="pill muted">definitional critique</span></td><td class="small">Da's definition of CLS is limited to ML-based word-pattern analysis, excluding at the outset important digital literary research in data construction, curation, and metadata analysis.</td></tr>
-    </tbody>
-  </table>
-</section>
-</section>
-
-
-<!-- PART IV -->
-<section>
-<section class="chapter-slide">
-  <div class="chapter-num">PART IV</div>
   <h2>Toward a CLS Responsive to Critical Practice</h2>
   <p>
     Using <em>Critical Inquiry</em> as a case study,<br>
@@ -784,179 +881,14 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 </section>
 </section>
 
+
+
+
+
+<!-- PART IV -->
 <section>
 <section class="chapter-slide">
-  <div class="chapter-num">PART V</div>
-  <h2>The Role of Primary Text Analysis</h2>
-  <p>
-    Not to replace critical intuition,<br>
-    but to check its premises through frequency, distribution, comparison, and authorship attribution.
-  </p>
-</section>
-
-<section>
-  <span class="sec-label">Example · Critical Definition</span>
-  <h2>Two Kinds of Evidence within a Critical Definition</h2>
-  <div class="bq">
-    "As Jameson and other critics have observed, utopias are fundamentally
-    typified by a break, marked by islands and trenches in both space and time,
-    whereas <strong>I think</strong> dystopias tend to be characterized by
-    a creeping, incremental horror, typical of the dreadful."
-    <cite>— Robert T. Tally Jr., <em>The Fiction of Dread: Dystopia, Monstrosity, and Apocalypse</em> (Bloomsbury, 2024), p. 4</cite>
-  </div>
-  <div style="display:flex;gap:1em;margin-top:.7em;">
-    <div class="callout" style="flex:1;font-size:.58em;">
-      <span class="hi">utopia</span><br>
-      Defined by appeal to prior critics (Jameson et al.)
-    </div>
-    <div class="callout blue" style="flex:1;font-size:.58em;">
-      <span class="hi">dystopia</span><br>
-      Introduced via <em>I think</em>—the author's own critical judgment
-    </div>
-  </div>
-</section>
-
-<section>
-  <span class="sec-label">Primary Text Strategy</span>
-  <h2>Positioning Primary Text Analysis</h2>
-  <div class="strategy-grid">
-    <div class="strategy-card">
-      <div class="t">Frequency</div>
-      Confirm the occurrence of specific vocabulary and conceptual terms. A basic check on critical impressions.
-    </div>
-    <div class="strategy-card">
-      <div class="t">Distribution</div>
-      Examine skews across corpora, periods, and genres. Use topic modeling etc. to identify tendencies.
-    </div>
-    <div class="strategy-card">
-      <div class="t">Comparison</div>
-      Compare differences across genres, authors, and periods to relativize the premises of a reading.
-    </div>
-    <div class="strategy-card">
-      <div class="t">Authorship attribution</div>
-      Verify co-authorship, attribution, and stylistic differences to check the bibliographic facts that criticism takes for granted.
-    </div>
-  </div>
-</section>
-</section>
-
-<!-- PART VI -->
-<section>
-<section class="chapter-slide">
-  <div class="chapter-num">PART VI</div>
-  <h2>Expanding the Definition of CLS and Connecting to Reception Studies</h2>
-  <p>
-    Before the Da debate, Liu (2012) asked "Where is cultural criticism in DH?"<br>
-    and problematized the gap between DH practice and critical theory.<br>
-    In the Da debate, Bode, Klein, and others took up that question, arguing for expanding CLS to include bibliography, circulation, data construction, and curation.<br>
-    Walsh (2023) opened it further toward reader reception and platform data.
-  </p>
-</section>
-
-<section>
-  <span class="sec-label">Expanding the Scope of CLS</span>
-  <h2>Bode: Expand the Object of Study, Not Just the Method</h2>
-  <div class="two-col" style="gap:1em;align-items:start;">
-    <div>
-      <p class="subhead">Katherine Bode (2017)</p>
-      <div class="blockquote" style="font-size:.66em;">
-        "not new or integrated methods but a new scholarly object"
-        <cite>— Bode, "The Equivalence of 'Close' and 'Distant' Reading,"
-        <em>Modern Language Quarterly</em> 78.1 (2017), pp. 77–106</cite>
-      </div>
-      <div class="callout blue" style="font-size:.58em;margin-top:.55em;">
-        Rather than a "new method" integrating close and distant reading, Bode argues for redefining the very "object of study" that computational literary research should address.
-      </div>
-    </div>
-    <div>
-      <p class="subhead">Key arguments</p>
-      <ul style="font-size:.58em;line-height:1.6;margin-top:.25em;">
-        <li>The methods of Moretti and Jockers tend to model the literary system abstractly and ahistorically.</li>
-        <li>The complexity of the "document record"—encompassing bibliography, publication, editions, and circulation—must be part of the object of study, not just the texts themselves.</li>
-        <li>The challenge for CLS is not only "which method to use" but "how to construct what we are studying."</li>
-      </ul>
-      <p class="note">
-        Bode, Katherine. "The Equivalence of 'Close' and 'Distant' Reading; or, Toward a New Object for Data-Rich Literary History." <em>Modern Language Quarterly</em>, vol. 78, no. 1, 2017, pp. 77–106.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <span class="sec-label">Expanding the Scope of CLS</span>
-  <h2>Klein: Include Invisible Labor and Editorial Work</h2>
-  <div class="two-col" style="gap:1em;align-items:start;">
-    <div>
-      <p class="subhead">Lauren F. Klein (2019/2020)</p>
-      <div class="blockquote" style="font-size:.66em;">
-        "the multiple forms of labor—affective as much as intellectual"
-        <cite>— Klein, "What the New Computational Rigor Should Be,"
-        <em>Critical Inquiry</em> online forum, 2019</cite>
-      </div>
-      <div class="callout blue" style="font-size:.58em;margin-top:.55em;">
-        Klein understands computational literary research not only as analytical output but as a practice encompassing data construction, editing, curation, and mentoring.
-      </div>
-    </div>
-    <div>
-      <p class="subhead">Key arguments</p>
-      <ul style="font-size:.58em;line-height:1.6;margin-top:.25em;">
-        <li>Datasets do not exist naturally; they are made through selection, repair, organization, and description.</li>
-        <li>Such work is intellectual labor that nonetheless tends not to be recognized as a research output.</li>
-        <li>Limiting CLS to vocabulary-pattern analysis renders invisible both the labor of making data and its politics.</li>
-      </ul>
-      <p class="note">
-        Klein, Lauren F. "Dimensions of Scale: Invisible Labor, Editorial Work, and the Future of Quantitative Literary Studies." <em>PMLA</em>, vol. 135, no. 1, 2020, pp. 23–39.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <span class="sec-label">New Directions</span>
-  <h2>Walsh (2023): Computational Reception Studies</h2>
-  <div class="blockquote">
-    "an emerging subfield that explores questions about reading, reception, and the circulation of texts"
-    <cite>— Walsh, "The Challenges and Possibilities of Social Media Data,"
-    in <em>Debates in the Digital Humanities 2023</em>, pp.275–294 (U of Minnesota P)</cite>
-  </div>
-  <div class="two-col" style="margin-top:.55em;">
-    <div>
-      <p style="font-size:.52em;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4em;">Traditional CLS</p>
-      <ul>
-        <li><strong>Computational analysis of literary texts themselves</strong></li>
-        <li>Corpus → discovery of patterns and trends</li>
-        <li>Genre classification via style, vocabulary, and topic modeling</li>
-        <li>Examples: Moretti (distant reading), Jockers (macroanalysis), Underwood (long-term change in literary history)</li>
-      </ul>
-      <div class="callout" style="font-size:.58em;margin-top:.5em;">
-        <strong>Question:</strong> How are texts written?<br>
-        <span style="color:var(--muted);">→ Exploring structure and patterns "inside" works</span>
-      </div>
-    </div>
-    <div>
-      <p style="font-size:.52em;color:var(--gold-light);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4em;">Reception Studies</p>
-      <ul>
-        <li><strong>Goodreads review and rating data</strong> (the entanglement of "classic" concepts and Amazon)</li>
-        <li><strong>Social media citation patterns:</strong> how James Baldwin's words were re-circulated in the context of the BLM movement</li>
-        <li><strong>Public library, publishing, and platform data</strong></li>
-      </ul>
-      <div class="callout teal" style="font-size:.58em;margin-top:.5em;">
-        <strong>Question:</strong> How have texts been read?<br>
-        <span style="color:var(--muted);">→ Making visible the entanglements of platform, economy, and power</span>
-      </div>
-    </div>
-  </div>
-</section>
-</section>
-
-
-
-
-
-<!-- PART VII -->
-<section>
-<section class="chapter-slide">
-  <div class="chapter-num">PART VII</div>
+  <div class="chapter-num">PART IV</div>
   <h2>Toward a Topography of Reception, Criticism, and Bibliography</h2>
   <p>
     Rethinking CLS beyond the vocabulary-pattern analysis of primary texts to encompass data construction, curation, reception, and circulation.<br><br>
@@ -966,7 +898,7 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 
 
 <section>
-  <span class="sec-label blue">Part VII — Integrated Approach</span>
+  <span class="sec-label blue">Integrated Approach</span>
   <h2>Mapping the Limits of Each Standpoint</h2>
 
   <div style="font-size:0.52em; color:var(--ivory); line-height:1.7; margin-bottom:0.55em;">
@@ -1065,7 +997,7 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 
 
 <section>
-  <span class="sec-label blue">Part VII — Design</span>
+  <span class="sec-label blue">Design</span>
   <h2>A Multi-Vector Database Design</h2>
 
   <div class="two-col" style="gap:1.2em; align-items:start;">
@@ -1116,7 +1048,7 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 </section>
 
 <section>
-  <span class="sec-label blue">Part VII — Open Library</span>
+  <span class="sec-label blue">Open Library</span>
   <h2>Open Library: constructing an unbiased population</h2>
   <p class="subhead">Matching pipeline</p>
   <div class="pipe-row" style="width:100%; margin-bottom:0.65em;">
@@ -1157,7 +1089,7 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 </section>
 
 <section>
-  <span class="sec-label blue">Part VII — JSTOR</span>
+  <span class="sec-label blue">JSTOR</span>
   <h2>JSTOR L&L: counting scholarly mentions</h2>
   <p class="subhead">Matching pipeline</p>
   <div class="pipe-row" style="width:100%; margin-bottom:0.65em;">
@@ -1200,7 +1132,7 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 </section>
 
 <section>
-  <span class="sec-label blue">Part VII — OpenAlex</span>
+  <span class="sec-label blue">OpenAlex</span>
   <h2>OpenAlex: measuring academic visibilityx</h2>
   <p class="subhead">Matching pipeline</p>
   <div class="pipe-row" style="width:100%; margin-bottom:0.65em;">
@@ -1244,7 +1176,7 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 </section>
 
 <section>
-  <span class="sec-label blue">Part VII — HathiTrust</span>
+  <span class="sec-label blue">HathiTrust</span>
   <h2>HathiTrust: tracing library digitization</h2>
   <p class="subhead">Matching pipeline</p>
   <div class="pipe-row" style="width:100%; margin-bottom:0.65em;">
@@ -1289,7 +1221,7 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 </section>
 
 <section>
-  <span class="sec-label blue">Part VII — Goodreads</span>
+  <span class="sec-label blue">Goodreads</span>
   <h2>Goodreads: capturing reader reception</h2>
   <p class="subhead">Matching pipeline</p>
   <div class="pipe-row" style="width:100%; margin-bottom:0.65em;">
@@ -1331,7 +1263,7 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 </section>
 
 <section>
-  <span class="sec-label blue">Part VII — Wikidata</span>
+  <span class="sec-label blue">Wikidata</span>
   <h2>Wikidata: retrieving work and author attributes </h2>
   <div class="pipe-row" style="width:100%; margin-bottom:0.65em;">
     <div class="pipe-step"><div class="pipe-n">STEP 1</div><div class="pipe-t">Author entity<br>→ QID</div><div class="pipe-s">Name normalization<br>Wikidata API</div></div>
@@ -1386,7 +1318,7 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 
 
 <section>
-  <span class="sec-label blue">Part VII — Zones of Tension</span>
+  <span class="sec-label blue">Zones of Tension</span>
   <h2>Where the Axes Diverge: First Findings</h2>
 
   <div class="two-col" style="gap:1em; align-items:start;">
@@ -1465,9 +1397,10 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 </section>
 </section>
 
+
 <section>
 <section>
-  <span class="sec-label blue">Part VIII — Case Study</span>
+  <span class="sec-label blue">PART V — Case Study</span>
   <h2>Case Study: The Endurance of <em>Heart of Darkness</em></h2>
   <p class="subhead">A canonical work with a troubled legacy</p>
   <div class="callout red" style="font-size:0.62em;">
@@ -1698,21 +1631,41 @@ Conrad’s <em>Heart of Darkness</em>” is often cited as a pivotal moment in l
 </section>
 
 
-<section>
-  <span class="sec-label">Reception</span>
-  <h2><em>Heart of Darkness</em> in Open Syllabus</h2>
 
-<img
-    src="media/opensyllabus_HD.png"
-    alt="Open Syllabus Analytics: English Literature field ranking"
-    style="
-      display:block;
-      width:100%;
-      max-height:505px;
-      object-fit:contain;
-      border-radius:4px;
-    "
-  />
+<section>
+  <span class="sec-label">Pedagogical Network</span>
+  <h2><em>Heart of Darkness</em>: Most Frequently Assigned With</h2>
+
+  <div style="
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(201,168,76,.28);
+    padding:.32em;
+    border-radius:6px;
+    box-shadow:0 10px 30px rgba(0,0,0,.22);
+    width:78%;
+    margin:0 auto;
+  ">
+    <img
+      src="media/opensyllabus_HD.png"
+      alt="Open Syllabus: Heart of Darkness most frequently assigned with"
+      style="
+        display:block;
+        width:100%;
+        max-height:500px;
+        object-fit:contain;
+        border-radius:4px;
+      "
+    />
+  </div>
+
+  <p class="note" style="
+    text-align:center;
+    margin-top:.45em;
+    font-size:.38em;
+  ">
+    Open Syllabus Analytics, <em>Heart of Darkness</em> work page:
+    https://analytics.opensyllabus.org/singleton/works?id=61800
+  </p>
 </section>
 
 
@@ -1765,40 +1718,63 @@ Conrad’s <em>Heart of Darkness</em>” is often cited as a pivotal moment in l
 </section>
 
 
+
 <!-- References -->
 <section>
-  <span class="sec-label">References</span>
+  
   <h2>References</h2>
   <div class="refs" style="font-size:0.34em; line-height:1.55; column-count:2; column-gap:1.8em;">
     <div class="ref-item">
       <span class="ref-key">Bode 2017</span>
       Bode, Katherine. "The Equivalence of 'Close' and 'Distant' Reading; or, Toward a New Object for Data-Rich Literary History." <em>Modern Language Quarterly</em>, vol. 78, no. 1, 2017, pp. 77–106.
     </div>
+
     <div class="ref-item">
       <span class="ref-key">Bode 2023</span>
       Bode, Katherine. "What's the Matter with Computational Literary Studies?" <em>Critical Inquiry</em>, vol. 49, no. 4, 2023, pp. 507–529.
     </div>
+  <div class="ref-item">
+
+    <span class="ref-key">CI Forum 2019</span>
+
+    "Computational Literary Studies: A Critical Inquiry Online Forum." <em>In the Moment</em>, <em>Critical Inquiry</em>, 2019.
+
+  </div>
     <div class="ref-item">
       <span class="ref-key">Da 2019</span>
       Da, Nan Z. "The Computational Case against Computational Literary Studies." <em>Critical Inquiry</em>, vol. 45, no. 3, 2019, pp. 601–639.
     </div>
+
+    <div class="ref-item">
+      <span class="ref-key">Drucker 2023</span>
+      Drucker, Johanna. "Normative Digital Humanities." <em>The Bloomsbury Handbook to the Digital Humanities</em>, edited by James O'Sullivan, Bloomsbury Academic, 2023.
+    </div>
+
     <div class="ref-item">
       <span class="ref-key">Fish 2012</span>
       Fish, Stanley. "Mind Your P's and B's: The Digital Humanities and Interpretation." <em>The New York Times</em>, 23 Jan. 2012.
     </div>
 
-    <div class="ref-item">
-      <span class="ref-key">Klein 2020</span>
-      Klein, Lauren F. "Dimensions of Scale: Invisible Labor, Editorial Work, and the Future of Quantitative Literary Studies." <em>PMLA</em>, vol. 135, no. 1, 2020, pp. 23–39.
-    </div>
+
+
+
+  
     <div class="ref-item">
       <span class="ref-key">Liu 2012</span>
       Liu, Alan. "Where Is Cultural Criticism in the Digital Humanities?" <em>Debates in the Digital Humanities</em>, edited by Matthew K. Gold, University of Minnesota Press, 2012, pp. 490–509.
     </div>
+
     <div class="ref-item">
       <span class="ref-key">McCarty &amp; Short 2002</span>
       McCarty, Willard, and Harold Short. "An Intellectual and Disciplinary Map of Humanities Computing." <em>HUMANIST Discussion Group</em>, 2002.
     </div>
+
+   
+  <div class="ref-item">
+    <span class="ref-key">Moretti 2000</span>
+    Moretti, Franco. "Conjectures on World Literature." <em>New Left Review</em>, no. 1, 2000, pp. 54–68.
+  </div>
+
 
     <div class="ref-item">
       <span class="ref-key">Nagasaki 2020</span>
@@ -1809,14 +1785,7 @@ Conrad’s <em>Heart of Darkness</em>” is often cited as a pivotal moment in l
       <span class="ref-key">Purssell 2002</span>
       Purssell, Andrew. "Making the Conrad Canon." <em>The New Cambridge Companion to Joseph Conrad</em>, edited by J. H. Stape, Cambridge UP, 2015, pp. 1–14.
     </div>
-    <div class="ref-item">
-      <span class="ref-key">Ramsay 2011</span>
-      Ramsay, Stephen. <em>Reading Machines: Toward an Algorithmic Criticism</em>. University of Illinois Press, 2011.
-    </div>
-    <div class="ref-item">
-      <span class="ref-key">Tally 2024</span>
-      Tally, Robert T., Jr. <em>The Fiction of Dread: Dystopia, Monstrosity, and Apocalypse</em>. Bloomsbury Academic, 2024.
-    </div>
+
     <div class="ref-item">
       <span class="ref-key">Walsh 2023</span>
       Walsh, Melanie. "The Challenges and Possibilities of Social Media Data: New Directions in Literary Studies and the Digital Humanities." <em>Debates in the Digital Humanities 2023</em>, edited by Matthew K. Gold and Lauren F. Klein, University of Minnesota Press, 2023, pp. 275–294.
