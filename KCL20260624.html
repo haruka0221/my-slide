@@ -202,15 +202,69 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 <section>
 <section class="chapter-slide">
   <div class="chapter-num">PART I</div>
-
   <h2>English Literature and Digital Humanities</h2>
   <p>
-    To what extent has DH become a part of the everyday practice of English literary criticism? This question is explored through a bibliometric analysis of 15 major journals, revealing the current state of DH's influence and presence in the field.
+    A literary work is read as a text—but it always reaches us through the layers that surround it: criticism, citation, teaching, editions, reviews, reception. This talk asks how computational methods can address those layers, beginning with how DH itself appears in major literary-critical journals.
   </p>
 </section>
 
 <section>
   <span class="sec-label">Starting Point</span>
+  <h2>The Work and Its Layers</h2>
+
+  <div class="two-col" style="gap:1.2em; align-items:center;">
+    <div>
+      <svg width="100%" viewBox="0 0 680 400" role="img" style="display:block;">
+        <title>A literary work surrounded by layers of mediation</title>
+        <desc>A central node labeled "the literary work" surrounded by six layers: criticism, citation, teaching, editions, reviews, and reception.</desc>
+
+        <ellipse cx="340" cy="200" rx="300" ry="170" fill="none" stroke="#8a8fa8" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.4"/>
+        <ellipse cx="340" cy="200" rx="200" ry="115" fill="none" stroke="#8a8fa8" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.5"/>
+
+        <circle cx="340" cy="200" r="66" fill="rgba(138,143,168,0.15)" stroke="#8a8fa8" stroke-width="0.5"/>
+        <text x="340" y="194" text-anchor="middle" dominant-baseline="central" fill="#f2ede4" font-family="'Playfair Display',serif" font-size="17" font-weight="600">the literary</text>
+        <text x="340" y="212" text-anchor="middle" dominant-baseline="central" fill="#f2ede4" font-family="'Playfair Display',serif" font-size="17" font-weight="600">work</text>
+
+        <g>
+          <rect x="250" y="36" width="180" height="40" rx="8" fill="rgba(74,144,196,0.15)" stroke="#4a90c4" stroke-width="0.5"/>
+          <text x="340" y="56" text-anchor="middle" dominant-baseline="central" fill="#9cc8e8" font-family="'JetBrains Mono',monospace" font-size="14">criticism</text>
+        </g>
+        <g>
+          <rect x="500" y="120" width="150" height="40" rx="8" fill="rgba(74,144,196,0.15)" stroke="#4a90c4" stroke-width="0.5"/>
+          <text x="575" y="140" text-anchor="middle" dominant-baseline="central" fill="#9cc8e8" font-family="'JetBrains Mono',monospace" font-size="14">citation</text>
+        </g>
+        <g>
+          <rect x="510" y="240" width="150" height="40" rx="8" fill="rgba(46,172,181,0.15)" stroke="#2eacb5" stroke-width="0.5"/>
+          <text x="585" y="260" text-anchor="middle" dominant-baseline="central" fill="#7fd4da" font-family="'JetBrains Mono',monospace" font-size="14">teaching</text>
+        </g>
+        <g>
+          <rect x="270" y="324" width="140" height="40" rx="8" fill="rgba(226,196,120,0.15)" stroke="#c9a84c" stroke-width="0.5"/>
+          <text x="340" y="344" text-anchor="middle" dominant-baseline="central" fill="#e2c478" font-family="'JetBrains Mono',monospace" font-size="14">reviews</text>
+        </g>
+        <g>
+          <rect x="40" y="240" width="160" height="40" rx="8" fill="rgba(226,196,120,0.15)" stroke="#c9a84c" stroke-width="0.5"/>
+          <text x="120" y="260" text-anchor="middle" dominant-baseline="central" fill="#e2c478" font-family="'JetBrains Mono',monospace" font-size="14">reception</text>
+        </g>
+        <g>
+          <rect x="40" y="120" width="150" height="40" rx="8" fill="rgba(46,172,181,0.15)" stroke="#2eacb5" stroke-width="0.5"/>
+          <text x="115" y="140" text-anchor="middle" dominant-baseline="central" fill="#7fd4da" font-family="'JetBrains Mono',monospace" font-size="14">editions</text>
+        </g>
+      </svg>
+    </div>
+
+    <div>
+      <p style="font-size:0.62em; color:var(--ivory); line-height:1.8;">
+        A literary work is read as a text—but it always reaches us through the layers that surround it. Criticism, citation, teaching, editions, reviews, and reception shape how a work is framed, interpreted, and returned to critical attention.
+      </p>
+      <p style="font-size:0.62em; color:var(--gold-light); line-height:1.8; margin-top:0.8em;">
+        These layers, not the text alone, are where literary value is produced and maintained.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="sec-label">From the Field's Side</span>
   <h2>DH as a Methodological Commons</h2>
 
   <div class="two-col" style="gap:1.4em; align-items:center;">
@@ -611,93 +665,6 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 </section>
 
 
-<section>
-  <span class="sec-label">Case: Critical Inquiry</span>
-  <h2>When DH enters as methodological debate</h2>
-
-
-
-  <div style="display:grid; grid-template-columns:.88fr 1.12fr; gap:.85rem; align-items:start;">
-
-
-<div>
-  <p class="subhead" style="font-size:.46em; margin:0 0 .3em 0;">
-    Critical Inquiry: 6 records
-  </p>
-
-  <table class="compact-table" style="font-size:.43em; table-layout:fixed;">
-    <thead>
-      <tr>
-        <th style="width:56%;">Classification</th>
-        <th style="width:44%; text-align:right;">Critical Inquiry</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td class="hi">Method use</td><td class="n">1</td></tr>
-      <tr><td class="hi">Meta-discussion</td><td class="n">4</td></tr>
-      <tr><td class="hi">Review / mention</td><td class="n">1</td></tr>
-    </tbody>
-  </table>
-
-  <p style="font-size:.32em; color:var(--muted); line-height:1.35; margin:.45em 0 0 0;">
-    2000–2025 OpenAlex title/abstract screening; deduplicated DH-signal records from the core five-journal set.
-  </p>
-</div>
-
-<div>
-  <p class="subhead" style="font-size:.46em; margin:0 0 .3em 0;">
-    From signal to controversy
-  </p>
-
-  <table class="compact-table" style="font-size:.40em; table-layout:fixed;">
-    <thead>
-      <tr>
-        <th style="width:15%;">Year</th>
-        <th style="width:58%;">Article</th>
-        <th style="width:27%;">Visibility type</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="n">2019</td>
-        <td class="hi">The Computational Case against Computational Literary Studies</td>
-        <td><span class="re2">Critique</span></td>
-      </tr>
-      <tr>
-        <td class="n">2019</td>
-        <td>Participant forum responses</td>
-        <td><span class="re2">Forum</span></td>
-      </tr>
-      <tr>
-        <td class="n">2020</td>
-        <td>Romantic Disciplinarity and the Rise of the Algorithm</td>
-        <td>Method debate</td>
-      </tr>
-      <tr>
-        <td class="n">2023</td>
-        <td>What’s the Matter with Computational Literary Studies?</td>
-        <td>Reassessment</td>
-      </tr>
-      <tr>
-        <td class="n">2023</td>
-        <td>#COVID, Crisis, and the Search for Story in the Platform Age</td>
-        <td>Method use</td>
-      </tr>
-    </tbody>
-  </table>
-
- 
-</div>
-
-
-  </div>
-
-  <p class="note" style="font-size:.31em; line-height:1.35; margin-top:.5em;">
-    ※ The table selects CI records most relevant to the transition from DH visibility to the Da 2019 controversy.
-    Classifications are LLM-assisted interpretive labels based on title, matched terms, and reconstructed abstract.
-  </p>
-</section>
-
 
 
 </section>
@@ -707,14 +674,14 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 
   <section class="chapter-slide">
   <div class="chapter-num">PART II</div>
-  <h2>DH Critique as a Point of Contact</h2>
+  <h2>From Pattern to Literary Evidence</h2>
+ 
   <p>
     In English literary studies, DH often appears not as everyday method,<br>
-    but as an object of critique. Yet these critiques also open a path<br>
-    toward an expanded view of literary data.
+    but as an object of critique. Yet the same debate also widens the question<br>
+    of where literary evidence is found—and what counts as literary data.
   </p>
 </section>
-
 
 
 <section>
@@ -976,11 +943,12 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 <section>
 <section class="chapter-slide">
   <div class="chapter-num">PART III</div>
-  <h2>Toward a CLS Responsive to Critical Practice</h2>
+  <h2>Criticism as a Layer</h2>
   <p>
-    Using <em>Critical Inquiry</em> as a case study,<br>
-    this section examines the evidentiary structure of literary criticism<br>
-    through footnotes and in-text quotations.
+    Before mapping the layers around a work,
+    I check the most basic one: criticism itself.<br>
+    Using <em>Critical Inquiry</em>, I ask what scholarship actually cites—<br>
+    and find that a work rarely enters an argument on its own.
   </p>
 </section>
 
@@ -1939,26 +1907,37 @@ Conrad’s <em>Heart of Darkness</em>” is often cited as a pivotal moment in l
 
 <section>
   <span class="sec-label">Conclusion</span>
+  <h2>Turning the Question Around</h2>
 
-  <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:62vh; text-align:center;">
-
-    <div style="font-size:1.0em; line-height:1.7; font-family:'JetBrains Mono',monospace; color:var(--muted);">
-      DH literary research
+  <div class="two-col" style="gap:1.2em; align-items:center; margin-top:0.5em;">
+    <div>
+      <div style="font-size:0.56em; color:var(--muted); line-height:1.7; margin-bottom:0.5em;">
+        The gap cannot be bridged only by applying computational methods <em>to</em> literary texts.
+      </div>
+      <div style="font-size:0.6em; color:var(--ivory); line-height:1.7;">
+        DH can also take literary criticism <strong style="color:var(--gold-light);">itself</strong> as its object—mapping the layers around a work: what we cite, teach, and preserve, and what we overlook.
+      </div>
+      <p style="font-size:0.56em; color:var(--gold-light); line-height:1.7; margin-top:0.7em;">
+        CLS becomes a way of reflecting on criticism's own practices and blind spots.
+      </p>
     </div>
 
-    <div style="font-size:1.6em; color:var(--accent-blue, var(--border-blue)); margin:0.35em 0;">
-      &#8651;
+    <div style="text-align:center;">
+      <div style="font-size:0.5em; color:var(--muted); font-family:'JetBrains Mono',monospace; line-height:1.6;">applying methods to texts</div>
+      <div style="font-size:0.5em; color:var(--muted); margin:0.15em 0;">↓</div>
+      <div style="font-size:0.5em; color:var(--ivory); font-family:'JetBrains Mono',monospace; line-height:1.6;">studying the layers<br>around the work</div>
+
+      <div style="font-size:1.5em; color:var(--accent-blue); margin:0.6em 0;">&#8651;</div>
+
+      <div style="display:flex; gap:0.6em; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:0.46em;">
+        <span style="color:var(--muted);">DH literary<br>research</span>
+        <span style="color:var(--gold);">———</span>
+        <span style="color:var(--muted);">English literary<br>studies</span>
+      </div>
+      <p style="font-size:0.5em; color:var(--gold-light); font-family:'Playfair Display',serif; margin-top:0.8em;">Building the bridge</p>
     </div>
-
-    <div style="font-size:1.0em; line-height:1.7; font-family:'JetBrains Mono',monospace; color:var(--muted);">
-      literary studies
-    </div>
-
-    <h2 style="margin-top:1.1em;">Building the bridge</h2>
-
   </div>
 </section>
-
 
 
 <!-- References -->
