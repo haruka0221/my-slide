@@ -290,14 +290,72 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
   </div>
 </section>
 
+<section>
+  <span class="sec-label">The Question &amp; Design</span>
+  <h2>Has DH taken root in English literary studies?</h2>
+
+  <!-- scrolling keyword banner -->
+  <div style="position:relative; overflow:hidden; height:2.6em; background:rgba(0,0,0,0.35); border:1px solid var(--border-blue); border-radius:3px; margin-bottom:1.1em;">
+    <div style="position:absolute; top:0; left:0; width:6em; height:100%; background:linear-gradient(to right,#0f1117,transparent); z-index:2; pointer-events:none;"></div>
+    <div style="position:absolute; top:0; right:0; width:6em; height:100%; background:linear-gradient(to left,#0f1117,transparent); z-index:2; pointer-events:none;"></div>
+    <div style="display:flex; align-items:center; height:100%; white-space:nowrap; font-family:'JetBrains Mono',monospace; font-size:0.48em; gap:1.2em; padding:0 1em; animation:kwscroll 22s linear infinite;">
+      <span style="color:var(--accent-teal)">digital humanities</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">distant reading</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">computational literary studies</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">computational literary criticism</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">cultural analytics</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">macroanalysis</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">stylometry</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">topic modeling</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">text mining</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">word embedding</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">digital humanities</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">distant reading</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">computational literary studies</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">computational literary criticism</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">cultural analytics</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--ivory)">macroanalysis</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">stylometry</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-blue)">topic modeling</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--gold)">text mining</span><span style="color:var(--muted)">·</span>
+      <span style="color:var(--accent-teal)">word embedding</span>
+    </div>
+  </div>
+
+  <style>
+    @keyframes kwscroll { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
+  </style>
+
+  <!-- two-step funnel, visual -->
+  <svg width="100%" viewBox="0 0 760 230" role="img" style="display:block; max-height:250px; margin:0 auto;">
+   <!-- Step 1 box -->
+    <rect x="20" y="40" width="300" height="150" rx="12" fill="rgba(74,144,196,0.10)" stroke="#4a90c4" stroke-width="1.2"/>
+    <text x="40" y="34" fill="#9cc8e8" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="600">1.  Screen</text>
+    <text x="170" y="90" text-anchor="middle" fill="#f2ede4" font-family="'Playfair Display',serif" font-size="30" font-weight="700">~11,600</text>
+    <text x="170" y="114" text-anchor="middle" fill="#8a8fa8" font-family="'JetBrains Mono',monospace" font-size="11">records · 2000–2025</text>
+    <text x="170" y="138" text-anchor="middle" fill="#7a93a6" font-family="'JetBrains Mono',monospace" font-size="10.5">PMLA · NLH · Novel · CI · M/m</text>
+    <text x="170" y="166" text-anchor="middle" fill="#6a8090" font-family="'JetBrains Mono',monospace" font-size="10">title &amp; abstract · DH vocabulary</text>
+    <!-- arrow -->
+    <line x1="328" y1="115" x2="408" y2="115" stroke="#888780" stroke-width="1.5" marker-end="url(#f)"/>
+    <defs>
+      <marker id="f" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#888780" stroke-width="1.5"/></marker>
+    </defs>
+
+    <!-- Step 2 box -->
+    <rect x="420" y="40" width="320" height="150" rx="12" fill="rgba(226,196,120,0.10)" stroke="#c9a84c" stroke-width="1.2"/>
+    <text x="440" y="34" fill="#e2c478" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="600">2.  Classify with LLM</text>
+    <text x="580" y="95" text-anchor="middle" fill="#f2ede4" font-family="'Playfair Display',serif" font-size="30" font-weight="700">75</text>
+    <text x="580" y="120" text-anchor="middle" fill="#8a8fa8" font-family="'JetBrains Mono',monospace" font-size="11">records with DH vocabulary</text>
+    <text x="580" y="160" text-anchor="middle" fill="#a89858" font-family="'JetBrains Mono',monospace" font-size="11">method use · meta-discussion · review</text>
+  </svg>
+</section>
+
 <!-- 2枚目：12/60/28を主役に -->
 <section>
   <span class="sec-label">A Small Survey</span>
   <h2>Visible as Debate, Rare as Practice</h2>
 
- <p style="font-size:0.5em; color:var(--muted); text-align:center; margin-bottom:1em;">
-    Five core literary-critical journals, 2000–2025 (PMLA · NLH · Novel · CI · M/m): ~11,600 records screened, 75 carrying explicit DH vocabulary—classified by an LLM.
-  </p>
+
 
   <div style="display:flex; width:100%; height:3.4em; border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-bottom:0.7em;">
     <div style="width:12%; background:rgba(75,135,185,0.8); display:flex; flex-direction:column; align-items:center; justify-content:center;">
