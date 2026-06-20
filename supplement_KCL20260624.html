@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Literature and Digital Humanities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/theme/black.min.css">
+<style>
+html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
+.reveal-viewport { position:fixed; top:0; left:0; width:100vw; height:100vh; background:var(--bg-deep); display:flex; align-items:center; justify-content:center; }
+.reveal { position:relative !important; margin:auto !important; }
+</style>
+<style>
+  :root {
+    --bg-deep:#0f1117; --bg-card:#1a1d27;
+    --gold:#c9a84c; --gold-light:#e2c478;
+    --ivory:#f2ede4; --muted:#8a8fa8;
+    --accent-red:#c0392b; --accent-teal:#2eacb5;
+    --accent-green:#4caf7d; --accent-blue:#4a90c4;
+    --border:rgba(201,168,76,0.25); --border-blue:rgba(74,144,196,0.3);
+  }
+  .reveal-viewport { background:var(--bg-deep); }
+  .reveal { font-family:'Lora','Noto Serif JP',Georgia,serif; font-size:36px; color:var(--ivory); }
+  .reveal h1,.reveal h2,.reveal h3 { font-family:'Playfair Display','Noto Serif JP',serif; color:var(--ivory); text-transform:none; letter-spacing:-0.01em; text-shadow:none; line-height:1.15; }
+  .reveal h1 { font-size:1.8em; font-weight:700; }
+  .reveal h2 { font-size:1.3em; font-weight:700; color:var(--gold-light); margin-bottom:0.4em; }
+  .reveal p { line-height:1.65; margin:0.4em 0; }
+  .reveal .slides section { padding:20px 40px; text-align:left; }
+  .title-slide { text-align:center !important; }
+  .title-slide .deck-label { font-family:'JetBrains Mono',monospace; font-size:0.35em; color:var(--gold); letter-spacing:0.25em; text-transform:uppercase; margin-bottom:1.2em; display:block; }
+  .title-slide h1 { font-size:1.55em; line-height:1.2; margin-bottom:0.5em; background:linear-gradient(135deg,var(--ivory) 60%,var(--gold-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .title-slide .subtitle { font-size:0.5em; color:var(--muted); font-style:italic; margin-bottom:2em; line-height:1.6; }
+  .title-meta { display:flex; justify-content:center; gap:2.5em; font-size:0.36em; color:var(--muted); font-family:'JetBrains Mono',monospace; border-top:1px solid var(--border); padding-top:0.8em; margin-top:1em; }
+  .title-meta span { color:var(--gold); }
+  .chapter-slide { display:flex !important; flex-direction:column; justify-content:center; min-height:100%; background:linear-gradient(135deg,#0f1117 0%,#1a1d2f 100%); }
+  .chapter-num { font-family:'JetBrains Mono',monospace; font-size:0.32em; color:var(--gold); letter-spacing:0.3em; margin-bottom:0.6em; }
+  .chapter-slide h2 { font-size:1.5em; color:var(--ivory); border-left:4px solid var(--gold); padding-left:0.5em; }
+  .chapter-slide p { font-size:0.48em; color:var(--muted); max-width:80%; margin-top:1em; line-height:1.7; }
+  .callout { background:var(--bg-card); border:1px solid var(--border); border-left:4px solid var(--gold); padding:0.55em 0.9em; margin:0.5em 0; font-size:0.78em; line-height:1.6; }
+  .callout.red { border-left-color:var(--accent-red); }
+  .callout.teal { border-left-color:var(--accent-teal); }
+  .callout.green { border-left-color:var(--accent-green); }
+  .callout.blue { border-left-color:var(--accent-blue); background:rgba(74,144,196,0.07); }
+  .blockquote { border-left:3px solid var(--gold); padding:0.4em 0.8em; color:var(--ivory); font-style:italic; font-size:0.78em; margin:0.6em 0; line-height:1.65; background:rgba(201,168,76,0.06); }
+  .blockquote cite { display:block; font-size:0.75em; font-style:normal; color:var(--muted); margin-top:0.4em; }
+  .blockquote.lg { font-size:0.70em; }
+  .reveal table { font-size:0.5em; width:100%; border-collapse:collapse; margin:0.5em 0; }
+  .reveal table th { background:rgba(201,168,76,0.18); color:var(--gold-light); font-family:'JetBrains Mono',monospace; font-weight:500; padding:0.45em 0.7em; border-bottom:1px solid var(--border); text-align:left; }
+  .reveal table td { padding:0.38em 0.7em; border-bottom:1px solid rgba(255,255,255,0.06); color:var(--ivory); }
+  .reveal table tr:last-child td { border-bottom:none; }
+  .hi { color:var(--gold-light); font-weight:600; }
+  .lo { color:var(--muted); }
+  .blu { color:var(--accent-blue); font-weight:600; }
+  .method-row { display:grid; grid-template-columns:1.8em 1fr 5em 5em; gap:0 0.6em; align-items:center; padding:0.38em 0.6em; border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.58em; }
+  .method-row:first-child { border-top:1px solid rgba(255,255,255,0.06); }
+  .method-num { font-family:'JetBrains Mono',monospace; color:var(--gold); font-size:1.1em; font-weight:600; text-align:center; }
+  .method-body { color:var(--ivory); line-height:1.45; }
+  .method-body .mname { font-weight:600; }
+  .method-body .msub { color:var(--muted); font-size:0.9em; }
+  .method-period { font-family:'JetBrains Mono',monospace; color:var(--muted); font-size:0.9em; text-align:center; }
+  .badge { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:0.85em; padding:0.1em 0.5em; border-radius:1em; border:1px solid currentColor; text-align:center; }
+  .badge.upper { color:var(--muted); }
+  .badge.high { color:var(--accent-teal); }
+  .badge.direct { color:var(--accent-blue); }
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:1em; align-items:start; }
+  .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.8em; align-items:start; }
+  .stat-row { display:flex; gap:0.8em; margin:0.5em 0; }
+  .stat-card { flex:1; background:var(--bg-card); border:1px solid var(--border); border-radius:4px; padding:0.6em 0.8em; text-align:center; }
+  .stat-card.blue { border-color:var(--border-blue); }
+  .stat-card .num { font-size:1.5em; font-family:'Playfair Display',serif; color:var(--gold-light); display:block; line-height:1.1; }
+  .stat-card.blue .num { color:var(--accent-blue); }
+  .stat-card .label { font-size:0.35em; color:var(--muted); line-height:1.4; margin-top:0.2em; font-family:'JetBrains Mono',monospace; }
+  .bar-row { display:flex; align-items:center; margin:0.28em 0; font-size:0.55em; }
+  .bar-label { width:11em; color:var(--muted); text-align:right; padding-right:0.7em; font-family:'JetBrains Mono',monospace; flex-shrink:0; }
+  .bar-track { flex:1; background:rgba(255,255,255,0.06); height:1.4em; border-radius:2px; overflow:hidden; }
+  .bar-fill { height:100%; background:var(--gold); border-radius:2px; display:flex; align-items:center; padding-left:0.5em; }
+  .bar-fill.teal { background:var(--accent-teal); }
+  .bar-fill.red { background:var(--accent-red); }
+  .bar-fill.blue { background:var(--accent-blue); }
+  .bar-fill.dim { background:rgba(255,255,255,0.2); }
+  .bar-val { font-size:0.9em; color:var(--bg-deep); font-family:'JetBrains Mono',monospace; font-weight:500; }
+  .bar-pct { width:5em; color:var(--ivory); padding-left:0.5em; font-family:'JetBrains Mono',monospace; }
+  .timeline { position:relative; padding-left:1.5em; }
+  .timeline::before { content:''; position:absolute; left:0.35em; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--gold),transparent); }
+  .tl-item { position:relative; margin-bottom:0.46em; font-size:0.53em; }
+  .tl-item::before { content:''; position:absolute; left:-1.28em; top:0.35em; width:0.6em; height:0.6em; border-radius:50%; background:var(--gold); }
+  .tl-item.me::before { background:var(--accent-blue); }
+  .tl-year { color:var(--gold); font-family:'JetBrains Mono',monospace; font-weight:500; }
+  .tl-item.me .tl-year { color:var(--accent-blue); }
+  .tl-text { color:var(--ivory); }
+  .tl-sub { color:var(--muted); font-style:italic; }
+  .pill { display:inline-block; font-size:0.55em; font-family:'JetBrains Mono',monospace; padding:0.15em 0.6em; border-radius:2em; margin:0.1em; border:1px solid currentColor; }
+  .pill.gold { color:var(--gold); }
+  .pill.red { color:var(--accent-red); }
+  .pill.teal { color:var(--accent-teal); }
+  .pill.blue { color:var(--accent-blue); }
+  .pill.muted { color:var(--muted); }
+  .pipe-row { display:flex; align-items:stretch; gap:0; margin:0.5em 0; }
+  .pipe-step { flex:1; padding:0.45em 0.4em; background:rgba(74,144,196,0.1); border:1px solid var(--border-blue); text-align:center; }
+  .pipe-step.fail { background:rgba(192,73,43,0.1); border-color:rgba(192,73,43,0.3); }
+  .pipe-n { font-size:0.32em; color:var(--accent-blue); font-family:'JetBrains Mono',monospace; letter-spacing:0.06em; margin-bottom:0.2em; }
+  .pipe-n.fail { color:var(--accent-red); }
+  .pipe-t { font-size:0.42em; font-weight:600; color:var(--ivory); line-height:1.2; }
+  .pipe-s { font-size:0.36em; color:var(--muted); margin-top:0.15em; line-height:1.3; }
+  .pipe-arr { font-size:0.6em; color:var(--accent-blue); padding:0 0.1em; display:flex; align-items:center; flex-shrink:0; }
+  .refs { font-size:0.42em; color:var(--muted); line-height:1.7; font-family:'JetBrains Mono',monospace; }
+  .refs .ref-item { margin-bottom:0.4em; border-left:2px solid var(--border); padding-left:0.8em; }
+  .refs .ref-item .ref-key { color:var(--gold); }
+  .sec-label { font-family:'JetBrains Mono',monospace; font-size:0.34em; color:var(--gold); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.3em; display:block; }
+  .sec-label.blue { color:var(--accent-blue); }
+  .reveal ul { margin:0.3em 0; padding-left:1.2em; }
+  .reveal ul li { margin-bottom:0.25em; font-size:0.72em; line-height:1.55; color:var(--ivory); }
+  .reveal ul li strong { color:var(--gold-light); }
+  .small { font-size:0.65em !important; }
+  .muted { color:var(--muted) !important; }
+  .gold { color:var(--gold-light) !important; }
+  .mono { font-family:'JetBrains Mono',monospace !important; }
+  .dv { border:none; border-top:1px solid rgba(255,255,255,0.08); margin:0.5em 0; }
+  .spike-box { background:var(--bg-card); border:1px solid var(--border); border-left:4px solid var(--gold-light); padding:0.4em 0.7em; margin:0.25em 0; font-size:0.57em; line-height:1.5; }
+  .spike-year { font-family:'JetBrains Mono',monospace; color:var(--gold-light); font-weight:600; margin-right:0.4em; }
+  .spike-count { font-family:'JetBrains Mono',monospace; color:var(--accent-red); font-weight:600; }
+  .spike-note { color:var(--muted); }
+  .journal-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:1rem; align-items:start; }
+  .journal-grid > div { min-width:0; }
+  *, *::before, *::after { box-sizing:border-box; }
+  .reveal, .reveal .slides, .reveal .slides section, .slide { max-width:100%; box-sizing:border-box; }
+  .reveal .slides section { padding:18px 32px; overflow:hidden; }
+  .bq { border-left:3px solid var(--gold); padding:0.4em 0.8em; color:var(--ivory); font-style:italic; font-size:0.72em; margin:0.55em 0; line-height:1.7; background:rgba(201,168,76,0.05); }
+  .bq cite { display:block; font-size:0.78em; font-style:normal; color:var(--muted); margin-top:0.35em; }
+  .tl { font-size:0.44em; color:var(--gold-light); font-family:'JetBrains Mono',monospace; letter-spacing:0.06em; margin-bottom:0.2em; margin-top:0.5em; display:block; }
+  .reveal table td.n, .reveal table th.n { font-family:'JetBrains Mono',monospace; text-align:right; }
+  .zero { color:var(--accent-red); font-family:'JetBrains Mono',monospace; font-weight:600; }
+  .re2 { color:var(--accent-red); font-weight:600; }
+  .te2 { color:var(--accent-teal); }
+  .ok { color:var(--accent-green); }
+  .reveal table tr.sp td { background:rgba(192,57,43,0.10); }
+  .note { font-size:0.42em; color:var(--muted); font-family:'JetBrains Mono',monospace; margin-top:0.35em; line-height:1.65; }
+  .results-grid { display:grid; grid-template-columns:1.25fr 0.95fr; gap:0.8rem; align-items:start; width:100%; }
+  .mini-table { width:100%; table-layout:fixed; border-collapse:collapse; font-size:0.48em; margin:0; }
+  .mini-table th, .mini-table td { padding:0.28em 0.35em; border-bottom:1px solid rgba(255,255,255,0.10); vertical-align:top; overflow-wrap:anywhere; word-break:normal; line-height:1.25; }
+  .mini-table th { color:var(--gold-light); font-family:'JetBrains Mono',monospace; font-weight:500; }
+  .subhead { font-size:0.5em; color:var(--gold-light); margin:0 0 0.35em 0; font-family:'JetBrains Mono',monospace; }
+  .results-grid3 { display:grid; grid-template-columns:1fr 1fr 0.9fr; gap:0.55rem; align-items:start; width:100%; }
+  .compact-table { width:100%; table-layout:fixed; border-collapse:collapse; font-size:0.42em; margin:0; }
+  .compact-table th, .compact-table td { padding:0.22em 0.28em; border-bottom:1px solid rgba(255,255,255,0.10); line-height:1.18; vertical-align:top; overflow-wrap:anywhere; }
+  .compact-table th { color:var(--gold-light); font-family:'JetBrains Mono',monospace; font-weight:500; }
+  .compact-table td:nth-child(2) { font-family:'JetBrains Mono',monospace; color:var(--muted); text-align:right; }
+  .compact-table th:nth-child(1), .compact-table td:nth-child(1) { width:58%; }
+  .compact-table th:nth-child(2), .compact-table td:nth-child(2) { width:42%; }
+  .ci-grid2 { display:grid; grid-template-columns:0.95fr 1.05fr; gap:0.6rem; align-items:start; width:100%; max-width:100%; }
+  .ci-mini { width:100%; max-width:100%; table-layout:fixed; border-collapse:collapse; font-size:0.40em; margin:0; }
+  .ci-mini th, .ci-mini td { padding:0.22em 0.28em; border-bottom:1px solid rgba(255,255,255,0.10); line-height:1.18; vertical-align:top; overflow-wrap:anywhere; word-break:normal; white-space:normal; }
+  .ci-mini th { color:var(--gold-light); font-family:'JetBrains Mono',monospace; font-weight:500; }
+  .ci-mini td.num { font-family:'JetBrains Mono',monospace; color:var(--muted); text-align:right; white-space:normal; }
+  .ci-mini .pct { color:var(--ivory); font-size:0.95em; }
+  .ci-mini .subnum { color:var(--muted); font-size:0.86em; }
+  .ci-mini th:nth-child(1), .ci-mini td:nth-child(1) { width:60%; }
+  .ci-mini th:nth-child(2), .ci-mini td:nth-child(2) { width:40%; }
+  .ci-note { font-size:0.32em; color:var(--muted); line-height:1.32; margin-top:0.38em; }
+  .ci-box { background:rgba(74,144,196,0.07); border:1px solid rgba(74,144,196,0.22); border-left:3px solid var(--accent-blue); padding:0.35em 0.5em; font-size:0.38em; line-height:1.35; margin-top:0.45em; }
+  .strategy-grid { display:grid; grid-template-columns:1fr 1fr; gap:.55rem; }
+  .strategy-card { border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.035); padding:.45em .6em; font-size:.46em; line-height:1.35; }
+  .strategy-card .t { color:var(--gold-light); font-family:'JetBrains Mono',monospace; margin-bottom:.2em; }
+  .code-box { background:#111418; border:1px solid rgba(255,255,255,0.12); border-left:3px solid var(--accent-blue); padding:0.45em 0.8em; font-family:'JetBrains Mono',monospace; font-size:0.50em; color:#a8c4e0; line-height:1.7; margin:0.4em 0; }
+  .code-box .cm { color:var(--muted); }
+  .code-box .kw { color:var(--gold); }
+  .code-box .ok { color:var(--accent-green); }
+  .code-box .ng { color:var(--accent-red); }
+  .bubble-area { position:relative; width:100%; height:260px; background:var(--bg-card); border:1px solid var(--border-blue); border-radius:4px; overflow:hidden; }
+  .bubble { position:absolute; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-weight:600; font-size:0.30em; color:#fff; cursor:default; transition:transform 0.2s; }
+  .bubble:hover { transform:scale(1.08); }
+  .axis-label { position:absolute; font-family:'JetBrains Mono',monospace; font-size:0.28em; color:var(--muted); }
+  .reveal h2 { font-size:1.05em; margin-bottom:0.35em; }
+
+  /* PART V only: light slides */
+  .reveal .slides section.partv-light {
+    background:#fbfaf6;
+    color:#23252b;
+    width:100%;
+    height:100%;
+  }
+
+  .reveal .slides section.partv-light h2 {
+    color:#23252b;
+  }
+
+  .reveal .slides section.chapter-slide.partv-light {
+    background:#fbfaf6;
+  }
+
+  .reveal .slides section.chapter-slide.partv-light h2 {
+    color:#23252b;
+    border-left-color:#b58a25;
+  }
+
+  .reveal .slides section.chapter-slide.partv-light p {
+    color:#5e6472;
+  }
+
+  .reveal .slides section.partv-light .chapter-num,
+  .reveal .slides section.partv-light .sec-label,
+  .reveal .slides section.partv-light .hi,
+  .reveal .slides section.partv-light .strategy-card .t {
+    color:#9a741c;
+  }
+
+  .reveal .slides section.partv-light .bq {
+    color:#23252b;
+    background:#fff4d8;
+    border-left-color:#b58a25;
+  }
+
+  .reveal .slides section.partv-light .bq cite {
+    color:#666d7a;
+  }
+
+  .reveal .slides section.partv-light .callout {
+    color:#23252b;
+    background:#ffffff;
+    border-color:rgba(181,138,37,0.35);
+    border-left-color:#b58a25;
+  }
+
+  .reveal .slides section.partv-light .callout.blue {
+    color:#23252b;
+    background:#edf5fb;
+    border-color:rgba(74,144,196,0.30);
+    border-left-color:#4a90c4;
+  }
+
+  .reveal .slides section.partv-light .strategy-card {
+    color:#23252b;
+    background:#ffffff;
+    border-color:#ded6c8;
+    box-shadow:0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  .reveal .slides section.partv-light strong {
+    color:#9a741c;
+  }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- 00 TITLE -->
+
+<section>
+  <h2>PMLA: DH Keyword Occurrences by Year</h2>
+  <div class="two-col" style="gap:1.2em;align-items:start;">
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th style="text-align:right;">digital<br>humanities</th>
+            <th style="text-align:right;">computational</th>
+            <th style="text-align:right;">distant<br>reading</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="sp">
+            <td class="hi">2016</td><td class="n re2">9</td><td class="n">1</td><td class="n">5</td>
+            <td><span class="re2">Vol.131 No.2 special issue</span></td>
+          </tr>
+          <tr><td>2017</td><td class="n">2</td><td class="n">1</td><td class="n">9</td><td class="lo">—</td></tr>
+          <tr><td>2018</td><td class="n">3</td><td class="n">2</td><td class="n">2</td><td class="lo">—</td></tr>
+          <tr><td>2019</td><td class="n">1</td><td class="n">0</td><td class="n">1</td><td class="lo">—</td></tr>
+          <tr class="sp">
+            <td class="hi">2020</td><td class="n re2">10</td><td class="n">4</td><td class="n">4</td>
+            <td><span class="re2">Vol.135 No.1 special issue</span></td>
+          </tr>
+          <tr><td>2021</td><td class="n">4</td><td class="n">0</td><td class="n">0</td><td class="lo">—</td></tr>
+          <tr><td>2022–2025</td><td class="n">4–12</td><td class="n">0–1</td><td class="n">3–7</td><td class="lo">—</td></tr>
+        </tbody>
+      </table>
+      <p class="note">
+        ※ <span class="re2">Red</span> = special-issue spike.<br>
+        2016: 7/9 hits concentrated in "Ecological Digital Humanities" special issue (Vol.131 No.2).<br>
+        2020: 8/9 hits concentrated in "DH, Diversity &amp; Race" special issue (Vol.135 No.1).
+      </p>
+    </div>
+    <div>
+      <div class="tl">Abstract sample review (2016–2022, n=20)</div>
+      <table>
+        <thead><tr><th>Category</th><th style="text-align:right;">Count</th></tr></thead>
+        <tbody>
+          <tr><td>DH used as a research <strong>method</strong></td><td class="n ok">3</td></tr>
+          <tr><td>Meta-discussion of DH as profession / institution</td><td class="n">12</td></tr>
+          <tr><td>Mere mention, review, or response</td><td class="n lo">5</td></tr>
+        </tbody>
+      </table>
+      <div class="tl" style="margin-top:.7em;">Nature of Moretti citations (n=12, manual review)</div>
+      <table>
+        <thead><tr><th>Nature of citation</th><th style="text-align:right;">Count (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>Used as method for distant reading</td><td class="n ok">≈ 1</td></tr>
+          <tr><td>Cited as world/comparative literature theorist</td><td class="n lo">≈ 9</td></tr>
+          <tr><td>Other</td><td class="n lo">≈ 2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Critical Inquiry 2019–2025</h2>
+  <div class="two-col" style="gap:1.2em;align-items:start;">
+    <div>
+      <table>
+        <thead><tr><th>Article</th><th>Detected term</th><th>Year</th></tr></thead>
+        <tbody>
+          <tr><td>Bode 2023</td><td class="te2">computational</td><td class="n">2023</td></tr>
+          <tr><td>Franta &amp; Silver 2024</td><td class="te2">computational</td><td class="n">2024</td></tr>
+          <tr><td>Geoghegan 2025</td><td class="te2">computational</td><td class="n">2025</td></tr>
+          <tr><td>Lee 2025</td><td class="te2">machine learning</td><td class="n">2025</td></tr>
+          <tr><td>Liu 2025</td><td class="te2">digital humanities</td><td class="n">2025</td></tr>
+          <tr><td>Parisi 2022</td><td class="te2">computational</td><td class="n">2022</td></tr>
+          <tr><td>Parker 2025</td><td class="te2">computational, machine learning</td><td class="n">2025</td></tr>
+        </tbody>
+      </table>
+      <p class="note">
+        Only <strong>7 of 254 articles (2.8%)</strong> showed DH signals.<br>
+        5 of 7 concentrated in 2022 or later.<br>
+        Method: PDF text extraction → footnote isolation → regex \b word-boundary match.<br>
+        Extraction success: 248/254 PDFs (median 38 footnotes/PDF).
+      </p>
+    </div>
+    <div>
+      <div class="tl">DH-related articles confirmed by CI title scan (1974–2025)</div>
+      <table>
+        <thead><tr><th>Year</th><th>Article</th><th>Nature</th></tr></thead>
+        <tbody>
+          <tr class="sp">
+            <td>2019</td>
+            <td>The Computational Case against CLS (Da 2019)</td>
+            <td><span class="re2">Critique of DH</span></td>
+          </tr>
+          <tr class="sp">
+            <td>2019</td>
+            <td>Computational Literary Studies: Participant Forum Responses</td>
+            <td><span class="re2">Critical forum</span></td>
+          </tr>
+          <tr>
+            <td>2021</td>
+            <td>Data as Symbolic Form: W.E.B. Du Bois</td>
+            <td class="lo">Critical concept essay</td>
+          </tr>
+          <tr>
+            <td>2021</td>
+            <td>Artificial Antisemitism: Critical Theory and Datafication</td>
+            <td class="lo">Critical concept essay</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note">
+        It is telling that DH first appeared prominently in CI via a critique (Da 2019).<br>
+        ※ OpenAlex snapshot may be incomplete for 2023–2024.<br>
+        CI citations of 8 DH methodology books (2010–2025): 0 in all cases.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="sec-label blue">Wikidata</span>
+  <h2>Resolving Each Work to Wikidata</h2>
+
+  <p style="font-size:0.5em; color:var(--muted); text-align:center; margin-bottom:0.4em;">
+    From an author name down to the individual work—then its attributes.
+    <span style="color:var(--gold-light);">QIDs always come from SPARQL, never from the model.</span>
+  </p>
+
+  <svg width="100%" viewBox="0 0 680 470" role="img" style="display:block; max-height:430px; margin:0 auto;">
+    <defs>
+      <marker id="wdarr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#888780" stroke-width="1.5"/></marker>
+    </defs>
+
+    <rect x="250" y="30" width="180" height="44" rx="8" fill="rgba(138,143,168,0.15)" stroke="#8a8fa8" stroke-width="1"/>
+    <text x="340" y="52" text-anchor="middle" dominant-baseline="central" fill="#f2ede4" font-family="'JetBrains Mono',monospace" font-size="14">author name + title</text>
+    <line x1="340" y1="74" x2="340" y2="102" stroke="#888780" stroke-width="1.4" marker-end="url(#wdarr)"/>
+
+    <rect x="210" y="104" width="260" height="56" rx="8" fill="rgba(74,144,196,0.16)" stroke="#4a90c4" stroke-width="1"/>
+    <text x="340" y="124" text-anchor="middle" dominant-baseline="central" fill="#9cc8e8" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="600">1 · resolve author QID</text>
+    <text x="340" y="144" text-anchor="middle" dominant-baseline="central" fill="#7a93a6" font-family="'JetBrains Mono',monospace" font-size="11.5">SPARQL, filtered to writers</text>
+    <line x1="340" y1="160" x2="340" y2="188" stroke="#888780" stroke-width="1.4" marker-end="url(#wdarr)"/>
+
+    <rect x="210" y="190" width="260" height="56" rx="8" fill="rgba(74,144,196,0.16)" stroke="#4a90c4" stroke-width="1"/>
+    <text x="340" y="210" text-anchor="middle" dominant-baseline="central" fill="#9cc8e8" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="600">2 · list the author's works</text>
+    <text x="340" y="230" text-anchor="middle" dominant-baseline="central" fill="#7a93a6" font-family="'JetBrains Mono',monospace" font-size="11.5">SPARQL graph query</text>
+    <line x1="340" y1="246" x2="340" y2="274" stroke="#888780" stroke-width="1.4" marker-end="url(#wdarr)"/>
+
+    <rect x="210" y="276" width="260" height="56" rx="8" fill="rgba(226,196,120,0.16)" stroke="#c9a84c" stroke-width="1"/>
+    <text x="340" y="296" text-anchor="middle" dominant-baseline="central" fill="#e2c478" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="600">3 · pick the matching work</text>
+    <text x="340" y="316" text-anchor="middle" dominant-baseline="central" fill="#a89858" font-family="'JetBrains Mono',monospace" font-size="11.5">LLM, using title and year</text>
+    <line x1="340" y1="332" x2="340" y2="360" stroke="#888780" stroke-width="1.4" marker-end="url(#wdarr)"/>
+
+    <rect x="200" y="362" width="280" height="68" rx="8" fill="rgba(46,172,181,0.16)" stroke="#2eacb5" stroke-width="1"/>
+    <text x="340" y="382" text-anchor="middle" dominant-baseline="central" fill="#7fd4da" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="600">4 · retrieve properties</text>
+    <text x="340" y="402" text-anchor="middle" dominant-baseline="central" fill="#5f9a9e" font-family="'JetBrains Mono',monospace" font-size="11">work: year · genre · sitelinks</text>
+    <text x="340" y="418" text-anchor="middle" dominant-baseline="central" fill="#5f9a9e" font-family="'JetBrains Mono',monospace" font-size="11">author: gender · nationality · movement</text>
+
+    <rect x="500" y="120" width="160" height="120" rx="8" fill="rgba(74,144,196,0.10)" stroke="#4a90c4" stroke-width="0.8" stroke-dasharray="4 3"/>
+    <text x="580" y="150" text-anchor="middle" dominant-baseline="central" fill="#9cc8e8" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="600">SPARQL</text>
+    <text x="580" y="178" text-anchor="middle" dominant-baseline="central" fill="#7a93a6" font-family="'JetBrains Mono',monospace" font-size="10.5">every ID comes</text>
+    <text x="580" y="194" text-anchor="middle" dominant-baseline="central" fill="#7a93a6" font-family="'JetBrains Mono',monospace" font-size="10.5">from a query,</text>
+    <text x="580" y="216" text-anchor="middle" dominant-baseline="central" fill="#7a93a6" font-family="'JetBrains Mono',monospace" font-size="10.5">never from the</text>
+    <text x="580" y="232" text-anchor="middle" dominant-baseline="central" fill="#7a93a6" font-family="'JetBrains Mono',monospace" font-size="10.5">model</text>
+    <line x1="500" y1="150" x2="472" y2="138" stroke="#4a90c4" stroke-width="0.7" stroke-dasharray="3 3"/>
+    <line x1="500" y1="210" x2="472" y2="220" stroke="#4a90c4" stroke-width="0.7" stroke-dasharray="3 3"/>
+
+    <rect x="20" y="276" width="160" height="56" rx="8" fill="rgba(226,196,120,0.10)" stroke="#c9a84c" stroke-width="0.8" stroke-dasharray="4 3"/>
+    <text x="100" y="296" text-anchor="middle" dominant-baseline="central" fill="#e2c478" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="600">LLM</text>
+    <text x="100" y="316" text-anchor="middle" dominant-baseline="central" fill="#a89858" font-family="'JetBrains Mono',monospace" font-size="11">matching only</text>
+    <line x1="180" y1="304" x2="208" y2="304" stroke="#c9a84c" stroke-width="0.7" stroke-dasharray="3 3"/>
+  </svg>
+</section>
+
+<section>
+  <span class="sec-label blue">Toward Release</span>
+  <h2>Sorting Signals by Bibliographic Level</h2>
+
+  <p style="font-size:0.5em; color:var(--muted); text-align:center; margin-bottom:0.4em;">
+    Each signal sits at a different level. Before a stable release, I want to separate them
+    <span style="color:var(--gold-light);">rather than flattening everything onto the work.</span>
+  </p>
+
+  <svg width="100%" viewBox="0 0 680 430" role="img" style="display:block; max-height:420px; margin:0 auto;">
+    <defs>
+      <marker id="frarr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#888780" stroke-width="1.5"/></marker>
+    </defs>
+
+    <text x="150" y="28" text-anchor="middle" fill="#f2ede4" font-family="'Playfair Display',serif" font-size="15" font-weight="600">now: one flat row</text>
+    <rect x="20" y="44" width="260" height="152" rx="8" fill="rgba(138,143,168,0.12)" stroke="#8a8fa8" stroke-width="1"/>
+    <text x="34" y="68" fill="#8a8fa8" font-family="'JetBrains Mono',monospace" font-size="11.5">work · author · year</text>
+    <line x1="34" y1="80" x2="266" y2="80" stroke="#8a8fa8" stroke-width="0.5" opacity="0.4"/>
+    <text x="34" y="101" fill="#b8bcc8" font-family="'JetBrains Mono',monospace" font-size="11.5">edition_count</text>
+    <text x="34" y="123" fill="#b8bcc8" font-family="'JetBrains Mono',monospace" font-size="11.5">jstor_mentions</text>
+    <text x="34" y="145" fill="#b8bcc8" font-family="'JetBrains Mono',monospace" font-size="11.5">openalex_mentions</text>
+    <text x="34" y="167" fill="#b8bcc8" font-family="'JetBrains Mono',monospace" font-size="11.5">goodreads_ratings</text>
+    <text x="34" y="189" fill="#b8bcc8" font-family="'JetBrains Mono',monospace" font-size="11.5">wikidata_qid</text>
+
+    <line x1="288" y1="120" x2="342" y2="120" stroke="#888780" stroke-width="1.4" marker-end="url(#frarr)"/>
+    <text x="315" y="108" text-anchor="middle" fill="#8a8fa8" font-family="'JetBrains Mono',monospace" font-size="11">sort</text>
+
+    <text x="510" y="28" text-anchor="middle" fill="#f2ede4" font-family="'Playfair Display',serif" font-size="15" font-weight="600">next: by bibliographic level</text>
+
+    <rect x="360" y="44" width="300" height="92" rx="8" fill="rgba(74,144,196,0.16)" stroke="#4a90c4" stroke-width="1"/>
+    <text x="376" y="66" dominant-baseline="central" fill="#9cc8e8" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="600">Work</text>
+    <text x="376" y="92" dominant-baseline="central" fill="#7a93a6" font-family="'JetBrains Mono',monospace" font-size="11">jstor_mentions · openalex_mentions</text>
+    <text x="376" y="112" dominant-baseline="central" fill="#7a93a6" font-family="'JetBrains Mono',monospace" font-size="11">wikidata_qid · sitelinks</text>
+
+    <rect x="360" y="148" width="300" height="70" rx="8" fill="rgba(46,172,181,0.16)" stroke="#2eacb5" stroke-width="1"/>
+    <text x="376" y="170" dominant-baseline="central" fill="#7fd4da" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="600">Expression</text>
+    <text x="376" y="196" dominant-baseline="central" fill="#5f9a9e" font-family="'JetBrains Mono',monospace" font-size="11">goodreads_ratings (editions mixed)</text>
+
+    <rect x="360" y="230" width="300" height="70" rx="8" fill="rgba(226,196,120,0.16)" stroke="#c9a84c" stroke-width="1"/>
+    <text x="376" y="252" dominant-baseline="central" fill="#e2c478" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="600">Manifestation</text>
+    <text x="376" y="278" dominant-baseline="central" fill="#a89858" font-family="'JetBrains Mono',monospace" font-size="11">edition_count · hathitrust_count</text>
+
+    <text x="150" y="240" text-anchor="middle" fill="#888780" font-family="'JetBrains Mono',monospace" font-size="11" font-style="italic">every signal sits</text>
+    <text x="150" y="258" text-anchor="middle" fill="#888780" font-family="'JetBrains Mono',monospace" font-size="11" font-style="italic">on one row, but at</text>
+    <text x="150" y="276" text-anchor="middle" fill="#888780" font-family="'JetBrains Mono',monospace" font-size="11" font-style="italic">different real levels</text>
+
+    <rect x="360" y="330" width="300" height="74" rx="8" fill="rgba(138,143,168,0.12)" stroke="#8a8fa8" stroke-width="1"/>
+    <text x="510" y="352" text-anchor="middle" dominant-baseline="central" fill="#e2c478" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="600">open release</text>
+    <text x="510" y="378" text-anchor="middle" dominant-baseline="central" fill="#8a8fa8" font-family="'JetBrains Mono',monospace" font-size="11">linked by IDs,</text>
+    <text x="510" y="394" text-anchor="middle" dominant-baseline="central" fill="#8a8fa8" font-family="'JetBrains Mono',monospace" font-size="11">reusable and extendable</text>
+    <line x1="510" y1="300" x2="510" y2="328" stroke="#888780" stroke-width="1.4" marker-end="url(#frarr)"/>
+  </svg>
+</section>
+
+<section>
+  <span class="sec-label blue">Method Note</span>
+  <h2>The Model as a Supervised Instrument</h2>
+
+  <p style="font-size:0.5em; color:var(--muted); text-align:center; margin-bottom:0.4em;">
+    Following Karjus (2025), I use the model as an instrument, not an oracle—
+    <span style="color:var(--gold-light);">checked on a test set, then run at scale with its error carried in.</span>
+  </p>
+
+  <svg width="100%" viewBox="0 0 680 440" role="img" style="display:block; max-height:420px; margin:0 auto;">
+    <defs>
+      <marker id="kjarr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#888780" stroke-width="1.5"/></marker>
+    </defs>
+
+    <rect x="40" y="40" width="180" height="58" rx="8" fill="rgba(138,143,168,0.12)" stroke="#8a8fa8" stroke-width="1"/>
+    <text x="130" y="62" text-anchor="middle" dominant-baseline="central" fill="#b8bcc8" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="600">hand-coded</text>
+    <text x="130" y="82" text-anchor="middle" dominant-baseline="central" fill="#8a8fa8" font-family="'JetBrains Mono',monospace" font-size="11.5">test set</text>
+    <line x1="220" y1="69" x2="258" y2="69" stroke="#888780" stroke-width="1.4" marker-end="url(#kjarr)"/>
+
+    <rect x="260" y="40" width="160" height="58" rx="8" fill="rgba(74,144,196,0.16)" stroke="#4a90c4" stroke-width="1"/>
+    <text x="340" y="62" text-anchor="middle" dominant-baseline="central" fill="#9cc8e8" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="600">check &amp; measure</text>
+    <text x="340" y="82" text-anchor="middle" dominant-baseline="central" fill="#7a93a6" font-family="'JetBrains Mono',monospace" font-size="11.5">error rate</text>
+    <line x1="420" y1="69" x2="458" y2="69" stroke="#888780" stroke-width="1.4" marker-end="url(#kjarr)"/>
+
+    <rect x="460" y="40" width="180" height="58" rx="8" fill="rgba(46,172,181,0.16)" stroke="#2eacb5" stroke-width="1"/>
+    <text x="550" y="62" text-anchor="middle" dominant-baseline="central" fill="#7fd4da" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="600">run at scale</text>
+    <text x="550" y="82" text-anchor="middle" dominant-baseline="central" fill="#5f9a9e" font-family="'JetBrains Mono',monospace" font-size="11.5">error carried in</text>
+
+    <line x1="340" y1="120" x2="340" y2="156" stroke="#888780" stroke-width="1.4" marker-end="url(#kjarr)"/>
+    <text x="340" y="142" text-anchor="middle" fill="#8a8fa8" font-family="'JetBrains Mono',monospace" font-size="11">two roles, two standards</text>
+
+    <rect x="40" y="168" width="290" height="152" rx="8" fill="rgba(74,144,196,0.16)" stroke="#4a90c4" stroke-width="1"/>
+    <text x="60" y="192" dominant-baseline="central" fill="#9cc8e8" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="600">classification</text>
+    <text x="60" y="220" dominant-baseline="central" fill="#7a93a6" font-family="'JetBrains Mono',monospace" font-size="11">footnotes · OpenAlex matches</text>
+    <text x="60" y="250" dominant-baseline="central" fill="#b8bcc8" font-family="'JetBrains Mono',monospace" font-size="11.5">the model assigns labels,</text>
+    <text x="60" y="272" dominant-baseline="central" fill="#b8bcc8" font-family="'JetBrains Mono',monospace" font-size="11.5">validated against</text>
+    <text x="60" y="290" dominant-baseline="central" fill="#b8bcc8" font-family="'JetBrains Mono',monospace" font-size="11.5">human-coded ground truth</text>
+
+    <rect x="350" y="168" width="290" height="152" rx="8" fill="rgba(226,196,120,0.16)" stroke="#c9a84c" stroke-width="1"/>
+    <text x="370" y="192" dominant-baseline="central" fill="#e2c478" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="600">Wikidata matching</text>
+    <text x="370" y="220" dominant-baseline="central" fill="#a89858" font-family="'JetBrains Mono',monospace" font-size="11">IDs come from SPARQL</text>
+    <text x="370" y="248" dominant-baseline="central" fill="#b8bcc8" font-family="'JetBrains Mono',monospace" font-size="11.5">the model only judges</text>
+    <text x="370" y="270" dominant-baseline="central" fill="#b8bcc8" font-family="'JetBrains Mono',monospace" font-size="11.5">if a candidate matches</text>
+    <text x="370" y="298" dominant-baseline="central" fill="#a89858" font-family="'JetBrains Mono',monospace" font-size="11" font-style="italic">precision first: miss before mislink</text>
+
+    <rect x="140" y="350" width="400" height="60" rx="8" fill="rgba(138,143,168,0.10)" stroke="#8a8fa8" stroke-width="0.8" stroke-dasharray="4 3"/>
+    <text x="340" y="372" text-anchor="middle" dominant-baseline="central" fill="#8a8fa8" font-family="'JetBrains Mono',monospace" font-size="11.5">full precision / recall / intervals:</text>
+    <text x="340" y="392" text-anchor="middle" dominant-baseline="central" fill="#8a8fa8" font-family="'JetBrains Mono',monospace" font-size="11.5">a separate methods paper, not this talk</text>
+  </svg>
+</section>
+
+<section class="chapter-slide partv-light" data-background-color="#fbfaf6">
+  <div class="chapter-num">PART V</div>
+  <h2>The Role of Primary Text Analysis</h2>
+  <p>
+    Not to replace critical intuition,<br>
+    but to check its premises through frequency, distribution, comparison, and authorship attribution.
+  </p>
+</section>
+
+<section class="partv-light" data-background-color="#fbfaf6">
+  <span class="sec-label">Example · Critical Definition</span>
+  <h2>Two Kinds of Evidence within a Critical Definition</h2>
+  <div class="bq">
+    "As Jameson and other critics have observed, utopias are fundamentally
+    typified by a break, marked by islands and trenches in both space and time,
+    whereas <strong>I think</strong> dystopias tend to be characterized by
+    a creeping, incremental horror, typical of the dreadful."
+    <cite>— Robert T. Tally Jr., <em>The Fiction of Dread: Dystopia, Monstrosity, and Apocalypse</em> (Bloomsbury, 2024), p. 4</cite>
+  </div>
+  <div style="display:flex;gap:1em;margin-top:.7em;">
+    <div class="callout" style="flex:1;font-size:.58em;">
+      <span class="hi">utopia</span><br>
+      Defined by appeal to prior critics (Jameson et al.)
+    </div>
+    <div class="callout blue" style="flex:1;font-size:.58em;">
+      <span class="hi">dystopia</span><br>
+      Introduced via <em>I think</em>—the author's own critical judgment
+    </div>
+  </div>
+</section>
+
+<section class="partv-light" data-background-color="#fbfaf6">
+  <span class="sec-label">Primary Text Strategy</span>
+  <h2>Positioning Primary Text Analysis</h2>
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="t">Frequency</div>
+      Confirm the occurrence of specific vocabulary and conceptual terms. A basic check on critical impressions.
+    </div>
+    <div class="strategy-card">
+      <div class="t">Distribution</div>
+      Examine skews across corpora, periods, and genres. Use topic modeling etc. to identify tendencies.
+    </div>
+    <div class="strategy-card">
+      <div class="t">Comparison</div>
+      Compare differences across genres, authors, and periods to relativize the premises of a reading.
+    </div>
+    <div class="strategy-card">
+      <div class="t">Authorship attribution</div>
+      Verify co-authorship, attribution, and stylistic differences to check the bibliographic facts that criticism takes for granted.
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.js"></script>
+<script>
+Reveal.initialize({
+  hash:true, slideNumber:'c/t', progress:true, controls:true,
+  center:false, transition:'fade', transitionSpeed:'slow', backgroundTransition:'fade',
+  width:1200, height:700, margin:0.04, minScale:0.3, maxScale:1.5, plugins:[]
+});
+</script>
+</body>
+</html>
