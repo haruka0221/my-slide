@@ -1188,56 +1188,43 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 
   <div style="border:1px solid rgba(192,57,43,0.48); border-left:5px solid var(--accent-red); border-radius:10px; background:rgba(192,57,43,0.07); padding:.62em .75em;">
     <p style="font-size:.45em; color:var(--ivory); margin:0 0 .5em 0; line-height:1.35;">
-      <span style="color:var(--accent-red); font-weight:700;">Limit and use of this topography:</span>
-      it shows accumulated signals across databases, not a final account of each work.
+      <span style="color:var(--accent-red); font-weight:700;">Limit and use of this topography</span>
+      
     </p>
 
     <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:.9em;">
 
-     <!-- 1. Title-search limit -->
-      <div style="display:flex; align-items:center; gap:.5em;">
-        <svg viewBox="0 0 110 50" style="width:5em; flex-shrink:0;">
-          <text x="2" y="16" font-size="10" font-family="monospace" fill="#e2c478">"Tarzan of</text>
-          <text x="2" y="29" font-size="10" font-family="monospace" fill="#e2c478">the Apes"</text>
-          <text x="92" y="23" font-size="13" font-family="monospace" fill="#c0392b" text-anchor="middle">0</text>
-          <line x1="74" y1="22" x2="86" y2="22" stroke="#c0392b" stroke-width="1" marker-end="url(#ar)"/>
-          <defs>
-            <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-              <path d="M1 1 L8 5 L1 9" fill="none" stroke="#c0392b" stroke-width="1.5"/>
-            </marker>
-          </defs>
-          <text x="2" y="46" font-size="10" font-family="monospace" fill="#7fd4da">"Tarzan"</text>
-          <text x="92" y="46" font-size="11" font-family="monospace" fill="#7fd4da" text-anchor="middle">✓</text>
-          <line x1="60" y1="42" x2="86" y2="42" stroke="#7fd4da" stroke-width="1" marker-end="url(#ar2)"/>
-          <defs>
-            <marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-              <path d="M1 1 L8 5 L1 9" fill="none" stroke="#7fd4da" stroke-width="1.5"/>
-            </marker>
-          </defs>
-        </svg>
-        <span style="font-size:.4em; color:var(--ivory); line-height:1.3;">
-          <span class="hi">Title-search limit</span><br>
-          <span style="color:var(--muted);">exact titles miss series &amp; characters</span>
-        </span>
-      </div>
-
-      <!-- 2. Disciplinary displacement -->
+      <!-- 1. Anglophone skew -->
       <div style="display:flex; align-items:center; gap:.5em;">
         <svg viewBox="0 0 60 50" style="width:3.2em; flex-shrink:0;">
-          <circle cx="16" cy="25" r="13" fill="none" stroke="#4a90c4" stroke-width="1.2"/>
-          <text x="16" y="28" font-size="6.5" font-family="monospace" fill="#9cc8e8" text-anchor="middle">L&amp;L</text>
-          <circle cx="44" cy="25" r="13" fill="none" stroke="#8a7fc4" stroke-width="1.2"/>
-          <text x="44" y="24" font-size="5" font-family="monospace" fill="#b3a8e0" text-anchor="middle">African</text>
-          <text x="44" y="31" font-size="5" font-family="monospace" fill="#b3a8e0" text-anchor="middle">Studies</text>
-          <circle cx="44" cy="40" r="2" fill="#c0392b"/>
+          <circle cx="30" cy="25" r="19" fill="none" stroke="#888" stroke-width="0.8"/>
+          <path d="M30 6 A19 19 0 0 1 30 44 Z" fill="rgba(74,144,196,0.4)" stroke="none"/>
+          <text x="20" y="28" font-size="8" font-family="monospace" fill="#9cc8e8" text-anchor="middle">EN</text>
+          <text x="43" y="22" font-size="4.5" font-family="monospace" fill="#888" text-anchor="middle">other</text>
+          <text x="43" y="32" font-size="4.5" font-family="monospace" fill="#888" text-anchor="middle">langs</text>
         </svg>
         <span style="font-size:.4em; color:var(--ivory); line-height:1.3;">
-          <span class="hi">Displacement</span><br>
-          <span style="color:var(--muted);">absent here, present elsewhere</span>
+          <span class="hi">Anglophone skew</span><br>
+          <span style="color:var(--muted);">English-centric sources &amp; population</span>
         </span>
       </div>
 
-      <!-- 3. Temporal limit -->
+      <!-- 2. Source-specific bias -->
+      <div style="display:flex; align-items:center; gap:.5em;">
+        <svg viewBox="0 0 60 50" style="width:3.2em; flex-shrink:0;">
+          <rect x="8" y="30" width="9" height="14" fill="rgba(46,172,181,0.5)"/>
+          <rect x="21" y="20" width="9" height="24" fill="rgba(201,168,76,0.5)"/>
+          <rect x="34" y="26" width="9" height="18" fill="rgba(74,144,196,0.5)"/>
+          <rect x="47" y="14" width="9" height="30" fill="rgba(138,127,196,0.5)"/>
+          <line x1="6" y1="44" x2="58" y2="44" stroke="#888" stroke-width="0.6"/>
+        </svg>
+        <span style="font-size:.4em; color:var(--ivory); line-height:1.3;">
+          <span class="hi">Source-specific bias</span><br>
+          <span style="color:var(--muted);">each platform sees its own slice</span>
+        </span>
+      </div>
+
+      <!-- 3. Static, not temporal -->
       <div style="display:flex; align-items:center; gap:.5em;">
         <svg viewBox="0 0 60 50" style="width:3.2em; flex-shrink:0;">
           <line x1="6" y1="40" x2="54" y2="40" stroke="#888" stroke-width="0.8"/>
@@ -1246,8 +1233,8 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
           <path d="M14 38 Q24 20 34 26 T54 14" fill="none" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="3 2"/>
         </svg>
         <span style="font-size:.4em; color:var(--ivory); line-height:1.3;">
-          <span class="hi">Temporal limit</span><br>
-          <span style="color:var(--muted);">static now; no change over time</span>
+          <span class="hi">Static, not temporal</span><br>
+          <span style="color:var(--muted);">accumulated signals, no change over time</span>
         </span>
       </div>
 
@@ -1591,21 +1578,22 @@ html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; }
 
 <section>
   <span class="sec-label">Conclusion</span>
-  <h2>Turning the Question Around</h2>
+  <h2>Conclusion: Reading the Layers</h2>
 
-  <div style="max-width:78%; margin:1em auto 0; display:flex; flex-direction:column; gap:0.9em;">
+  <div style="max-width:80%; margin:1em auto 0; display:flex; flex-direction:column; gap:0.9em;">
 
     <p style="font-size:0.62em; color:var(--ivory); line-height:1.5; margin:0;">
-      Not DH applied <em>to</em> the text—<br>
-      but DH studying the <strong style="color:var(--gold-light);">layers</strong> around it.
+      A work's value is shaped not by the text alone,<br>
+      but by the <strong style="color:var(--gold-light);">layers</strong> around it.
     </p>
 
     <p style="font-size:0.62em; color:var(--ivory); line-height:1.5; margin:0;">
-      What we cite, teach, preserve, and overlook.
+      What we cite, teach, preserve, review, and overlook.
     </p>
 
     <p style="font-size:0.62em; color:var(--gold-light); line-height:1.5; margin:0;">
-      CLS as a mirror for criticism's own blind spots.
+      Digital methods connect those scattered traces—<br>
+      not one ranking, but a profile of visibility.
     </p>
 
   </div>
