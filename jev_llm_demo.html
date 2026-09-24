@@ -1,0 +1,1735 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jevを人文系データ研究で試す v3</title>
+<style>
+:root{--bg:#f8f7f4;--paper:#fff;--ink:#202124;--muted:#686d75;--line:#ddd9d2;--llm:#2f6fb3;--jev:#b94b45;--human:#d88a2d;--neutral:#777c84;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;--serif:Georgia,"Times New Roman","Noto Serif JP",serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}*{box-sizing:border-box}html,body{margin:0;height:100%;background:#111;color:var(--ink);font-family:var(--sans)}body{overflow:hidden}.deck{height:100vh;width:100vw;display:grid;place-items:center}.slide{display:none;position:absolute;width:min(100vw,calc(100vh*16/9));height:min(100vh,calc(100vw*9/16));background:var(--bg);padding:4.7% 5.7%;overflow:hidden;box-shadow:0 24px 72px rgba(0,0,0,.34)}.slide.active{display:block}.content{height:100%;display:flex;flex-direction:column}.topline{display:flex;justify-content:space-between;align-items:flex-start;gap:1.8rem}.eyebrow{font-size:.86rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}h1,h2,h3{margin:0;letter-spacing:-.02em}h1{font-size:4rem;line-height:1.08}h2{font-size:2.7rem;line-height:1.14;margin-top:.35rem;font-weight:700}h3{font-size:1.28rem;line-height:1.3}.subtitle{font-family:var(--serif);font-size:1.85rem;color:var(--muted);margin-top:1rem}.lead{font-size:1.28rem;line-height:1.62;max-width:1060px}.body{font-size:1.08rem;line-height:1.6}.small{font-size:.86rem;line-height:1.45;color:var(--muted)}.source{font-size:.70rem;color:#858991;line-height:1.35;margin-top:.7rem}.mono{font-family:var(--mono)}.serif{font-family:var(--serif)}.spacer{flex:1}.footer{position:absolute;left:5.7%;right:5.7%;bottom:3%;display:flex;justify-content:space-between;color:#8b8e93;font-size:.74rem}.legend{display:flex;gap:.45rem;flex-wrap:wrap}.tag{display:inline-flex;align-items:center;gap:.4rem;padding:.28rem .58rem;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.76rem;color:#555}.dot{width:8px;height:8px;border-radius:50%}.dot.human{background:var(--human)}.dot.llm{background:var(--llm)}.dot.jev{background:var(--jev)}.two{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.55rem;flex:1;min-height:0}.two.left{grid-template-columns:1.08fr .92fr}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.3rem}.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:1.05rem 1.15rem}.card.human{border-top:5px solid var(--human)}.card.llm{border-top:5px solid var(--llm)}.card.jev{border-top:5px solid var(--jev)}.card.neutral{border-top:5px solid var(--neutral)}.card p{margin:.5rem 0}.section-title{display:flex;align-items:center;gap:.62rem;margin-bottom:.75rem}.bar{width:11px;height:11px;border-radius:50%}.bar.human{background:var(--human)}.bar.llm{background:var(--llm)}.bar.jev{background:var(--jev)}.note{background:#fff;border:1px solid var(--line);border-left:4px solid var(--neutral);border-radius:10px;padding:.82rem .95rem;line-height:1.52}.note.human{border-left-color:var(--human)}.note.llm{border-left-color:var(--llm)}.note.jev{border-left-color:var(--jev)}.note.warn{border-left-color:var(--jev);background:#fff8f7}.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.65rem;align-items:center;margin-top:1.35rem}.step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:.95rem;text-align:center;min-height:105px;display:flex;flex-direction:column;justify-content:center}.arrow{font-size:1.7rem;color:#a0a3a8}.list{display:flex;flex-direction:column;gap:.62rem}.item{display:flex;gap:.68rem;line-height:1.5}.bullet{width:7px;height:7px;border-radius:50%;background:#999;margin-top:.55rem;flex:0 0 auto}.example{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1rem 1.1rem}.work{font-family:var(--serif);font-size:1.95rem;line-height:1.08}.meta{color:var(--muted);margin-top:.28rem}.candidates{display:flex;flex-direction:column;gap:.38rem;margin-top:.85rem}.candidate{display:grid;grid-template-columns:98px 1fr;gap:.55rem;align-items:start;padding:.48rem .55rem;border:1px solid var(--line);border-radius:9px;background:#fbfbfa;font-size:.82rem;line-height:1.35}.candidate.hit{background:#fff7ed;border-color:#e9c896}.qid{font-family:var(--mono);font-weight:700;color:#3d5f78}.kind{color:var(--muted);font-size:.78rem}.table{display:grid;grid-template-columns:1.05fr 1fr 1fr 1fr;margin-top:.9rem;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}.cell{padding:.67rem .75rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-size:.86rem;line-height:1.38}.cell:nth-child(4n){border-right:none}.cell.head{font-weight:700;background:#f1f0ed}.cell.human{background:#fff8ef}.cell.llm{background:#f1f6fc}.cell.jev{background:#fff3f2}.question{display:grid;grid-template-columns:.88fr 1.2fr;gap:.9rem;align-items:center;padding:.75rem 0;border-bottom:1px solid #ece8e1}.question:last-child{border-bottom:none}.qname{font-weight:700;color:var(--jev)}.qresult{font-size:1.05rem}.colored.human{color:var(--human);font-weight:700}.colored.llm{color:var(--llm);font-weight:700}.colored.jev{color:var(--jev);font-weight:700}.code{font-family:var(--mono);font-size:.8rem;background:#242526;color:#eee;border-radius:12px;padding:.85rem .95rem;line-height:1.5}@media(max-width:900px){h1{font-size:3rem}h2{font-size:2.05rem}.lead{font-size:1.02rem}.body{font-size:.96rem}}
+.qid {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.choice-num {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+</style>
+</head>
+<body><main class="deck">
+
+<section class="slide active">
+  <div class="content">
+
+    <div class="topline">
+      <div>
+        <div class="eyebrow">Humanities data × Jev</div>
+        <h1>Jevを人文系データ研究で試す</h1>
+        <div class="subtitle">
+          Testing Jev on a humanities data task
+        </div>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <p class="lead">
+      文学作品100件のWikidata照合を題材に、
+      <br>
+      LLMをjudgeとして使う方法と、
+      Jevのような「選択・判定」に特化したAPIの違いを整理する。
+    </p>
+
+    <div class="legend" style="margin-top:1.1rem">
+      <span class="tag">
+        <span class="dot human"></span>Human gold
+      </span>
+
+      <span class="tag">
+        <span class="dot llm"></span>LLM / GPT-v6
+      </span>
+
+      <span class="tag">
+        <span class="dot jev"></span>Jev-1.13.0
+      </span>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>1 / 10</span>
+    <span>← → で移動</span>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="content">
+
+    <div class="topline">
+      <div>
+        
+        <h2>
+          The Judgments Behind the Data
+
+        </h2>
+      </div>
+    </div>
+
+    <div class="two left">
+
+      <div class="card neutral">
+
+        <h3>
+          データ構築と判断
+        </h3>
+
+        <p class="body">
+  異なるデータベースのレコードを照合・同定する際には、
+  次の点を記録・検証する必要がある。
+</p>
+
+
+    
+        <div class="list" style="margin-top:.9rem">
+
+          <div class="item">
+            <span class="bullet"></span>
+            <div>
+              どの候補を採用したか。
+            </div>
+          </div>
+
+          <div class="item">
+            <span class="bullet"></span>
+            <div>
+              何を根拠にその候補を選んだか。
+            </div>
+          </div>
+
+          <div class="item">
+            <span class="bullet"></span>
+            <div>
+              その判断はどの程度正確か。
+            </div>
+          </div>
+
+          <div class="item">
+            <span class="bullet"></span>
+            <div>
+              不確実な例や誤りを、
+              あとから確認できるか。
+            </div>
+          </div>
+
+
+        </div>
+        <br>
+
+        <div class="note" style="margin-top:1rem">
+          データ規模が大きくなるほど、
+          こうした判断過程を記録し、
+          評価できる形で残す必要がある。
+        </div>
+
+      </div>
+
+
+      <div class="card human">
+
+        <div class="section-title">
+          <span class="bar human"></span>
+          <h3>
+            人間は複数の情報から候補を見分ける
+          </h3>
+        </div>
+
+        <p class="body">
+          例えばある文学作品を別のデータベースに照合すると、
+          検索結果には複数の候補が現れる。
+        </p>
+
+        <div class="candidates">
+
+          <div class="candidate hit">
+            <span class="choice-num">①</span>
+            <span>
+              正しいタイトル
+              <br>
+              <span class="kind">
+                by 正しい作者
+              </span>
+            </span>
+          </div>
+
+          <div class="candidate">
+            <span class="choice-num">②</span>
+            <span>
+              正しいタイトル
+              <br>
+              <span class="kind">
+                by 違う作者
+              </span>
+            </span>
+          </div>
+
+          <div class="candidate">
+            <span class="choice-num">③</span>
+            <span>
+              検索に引っかかった似たタイトル
+              <br>
+              <span class="kind">
+                title search noise
+              </span>
+            </span>
+          </div>
+
+          <div class="candidate">
+            <span class="choice-num">④</span>
+            <span>
+              正しいタイトルを含む全集・シリーズ・合作・版
+              <br>
+              <span class="kind">
+                作品そのものとは限らない
+              </span>
+            </span>
+          </div>
+
+        </div>
+
+        <div style="
+          font-size:3rem;
+          text-align:center;
+          margin:1.1rem 0 .4rem 0;
+        ">
+          👤 → ①
+        </div>
+
+       
+
+      </div>
+
+    </div>
+
+   
+
+  </div>
+
+
+</section>
+
+
+<section class="slide">
+  <div class="content">
+
+    <div class="topline">
+      <div>
+        <div class="eyebrow">AI-assisted judgment</div>
+        <h2>
+          人間が行っていた判断をAIに任せる
+          
+        </h2>
+      </div>
+    </div>
+
+    <div class="two left">
+
+      <div class="card llm">
+
+        <div class="section-title">
+          <span class="bar llm"></span>
+          <h3>判断に必要な情報と候補をAIに渡す</h3>
+        </div>
+
+        
+
+        <div style="
+  display:flex;
+  flex-direction:column;
+  gap:.7rem;
+  align-items:stretch;
+  margin:1.3rem 0;
+">
+
+  <div style="
+    padding:1rem;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:12px;
+    text-align:center;
+  ">
+
+    <div style="
+      font-size:1.25rem;
+      opacity:.7;
+      margin-bottom:.5rem;
+    ">
+      Input
+    </div>
+
+    <div style="
+      font-size:1.05rem;
+      font-weight:700;
+    ">
+      対象作品と候補の情報
+    </div>
+
+    <div style="
+      font-size:.9rem;
+      margin-top:.45rem;
+      line-height:1.6;
+    ">
+      タイトル・作者・年代・資料種別など
+    </div>
+
+  </div>
+
+  <div style="
+    font-size:1.35rem;
+    opacity:.7;
+    text-align:center;
+    line-height:1;
+  ">
+    ↓
+  </div>
+
+  <div style="
+    padding:1rem;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:12px;
+    text-align:center;
+  ">
+
+    <div style="
+      font-size:1.25rem;
+      opacity:.7;
+      margin-bottom:.5rem;
+    ">
+      Output
+    </div>
+
+    <div style="
+      font-size:1.05rem;
+      font-weight:700;
+    ">
+      複数の情報を踏まえて候補を評価
+    </div>
+
+    <div style="
+      font-size:.9rem;
+      margin-top:.45rem;
+      line-height:1.6;
+    ">
+      最も妥当な候補を選択
+      <br>
+      または該当候補なしと判断
+    </div>
+
+  </div>
+
+</div>
+
+      </div>
+
+
+      <div class="card human">
+
+       <div class="section-title">
+  <span class="bar human"></span>
+  <h3>人間の正解データと比較する</h3>
+</div>
+
+<p class="body">
+  一部のデータを人間が確認し、
+  <span class="colored human">Human gold</span>
+  としてAIの判定と比較する。
+</p>
+
+<div style="
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:.8rem;
+  align-items:center;
+  margin:1.3rem 0;
+">
+
+  <div style="
+    padding:1rem;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:12px;
+    text-align:center;
+  ">
+    <div style="
+      font-size:.85rem;
+      opacity:.7;
+      margin-bottom:.35rem;
+    ">
+      👤 Human gold
+    </div>
+
+    <div style="
+      font-size:1.6rem;
+      font-weight:700;
+    ">
+      100件
+    </div>
+
+    <div style="
+      font-size:.9rem;
+      margin-top:.35rem;
+    ">
+      人間が正解を確認
+    </div>
+  </div>
+
+  <div style="
+    font-size:1.1rem;
+    opacity:.7;
+  ">
+  <div>　compare <br>　　⇄</div>
+  </div>
+
+  <div style="
+    padding:1rem;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:12px;
+    text-align:center;
+  ">
+    <div style="
+      font-size:.85rem;
+      opacity:.7;
+      margin-bottom:.35rem;
+    ">
+      🤖 AI
+    </div>
+
+    <div style="
+      font-size:1.6rem;
+      font-weight:700;
+    ">
+      100件
+    </div>
+
+    <div style="
+      font-size:.9rem;
+      margin-top:.35rem;
+    ">
+      同じデータを判定
+    </div>
+  </div>
+
+</div>
+
+<div style="
+  padding:1rem;
+  border-radius:12px;
+  text-align:center;
+  background:rgba(255,255,255,.04);
+">
+
+  <div style="
+    font-size:.85rem;
+    opacity:.7;
+    margin-bottom:.4rem;
+  ">
+    Evaluation
+  </div>
+
+  <div style="
+    font-size:1.15rem;
+    font-weight:700;
+  ">
+    何件一致したか？
+  </div>
+
+  <div style="
+    margin-top:.5rem;
+    font-size:.95rem;
+  ">
+    Accuracy ・ Precision ・ Recall ・ F1
+  </div>
+
+</div>
+
+      </div>
+
+    </div>
+
+   
+
+  </div>
+
+  
+</section>
+
+
+
+<section class="slide">
+  <div class="content">
+
+    <div class="topline">
+      <div>
+       
+        <h2>
+          LLMによる判定と、
+          Jevによる型付き判断
+        </h2>
+      </div>
+
+      <div class="legend">
+        <span class="tag">
+          <span class="dot llm"></span>LLM
+        </span>
+
+        <span class="tag">
+          <span class="dot jev"></span>Jev
+        </span>
+      </div>
+    </div>
+
+    <p class="body" style="margin-bottom:1rem;">
+      <strong>Jev</strong> は、
+      <strong>TypeSafe AI</strong> が開発した
+      「System One Model」。
+      文章を生成することより、
+      ソフトウェアから直接利用できる判断を返すことに重点を置く。
+    </p>
+
+    <div class="two">
+
+      <div class="card llm">
+
+        <div class="section-title">
+          <span class="bar llm"></span>
+          <h3>LLM API</h3>
+        </div>
+
+        <p class="body">
+          候補や判断材料を自然言語で与え、
+          判定とその理由を生成させる。
+        </p>
+
+        <div class="note llm" style="margin-top:1rem">
+          MATCH / NO_MATCH / AMBIGUOUS
+          <br>
+          selected QID
+          <br>
+          判断理由
+        </div>
+
+      </div>
+
+
+      <div class="card jev">
+
+        <div class="section-title">
+          <span class="bar jev"></span>
+          <h3>Jev　 <span style="opacity:.45;">by TypeSafe AI</span></h3>
+        </div>
+
+        <p class="body">
+          問いの型をあらかじめ指定し、
+          判断結果を確率や選択肢として返す。
+        </p>
+
+        <div class="note jev" style="margin-top:1rem">
+          same_work = 0.98
+          <br>
+          any_match = 0.97
+          <br>
+          best_choice = Q728312
+        </div>
+
+      </div>
+
+    </div>
+
+   
+
+    <div class="source">
+      References:
+      Ouyang et al.,
+      “Training language models to follow instructions with human feedback,”
+      2022;
+      TypeSafe AI,
+      “Introducing System One Models & Jev,”
+      2026.
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>4 / 10</span>
+    
+  </div>
+</section>
+
+<section class="slide">
+  <div class="content">
+
+    <div class="topline">
+      <div>
+      
+
+        <h2>
+          照合事例：小説タイトルをWikidataのQIDに結びつける  
+        </h2>
+      </div>
+    </div>
+
+
+    <div class="two">
+
+      <div class="example">
+  <div class="work">
+    Friday's Child
+  </div>
+
+  <div class="meta">
+   by Louise Platt Hauck / 1934
+  </div>
+
+  <p class="body">
+    同じタイトルでも、作者や作品が異なる候補が見つかる。
+  </p>
+
+  <div class="candidates">
+
+    <div class="candidate">
+  <a
+    href="https://www.wikidata.org/wiki/Q5503468"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="qid qid-link"
+  >
+    Q5503468
+  </a>
+
+  <span>
+    Friday's Child
+    <br>
+    <span class="kind">
+      by Georgette Heyer / 1944 / 別作品
+    </span>
+  </span>
+</div>
+
+<div class="candidate">
+  <a
+    href="https://www.wikidata.org/wiki/Q54942498"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="qid qid-link"
+  >
+    Q54942498
+  </a>
+
+  <span>
+    Friday's Child
+    <br>
+    <span class="kind">
+      by James Blish / 短編 / 別作品
+    </span>
+  </span>
+</div>
+
+    <br>
+    <div class="result">
+  
+  <strong>　　　→　人手判定：取得した候補には正解なし</strong>
+</div>
+
+  </div>
+</div>
+
+      <div class="example">
+
+        <div class="work">
+          Flatland
+        </div>
+
+        <div class="meta">
+          Edwin Abbott Abbott / 1884
+        </div>
+
+        <p class="body">
+          Wikidataでは、同じ本でも
+  <strong>作品そのもの</strong>と<strong>特定の版</strong>が別項目として登録されていることがある。
+        </p>
+
+        <div class="candidates">
+
+  <div class="candidate hit">
+    <a
+      href="https://www.wikidata.org/wiki/Q728312"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="qid qid-link"
+    >
+      Q728312
+    </a>
+
+    <span>
+      Flatland
+      <br>
+      <span class="kind">
+        work-level item 　　　→ 　　<strong>正解</strong>
+      </span>
+    </span>
+  </div>
+
+  <div class="candidate">
+    <a
+      href="https://www.wikidata.org/wiki/Q19028559"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="qid qid-link"
+    >
+      Q19028559
+    </a>
+
+    <span>
+      Flatland, 1st edition
+      <br>
+      <span class="kind">
+        edition-levelに近い候補
+      </span>
+    </span>
+  </div>
+
+  <div class="candidate">
+    <a
+      href="https://www.wikidata.org/wiki/Q106574304"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="qid qid-link"
+    >
+      Q106574304
+    </a>
+
+    <span>
+      Flatland, a Romance of Many Dimensions
+      <br>
+      <span class="kind">
+        別表現・版に近い候補
+      </span>
+    </span>
+  </div>
+
+</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>6 / 10</span>
+    <span>Wikidata候補の例</span>
+  </div>
+</section>
+
+
+<section class="slide">
+  <div class="content">
+
+    <div class="topline">
+      <div>
+        <div class="eyebrow">Evaluation setup</div>
+
+        <h2>
+          同じ100作品について、
+          人手の正解とGPT・Jevを比較
+        </h2>
+      </div>
+
+      <div class="legend">
+        <span class="tag">
+          <span class="dot human"></span>Human gold
+        </span>
+
+        <span class="tag">
+          <span class="dot llm"></span>GPT-v6
+        </span>
+
+        <span class="tag">
+          <span class="dot jev"></span>Jev
+        </span>
+      </div>
+    </div>
+
+
+
+<div class="table">
+
+  <div class="cell head"></div>
+  <div class="cell head human">Human gold</div>
+  <div class="cell head llm">GPT-v6</div>
+  <div class="cell head jev">Jev</div>
+
+  <div class="cell">判断材料</div>
+
+  <div class="cell human">
+    作品情報とWikidataを人手で確認
+  </div>
+
+  <div class="cell llm">
+    作品情報＋取得したWikidata候補
+  </div>
+
+  <div class="cell jev">
+    作品情報＋同じWikidata候補
+  </div>
+
+
+  <div class="cell">判断結果</div>
+
+  <div class="cell human">
+    正解QID
+    <br>
+    または該当なし
+  </div>
+
+  <div class="cell llm">
+    MATCH / NO_MATCH
+    <br>
+    ＋ 選択QID・理由
+  </div>
+
+  <div class="cell jev">
+    候補ごとの確率
+    <br>
+    ＋ 最もよい候補
+  </div>
+
+</div>
+
+
+    <div class="two" style="margin-top:1rem; flex:0">
+
+      <div class="card human">
+
+        <h3>Human gold</h3>
+
+<strong>26/100</strong>：MATCH
+<br>
+<span class="small">
+  　同じ作品に対応する、研究データとして利用可能なWikidata項目がある
+</span>
+
+<br><br>
+
+<strong>74/100</strong>：NO_MATCH
+<br>
+<span class="small">
+  　その条件を満たすWikidata項目がない
+</span>
+
+      </div>
+
+
+      <div class="card neutral">
+
+        <h3>
+          何を比較するか
+        </h3>
+
+        <p class="body">
+          ① 100作品を最終的に正しく照合できたか
+          <br><br>
+          ② 正解QIDが候補にある場合、
+          正しい候補を選べたか
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>7 / 10</span>
+   
+  </div>
+
+</section>
+
+
+<section class="slide">
+  <div class="content">
+
+    <div class="topline">
+      <div>
+       
+
+        <h2>
+          GPTとJevにおける判定の設計
+        </h2>
+      </div>
+    </div>
+
+
+    <div class="two left">
+
+      <div class="card llm">
+
+        <div class="section-title">
+          <span class="bar llm"></span>
+          <h3>GPT：判定方針をpromptで与える</h3>
+        </div>
+
+        <p class="body">
+          対象作品とWikidata候補を渡し、
+          作品として同一かを判断させる。
+        </p>
+
+        <pre class="code">Determine which Wikidata candidate, if any,
+best represents the TARGET literary work.
+
+• Judge work identity, not title similarity alone
+• Author identity matters
+• Prefer a work-level item over an edition,
+  translation, or adaptation
+
+Return:
+MATCH / NO_MATCH / AMBIGUOUS
+selected_qid
+confidence
+reason</pre>
+
+        <p class="small">
+          　　　　　　　　　　　　　　　　　　GPT-5.6 Luna / frozen prompt v6
+        </p>
+
+      </div>
+
+
+      <div class="card jev">
+
+  <div class="section-title">
+    <span class="bar jev"></span>
+    <h3>Jev：問いの形をあらかじめ選ぶ</h3>
+  </div>
+
+
+  <p class="body small" style="line-height:1.9;">
+  <strong>・　Noul</strong>：
+  Yes / Noを判定 → <strong>Yesの確率（0–1）</strong>
+  <br>
+
+  <strong>・　Choice</strong>：
+  複数候補から1つ選択 → <strong>選択結果＋各候補の確率</strong>
+  <br>
+
+  <strong>・　Score</strong>：
+  段階評価 → <strong>スコア＋確率</strong>
+</p>
+
+<br>
+  <p class="small" style="margin-bottom:.01rem;">
+    今回使ったのは主に
+    <strong>Noul</strong>
+    と
+    <strong>Choice</strong>。
+  </p>
+
+
+  <div class="question">
+    <div class="qname">
+      Noul
+    </div>
+
+    <div class="qresult">
+      この候補は同じ作品か？
+      <br>
+      <span class="mono">
+        → 0.98
+      </span>
+    </div>
+  </div>
+
+
+  <div class="question">
+    <div class="qname">
+      Noul
+    </div>
+
+    <div class="qresult">
+      候補の中に対応する作品があるか？
+      <br>
+      <span class="mono">
+        → 0.97
+      </span>
+    </div>
+  </div>
+
+
+  <div class="question">
+    <div class="qname">
+      Choice
+    </div>
+
+    <div class="qresult">
+      最も妥当な候補はどれか？
+      <br>
+      <span class="mono">
+        → Q728312
+      </span>
+    </div>
+  </div>
+
+</div>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>5 / 10</span>
+    
+  </div>
+</section>
+
+
+
+<section class="slide">
+  <div class="content">
+
+    <div class="topline">
+      <div>
+      
+        <h2>
+          100作品の照合結果
+        </h2>
+      </div>
+    </div>
+
+
+    <div class="card" style="margin-top:.5rem;">
+
+      <table style="
+        width:100%;
+        border-collapse:collapse;
+        font-size:1.02rem;
+      ">
+
+        <thead>
+          <tr>
+
+            <th style="
+              text-align:left;
+              padding:.8rem 1rem;
+              border-bottom:1px solid rgba(255,255,255,.18);
+            ">
+              評価
+            </th>
+
+            <th style="
+              text-align:center;
+              padding:.8rem 1rem;
+              border-bottom:1px solid rgba(255,255,255,.18);
+            ">
+              <span class="colored llm">
+                GPT-v6
+              </span>
+            </th>
+
+            <th style="
+              text-align:center;
+              padding:.8rem 1rem;
+              border-bottom:1px solid rgba(255,255,255,.18);
+            ">
+              <span class="colored jev">
+                Jev
+              </span>
+            </th>
+
+          </tr>
+        </thead>
+
+
+        <tbody>
+
+          <tr>
+            <td style="
+              padding:1rem;
+              border-bottom:1px solid rgba(255,255,255,.10);
+            ">
+              <strong>
+                最終スコア
+              </strong>
+            </td>
+
+            <td style="
+              text-align:center;
+              padding:1rem;
+              border-bottom:1px solid rgba(255,255,255,.10);
+            ">
+              <strong style="font-size:1.7rem;">
+                98 / 100
+              </strong>
+            </td>
+
+            <td style="
+              text-align:center;
+              padding:1rem;
+              border-bottom:1px solid rgba(255,255,255,.10);
+            ">
+              <strong style="font-size:1.7rem;">
+                93 / 100
+              </strong>
+              *
+            </td>
+          </tr>
+
+
+          <tr>
+            <td style="padding:.6rem 1rem;">
+              MATCHを正しく判定
+            </td>
+
+            <td style="text-align:center;">
+              24 / 26
+            </td>
+
+            <td style="text-align:center;">
+              20 / 26
+            </td>
+          </tr>
+
+
+          <tr>
+            <td style="padding:.6rem 1rem;">
+              NO_MATCHを正しく判定
+            </td>
+
+            <td style="text-align:center;">
+              74 / 74
+            </td>
+
+            <td style="text-align:center;">
+              73 / 74
+            </td>
+          </tr>
+
+
+          <tr>
+            <td style="padding:.6rem 1rem;">
+              Precision <span class="small">(MATCHと判定したもののうち正しかった割合)</span></span>
+            </td>
+
+            <td style="text-align:center;">
+              1.000
+            </td>
+
+            <td style="text-align:center;">
+              0.952
+            </td>
+          </tr>
+
+
+          <tr>
+            <td style="padding:.6rem 1rem;">
+              Recall <span class="small">(Human goldのMATCH 26件のうち正しく拾えた割合)</span>
+            </td>
+
+            <td style="text-align:center;">
+              0.923
+            </td>
+
+            <td style="text-align:center;">
+              0.769
+            </td>
+          </tr>
+
+
+          <tr>
+            <td style="padding:.6rem 1rem;">
+              F1 <span class="small">(PrecisionとRecallの調和平均)</span></span>
+            </td>
+
+            <td style="text-align:center;">
+              <strong>
+                0.960
+              </strong>
+            </td>
+
+            <td style="text-align:center;">
+              <strong>
+                0.851
+              </strong>
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+    
+    <p class="small" style="
+      margin-top:.4rem;
+      opacity:.72;
+      line-height:1.6;
+    ">
+      * JevはMATCH / NO_MATCHを直接返さないため、
+      候補ありでは
+      <span class="mono">
+        any_candidate_match ≥ 0.5
+      </span>
+      をMATCHとして暫定集計。
+      候補0件はNO_MATCHとして処理。
+      0.5は今回、結果確認のために後から置いた基準。
+    </p>
+
+</section>
+
+
+<section class="slide">
+  <div class="content">
+
+    <div class="topline">
+      <div>
+        <h2>
+          最終結果の不一致はどこで生じたか
+        </h2>
+      </div>
+    </div>
+
+
+    <div class="card" style="
+      margin-top:1rem;
+      padding:1.1rem 1.4rem;
+    ">
+
+      <!-- 候補生成 -->
+      <div style="
+        display:grid;
+        grid-template-columns:1.25fr .55fr 2.4fr;
+        gap:1rem;
+        align-items:start;
+        padding:.8rem 0;
+      ">
+
+        <strong>
+          候補生成段階での不一致
+        </strong>
+
+        <div>
+          <span class="colored llm">GPT</span> 2件
+          <br>
+          <span class="colored jev">Jev</span> 2件
+        </div>
+
+        <div class="small" style="line-height:1.5;">
+          Wikidataには正解QIDが存在した（＝人間はMATCHと判断）が、
+          Pythonで作成した候補集合内に正解QIDが入らなかった。
+          <br>
+          → 両モデルから見ると「正解候補なし NO_MATCH」
+        </div>
+
+      </div>
+
+
+      <!-- threshold -->
+      <div style="
+        display:grid;
+        grid-template-columns:1.25fr .55fr 2.4fr;
+        gap:1rem;
+        align-items:start;
+        padding:.8rem 0;
+        border-top:1px solid rgba(0,0,0,.14);
+      ">
+
+        <strong>
+          確率から最終判定への変換
+        </strong>
+
+        <div>
+          <span class="colored jev">Jev</span> 4件
+        </div>
+
+        <div class="small" style="line-height:1.5;">
+          正解QIDは候補にあり、
+          Jevも正しい候補を選択。
+          <br>
+          ただし
+          <span class="mono">any_candidate_match</span>
+          が0.5未満だったためNO_MATCHとなった。
+        </div>
+
+      </div>
+
+
+      <!-- 判定 -->
+      <div style="
+        display:grid;
+        grid-template-columns:1.25fr .55fr 2.4fr;
+        gap:1rem;
+        align-items:start;
+        padding:.8rem 0;
+        border-top:1px solid rgba(0,0,0,.14);
+      ">
+
+        <strong>
+          MATCH / NO_MATCHの判定
+        </strong>
+
+        <div>
+          <span class="colored jev">Jev</span> 1件
+        </div>
+
+        <div class="small" style="line-height:1.5;">
+          Human goldではNO_MATCHだったが、
+          JevではMATCHと判定した。
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div style="
+      margin-top:.8rem;
+      padding-top:.75rem;
+      border-top:1px solid rgba(0,0,0,.18);
+    ">
+
+      <strong>
+        候補生成はGPT / Jev共通の前処理
+      </strong>
+
+      <p class="small" style="
+        margin:.35rem 0 0;
+        line-height:1.5;
+      ">
+        Pythonでタイトル・著者・タイトル類似度から候補を絞り、
+        judgeには小さな候補集合だけを渡した。
+        100作品で平均4.42候補、最大25候補。
+      </p>
+
+    </div>
+
+
+    <div style="
+      margin-top:.75rem;
+      padding:.65rem 0;
+      border-top:1px solid rgba(0,0,0,.22);
+      border-bottom:1px solid rgba(0,0,0,.22);
+      font-size:.95rem;
+      line-height:1.5;
+    ">
+      不一致は、
+      <strong>候補から正しいQIDを選ぶ段階だけでなく、</strong>
+      候補生成や、Jevの確率を最終判定に変換する段階でも生じた。
+    </div>
+
+  </div>
+</section>
+
+<section class="slide">
+  <div class="content">
+
+    <div class="topline">
+      <div>
+       
+        <h2>
+          同じ候補情報でも判定の設計で結果が分かれた
+        </h2>
+      </div>
+    </div>
+
+
+    <!-- shared input -->
+    <div style="
+      margin-top:.8rem;
+      padding:.75rem 1rem;
+      border-top:1px solid rgba(0,0,0,.16);
+      border-bottom:1px solid rgba(0,0,0,.16);
+      display:grid;
+      grid-template-columns:1fr 1.4fr;
+      gap:1.2rem;
+    ">
+
+      <div>
+        <strong>対象作品</strong>
+        <div class="small" style="margin-top:.3rem;">
+          <em>Dyrendel</em>
+          <br>
+          by Johan Bojer / 1921
+        </div>
+      </div>
+
+      <div>
+        <strong>候補 Q12714183</strong>
+
+        <div class="small" style="
+          margin-top:.3rem;
+          line-height:1.45;
+        ">
+          title：<strong>欠損</strong>
+          &nbsp; / &nbsp;
+          author：Johan Bojer
+          &nbsp; / &nbsp;
+          year：1921
+          <br>
+          description：
+          “1921 novel by Johan Bojer”
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="two left" style="
+      margin-top:1rem;
+      gap:1rem;
+      flex:1;
+    ">
+
+      <!-- GPT -->
+      <div class="card llm" style="
+        padding:1.15rem 1.35rem;
+      ">
+
+        <div class="section-title">
+          <span class="bar llm"></span>
+          <h3>GPT-v6 → NO_MATCH</h3>
+        </div>
+
+        <div style="
+          margin-top:.7rem;
+          padding-top:.7rem;
+          border-top:1px solid rgba(0,0,0,.14);
+        ">
+
+          <strong>
+            実際の判断理由
+          </strong>
+
+          <p class="small" style="
+            margin:.4rem 0 0;
+            line-height:1.5;
+          ">
+            "作者と年は一致するため候補としては plausible。
+          
+            ただし、
+            <strong>
+              Dyrendelと結びつけるタイトルその他の肯定的な証拠がない"
+            </strong>
+           
+          </p>
+
+        </div>
+
+
+        <div style="
+          margin-top:.75rem;
+          padding-top:.7rem;
+          border-top:1px solid rgba(0,0,0,.14);
+        ">
+
+          <strong>
+            promptで明示していた基準
+          </strong>
+
+          <p class="small" style="
+            margin:.4rem 0 0;
+            line-height:1.5;
+          ">
+            情報が欠けていて「矛盾がない」だけでは、MATCHの根拠にしない。<br>
+作者・年代が一致していても、タイトルなど作品同一性を示す情報が必要。
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Jev -->
+      <div class="card jev" style="
+        padding:1.15rem 1.35rem;
+      ">
+
+        <div class="section-title">
+          <span class="bar jev"></span>
+          <h3>Jev → MATCH</h3>
+        </div>
+
+
+        <div style="
+          margin-top:.7rem;
+          padding-top:.7rem;
+          border-top:1px solid rgba(0,0,0,.14);
+        ">
+
+          <strong>
+            個別の問いとして判定
+          </strong>
+
+          <p class="small" style="
+            margin:.4rem 0 0;
+            line-height:1.65;
+          ">
+            この候補は同じ作品か？
+            → <strong>0.64</strong>
+            <br>
+
+            候補内に対応する作品があるか？
+            → <strong>0.68</strong>
+            <br>
+
+            最も妥当な候補は？
+            → <strong>Q12714183</strong> <br>　(これはDen siste vikingという別作品のQID)
+          </p>
+
+        </div>
+
+
+        <div style="
+          margin-top:.75rem;
+          padding-top:.7rem;
+          border-top:1px solid rgba(0,0,0,.14);
+        ">
+
+          <p class="small" style="
+            margin:0;
+            line-height:1.5;
+          ">
+            タイトルは欠けている一方、
+            <strong>作者・年代・作品タイプは一致</strong>。
+           
+            その一致を反映して、
+            0.5を超える確率を与えた。
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div style="
+      margin-top:.75rem;
+      padding:.65rem 0;
+      border-top:1px solid rgba(0,0,0,.22);
+      border-bottom:1px solid rgba(0,0,0,.22);
+      font-size:.95rem;
+      line-height:1.5;
+    ">
+     
+      この例では、モデルそのものだけでなく、
+      <strong>GPTに与えた判定基準と、Jevでの問いの分け方</strong>
+      が最終結果の違いに表れた。
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="slide">
+  <div class="content">
+
+    <div class="topline">
+      <div>
+       
+        <h2>今回の実験から見えたこと</h2>
+      </div>
+    </div>
+
+
+    <div class="two">
+
+      <div class="card llm">
+
+        <div class="section-title">
+          <span class="bar llm"></span>
+          <h3>LLM</h3>
+        </div>
+
+        <p class="body">
+          MATCH / NO_MATCH、
+          対応するQID、判断理由まで
+          まとめて出力できる。
+        </p>
+
+        <div style="
+          margin-top:1rem;
+          padding-top:.8rem;
+          border-top:1px solid rgba(0,0,0,.14);
+        ">
+          <strong>
+            向いている場面
+          </strong>
+
+          <p class="small" style="
+            margin:.4rem 0 0;
+            line-height:1.55;
+          ">
+            判断理由を確認したい場合や、
+            例外的なケースを個別に検討したい場合。
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="card jev">
+
+        <div class="section-title">
+          <span class="bar jev"></span>
+          <h3>Jev</h3>
+        </div>
+
+        <p class="body">
+          判断をNoul / Choiceなどに分け、
+          確率や選択結果として取得できる。
+        </p>
+
+        <div style="
+          margin-top:1rem;
+          padding-top:.8rem;
+          border-top:1px solid rgba(0,0,0,.14);
+        ">
+          <strong>
+            向いている場面
+          </strong>
+
+          <p class="small" style="
+            margin:.4rem 0 0;
+            line-height:1.55;
+          ">
+            同じ種類の判断を繰り返し、
+            確率を使って処理を分岐させたい場合。
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div style="
+      margin-top:1rem;
+      padding:.8rem 0;
+      border-top:1px solid rgba(0,0,0,.18);
+      border-bottom:1px solid rgba(0,0,0,.18);
+    ">
+
+      <strong>
+        モデル以外の設計も結果に影響する
+      </strong>
+
+      <p class="small" style="
+        margin:.4rem 0 0;
+        line-height:1.55;
+      ">
+        今回の不一致には、
+        候補生成や入力メタデータの不足によるものもあった。
+        Jevではさらに、確率をMATCH / NO_MATCHに変換する基準によって最終結果が変わる。
+      </p>
+
+    </div>
+
+
+    <div style="
+      margin-top:1rem;
+      font-size:1.05rem;
+      line-height:1.55;
+    ">
+      <strong>
+        「LLMかJevか」という二者択一というより、判断のどの部分をAIに任せ、どこをルールや人手で処理するかという違いとして考えられる。
+      </strong>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  let i = 0;
+
+  function show(n) {
+    i = Math.max(
+      0,
+      Math.min(slides.length - 1, n)
+    );
+
+    slides.forEach((s, j) => {
+      s.classList.toggle('active', j === i);
+    });
+
+    history.replaceState(
+      null,
+      '',
+      '#' + (i + 1)
+    );
+  }
+
+  document.addEventListener('keydown', e => {
+    if (
+      [
+        'ArrowRight',
+        'PageDown',
+        ' ',
+        'Enter'
+      ].includes(e.key)
+    ) {
+      e.preventDefault();
+      show(i + 1);
+    }
+
+    if (
+      [
+        'ArrowLeft',
+        'PageUp',
+        'Backspace'
+      ].includes(e.key)
+    ) {
+      e.preventDefault();
+      show(i - 1);
+    }
+
+    if (e.key === 'Home') {
+      show(0);
+    }
+
+    if (e.key === 'End') {
+      show(slides.length - 1);
+    }
+  });
+
+  const h = parseInt(
+    location.hash.slice(1),
+    10
+  );
+
+  if (
+    h &&
+    h >= 1 &&
+    h <= slides.length
+  ) {
+    show(h - 1);
+  }
+</script>
+
+</body></html>
