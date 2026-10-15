@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文学研究のためのデジタル資料活用：メタデータと本文から何がわかるか</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F7F4; --ink:#1E2533; --muted:#5B6473; --rule:#D5D9D2;
+  --work:#2C6E6A; --work-bg:#E3EFED; --ed:#A8721A; --ed-bg:#F5EBD8;
+  --item:#8A8F98; --item-bg:#ECEDEF; --panel:#FFFFFF; --link:#1F5FBF; --on:#FFFFFF;
+  --serif:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#161A21; --ink:#E6E8EB; --muted:#A3AAB5; --rule:#2F3540;
+    --work:#62B4AC; --work-bg:#1D2E2D; --ed:#D9A54A; --ed-bg:#2E2618;
+    --item:#9097A2; --item-bg:#23272F; --panel:#1C2029; --link:#86B4FF; --on:#10141A;
+    color-scheme: dark;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--paper);color:var(--ink);font-family:var(--sans);overflow:hidden}
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#deck{width:1280px;height:720px;position:relative;transform-origin:center center}
+.slide{position:absolute;inset:0;padding:52px 72px 48px;display:none;background:var(--paper)}
+.slide.active{display:block}
+h1,h2{font-family:var(--serif);font-weight:700;margin:0;letter-spacing:.01em}
+h2{font-size:36px;line-height:1.3;margin-bottom:26px}
+p,li{font-size:22px;line-height:1.7}
+ul{margin:0;padding-left:1.2em}
+li{margin:4px 0}
+.muted{color:var(--muted)}
+.small{font-size:17px;line-height:1.6}
+.xs{font-size:14px;line-height:1.5;color:var(--muted)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.cols-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.box{border:1px solid var(--rule);background:var(--panel);padding:18px 22px;border-radius:6px}
+.work{color:var(--work)} .ed{color:var(--ed)}
+.src{position:absolute;left:72px;bottom:22px;font-size:13px;color:var(--muted);max-width:1080px}
+#num{position:fixed;right:18px;bottom:12px;font-size:13px;color:var(--muted)}
+a{color:var(--link);text-decoration:underline;text-underline-offset:2px}
+svg a text{fill:var(--link);text-decoration:underline}
+.notes{display:none}
+body.show-notes .notes{display:block;position:absolute;left:0;right:0;bottom:0;max-height:200px;overflow:auto;
+  background:var(--ink);color:var(--paper);font-size:16px;line-height:1.6;padding:12px 72px;opacity:.95}
+svg text{font-family:var(--sans)}
+svg text:not([fill]){fill:var(--ink)}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);font-size:17px;line-height:1.5;vertical-align:top}
+th{font-weight:700;color:var(--muted)}
+code{font-size:.9em;background:var(--item-bg);padding:1px 6px;border-radius:3px}
+.appendix-tag{display:inline-block;font-size:14px;color:var(--muted);border:1px solid var(--rule);padding:2px 10px;border-radius:12px;margin-bottom:10px}
+.title-slide{display:none;flex-direction:column;justify-content:center}
+.title-slide.active{display:flex}
+.title-slide .event{font-size:20px;color:var(--muted);margin-bottom:22px}
+.title-slide h1{font-size:50px;line-height:1.35;max-width:1050px}
+.title-slide .meta{margin-top:44px;font-size:20px;line-height:1.8}
+.stack{display:flex;height:64px;border-radius:4px;overflow:hidden;margin:14px 0 8px}
+.stack div{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px}
+.hbar{display:grid;grid-template-columns:110px 1fr 90px;align-items:center;gap:12px;margin:10px 0;font-size:18px}
+.hbar .bar{height:26px;background:var(--work);border-radius:2px}
+.hbar .bar.dashed{background:none;border:2px dashed var(--item)}
+.dir{border-top:4px solid var(--rule);padding-top:14px}
+.dir.strong{border-top-color:var(--work)}
+.dir h3{font-family:var(--serif);font-size:24px;margin:0 0 10px}
+.poster{display:grid;grid-template-columns:118px 1fr;gap:12px;padding:9px 0;border-bottom:1px solid var(--rule)}
+.poster b{font-size:16px}
+.poster p{margin:0;font-size:15px;line-height:1.55}
+.pill{display:inline-block;font-size:12px;border:1px solid var(--rule);border-radius:10px;padding:0 8px;margin-top:4px;color:var(--muted)}
+.pill.out{border-color:var(--ink);color:var(--ink);font-weight:700}
+.three{display:grid;grid-template-columns:repeat(3,1fr)}
+.three > div{padding:0 26px;border-left:2px solid var(--rule)}
+.three > div:first-child{padding-left:0;border-left:none}
+.mini{display:grid;grid-template-columns:130px 1fr 52px;align-items:center;gap:8px;font-size:14px;margin:6px 0}
+.mini .bar{height:16px;background:var(--ed);border-radius:2px}
+.prompt{border:1px solid var(--rule);background:var(--panel);border-radius:14px 14px 14px 2px;padding:16px 20px;font-size:16px;line-height:1.65}
+.prompt p{font-size:16px;margin:0 0 8px}
+.prompt ul{font-size:16px}
+.prompt li{font-size:16px;line-height:1.55;margin:2px 0}
+.trend{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.trend > div{border-top:3px solid var(--rule);padding-top:12px}
+.trend > div.hl{border-top:5px solid var(--ink)}
+.trend h3{font-family:var(--serif);font-size:22px;margin:0 0 10px}
+.trend dl{margin:0}
+.trend dt{font-weight:700;font-size:16px;margin-top:10px}
+.trend dd{margin:2px 0 0;font-size:16px;line-height:1.55;color:var(--muted)}
+.trend .hl dd{color:var(--ink)}
+</style>
+</head>
+<body>
+<div id="stage"><div id="deck">
+
+<!-- 1 -->
+<section class="slide title-slide">
+  <div class="event">NIHU DH技術講習会</div>
+  <h1>文学研究のためのデジタル資料活用：<br>メタデータと本文から何がわかるか</h1>
+  <div class="meta">2026年10月16日（金）13:00–14:30　オンライン（Zoom）<br>筒井遥（人間文化研究機構 DH推進室 特任助教）</div>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <h2>人間文化研究機構と DH推進室</h2>
+  <div class="cols">
+    <div>
+      <p><strong><a href="https://www.nihu.jp/">人間文化研究機構（NIHU）</a></strong><br>国文学研究資料館・国立国語研究所・国立歴史民俗博物館・国立民族学博物館・国際日本文化研究センター・総合地球環境学研究所の6機関からなる大学共同利用機関法人</p>
+      <p><strong><a href="https://dh.nihu.jp/member">DH推進室</a></strong><br>機構全体のデジタル・ヒューマニティーズの研究と基盤整備を担当</p>
+    </div>
+    <div>
+      <p><strong>技術講習会</strong><br>DHに関わる研究手法やツールを、機構内外の研究者と共有する企画</p>
+      <p><strong>話し手</strong><br>筒井遥：英文学（コンラッド研究）／書誌メタデータを用いた文学研究</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- 3 -->
+<section class="slide">
+  <h2>文学における計量分析</h2>
+  <svg viewBox="0 0 1136 260" width="1136" height="260"
+       role="img" aria-label="文学における計量分析の展開">
+
+    <line x1="40" y1="70" x2="1100" y2="70"
+          stroke="var(--rule)" stroke-width="3"/>
+
+    <circle cx="140" cy="70" r="10" fill="var(--ink)"/>
+    <text x="140" y="38" text-anchor="middle"
+          font-size="22" font-weight="700">1960年代〜</text>
+    <text x="140" y="112" text-anchor="middle"
+          font-size="19">語の頻度・分布の分析</text>
+    <text x="140" y="140" text-anchor="middle"
+          font-size="19">統計的な著者推定</text>
+    <text x="140" y="172" text-anchor="middle"
+          font-size="15" fill="var(--muted)">Mosteller &amp; Wallace (1964)</text>
+
+    <circle cx="560" cy="70" r="10" fill="var(--ink)"/>
+    <text x="560" y="38" text-anchor="middle"
+          font-size="22" font-weight="700">2000年代〜</text>
+    <text x="560" y="112" text-anchor="middle"
+          font-size="19">遠読（distant reading）</text>
+    <text x="560" y="140" text-anchor="middle"
+          font-size="19">大規模な文学史研究</text>
+    <text x="560" y="172" text-anchor="middle"
+          font-size="15" fill="var(--muted)">Moretti (2000, 2005)</text>
+
+    <circle cx="980" cy="70" r="10" fill="var(--ink)"/>
+    <text x="980" y="38" text-anchor="middle"
+          font-size="22" font-weight="700">2010年代〜現在</text>
+    <text x="980" y="112" text-anchor="middle"
+          font-size="19">computational literary studies</text>
+    <text x="980" y="140" text-anchor="middle"
+          font-size="19">大規模コーパス・機械学習</text>
+    <text x="980" y="172" text-anchor="middle"
+          font-size="15" fill="var(--muted)">Jockers (2013) / Underwood (2019)</text>
+  </svg>
+
+  <p style="margin-top:20px">
+    分析の対象：本文の語彙・文体・主題・感情から、
+    作品集合の規模・ジャンル・出版動向まで
+  </p>
+
+  <aside class="notes">
+    文学の計量分析は1960年代に始まったわけではなく、
+    19世紀から語彙統計や著者推定の試みがある。
+    MostellerとWallaceの1964年の研究はその代表的な成果。
+
+    2000年代にはMorettiが遠読という考え方を提唱し、
+    個々の作品だけでなく、より広い文学史の構造を
+    捉える方法を論じた。
+    Burrows (2002) のDeltaは、
+    計量文体論・著者推定の発展として位置づけられる。
+
+    2010年代以降はJockersやUnderwoodらによって、
+    大規模コーパスを使った文学史研究が発展した。
+
+    なお、遠読は必ずしもコンピュータによる
+    本文分析だけを意味しない。
+    作品数や出版年などの書誌メタデータを使って
+    文学史を広く捉えることもできる。
+    今回のOpen Libraryの実習は、こちらの方向につながる。
+  </aside>
+</section>
+
+
+
+<!-- 4 -->
+<section class="slide">
+  <h2 style="margin-bottom:8px">最近の動向：DH2026（大田、2026年7月）</h2>
+  <p class="small muted" style="margin:0 0 18px">SIG-DLS ミニカンファレンス <a href="https://www.ailc-icla.org/events/dh2026-sig-mini-conference-digital-and-or-comparative-literary-studies-today/">“Digital and/or Comparative Literary Studies Today”</a> のポスターの一部を、扱う対象で分けると</p>
+  <div class="trend">
+    <div>
+      <h3>本文を分析する</h3>
+      <dl>
+        <dt>Kim</dt><dd>シェイクスピアの悲劇と喜劇を、8つの言語指標の動きで比較</dd>
+        <dt>Tabata</dt><dd>Dickens の語の意味のずれを Word2Vec で検出</dd>
+        <dt>Stiemer ほか</dt><dd>独語・ヘブライ語の気候変動小説を LLM で分類</dd>
+        <dt>Furuya</dt><dd>英日翻訳を対象に、LLM による著者推定を検討</dd>
+      </dl>
+    </div>
+    <div class="hl">
+      <h3>本文の外側の記録を分析する</h3>
+      <dl>
+        <dt>Maki</dt><dd>近代日本の発禁本カタログ</dd>
+        <dt>Park &amp; Kang</dt><dd>韓国ベストセラー小説の帯（推薦文）</dd>
+        <dt>Lorenz</dt><dd>東ドイツの作家の書簡ネットワーク</dd>
+        <dt>Tsutsui</dt><dd>論文・シラバス・読者レビュー・目録をつないだ正典性</dd>
+      </dl>
+    </div>
+    <div>
+      <h3>研究・教育の環境をつくる</h3>
+      <dl>
+        <dt>Song</dt><dd>ダンテ『神曲』の注釈を1行単位で比較する環境</dd>
+        <dt>Lee</dt><dd>音なども使う、視覚に偏らない可視化</dd>
+        <dt>Roy</dt><dd>電子文学の教育とノーコードツール</dd>
+      </dl>
+    </div>
+  </div>
+  <p class="small" style="margin-top:20px">対象の言語・時代は多様。LLM は分類や同定の補助として使われ、人間による検証と組み合わせる報告が見られる</p>
+  <div class="src">事前提出ポスターの要旨より筆者要約。全体は <a href="https://dh2026.adho.org/wp-content/uploads/2026/07/DH2026_Main_Conference_Program.pdf">DH2026 プログラム</a>、<a href="https://doi.org/10.5281/zenodo.21495909">Book of Abstracts</a> を参照</div>
+  <aside class="notes">本文そのものを分析する発表と並んで、検閲記録・帯・書簡・書誌といった本文の外側の記録を扱う発表も複数ある。後の「方向②」につながる。読者受容の研究として van Dalen-Oskam, The Riddle of Literary Quality (2023) にも触れる。古屋先生の発表は会場にいらっしゃれば一言紹介。</aside>
+</section>
+
+
+<!-- 6 -->
+<section class="slide">
+  <h2>成果を支える基盤と、文学研究とのあいだの距離</h2>
+  <div style="display:grid;grid-template-columns:1fr 1.25fr;gap:48px">
+    <div>
+      <p class="small muted" style="margin:0 0 10px">これまでの成果は、図書館や研究プロジェクトが構築してきた資料の上にある</p>
+      <svg viewBox="0 0 420 300" width="420" height="300" role="img" aria-label="成果と基盤">
+        <rect x="110" y="20" width="200" height="70" rx="4" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.5"/>
+        <text x="210" y="62" text-anchor="middle" font-size="20" font-weight="700">計量的な成果</text>
+        <rect x="10" y="120" width="400" height="48" fill="var(--panel)" stroke="var(--rule)"/>
+        <text x="210" y="151" text-anchor="middle" font-size="18">研究プロジェクトのコーパス</text>
+        <rect x="10" y="176" width="400" height="48" fill="var(--panel)" stroke="var(--rule)"/>
+        <text x="210" y="207" text-anchor="middle" font-size="18">電子テキストアーカイブ</text>
+        <rect x="10" y="232" width="400" height="48" fill="var(--panel)" stroke="var(--rule)"/>
+        <text x="210" y="263" text-anchor="middle" font-size="18">図書館目録・書誌データ</text>
+        <line x1="210" y1="90" x2="210" y2="120" stroke="var(--ink)" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div>
+      <p class="small muted" style="margin:0 0 6px">英文学の主要5誌（PMLA, NLH, Novel, Critical Inquiry, Modernism/modernity）2000–2025年、約11,600件のうち DH関連語を含む75件の内訳</p>
+      <div class="stack">
+        <div style="width:12%;background:#2C6E6A">12%</div>
+        <div style="width:60%;background:#5B6473">60%</div>
+        <div style="width:28%;background:#9AA1AB">28%</div>
+      </div>
+      <table>
+        <tr><td><span style="color:#2C6E6A">■</span> 方法として使用</td><td>9件</td></tr>
+        <tr><td><span style="color:#5B6473">■</span> DH・方法をめぐる議論</td><td>45件</td></tr>
+        <tr><td><span style="color:#9AA1AB">■</span> 言及・書評</td><td>21件</td></tr>
+      </table>
+      <p class="small" style="margin-top:14px">議論の対象としては現れているが、方法として使われている例はまだあまり見えていない</p>
+    </div>
+  </div>
+  <div class="src">筒井（準備中）。DH関連語でタイトル・要旨を絞り込み、LLMで分類。図の初出：<a href="https://haruka0221.github.io/my-slide/KCL20260624.html#/1/4">筒井、2026年6月の発表スライド</a></div>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <h2>距離をどう縮めるか：これまでの議論</h2>
+  <p class="small"><a href="https://doi.org/10.7208/chicago/9780226612973.001.0001">Underwood (2019)</a> の議論の要点：計量的手法は、文学研究者がすでに持っている問いに応える形で意味を持つ</p>
+  <div class="cols" style="margin-top:18px">
+    <div class="dir">
+      <h3>① 本文のパターンから文学史へ</h3>
+      <p class="small">大規模な本文分析の結果を、文学史の問いに結びつける</p>
+      <p class="small muted">Moretti, Jockers, Underwood<br>批判：意味づけ（<a href="https://opinionator.blogs.nytimes.com/2012/01/23/mind-your-ps-and-bs-the-digital-humanities-and-interpretation/">Fish 2012</a>）、結果の頑健性（<a href="https://doi.org/10.1086/702594">Da 2019</a>）</p>
+    </div>
+    <div class="dir strong">
+      <h3>② 本文の外側にある記録を証拠にする</h3>
+      <p class="small">何をデータとみなすかを広げ、版・書誌・受容の記録を扱う。文学研究がもともと参照してきた側面に、計量的な証拠を与える</p>
+      <p class="small muted"><a href="https://doi.org/10.1215/00267929-3699787">Bode (2017)</a>, <a href="https://doi.org/10.1017/9781108922036">Piper (2020)</a>, Walsh (2023)</p>
+    </div>
+  </div>
+  
+  <aside class="notes">Da の再現性批判、Bode のコーパスの偏りへの批判はここで触れる。</aside>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <h2>文学研究にもともとある「数える」場面</h2>
+  <div style="display:grid;grid-template-columns:420px 1fr;gap:44px;align-items:start">
+    <svg viewBox="0 0 420 420" width="420" height="420" role="img" aria-label="作品を取り巻く層">
+      <circle cx="210" cy="210" r="170" fill="none" stroke="var(--rule)" stroke-dasharray="4 6"/>
+      <circle cx="210" cy="210" r="68" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.5"/>
+      <text x="210" y="217" text-anchor="middle" font-size="22" font-weight="700">作品</text>
+      <g font-size="19">
+        <text x="210" y="44" text-anchor="middle">批評</text>
+        <text x="360" y="128" text-anchor="middle">引用</text>
+        <text x="360" y="302" text-anchor="middle">版</text>
+        <text x="210" y="390" text-anchor="middle">教育</text>
+        <text x="60" y="302" text-anchor="middle">書評</text>
+        <text x="60" y="128" text-anchor="middle">受容</text>
+      </g>
+    </svg>
+    <div>
+      <br>
+      <p class="small" style="margin:0">作品を取り巻く歴史的な位置づけについての問い</p>
+      <ul class="small">
+         <br>
+        <li>どのように評価されてきたか</li>
+        <li>いつ注目され、いつ忘れられたか</li>
+        <li>どの程度出版・流通してきたか</li>
+        <li>どのように正典化・再評価されてきたか</li>
+      </ul>
+      
+    </div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <h2>評価を測る：代理指標</h2>
+  <p class="small">「どれくらい評価されてきたか」は直接には測れないため、代わりの指標を数える</p>
+  <table style="margin-top:12px">
+    <tr><th style="width:30%">指標</th><th style="width:26%">何を反映しうるか</th><th>取得元の例</th></tr>
+    <tr><td>出版点数・版数</td><td>流通</td><td><a href="https://openlibrary.org/">Open Library</a>、<a href="https://ndlsearch.ndl.go.jp/">NDLサーチ</a>、<a href="https://search.worldcat.org/">WorldCat</a></td></tr>
+    <tr><td>図書館の所蔵数</td><td>流通・保存</td><td><a href="https://search.worldcat.org/">WorldCat</a>、<a href="https://www.hathitrust.org/">HathiTrust</a>、<a href="https://www.bl.uk/">British Library</a></td></tr>
+    <tr><td>論文での言及数</td><td>学術的な注目</td><td><a href="https://www.jstor.org/">JSTOR</a>、<a href="https://openalex.org/">OpenAlex</a></td></tr>
+    <tr><td>シラバス・教科書への採用</td><td>教育</td><td><a href="https://www.opensyllabus.org/">Open Syllabus</a></td></tr>
+    <tr><td>翻訳の数</td><td>国際的な流通</td><td>Index Translationum、各国の書誌</td></tr>
+    <tr><td>読者の評価・書評</td><td>読者受容</td><td><a href="https://www.goodreads.com/">Goodreads</a></td></tr>
+  </table>
+  <p class="small" style="margin-top:16px">多くは公開データベースから取得できる。ただし指標ごとに「何をひとつと数えているか」が異なる</p>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <h2 style="margin-bottom:16px">何を「ひとつ」と数えるか：作品（Work）と版（Edition）</h2>
+  <svg viewBox="0 0 1136 410" width="1136" height="410" role="img" aria-label="Heart of Darkness の FRBR 階層と、今日使う Work と Edition">
+    <defs>
+      <marker id="arrW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--work)"/></marker>
+      <marker id="arrE" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ed)"/></marker>
+      <marker id="arrK" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink)"/></marker>
+    </defs>
+    <!-- highlight bands -->
+    <rect x="262" y="4" width="672" height="78" rx="10" fill="var(--work-bg)" stroke="var(--work)" stroke-width="3"/>
+    <rect x="262" y="110" width="672" height="198" rx="10" fill="var(--ed-bg)" stroke="var(--ed)" stroke-width="3"/>
+    <!-- connectors -->
+    <g stroke="var(--muted)" stroke-width="1.5" fill="none">
+      <path d="M620 70 V96 H400 V122"/><path d="M620 70 V122"/><path d="M620 96 H830 V122"/>
+      <path d="M400 178 V206 H330 V236"/><path d="M400 206 H470 V236"/>
+      <path d="M620 178 V236"/><path d="M830 178 V236"/>
+      <path d="M330 296 V352"/><path d="M620 296 V352"/>
+    </g>
+    <!-- neutral FRBR boxes -->
+    <rect x="520" y="16" width="200" height="54" rx="4" fill="var(--panel)" stroke="var(--ink)"/>
+    <text x="620" y="50" text-anchor="middle" font-size="21" font-weight="700" font-style="italic">Heart of Darkness</text>
+    <g font-size="16">
+      <rect x="310" y="122" width="180" height="56" rx="4" fill="var(--panel)" stroke="var(--ink)"/>
+      <text x="400" y="146" text-anchor="middle">英語原文</text>
+      <text x="400" y="167" text-anchor="middle" font-size="13" fill="var(--muted)">1899 連載／1902 単行本</text>
+      <rect x="530" y="122" width="180" height="56" rx="4" fill="var(--panel)" stroke="var(--ink)"/>
+      <text x="620" y="146" text-anchor="middle">日本語訳</text>
+      <text x="620" y="167" text-anchor="middle" font-size="13" fill="var(--muted)">中野好夫 訳</text>
+      <rect x="740" y="122" width="180" height="56" rx="4" fill="var(--panel)" stroke="var(--ink)"/>
+      <text x="830" y="146" text-anchor="middle">日本語訳</text>
+      <text x="830" y="167" text-anchor="middle" font-size="13" fill="var(--muted)">黒原敏行 訳</text>
+    </g>
+    <g font-size="15">
+      <rect x="276" y="236" width="108" height="60" rx="4" fill="var(--panel)" stroke="var(--ink)"/>
+      <text x="330" y="262" text-anchor="middle">Penguin</text><text x="330" y="282" text-anchor="middle">Classics</text>
+      <rect x="402" y="236" width="136" height="60" rx="4" fill="var(--panel)" stroke="var(--ink)"/>
+      <text x="470" y="262" text-anchor="middle">Norton</text><text x="470" y="282" text-anchor="middle">Critical Edition</text>
+      <rect x="556" y="236" width="128" height="60" rx="4" fill="var(--panel)" stroke="var(--ink)"/>
+      <text x="620" y="262" text-anchor="middle">岩波文庫</text><text x="620" y="282" text-anchor="middle" font-size="13" fill="var(--muted)">1958</text>
+      <rect x="742" y="236" width="176" height="60" rx="4" fill="var(--panel)" stroke="var(--ink)"/>
+      <text x="830" y="262" text-anchor="middle">光文社古典新訳文庫</text><text x="830" y="282" text-anchor="middle" font-size="13" fill="var(--muted)">2009</text>
+    </g>
+    <g font-size="14" opacity=".6">
+      <rect x="280" y="352" width="100" height="44" rx="3" fill="var(--item-bg)" stroke="var(--item)" stroke-dasharray="4 3"/>
+      <text x="330" y="379" text-anchor="middle">図書館の1冊</text>
+      <rect x="570" y="352" width="100" height="44" rx="3" fill="var(--item-bg)" stroke="var(--item)" stroke-dasharray="4 3"/>
+      <text x="620" y="379" text-anchor="middle">図書館の1冊</text>
+    </g>
+    <!-- right: solid tags + FRBR level names -->
+    <rect x="952" y="20" width="176" height="46" rx="6" fill="var(--work)"/>
+    <text x="1040" y="51" text-anchor="middle" font-size="22" font-weight="700" fill="var(--on)">Work 作品</text>
+    <text x="952" y="150" font-size="13" fill="var(--muted)">FRBR：Expression 表現形</text>
+    <rect x="952" y="186" width="176" height="46" rx="6" fill="var(--ed)"/>
+    <text x="1040" y="217" text-anchor="middle" font-size="22" font-weight="700" fill="var(--on)">Edition 版</text>
+    <text x="952" y="272" font-size="13" fill="var(--muted)">FRBR：Manifestation 体現形</text>
+    <text x="952" y="370" font-size="13" fill="var(--muted)">FRBR：Item 個別資料</text>
+    <text x="952" y="388" font-size="13" fill="var(--muted)">（今回は扱わない）</text>
+    <!-- left annotations -->
+    <rect x="0" y="6" width="232" height="74" rx="4" fill="var(--panel)" stroke="var(--work)" stroke-width="1.5"/>
+    <text x="116" y="36" text-anchor="middle" font-size="16" font-weight="700">作品単位で集計する指標</text>
+    <text x="116" y="60" text-anchor="middle" font-size="14" fill="var(--muted)">論文での言及、シラバス採用など</text>
+    <path d="M232 43 H256" stroke="var(--work)" stroke-width="2.5" marker-end="url(#arrW)"/>
+    <rect x="0" y="230" width="232" height="74" rx="4" fill="var(--panel)" stroke="var(--ed)" stroke-width="1.5"/>
+    <text x="116" y="260" text-anchor="middle" font-size="16" font-weight="700">版単位で記録されるデータ</text>
+    <text x="116" y="284" text-anchor="middle" font-size="14" fill="var(--muted)">出版の記録、図書館の目録</text>
+    <path d="M232 267 H256" stroke="var(--ed)" stroke-width="2.5" marker-end="url(#arrE)"/>
+    <path d="M40 226 V88" stroke="var(--ink)" stroke-width="2" marker-end="url(#arrK)"/>
+    <text x="54" y="138" font-size="15" font-weight="700">版を作品に</text>
+    <text x="54" y="160" font-size="15" font-weight="700">まとめる</text>
+    <text x="54" y="184" font-size="14" fill="var(--muted)">＝ 作品ごとの版数</text>
+    <text x="54" y="204" font-size="14" fill="var(--muted)">（今日の実習）</text>
+  </svg>
+  <p class="small" style="margin:18px 0 0"><a href="https://openlibrary.org/works/OL38663W">Open Library の Work（OL38663W）</a>の下には 553件の Edition（2026年10月15日時点）</p>
+  <div class="src">FRBR の4段：IFLA, <i>Functional Requirements for Bibliographic Records</i> (1998)</div>
+  <aside class="notes">論文の言及やシラバスは「作品」を単位に数えられる。一方、出版や図書館の記録は一冊一冊の具体的な版として残っている。同じ作品が原文・翻訳・叢書・文庫など複数の形で現れる。今日は Expression と Manifestation をまとめて「版（Edition）」とし、版を作品ごとにまとめた「版数」を作品の指標として使う。</aside>
+</section>
+
+<!-- 11 -->
+<section class="slide">
+  <h2>データベースは書誌をどの単位で記録・提供しているか</h2>
+  <table>
+    <tr><th>データベース</th><th class="work">Work 単位</th><th class="ed">Edition 単位</th><th>アクセス</th><th>備考</th></tr>
+    <tr><td><a href="https://openlibrary.org/">Open Library</a></td><td>あり</td><td>あり</td><td>公開</td><td>Work を実装している数少ない例</td></tr>
+    <tr><td><a href="https://www.bl.uk/">British Library</a> 目録</td><td>なし</td><td>あり</td><td>公開</td><td>レコードは版単位</td></tr>
+    <tr><td><a href="https://ndlsearch.ndl.go.jp/">国立国会図書館（NDL）</a></td><td>なし</td><td>あり</td><td>公開</td><td>図書 1,263万点（令和7年度）。<a href="https://ndlsearch.ndl.go.jp/bib">全国書誌データ</a>は MARC 等でダウンロード可</td></tr>
+    <tr><td><a href="https://search.worldcat.org/">WorldCat</a></td><td>クラスタ表示</td><td>あり</td><td>要契約</td><td>早稲田・慶應などで利用可</td></tr>
+  </table>
+  <p class="small" style="margin-top:24px">Work の単位があると、個々の版ではなく作品単位で母集団をつくり、作品ごとの評価を比べやすくなる</p>
+  <div class="src"><a href="https://ndl.go.jp/jp/aboutus/outline/numerically.html">NDL「数字で見る国立国会図書館」</a>令和7年度</div>
+</section>
+
+<!-- 12 -->
+<section class="slide">
+  <h2>データの取得方法と、今回 API を使う理由</h2>
+  <div class="cols-3">
+    <div class="box"><p style="font-weight:700;margin:0">ブラウザで検索</p><p class="small muted" style="margin:6px 0 0">数件〜数十件<br>個別の確認に向く</p></div>
+    <div class="box" style="border-color:var(--ink);border-width:2px"><p style="font-weight:700;margin:0"><a href="https://openlibrary.org/developers/api">API で取得</a></p><p class="small muted" style="margin:6px 0 0">数百〜数千件<br>今日の実習</p></div>
+    <div class="box"><p style="font-weight:700;margin:0"><a href="https://openlibrary.org/developers/dumps">ダンプファイル</a></p><p class="small muted" style="margin:6px 0 0">数百万件<br>全体からの抽出に向く</p></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 60px 1fr;align-items:center;margin-top:28px">
+    <div class="box">
+      <p class="xs" style="margin:0 0 6px">ブラウザの表示（<a href="https://openlibrary.org/works/OL1174971W">openlibrary.org/works/OL1174971W</a>）</p>
+      <p style="margin:0;font-size:22px">吾輩は猫である</p>
+      <p class="small" style="margin:0">夏目漱石　First published in 1905</p>
+      <p class="small" style="margin:0"><span class="ed" style="font-weight:700">47 editions</span></p>
+    </div>
+    <svg viewBox="0 0 60 20" width="60" height="20"><line x1="4" y1="10" x2="56" y2="10" stroke="var(--ed)" stroke-width="2" stroke-dasharray="4 4"/></svg>
+    <div class="box">
+      <p class="xs" style="margin:0 0 6px">API の返す JSON（<a href="https://openlibrary.org/search.json?q=key:/works/OL1174971W&amp;fields=key,title,first_publish_year,edition_count">search.json</a>）</p>
+<pre style="margin:0;font-size:16px;line-height:1.5">{ "key": "/works/OL1174971W",
+  "title": "吾輩は猫である",
+  "first_publish_year": 1905,
+  <span class="ed" style="font-weight:700">"edition_count": 47</span> }</pre>
+    </div>
+  </div>
+  <p class="small" style="margin-top:20px">同じ検索を何百回でも繰り返せる／結果が構造化されている／手順が記録として残り再現できる。数千件までなら環境構築なしで扱える</p>
+</section>
+
+<!-- 13 -->
+<section class="slide">
+  <h2>Open Library の中身</h2>
+  <div class="cols">
+    <div>
+      <svg viewBox="0 0 500 200" width="500" height="200" role="img" aria-label="Author Work Edition">
+        <rect x="10" y="70" width="130" height="56" rx="4" fill="var(--item-bg)" stroke="var(--item)"/>
+        <text x="75" y="104" text-anchor="middle" font-size="19">Author</text>
+        <rect x="185" y="70" width="130" height="56" rx="6" fill="var(--work)"/>
+        <text x="250" y="104" text-anchor="middle" font-size="19" font-weight="700" fill="var(--on)">Work</text>
+        <g fill="var(--ed)"><rect x="360" y="20" width="130" height="40" rx="6"/><rect x="360" y="78" width="130" height="40" rx="6"/><rect x="360" y="136" width="130" height="40" rx="6"/></g>
+        <g font-size="16" font-weight="700" text-anchor="middle"><text x="425" y="46" fill="var(--on)">Edition</text><text x="425" y="104" fill="var(--on)">Edition</text><text x="425" y="162" fill="var(--on)">Edition</text></g>
+        <g stroke="var(--muted)" stroke-width="1.5"><line x1="140" y1="98" x2="185" y2="98"/><line x1="315" y1="98" x2="360" y2="40"/><line x1="315" y1="98" x2="360" y2="98"/><line x1="315" y1="98" x2="360" y2="156"/></g>
+      </svg>
+      <p class="small">Edition には MARC 由来の項目：タイトル、著者、出版者、出版年、ISBN、言語など</p>
+      <table style="margin-top:8px">
+        <tr><td>Works</td><td>約4,179万</td></tr>
+        <tr><td>Editions</td><td>約5,689万</td></tr>
+        <tr><td>Authors</td><td>約1,547万</td></tr>
+      </table>
+      <p class="xs">追加された累計。統合・削除されたものを含む</p>
+    </div>
+    <div>
+      <p class="small muted" style="margin:0 0 6px">言語別の Work 数（検索APIの件数）</p>
+      <div class="hbar"><span>ドイツ語</span><div class="bar" style="width:100%"></div><span>302万</span></div>
+      <div class="hbar"><span>フランス語</span><div class="bar" style="width:78%"></div><span>235万</span></div>
+      <div class="hbar"><span>中国語</span><div class="bar" style="width:32%"></div><span>96万</span></div>
+      <div class="hbar"><span>日本語</span><div class="bar" style="width:21%"></div><span>64万</span></div>
+      <div class="hbar"><span>英語</span><div class="bar dashed" style="width:100%"></div><span>要確認</span></div>
+    </div>
+  </div>
+  <div class="src"><a href="https://openlibrary.org/stats">openlibrary.org/stats</a> および <a href="https://openlibrary.org/dev/docs/api/search">Search API</a>（2026年10月15日取得）</div>
+</section>
+
+<!-- 14 -->
+<section class="slide">
+  <h2>Open Library を使った研究と、その限界</h2>
+  <div class="three">
+    <div>
+      <p style="font-weight:700;margin:0 0 4px;font-size:18px">版数を流通の指標に</p>
+      <p class="xs" style="margin:0 0 10px">OL ダンプ（2026年2月）から1880–1950年の英語小説 34,789作品を抽出し、作品ごとの版数を集計</p>
+      <div class="mini"><span>The Great Gatsby</span><div class="bar" style="width:100%"></div><span>1,181</span></div>
+      <div class="mini"><span>Heart of Darkness</span><div class="bar" style="width:93%"></div><span>1,099</span></div>
+      <div class="mini"><span>Ulysses</span><div class="bar" style="width:58%"></div><span>684</span></div>
+      <div class="mini"><span>White Fang</span><div class="bar" style="width:33%"></div><span>387</span></div>
+      <div class="mini"><span>Tarzan of the Apes</span><div class="bar" style="width:19%"></div><span>226</span></div>
+      <p class="xs" style="margin-top:8px"><a href="https://haruka0221.github.io/my-slide/KCL20260624.html">筒井（2026年6月の発表）</a></p>
+    </div>
+    <div>
+      <p style="font-weight:700;margin:0 0 4px;font-size:18px">カバー率の偏り</p>
+      <p style="font-size:48px;font-family:var(--serif);margin:8px 0 0">93.6%</p>
+      <p class="small" style="margin:0">英国の研究書 ISBN</p>
+      <p style="font-size:48px;font-family:var(--serif);margin:14px 0 0" class="muted">約32%</p>
+      <p class="small" style="margin:0">リトアニアの研究書 ISBN</p>
+      <p class="xs"><a href="https://issi2025.iiap.sci.am/wp-content/uploads/2025/07/21%E2%80%A4-Dagiene_rp_issi2025_286.pdf">Dagienė, ISSI 2025</a></p>
+    </div>
+    <div>
+      <p style="font-weight:700;margin:0 0 4px;font-size:18px">記録の欠け</p>
+      <svg viewBox="0 0 200 200" width="170" height="170" role="img" aria-label="初版年あり11%">
+        <circle cx="100" cy="100" r="70" fill="none" stroke="var(--item-bg)" stroke-width="28"/>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="var(--ink)" stroke-width="28" stroke-dasharray="49.8 440" transform="rotate(-90 100 100)"/>
+        <text x="100" y="110" text-anchor="middle" font-size="30" font-weight="700">11%</text>
+      </svg>
+      <p class="small" style="margin:0">初版年が記録されている作品の割合</p>
+      <p class="xs">複数のカタログを統合する際に Open Library の work–edition 対応を骨格として利用。<a href="https://anthology.ach.org/volumes/vol0003/canons-in-shadows-critical-catalogue-of-ai-s-list/10.63744@jLwrgN3hnrVS.pdf">"Canons in Shadows", CHR 2025</a></p>
+    </div>
+  </div>
+  <p class="small" style="margin-top:20px">多言語を扱える大規模なオープン書誌基盤である一方、カバー率にも記録の質にも、国・言語による偏りが報告されている</p>
+  <aside class="notes">左の版数は2026年2月のダンプからの集計で、スライド10の API の値（OL38663W、553件）とは時点も集計方法も異なる。</aside>
+</section>
+
+<!-- 15 -->
+<section class="slide">
+  <h2>実習</h2>
+  <p>夏目漱石『吾輩は猫である』（<a href="https://openlibrary.org/works/OL1174971W"><code>OL1174971W</code></a>、47 editions、初出 1905）を例に</p>
+  <svg viewBox="0 0 1136 120" width="1136" height="120" role="img" aria-label="実習の手順">
+    <g font-size="19">
+      <rect x="0" y="30" width="240" height="60" rx="6" fill="var(--work)"/>
+      <text x="120" y="67" text-anchor="middle" fill="var(--on)" font-weight="700">Work を取得</text>
+      <rect x="296" y="30" width="240" height="60" rx="6" fill="var(--ed)"/>
+      <text x="416" y="67" text-anchor="middle" fill="var(--on)" font-weight="700">Edition の一覧</text>
+      <rect x="592" y="30" width="240" height="60" rx="4" fill="var(--panel)" stroke="var(--rule)"/>
+      <text x="712" y="67" text-anchor="middle">出版年を整える</text>
+      <rect x="888" y="30" width="240" height="60" rx="4" fill="var(--panel)" stroke="var(--rule)"/>
+      <text x="1008" y="67" text-anchor="middle">年ごとの版数</text>
+    </g>
+    <g stroke="var(--muted)" stroke-width="2"><line x1="244" y1="60" x2="290" y2="60"/><line x1="540" y1="60" x2="586" y2="60"/><line x1="836" y1="60" x2="882" y2="60"/></g>
+  </svg>
+  <svg viewBox="0 0 1136 220" width="1136" height="220" role="img" aria-label="出力イメージ">
+    <line x1="60" y1="190" x2="1100" y2="190" stroke="var(--rule)"/>
+    <line x1="60" y1="20" x2="60" y2="190" stroke="var(--rule)"/>
+    <polyline fill="none" stroke="var(--ed)" stroke-width="3" points="80,180 200,176 320,170 440,160 560,150 680,120 800,140 920,90 1040,110"/>
+    <text x="1100" y="212" text-anchor="end" font-size="14" fill="var(--muted)">出版年</text>
+    <text x="66" y="16" font-size="14" fill="var(--muted)">版数</text>
+    <text x="580" y="212" text-anchor="middle" font-size="14" fill="var(--muted)">出力のイメージ（値は実習で取得）</text>
+  </svg>
+  <aside class="notes">Edition の著者欄に翻訳者（Aiko Ito, Graeme Wilson など）が並ぶことを見せる。翻訳（Expression）が Edition に畳み込まれている例。同タイトルの別 Work（OL44405220W, OL43944589W）もある→補遺A1。</aside>
+</section>
+
+<!-- 16 -->
+<section class="slide">
+  <h2>実習のあとに</h2>
+  <div style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:40px">
+    <div>
+      <ul class="small">
+        <li>ダンプファイルでの大量検索<br><a href="https://openlibrary.org/developers/dumps">openlibrary.org/developers/dumps</a><br><span class="muted">例：<code>ol_dump_editions_latest.txt.gz</code>（大きな圧縮ファイル）</span></li>
+        <li>API での自動取得<br><a href="https://openlibrary.org/developers/api">openlibrary.org/developers/api</a></li>
+        <li>自分の PC で作業するには、まず「ターミナル」を開く
+          <ul>
+            <li>Windows：PowerShell（ファイルを置いたフォルダを開き、アドレス欄に <code>powershell</code> と入力すると、そのフォルダで起動）</li>
+            <li>Mac：アプリケーション › ユーティリティ › ターミナル</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <p class="xs" style="margin:0 0 8px">AI への最初の質問の例（括弧内を自分の状況に書き換える）</p>
+      <div class="prompt">
+        <p>プログラミングは初めてです。（Windows 11 の PowerShell／Mac のターミナル）を使っています。</p>
+        <p>（C:\Users\名前\Downloads\openlibrary）に、Open Library のダンプファイル（ol_dump_editions_latest.txt.gz）をダウンロードしました。</p>
+        <p>やりたいこと：このファイルから（日本語の版が出版年ごとに何件あるか）を数えたいです。</p>
+        <p>進め方の希望：</p>
+        <ul>
+          <li>コマンドは一度に一つずつ出し、何をするものか説明してください</li>
+          <li>まず Python が入っているかと、ファイルの中身の形式を確認するところから始めたいです</li>
+          <li>ファイルが大きいので、全体は開かず先頭の数行だけを見る方法でお願いします</li>
+          <li>インストールや、ファイルの削除・上書きをするときは、実行前に教えてください</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17 -->
+<section class="slide">
+  <h2>AI を使うときの二つの使い方</h2>
+  <div class="cols">
+    <div class="box">
+      <p style="font-weight:700;margin:0 0 8px">機械的に決められること</p>
+      <p class="small" style="margin:0">反復できるコードの生成、データベースや GitHub の管理ツールの使い方、機器・プラットフォームの操作方法</p>
+      <p class="small muted" style="margin:12px 0 0">人間の言葉で質問し、AI がソースを確認して説明する。人間は、間違っていないか、ちゃんと調べたか、回答に矛盾がないかを、やり取りしながら判断する</p>
+    </div>
+    <div class="box">
+      <p style="font-weight:700;margin:0 0 8px">AI で推測すること</p>
+      <p class="small" style="margin:0">大規模データの照合にともなう、人間の判断の代わり（例：同じ作品か、同じ版か）</p>
+      <p class="small muted" style="margin:12px 0 0">判断材料を適切に用意し、照合の精度を数値で確かめる</p>
+    </div>
+  </div>
+  
+</section>
+
+
+
+<!-- 19 -->
+<section class="slide">
+  <h2>参考文献</h2>
+  <div class="cols" style="gap:32px">
+    <div>
+      <p class="small" style="font-size:15px">Bode, K. <a href="https://doi.org/10.1215/00267929-3699787">"The Equivalence of 'Close' and 'Distant' Reading."</a> <i>Modern Language Quarterly</i> 78.1 (2017).</p>
+      <p class="small" style="font-size:15px">Bode, K. <a href="https://doi.org/10.1086/724943">"What's the Matter with Computational Literary Studies?"</a> <i>Critical Inquiry</i> 49.4 (2023).</p>
+      <p class="small" style="font-size:15px">Da, N. Z. <a href="https://doi.org/10.1086/702594">"The Computational Case against Computational Literary Studies."</a> <i>Critical Inquiry</i> 45.3 (2019).</p>
+      <p class="small" style="font-size:15px">Dagienė, E. <a href="https://issi2025.iiap.sci.am/wp-content/uploads/2025/07/21%E2%80%A4-Dagiene_rp_issi2025_286.pdf">"Exploring Google Books, Open Library, and Wikipedia as Sources for Book Metadata."</a> ISSI 2025.</p>
+      <p class="small" style="font-size:15px"><a href="https://doi.org/10.5281/zenodo.21495909"><i>Digital Humanities 2026: Book of Abstracts</i></a>. Zenodo, 2026.</p>
+      <p class="small" style="font-size:15px">Fish, S. <a href="https://opinionator.blogs.nytimes.com/2012/01/23/mind-your-ps-and-bs-the-digital-humanities-and-interpretation/">"Mind Your P's and B's."</a> <i>The New York Times</i>, 23 Jan. 2012.</p>
+      <p class="small" style="font-size:15px">IFLA. <i>Functional Requirements for Bibliographic Records</i>. 1998.</p>
+      <p class="small" style="font-size:15px">Jockers, M. <i>Macroanalysis</i>. U of Illinois P, 2013.</p>
+    </div>
+    <div>
+      <p class="small" style="font-size:15px">Hiltmann, T., and N. J. Kim-Baumann. "Bringing Humanist Practices into AI." <a href="https://doi.org/10.5281/zenodo.21495909"><i>DH2026 Book of Abstracts</i></a>, 2026.</p>
+      <p class="small" style="font-size:15px">Moretti, F. <i>Distant Reading</i>. Verso, 2013.</p>
+      <p class="small" style="font-size:15px">Piper, A. <a href="https://doi.org/10.1017/9781108922036"><i>Can We Be Wrong? The Problem of Textual Evidence in a Time of Data</i></a>. Cambridge UP, 2020.</p>
+      <p class="small" style="font-size:15px">Underwood, T. <a href="https://doi.org/10.7208/chicago/9780226612973.001.0001"><i>Distant Horizons</i></a>. U of Chicago P, 2019.</p>
+      <p class="small" style="font-size:15px">van Dalen-Oskam, K. <a href="https://doi.org/10.2307/jj.4470331"><i>The Riddle of Literary Quality</i></a>. Amsterdam UP, 2023.</p>
+      <p class="small" style="font-size:15px">Walsh, M. "The Challenges and Possibilities of Social Media Data." <i>Debates in the Digital Humanities 2023</i>.</p>
+      <p class="small" style="font-size:15px"><a href="https://anthology.ach.org/volumes/vol0003/canons-in-shadows-critical-catalogue-of-ai-s-list/10.63744@jLwrgN3hnrVS.pdf">"Canons in Shadows."</a> <i>Computational Humanities Research</i> 2025.</p>
+      <p class="small" style="font-size:15px">筒井遥 <a href="https://haruka0221.github.io/my-slide/KCL20260624.html">"Zones of Tension."</a> 発表スライド, 2026年6月.</p>
+    </div>
+  </div>
+</section>
+
+<!-- A1 -->
+<section class="slide">
+  <span class="appendix-tag">補遺：実習中に必要なら</span>
+  <h2 style="font-size:32px;margin-bottom:16px">Open Library の重複 Work</h2>
+  <table>
+    <tr><th style="width:26%">作品</th><th>報告されている問題</th><th style="width:18%">出典</th></tr>
+    <tr><td>夏目漱石『吾輩は猫である』</td><td><a href="https://openlibrary.org/works/OL1174971W">OL1174971W</a>（47件）のほか、<a href="https://openlibrary.org/works/OL44405220W">OL44405220W</a>（3件）、<a href="https://openlibrary.org/works/OL43944589W">OL43944589W</a>（2件）が並存</td><td>公式サイトで確認</td></tr>
+    <tr><td>Conrad, <i>Heart of Darkness</i></td><td>2024年、300件超の重複 Work を統合しようとした利用者が、統合画面の50件制限を報告</td><td><a href="https://github.com/internetarchive/openlibrary/issues/10010">GitHub #10010</a></td></tr>
+    <tr><td>Austen, <i>Pride and Prejudice</i></td><td><a href="https://openlibrary.org/works/OL66554W">OL66554W</a>（4,042件）と <a href="https://openlibrary.org/works/OL15165350W">OL15165350W</a>（132件）が並存</td><td>公式サイトで確認</td></tr>
+    <tr><td>Eagle, <i>Eagle's Trees and Shrubs of New Zealand</i></td><td>2018年、外部データを取り込む Bot が同じ著作の Work を3件、著者を2件作成</td><td><a href="https://github.com/internetarchive/openlibrary-bots/issues/24">openlibrary-bots #24</a></td></tr>
+    <tr><td>一般的な語のタイトル（Bill, Law, Picasso など）</td><td>無関係な著作が同じ Work に誤って統合される問題が議論されている</td><td><a href="https://github.com/internetarchive/openlibrary/issues/10342">GitHub #10342</a></td></tr>
+  </table>
+  <p class="xs" style="margin-top:12px">GitHub の Issue は利用者・開発者による報告や議論であり、すべてが公式に検証済みという意味ではない</p>
+</section>
+
+<!-- A2 -->
+<section class="slide">
+  <span class="appendix-tag">補遺：実習中に必要なら</span>
+  <h2 style="font-size:32px;margin-bottom:16px">重複への対応：博士論文での方針</h2>
+  <div class="cols">
+    <div>
+      <p><strong class="work">問題A：Work の同一性</strong><br><span class="small"><a href="https://openlibrary.org/works/OL38663W">OL38663W</a>（553件）と <a href="https://openlibrary.org/works/OL29000391W">OL29000391W</a>（519件）は同じ文学作品を表しているか</span></p>
+      <p><strong class="ed">問題B：Edition の帰属と重複</strong><br><span class="small">553件は本当に <i>Heart of Darkness</i> の版か。別の Edition ID が同じ出版物を表していないか</span></p>
+    </div>
+    <svg viewBox="0 0 520 300" width="520" height="300" role="img" aria-label="Edition監査からWork統合へ">
+      <rect x="20" y="20" width="200" height="50" rx="6" fill="var(--work)"/>
+      <text x="120" y="51" text-anchor="middle" font-size="16" fill="var(--on)" font-weight="700">OL38663W</text>
+      <rect x="300" y="20" width="200" height="50" rx="6" fill="var(--work)"/>
+      <text x="400" y="51" text-anchor="middle" font-size="16" fill="var(--on)" font-weight="700">OL29000391W</text>
+      <g fill="var(--ed-bg)" stroke="var(--ed)">
+        <rect x="50" y="110" width="120" height="28" rx="3"/><rect x="50" y="146" width="120" height="28" rx="3"/><rect x="50" y="182" width="120" height="28" rx="3"/>
+        <rect x="350" y="110" width="120" height="28" rx="3"/><rect x="350" y="146" width="120" height="28" rx="3"/><rect x="350" y="182" width="120" height="28" rx="3"/>
+      </g>
+      <text x="260" y="168" text-anchor="middle" font-size="15" fill="var(--ed)">① Edition を監査</text>
+      <text x="260" y="188" text-anchor="middle" font-size="13" fill="var(--muted)">LLM の判断も補助に</text>
+      <path d="M110 215 V250 H410 V215" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+      <text x="260" y="278" text-anchor="middle" font-size="15" fill="var(--work)">② その結果から Work の統合を判断</text>
+    </svg>
+  </div>
+</section>
+
+
+
+</div></div>
+<div id="num"></div>
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.slide')];
+  const deck=document.getElementById('deck'), num=document.getElementById('num');
+  let i=Math.max(0,Math.min(slides.length-1,(parseInt(location.hash.slice(1))||1)-1));
+  function fit(){const s=Math.min(innerWidth/1280,innerHeight/720);deck.style.transform='scale('+s+')';}
+  function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    num.textContent=(i+1)+' / '+slides.length;history.replaceState(null,'','#'+(i+1));}
+  addEventListener('resize',fit);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+    else if(e.key==='n'||e.key==='N')document.body.classList.toggle('show-notes');
+  });
+  document.querySelectorAll('#deck a').forEach(a=>{a.target='_blank';a.rel='noopener';});
+  fit();show(i);
+})();
+</script>
+</body>
+</html>
