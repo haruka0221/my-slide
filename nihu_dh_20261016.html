@@ -331,6 +331,7 @@ code{font-size:.9em;background:var(--item-bg);padding:1px 6px;border-radius:3px}
 </section>
 
 <!-- 10 -->
+<!-- 10 -->
 <section class="slide">
   <h2 style="margin-bottom:16px">何を「ひとつ」と数えるか：作品（Work）と版（Edition）</h2>
   <svg viewBox="0 0 1136 410" width="1136" height="410" role="img" aria-label="Heart of Darkness の FRBR 階層と、今日使う Work と Edition">
@@ -341,7 +342,7 @@ code{font-size:.9em;background:var(--item-bg);padding:1px 6px;border-radius:3px}
     </defs>
     <!-- highlight bands -->
     <rect x="262" y="4" width="672" height="78" rx="10" fill="var(--work-bg)" stroke="var(--work)" stroke-width="3"/>
-    <rect x="262" y="110" width="672" height="198" rx="10" fill="var(--ed-bg)" stroke="var(--ed)" stroke-width="3"/>
+    <rect x="262" y="224" width="672" height="84" rx="10" fill="var(--ed-bg)" stroke="var(--ed)" stroke-width="3"/>
     <!-- connectors -->
     <g stroke="var(--muted)" stroke-width="1.5" fill="none">
       <path d="M620 70 V96 H400 V122"/><path d="M620 70 V122"/><path d="M620 96 H830 V122"/>
@@ -353,13 +354,13 @@ code{font-size:.9em;background:var(--item-bg);padding:1px 6px;border-radius:3px}
     <rect x="520" y="16" width="200" height="54" rx="4" fill="var(--panel)" stroke="var(--ink)"/>
     <text x="620" y="50" text-anchor="middle" font-size="21" font-weight="700" font-style="italic">Heart of Darkness</text>
     <g font-size="16">
-      <rect x="310" y="122" width="180" height="56" rx="4" fill="var(--panel)" stroke="var(--ink)"/>
+      <rect x="310" y="122" width="180" height="56" rx="4" fill="var(--panel)" stroke="var(--muted)"/>
       <text x="400" y="146" text-anchor="middle">英語原文</text>
       <text x="400" y="167" text-anchor="middle" font-size="13" fill="var(--muted)">1899 連載／1902 単行本</text>
-      <rect x="530" y="122" width="180" height="56" rx="4" fill="var(--panel)" stroke="var(--ink)"/>
+      <rect x="530" y="122" width="180" height="56" rx="4" fill="var(--panel)" stroke="var(--muted)"/>
       <text x="620" y="146" text-anchor="middle">日本語訳</text>
       <text x="620" y="167" text-anchor="middle" font-size="13" fill="var(--muted)">中野好夫 訳</text>
-      <rect x="740" y="122" width="180" height="56" rx="4" fill="var(--panel)" stroke="var(--ink)"/>
+      <rect x="740" y="122" width="180" height="56" rx="4" fill="var(--panel)" stroke="var(--muted)"/>
       <text x="830" y="146" text-anchor="middle">日本語訳</text>
       <text x="830" y="167" text-anchor="middle" font-size="13" fill="var(--muted)">黒原敏行 訳</text>
     </g>
@@ -382,10 +383,11 @@ code{font-size:.9em;background:var(--item-bg);padding:1px 6px;border-radius:3px}
     <!-- right: solid tags + FRBR level names -->
     <rect x="952" y="20" width="176" height="46" rx="6" fill="var(--work)"/>
     <text x="1040" y="51" text-anchor="middle" font-size="22" font-weight="700" fill="var(--on)">Work 作品</text>
-    <text x="952" y="150" font-size="13" fill="var(--muted)">FRBR：Expression 表現形</text>
-    <rect x="952" y="186" width="176" height="46" rx="6" fill="var(--ed)"/>
-    <text x="1040" y="217" text-anchor="middle" font-size="22" font-weight="700" fill="var(--on)">Edition 版</text>
-    <text x="952" y="272" font-size="13" fill="var(--muted)">FRBR：Manifestation 体現形</text>
+    <text x="952" y="146" font-size="13" fill="var(--muted)">FRBR：Expression 表現形</text>
+    <text x="952" y="164" font-size="13" fill="var(--muted)">（原文・翻訳。今回は区別しない）</text>
+    <rect x="952" y="234" width="176" height="46" rx="6" fill="var(--ed)"/>
+    <text x="1040" y="265" text-anchor="middle" font-size="22" font-weight="700" fill="var(--on)">Edition 版</text>
+    <text x="952" y="300" font-size="13" fill="var(--muted)">FRBR：Manifestation 体現形</text>
     <text x="952" y="370" font-size="13" fill="var(--muted)">FRBR：Item 個別資料</text>
     <text x="952" y="388" font-size="13" fill="var(--muted)">（今回は扱わない）</text>
     <!-- left annotations -->
@@ -405,9 +407,8 @@ code{font-size:.9em;background:var(--item-bg);padding:1px 6px;border-radius:3px}
   </svg>
   <p class="small" style="margin:18px 0 0"><a href="https://openlibrary.org/works/OL38663W">Open Library の Work（OL38663W）</a>の下には 553件の Edition（2026年10月15日時点）</p>
   <div class="src">FRBR の4段：IFLA, <i>Functional Requirements for Bibliographic Records</i> (1998)</div>
-  <aside class="notes">論文の言及やシラバスは「作品」を単位に数えられる。一方、出版や図書館の記録は一冊一冊の具体的な版として残っている。同じ作品が原文・翻訳・叢書・文庫など複数の形で現れる。今日は Expression と Manifestation をまとめて「版（Edition）」とし、版を作品ごとにまとめた「版数」を作品の指標として使う。</aside>
+  <aside class="notes">論文の言及やシラバスは「作品」を単位に数えられる。一方、出版や図書館の記録は、具体的な版（Penguin、Norton、岩波文庫など）として残っている。今日はこの版を Edition として扱い、原文か翻訳か（Expression）は区別せずに、同じ作品の版としてまとめて数える。版を作品ごとにまとめた「版数」を作品の指標として使う。</aside>
 </section>
-
 <!-- 11 -->
 <section class="slide">
   <h2>データベースは書誌をどの単位で記録・提供しているか</h2>
@@ -473,11 +474,12 @@ code{font-size:.9em;background:var(--item-bg);padding:1px 6px;border-radius:3px}
     </div>
     <div>
       <p class="small muted" style="margin:0 0 6px">言語別の Work 数（検索APIの件数）</p>
-      <div class="hbar"><span>ドイツ語</span><div class="bar" style="width:100%"></div><span>302万</span></div>
-      <div class="hbar"><span>フランス語</span><div class="bar" style="width:78%"></div><span>235万</span></div>
-      <div class="hbar"><span>中国語</span><div class="bar" style="width:32%"></div><span>96万</span></div>
-      <div class="hbar"><span>日本語</span><div class="bar" style="width:21%"></div><span>64万</span></div>
-      <div class="hbar"><span>英語</span><div class="bar dashed" style="width:100%"></div><span>要確認</span></div>
+      <div class="hbar"><span>英語</span><div class="bar" style="width:100%"></div><span>2,295万</span></div>
+      <div class="hbar"><span>ドイツ語</span><div class="bar" style="width:13.2%"></div><span>302万</span></div>
+      <div class="hbar"><span>フランス語</span><div class="bar" style="width:10.2%"></div><span>235万</span></div>
+      <div class="hbar"><span>中国語</span><div class="bar" style="width:4.2%"></div><span>96万</span></div>
+      <div class="hbar"><span>日本語</span><div class="bar" style="width:2.8%"></div><span>64万</span></div>
+      <p class="xs" style="margin-top:10px">1つの Work に複数の言語が付いている場合は、それぞれの言語で数えられる。英語は件数が多いため、検索を分割して合計した</p>
     </div>
   </div>
   <div class="src"><a href="https://openlibrary.org/stats">openlibrary.org/stats</a> および <a href="https://openlibrary.org/dev/docs/api/search">Search API</a>（2026年10月15日取得）</div>
