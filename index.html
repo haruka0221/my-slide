@@ -1,33 +1,200 @@
 <!doctype html>
-<html>
+<html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="dist/reveal.css" />
-  <link rel="stylesheet" href="dist/theme/black.css" />
-  <link rel="stylesheet" href="css/custom.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#263c54">
+<title>Dialogue Loop | 日英ディスカッション練習</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:#1d2a3b;background:#f4f7fa;line-height:1.55;color-scheme:light}
+*{box-sizing:border-box}body{margin:0}main{max-width:1120px;padding:22px 16px 55px;margin:auto}h1{margin:0;font-size:clamp(25px,4vw,36px);letter-spacing:-.025em}h2{font-size:17px;margin:0 0 11px}h3{font-size:14px;margin:0 0 6px}p{color:#52647a;margin:4px 0 12px}small,.muted{color:#65778b}.kicker{color:#2f658c;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.card{background:white;border:1px solid #e0e7ef;border-radius:15px;padding:19px;margin:15px 0;box-shadow:0 2px 11px #172e4307}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.spread{justify-content:space-between}.grow{flex:1;min-width:180px}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:15px}.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.field{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600}.field select,.field input{width:100%;min-width:0;border:1px solid #d2dce6;border-radius:8px;background:white;padding:9px;font:inherit;color:inherit}.field input[type=range]{padding:7px 0;accent-color:#246394}.field input[type=checkbox]{width:auto}.btn{border:1px solid #cfdae5;background:white;color:#233c55;padding:10px 13px;border-radius:9px;font:inherit;font-size:14px;font-weight:650;cursor:pointer}.btn:hover{background:#f1f6fa}.btn:disabled{opacity:.5;cursor:not-allowed}.mainbtn{background:#245c89;color:#fff;border-color:#245c89}.mainbtn:hover{background:#1f517b}.subtle{font-size:12px;color:#65788a}.panel-title{font-weight:700;font-size:17px;margin:0}.episode-name{color:#2b5576;font-size:13px;margin-top:3px;overflow-wrap:anywhere}.translation{background:#eef5fb;border-radius:12px;padding:17px;font-size:clamp(17px,2.3vw,21px);height:clamp(130px,19vh,190px);overflow-y:auto;overscroll-behavior:contain;overflow-wrap:anywhere;white-space:pre-wrap}.translation.english{background:#fff;border:1px solid #dae3ec;margin-top:9px}.translation.blurred{filter:blur(7px);user-select:none}.text-label{font-size:11px;font-weight:750;text-transform:uppercase;letter-spacing:.075em;color:#6a7a8e;margin:12px 0 5px}.bar-track{height:7px;background:#e6edf4;border-radius:9px;overflow:hidden;margin:14px 0 9px}.bar-fill{height:100%;background:#317dae;width:0}.script-list{max-height:460px;overflow:auto;border:1px solid #e2e9f0;border-radius:9px}.script-item{padding:10px 12px;border-bottom:1px solid #e7edf2;cursor:pointer}.script-item:hover{background:#f5f8fb}.script-item.active{background:#ecf5ff;border-left:4px solid #2f75ad;padding-left:8px}.script-en{font-size:13px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.script-ja{font-size:12px;color:#788397;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.script-time{font-size:11px;color:#667a8f;margin-bottom:3px}.editing textarea{width:100%;border-radius:9px;border:1px solid #d1dae4;padding:10px;font:inherit;font-size:14px;line-height:1.55;min-height:90px;resize:vertical}.editing label{font-size:12px;font-weight:700;display:block;color:#6c7c8b;margin:11px 0 5px}.notice{border-top:1px solid #e3e9ee;padding-top:11px;margin-top:14px;font-size:12px;color:#617185}.play-settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.play-settings label{font-size:12px;font-weight:650}.play-settings select,.play-settings input[type=range]{display:block;margin-top:5px;width:100%}.play-settings select{padding:9px;background:white;border:1px solid #d4dde6;border-radius:8px}.pill{font-size:12px;border-radius:99px;padding:4px 9px;background:#e9eff5;color:#4b627a}button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #147bb7;outline-offset:2px}#importEpisode,#importAudio{display:none}#audioSection audio{width:100%;margin-top:7px}#noEpisode{background:#f0f5f9;padding:22px;border-radius:12px;text-align:center;color:#5a6c80}footer{font-size:12px;color:#697b8d;margin-top:20px}@media(max-width:760px){.grid,.fields{grid-template-columns:1fr}.fields{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:15px}main{padding:14px 10px}.btn{padding:11px 12px}.play-settings{grid-template-columns:1fr 1fr}}@media(max-width:440px){.fields,.play-settings{grid-template-columns:1fr}h1{font-size:26px}}
+</style>
 </head>
 <body>
-  <div class="reveal">
-    <div class="slides">
-        <section data-markdown="slides.md"
-           data-separator="^---$"           <!-- 水平区切り (“---”) -->
-           data-separator-vertical="^--$"   <!-- 垂直区切り (“--”) -->
-           data-separator-notes="^> "       <!-- ノート (“> ”) 任意 -->
-           data-charset="utf-8">
-        </section><!-- ここは空で OK。JS で動的に section を挿入 -->
+<main>
+  <div class="kicker">PERSONAL LISTENING & SPEAKING LIBRARY</div>
+  <h1>Dialogue Loop</h1>
+  <p>会話の最初から最後まで。日本語で考え、英語で答え、自然なやり取りを繰り返し練習。</p>
+  <section class="card">
+    <div class="row spread">
+      <div class="grow"><h2>エピソード・ライブラリ</h2><p class="subtle">教材データはこのブラウザ内だけに保存。サイトには送信しません。</p></div>
+      <div class="row"><button class="btn mainbtn" id="loadEpisode">＋ エピソードを追加（JSON）</button><input id="importEpisode" type="file" accept=".json,application/json"><button class="btn" id="removeEpisode" disabled>削除</button></div>
     </div>
+    <div class="fields">
+      <label class="field">エピソード<select id="episodeSelect"><option value="">教材を読み込んでください</option></select></label>
+      <label class="field">章・セクション<select id="chapterSelect"><option value="">全編</option></select></label>
+      <label class="field">話数と進行状況<div class="pill" id="epInfo">未読み込み</div></label>
+    </div>
+  </section>
+  <section class="card">
+    <div class="row spread"><div class="grow"><h2 class="panel-title" id="currentEpisodeTitle">エピソードを選択</h2><div class="episode-name" id="currentSource"></div></div><div class="subtle" id="status" role="status">停止中</div></div>
+    <div id="noEpisode">「エピソードを追加」から、端末に保存した対訳JSONを読み込んでください。教材本文は公開サイトには含まれません。</div>
+    <div id="playerArea" hidden>
+      <div class="row spread" style="margin-top:14px"><div class="row"><button class="btn mainbtn" id="play">▶ 再生</button><button class="btn" id="stop">■ 停止</button><button class="btn" id="previous">← 前</button><button class="btn" id="next">次 →</button></div><div class="subtle" id="count"></div></div>
+      <div class="bar-track"><div class="bar-fill" id="progress"></div></div>
+      <div class="row spread"><div id="stage" class="subtle">再生を押すと日本語から始まります</div><button id="sourceBtn" class="btn" style="font-size:12px">原音声の該当箇所 ↗</button></div>
+      <div class="text-label">日本語 / Japanese prompt</div><div class="translation" id="japanese"></div>
+      <div class="text-label">英語 / English answer</div><div class="translation english" id="english"></div>
+      <label class="row subtle" style="margin-top:12px"><input type="checkbox" id="hideEnglish">英語を隠して話す練習</label>
+    </div>
+  </section>
+  <section class="card">
+    <h2>再生速度・間隔</h2>
+    <p class="subtle">長い発言は文ごとに分けて練習します。短い相づちを1回だけにする設定もできます。</p>
+    <div class="play-settings">
+      <label>再生パターン<select id="mode"><option value="j-e-j-e">日本語 → 英語 → 日本語 → 英語</option><option value="j-e">日本語 → 英語</option><option value="e-e">英語 → 英語</option></select></label>
+      <label>短い相づち（Yes / Right / Yeahなど）<select id="shortReplies"><option value="en-once" selected>英語だけ1回（推奨）</option><option value="ja-en">日本語→英語を1回</option><option value="all">通常どおり繰り返す</option></select></label>
+      <label>日本語のあとに考える時間<select id="promptPause"><option value="0">0秒</option><option value="0.5">0.5秒</option><option value="1" selected>1秒</option><option value="1.5">1.5秒</option><option value="2">2秒</option><option value="3">3秒</option><option value="5">5秒</option></select></label>
+      <label>英語の速度：<span id="enSpeedLabel">1.00</span>倍<input id="enRate" type="range" min="0.70" max="1.80" step="0.05" value="1.00"></label>
+      <label>日本語の速度：<span id="jaSpeedLabel">1.10</span>倍<input id="jaRate" type="range" min="0.70" max="1.80" step="0.05" value="1.10"></label>
+      <label>発言と発言の間<select id="between"><option value="0">0秒</option><option value="0.2" selected>0.2秒</option><option value="0.5">0.5秒</option><option value="1">1秒</option></select></label>
+      <label>次の文へ移るタイミング<select id="autoNext"><option value="on">自動的に次へ</option><option value="off">1発言ごとに停止</option></select></label>
+      <label>英語音声<select id="enVoice"><option value="">ブラウザの標準音声</option></select></label>
+      <label>日本語音声<select id="jaVoice"><option value="">ブラウザの標準音声</option></select></label>
+    </div>
+    <p class="subtle" style="margin-top:12px">句読点による文の分割は自動処理です。日英の文数が合わない箇所は推定になるため、気になる箇所は対訳を修正してください。速度は次に読み上げる区間から反映。音声の品質・実際の速度は利用端末の音声合成エンジンに依存します。</p>
+  </section>
+  <div class="grid">
+    <section class="card"><div class="row spread"><h2>会話の全文</h2><span class="subtle">タップするとそこから再生</span></div><div id="utterances" class="script-list"></div></section>
+    <section class="card editing">
+      <h2>字幕と日本語訳を修正</h2>
+      <label for="editEn">英語</label><textarea id="editEn" placeholder="英文"></textarea>
+      <label for="editJa">日本語</label><textarea id="editJa" placeholder="訳文"></textarea>
+      <div class="row"><button class="btn mainbtn" id="saveEdit">この発言を保存</button><button class="btn" id="restore">修正を戻す</button></div>
+      <div class="subtle" id="editStatus" role="status"></div>
+      <div class="notice">
+        <h3>教材をバックアップ</h3>
+        <div class="row"><button class="btn" id="saveJson">エピソードJSONを書き出す</button><button class="btn" id="saveTsv">TSVを書き出す</button></div>
+      </div>
+    </section>
   </div>
-
-  <script src="dist/reveal.js"></script>
-  <script src="plugin/markdown/markdown.js"></script>
-  <script src="plugin/highlight/highlight.js"></script>
-<!--  <script src="https://unpkg.com/reveal.js-plugins@latest/fit-text/fit-text.js"></script> -->
-  <script>
-    			Reveal.initialize({
-    				hash: true,
-    				plugins: [ RevealMarkdown, RevealHighlight,  ]
-    			});
-  </script>
-  
+  <section class="card">
+    <h2>スマホで画面を消して聴くには</h2>
+    <p>この画面の読み上げ（Web Speech API）は、スマホの画面ロック時に止まる場合があります。バックグラウンド再生したいときは、音声データを生成し、このページの音声プレーヤーかスマホの音楽プレーヤーで再生します。書き出し設定はPythonでMP3にするためのJSONです（MP3そのものではありません）。</p>
+    <div class="row"><button class="btn mainbtn" id="exportJob">↓ MP3書き出し設定（JSON）</button><button class="btn" id="importMp3">♪ 生成済みMP3を開く</button><input type="file" id="importAudio" accept="audio/mpeg,.mp3,audio/*"></div>
+    <div id="audioSection" hidden><audio id="audioPlayer" controls preload="metadata"></audio><div class="subtle" id="audioFilename"></div></div>
+    <p class="notice">ブラウザ内蔵の読み上げ音声は直接MP3として保存できないため、ここでは設定をエクスポートします。MP3生成自体は付属の <code>export_audio.py</code> を使用します。完成したMP3はスマートフォンの音楽プレーヤー等で画面ロック中も再生できます。</p>
+  </section>
+  <footer>個人的な学習用です。第三者の書き起こし・翻訳・音声を公開する場合は、著作権と配信元の利用条件を確認してください。特にGitHub Pagesはprivateリポジトリから公開してもサイト自体は通常公開となります。</footer>
+</main>
+<script>
+'use strict';
+/* Site edition: no third-party transcript or translated text is bundled in this file. */
+const EMBEDDED_EPISODE = null;
+const $ = id=>document.getElementById(id);
+const DB_NAME='dialogue-loop-library-v2';
+const PREF='dialogue-loop-preferences-v2';
+let db=null,library=new Map(),selectedId='',index=0,playing=false,paused=false,seq=0,voices=[],audioBlobUrl=null;
+const settingsKeys=['mode','shortReplies','promptPause','enRate','jaRate','between','autoNext','enVoice','jaVoice','hideEnglish'];
+function getSettings(){let out={};for(let k of settingsKeys)out[k]=$(k).type==='checkbox'?$(k).checked:$(k).value;return out}
+function loadPrefs(){try{let v=JSON.parse(localStorage.getItem(PREF)||'{}');for(let [k,val] of Object.entries(v)){if(!$(k))continue;if($(k).type==='checkbox')$(k).checked=!!val;else $(k).value=val}}catch(e){}syncSpeedLabels()}
+function savePrefs(){try{localStorage.setItem(PREF,JSON.stringify(getSettings()))}catch(e){}}
+function syncSpeedLabels(){$('enSpeedLabel').textContent=Number($('enRate').value).toFixed(2);$('jaSpeedLabel').textContent=Number($('jaRate').value).toFixed(2)}
+function normalizeEpisode(src){let raw=Array.isArray(src)?{items:src}:src;
+ if(!raw||typeof raw!=='object'||!Array.isArray(raw.items)||!raw.items.length)throw Error('items配列またはen/jaの配列が必要です');
+ let items=raw.items.map((r,i)=>{if(!r||typeof r.en!=='string'||typeof r.ja!=='string')throw Error('発言 '+(i+1)+' にenまたはjaがありません');return {en:r.en,ja:r.ja,at:r.at||String(i+1),start_sec:Number(r.start_sec)||0}});
+ let title=String(raw.title||'新しいエピソード').slice(0,200),series=String(raw.series||'Personal library').slice(0,200);
+ let id=String(raw.id||('episode-'+Date.now()+'-'+Math.random().toString(36).slice(2,7))).replace(/[^a-zA-Z0-9_-]/g,'-').slice(0,120);
+ return {id,title,series,items,source_url:typeof raw.source_url==='string'?raw.source_url:'',source_note:typeof raw.source_note==='string'?raw.source_note:'',chapters:Array.isArray(raw.chapters)?raw.chapters:[],sentence_version:raw.sentence_version||0};}
+// Sentence-level conversion; keeps transcript order. When JA/EN sentence counts differ,
+// a conservative length-based alignment is attempted only for longer utterances.
+function enSentences(s){
+ let initial=(s||'').replace(/\s+/g,' ').trim().replace(/\b(Mr|Mrs|Ms|Dr|Prof|St)\./g,'$1∯').split(/(?<=[.!?])\s+(?=[A-Z\"'\[(]|I\b)/).map(v=>v.replace(/∯/g,'.').trim()).filter(Boolean);
+ let all=[];
+ for(let sentence of initial){
+  if(sentence.length<=165){all.push(sentence);continue}
+  let candidates=sentence.split(/(?<=[,;:])\s+|\s+(?=(?:and|but|so|because|which|when|while|although|though)\b)/i).filter(Boolean);
+  if(candidates.length<2){candidates=sentence.split(' ')}
+  let current='';
+  for(let part of candidates){
+   if((current+' '+part).trim().length>125&&current){all.push(current.trim());current=''}
+   if(part.length>165){let words=part.split(/\s+/);for(let word of words){if((current+' '+word).trim().length>125&&current){all.push(current.trim());current=''}current+=(current?' ':'')+word}}else current+=(current?' ':'')+part
+  }
+  if(current.trim())all.push(current.trim())
+ }
+ return all
+}
+function jaSentences(s){return (s||'').split(/(?<=[。！？])/).map(v=>v.trim()).filter(Boolean)}
+function splitJaProportionally(s,n,enParts){
+ let clauses=(s||'').match(/[^、。！？]+[、。！？]?/g)||[s];
+ if(clauses.length<n)return null;
+ let ratios=enParts.map(x=>x.length),total=ratios.reduce((a,b)=>a+b,0)||1;
+ let output=[],at=0,used=0;
+ for(let i=0;i<n-1;i++){
+  const target=s.length*(used+ratios[i])/total;
+  let best=at+1,score=Infinity;
+  for(let k=at+1;k<=clauses.length-(n-i-1);k++){
+   let len=clauses.slice(0,k).join('').length;
+   if(Math.abs(len-target)<score){score=Math.abs(len-target);best=k}
+  }
+  output.push(clauses.slice(at,best).join('').trim());at=best;used+=ratios[i];
+ }
+ output.push(clauses.slice(at).join('').trim());return output.every(Boolean)?output:null
+}
+function splitEpisodeSentences(ep){
+ if(ep.sentence_version===3)return ep;
+ let out=[],changes=0,approx=0;
+ for(let u of ep.items){
+  let en=enSentences(u.en),ja=jaSentences(u.ja);
+  if(en.length<=1){out.push(u);continue}
+  // Avoid splitting spoken fillers into microscopic units for short utterances.
+  if(u.en.length<70 && en.length<=2){out.push(u);continue}
+  let pieces=null;
+  if(ja.length===en.length)pieces=ja;
+  else if(u.en.length>115){pieces=splitJaProportionally(u.ja,en.length,en);if(pieces)approx++}
+  if(!pieces){out.push(u);continue}
+  let offset=Number(u.start_sec)||0;
+  for(let i=0;i<en.length;i++){
+   out.push({...u,en:en[i],ja:pieces[i],start_sec:offset,at:u.at,alignment_estimated:ja.length!==en.length});
+  }
+  changes++;
+ }
+ ep.items=out;ep.sentence_version=3;ep.split_notice=changes+'か所を文単位に分割。うち'+approx+'か所は日本語との対応が推定です。';
+ return ep;
+}
+function isNonVerbal(s){return /^\s*(?:\[|\()(?:laughter|music|snorts?|clears throat|applause|laughing)(?:\]|\))\s*$/i.test(s||'')}
+function isShortBackchannel(s){
+ let t=(s||'').toLowerCase().replace(/[.!?,…\s]+/g,' ').trim();
+ return /^(yeah|yes|yep|yup|right|okay|ok|sure|exactly|true|really|oh|wow|uh huh|mhm|mm hmm|hmm|i see|that's right|that's true|of course|no|nope|absolutely|i know|got it|well yeah)$/.test(t);
+}
+function openDB(){return new Promise((res,rej)=>{if(!window.indexedDB){rej(Error('IndexedDBが利用できません'));return}let r=indexedDB.open(DB_NAME,1);r.onupgradeneeded=()=>r.result.createObjectStore('episodes',{keyPath:'id'});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+function dbAction(mode,cb){return new Promise((res,rej)=>{let tx=db.transaction('episodes',mode),os=tx.objectStore('episodes'),req=cb(os);tx.oncomplete=()=>res(req?.result);tx.onerror=()=>rej(tx.error)})}
+async function storeEpisode(ep){library.set(ep.id,ep);if(db)await dbAction('readwrite',os=>os.put(ep));else {try{localStorage.setItem('dialogue-loop-ep-'+ep.id,JSON.stringify(ep))}catch(e){alert('保存容量を超えました。JSONもバックアップしてください。')}}}
+async function deleteEpisode(id){library.delete(id);if(db)await dbAction('readwrite',os=>os.delete(id));else try{localStorage.removeItem('dialogue-loop-ep-'+id)}catch(e){}}
+function active(){return library.get(selectedId)||null}
+function savePosition(){try{localStorage.setItem('dialogue-loop-pos-'+selectedId,String(index));localStorage.setItem('dialogue-loop-last',selectedId)}catch(e){}}
+function refreshLibrary(){let prev=selectedId,select=$('episodeSelect');select.replaceChildren();if(!library.size){select.add(new Option('教材を読み込んでください',''));return}for(let ep of library.values())select.add(new Option((ep.series?ep.series+' · ':'')+ep.title,ep.id));if(library.has(prev))select.value=prev}
+function refreshChapters(){let sel=$('chapterSelect');sel.replaceChildren();sel.add(new Option('章を選ぶ',''));let ep=active();if(!ep)return;for(const c of ep.chapters){let i=ep.items.findIndex(x=>x.start_sec>=c.time);sel.add(new Option(c.label,String(i<0?ep.items.length-1:i)))}}
+function halt(){seq++;playing=false;paused=false;try{speechSynthesis.cancel()}catch(e){}$('play').textContent='▶ 再生';$('status').textContent='停止中'}
+function selectEpisode(id){halt();selectedId=id;let ep=active();if(ep&&!ep.sentence_version){splitEpisodeSentences(ep);storeEpisode(ep).catch(console.warn)}index=ep?Math.min(ep.items.length-1,Math.max(0,Number(localStorage.getItem('dialogue-loop-pos-'+id))||0)):0;refreshLibrary();refreshChapters();$('removeEpisode').disabled=!ep;$('playerArea').hidden=!ep;$('noEpisode').hidden=!!ep;$('currentEpisodeTitle').textContent=ep?ep.title:'エピソードを選択';$('currentSource').textContent=ep?ep.series+' · '+ep.items.length+'発言':'';$('epInfo').textContent=ep?ep.items.length+'発言 · '+(index+1)+'番目':'未読み込み';renderList();render();}
+function renderList(){let el=$('utterances'),ep=active();el.replaceChildren();if(!ep)return;let frag=document.createDocumentFragment();ep.items.forEach((u,i)=>{let div=document.createElement('div');div.className='script-item'+(index===i?' active':'');div.innerHTML='<div class="script-time"></div><div class="script-en"></div><div class="script-ja"></div>';div.querySelector('.script-time').textContent=(i+1)+' · '+u.at;div.querySelector('.script-en').textContent=u.en;div.querySelector('.script-ja').textContent=u.ja;div.addEventListener('click',()=>jump(i,true));frag.appendChild(div)});el.appendChild(frag)}
+function render(){let ep=active();if(!ep){$('count').textContent='';$('japanese').textContent='';$('english').textContent='';$('editEn').value='';$('editJa').value='';return}let u=ep.items[index];$('count').textContent=(index+1)+' / '+ep.items.length+' · '+u.at;$('epInfo').textContent=ep.items.length+'発言 · '+(index+1)+'番目';$('japanese').textContent=u.ja;$('english').textContent=u.en;$('japanese').scrollTop=0;$('english').scrollTop=0;$('english').classList.toggle('blurred',$('hideEnglish').checked);$('progress').style.width=((index+1)/ep.items.length*100).toFixed(2)+'%';$('editEn').value=u.en;$('editJa').value=u.ja;document.querySelectorAll('.script-item').forEach((node,i)=>node.classList.toggle('active',i===index));savePosition()}
+function jump(n,autoplay){let ep=active();if(!ep)return;halt();index=Math.min(ep.items.length-1,Math.max(0,n));render();document.querySelector('.script-item.active')?.scrollIntoView({block:'nearest'});if(autoplay)start()}
+function voiceFor(lang){let value=$(lang==='en'?'enVoice':'jaVoice').value;return voices.find(v=>v.voiceURI===value)||voices.find(v=>v.lang.toLowerCase().startsWith(lang))||null}
+function splitText(text,lang){if(lang==='ja')return text.match(/[^。！？、]+[。！？、]?/g)?.flatMap(p=>p.length>90?[p.slice(0,90),p.slice(90)]:[p])||[text];let bits=text.split(/(?<=[.!?;])\s+/);let out=[],chunk='';for(let b of bits){if((chunk+' '+b).length>180&&chunk){out.push(chunk);chunk=''}if(b.length>180){let words=b.split(' ');for(let w of words){if((chunk+' '+w).length>180&&chunk){out.push(chunk);chunk=''}chunk+=(chunk?' ':'')+w}}else chunk+=(chunk?' ':'')+b}if(chunk)out.push(chunk);return out}
+async function pauseFor(ms,t){let until=performance.now()+ms;while(seq===t&&playing&&performance.now()<until){if(paused){await new Promise(r=>setTimeout(r,80));until+=80}else await new Promise(r=>setTimeout(r,Math.min(80,Math.max(4,until-performance.now()))))}return seq===t&&playing}
+async function speak(text,lang,t){text=(text||'').replace(/\[(?:laughter|music|snorts?|clears throat|applause)\]|\((?:laughter|music|snorts?|clears throat|applause)\)/gi,'').replace(/（(?:笑い声|咳払い|音楽)）/g,'').trim();if(!text)return;for(let segment of splitText(text,lang)){if(t!==seq||!playing)return;while(paused&&t===seq)await new Promise(r=>setTimeout(r,70));if(t!==seq||!playing)return;await new Promise(res=>{const u=new SpeechSynthesisUtterance(segment);u.lang=lang==='ja'?'ja-JP':'en-US';u.rate=Number($(lang+'Rate').value);let v=voiceFor(lang);if(v)u.voice=v;let done=false;const finish=()=>{if(!done){done=true;res()}};u.onend=finish;u.onerror=finish;try{speechSynthesis.speak(u)}catch(e){finish()}})}}
+async function run(t){let ep=active();if(!ep)return;let ord={ 'j-e-j-e':['ja','en','ja','en'],'j-e':['ja','en'],'e-e':['en','en']}[$('mode').value]||['ja','en','ja','en'];while(t===seq&&playing&&index<ep.items.length){let u=ep.items[index];if(isNonVerbal(u.en)){$('stage').textContent='（環境音／笑い声）';if(index===ep.items.length-1){playing=false;$('status').textContent='全編完了';return}index++;render();continue}let thisOrder=ord;if(isShortBackchannel(u.en)){let style=$('shortReplies').value;if(style==='en-once')thisOrder=['en'];else if(style==='ja-en')thisOrder=['ja','en']}for(let i=0;i<thisOrder.length;i++){if(t!==seq||!playing)return;while(paused&&t===seq)await new Promise(r=>setTimeout(r,70));if(t!==seq||!playing)return;let lang=ord[i];$('stage').textContent=(lang==='ja'?'日本語':'英語')+' · '+(i+1)+' / '+thisOrder.length;await speak(u[lang],lang,t);if(t!==seq||!playing)return;if(lang==='ja')await pauseFor(Number($('promptPause').value)*1000,t)}if(t!==seq||!playing)return;if($('autoNext').value==='off'){playing=false;$('play').textContent='▶ 次へ';$('status').textContent='この発言は完了';if(index<ep.items.length-1){index++;render()}return}if(index===ep.items.length-1){playing=false;$('play').textContent='▶ 最初から';$('status').textContent='全編完了';$('stage').textContent='最後まで練習しました';return}index++;render();await pauseFor(Number($('between').value)*1000,t)}}
+function start(){if(!active())return;if(!('speechSynthesis' in window)){alert('このブラウザは読み上げに対応していません');return}if(paused){paused=false;speechSynthesis.resume();$('play').textContent='Ⅱ 一時停止';$('status').textContent='再生中';return}if(playing){paused=true;speechSynthesis.pause();$('play').textContent='▶ 再開';$('status').textContent='一時停止中';return}if(index===active().items.length-1&&$('status').textContent==='全編完了'){index=0;render()}playing=true;const t=++seq;$('play').textContent='Ⅱ 一時停止';$('status').textContent='再生中';run(t).catch(e=>{console.error(e);if(t===seq){halt();$('status').textContent='読み上げエラー'}})}
+function saveFile(name,mime,txt){let a=document.createElement('a'),url=URL.createObjectURL(new Blob([txt],{type:mime}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+function basename(ep){return ep.id.replace(/[^a-zA-Z0-9_-]/g,'-')}
+function validSource(u){try{let x=new URL(u);return ['https:','http:'].includes(x.protocol)?x:null}catch(_){return null}}
+function loadVoices(){if(!('speechSynthesis' in window))return;voices=speechSynthesis.getVoices();for(let lang of ['ja','en']){let sel=$(lang+'Voice'),old=sel.value||JSON.parse(localStorage.getItem(PREF)||'{}')[lang+'Voice']||'';sel.replaceChildren(new Option('ブラウザの標準音声',''));voices.filter(v=>v.lang.toLowerCase().startsWith(lang)).forEach(v=>sel.add(new Option(v.name+' ('+v.lang+')',v.voiceURI)));if([...sel.options].some(x=>x.value===old))sel.value=old}}
+function exportJob(){let ep=active();if(!ep){alert('エピソードを読み込んでください');return}let job={format:'dialogue-loop-audio-job-v1',episode:ep,settings:getSettings(),start:1,end:ep.items.length};saveFile(basename(ep)+'_audio_job.json','application/json;charset=utf-8',JSON.stringify(job,null,2));$('status').textContent='MP3生成設定JSONを保存しました'}
+$('loadEpisode').onclick=()=>$('importEpisode').click();$('importEpisode').onchange=async e=>{let file=e.target.files?.[0];if(!file)return;try{let data=JSON.parse(await file.text());let ep=normalizeEpisode(data.episode&&data.format==='dialogue-loop-audio-job-v1'?data.episode:data);await storeEpisode(ep);selectEpisode(ep.id);$('status').textContent='エピソードを追加しました（長文を自動分割しました）'}catch(err){alert('読み込みエラー: '+err.message)}e.target.value=''};
+$('removeEpisode').onclick=async()=>{let ep=active();if(ep&&confirm('「'+ep.title+'」をこのブラウザから削除しますか？')){await deleteEpisode(ep.id);selectEpisode(library.keys().next().value||'')}};
+$('episodeSelect').onchange=e=>selectEpisode(e.target.value);
+$('chapterSelect').onchange=e=>{if(e.target.value!=='')jump(Number(e.target.value),false)};
+$('play').onclick=start;$('stop').onclick=halt;$('previous').onclick=()=>jump(index-1,playing&&!paused);$('next').onclick=()=>jump(index+1,playing&&!paused);
+$('sourceBtn').onclick=()=>{let ep=active();if(!ep)return;let url=validSource(ep.source_url);if(!url){alert('この教材には元の音声URLが登録されていません');return}if(url.hostname==='youtube.com'||url.hostname==='www.youtube.com'||url.hostname==='music.youtube.com'||url.hostname==='youtu.be')url.searchParams.set('t',String(Math.floor(ep.items[index].start_sec)));window.open(url.toString(),'_blank','noopener')};
+for(let k of settingsKeys)$(k).addEventListener(k==='enRate'||k==='jaRate'?'input':'change',()=>{syncSpeedLabels();savePrefs();if(k==='hideEnglish')render()});
+$('saveEdit').onclick=async()=>{let ep=active();if(!ep)return;ep.items[index].en=$('editEn').value.trim();ep.items[index].ja=$('editJa').value.trim();await storeEpisode(ep);renderList();render();$('editStatus').textContent='この文を保存しました'};
+$('restore').onclick=()=>{let ep=active();if(ep){$('editEn').value=ep.items[index].en;$('editJa').value=ep.items[index].ja;$('editStatus').textContent='保存前の内容に戻しました'}};
+$('saveJson').onclick=()=>{let ep=active();if(ep)saveFile(basename(ep)+'.json','application/json;charset=utf-8',JSON.stringify(ep,null,2))};
+$('saveTsv').onclick=()=>{let ep=active();if(ep)saveFile(basename(ep)+'.tsv','text/tab-separated-values;charset=utf-8','no\ttime\tJapanese\tEnglish\n'+ep.items.map((u,i)=>[i+1,u.at,u.ja,u.en].map(x=>String(x).replace(/[\t\r\n]+/g,' ')).join('\t')).join('\n'))};
+$('exportJob').onclick=exportJob;
+$('importMp3').onclick=()=>$('importAudio').click();$('importAudio').onchange=e=>{let f=e.target.files?.[0];if(!f)return;if(audioBlobUrl)URL.revokeObjectURL(audioBlobUrl);audioBlobUrl=URL.createObjectURL(f);$('audioPlayer').src=audioBlobUrl;$('audioSection').hidden=false;if('mediaSession' in navigator){navigator.mediaSession.metadata=new MediaMetadata({title:active()?.title||f.name,artist:'Dialogue Loop',album:'Personal practice'});}$('audioFilename').textContent=f.name;e.target.value=''};
+(async function init(){if('mediaSession' in navigator){try{navigator.mediaSession.setActionHandler('play',()=>{if($('audioPlayer').src)$('audioPlayer').play()});navigator.mediaSession.setActionHandler('pause',()=>$('audioPlayer').pause())}catch(e){}}loadPrefs();try{db=await openDB();let stored=await dbAction('readonly',os=>os.getAll());for(let ep of stored)library.set(ep.id,ep)}catch(e){console.warn('IndexedDBが使えないためローカル保存に切替',e);for(let i=0;i<localStorage.length;i++){let key=localStorage.key(i);if(key?.startsWith('dialogue-loop-ep-')){try{let ep=JSON.parse(localStorage.getItem(key));library.set(ep.id,ep)}catch(_){}}}}if(EMBEDDED_EPISODE){let ep=normalizeEpisode(EMBEDDED_EPISODE);if(!library.has(ep.id))await storeEpisode(ep)}let last='';try{last=localStorage.getItem('dialogue-loop-last')||''}catch(e){}selectEpisode(library.has(last)?last:library.keys().next().value||'');loadVoices();if('speechSynthesis' in window)speechSynthesis.onvoiceschanged=loadVoices;})();
+</script>
 </body>
 </html>
